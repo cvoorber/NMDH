@@ -1,0 +1,111 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="maintemplate.master.cs" Inherits="maintemplate" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Nipigon District Memorial Hospital</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+</head>
+<body>
+    
+    <form id="form1" runat="server">
+    <div id="container">
+    <header>	
+  	
+    <img id="main-logo" src="img/ndmh-logo.gif" width="223" height="126"  alt="ndmh-logo" />
+  	<div id="page-adjust">
+  		
+  		High Contrast&nbsp;&nbsp;&nbsp;&nbsp;
+  		Text Size + -
+  	</div><!--end page-adjust -->
+  
+  	<div id="nav1-search">
+  		<img src="img/nav-green.gif" width="902px" height="38px" alt="nav" />
+  		<nav id="primary-nav">
+  			<ul>
+  				<li>ABOUT US</li>
+  				<li>SERVICES</li>
+  				<li>VISITOR INFO</li>
+  				<li>DONATE</li>
+  				<li>&nbsp;&nbsp;POLICIES</li>
+  			</ul>
+  		</nav><!--end nav-->
+  
+  		<div id="search">
+     		<input type="text" />
+  		</div><!--end search--> 
+	  
+  	</div><!--end nav-search-->
+  
+  	<div id="nav2">
+  		<img src="img/grey-bar.gif" width="826px" height="66px" alt="2nd-nav"/>
+  	
+  		<nav id="secondary-nav">
+  			<ul>
+  				<li>MAP</li>
+  				<li>HOURS</li>
+  				<li>ER WAIT</li>
+  				<li>DONATE</li>
+  			</ul>
+  		</nav><!--secondary-nav -->
+  
+  	</div><!--end nav2 -->
+ 	
+    </header>
+    
+    <div>
+        <asp:ContentPlaceHolder id="content_area" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    
+
+    <footer>
+  	<div id="upper-foot">
+  		<nav>
+  			<ul>
+  				<li>Home</li>
+  				<li>Patients &amp; Visitors</li>
+  				<li>Services</li>
+  				<li>Policies</li>
+  				<li>Donate</li>
+  				<li>Contact</li>
+  				<li>About Us</li>
+  				<li>Hours</li>
+  				<li>Map</li>
+  				<li>Wait Times</li>
+  			</ul>
+  		</nav>
+  		
+  	</div><!-- end upper-foot -->
+  	
+
+  	<div id="divider"><hr /></div>
+
+  	
+  	
+  	<div id="lower-foot">
+  		<nav>
+  			<ul>
+  				<li>Site Map</li>
+  				<li>Terms of Use</li>
+  				<li>Legal&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+  				<li><span class="normal-font">Copyright 2012 Group of Six Designs. All Rights Reserved.</span></li>
+  			</ul>
+  		</nav>
+  		
+  	</div><!-- end lower-foot -->
+  
+    </footer><!--end footer-->
+    </div><!--end container -->
+    </form>
+    
+    
+</body>
+</html>

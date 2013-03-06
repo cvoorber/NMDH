@@ -1,0 +1,15 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/maintemplate.master" AutoEventWireup="true" CodeFile="SubMaster1.master.cs" Inherits="SubMaster1" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
+    <aside id="left_sidebar">
+        <asp:ContentPlaceHolder ID="l_sidebar" runat="server">
+            Default left_sidebar content
+        </asp:ContentPlaceHolder>
+    </aside>
+    <section id="right_content">
+        <asp:ContentPlaceHolder ID="r_content" runat="server">
+            Default right_content area
+        </asp:ContentPlaceHolder>
+    </section>
+</asp:Content>
+
