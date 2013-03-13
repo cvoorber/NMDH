@@ -9,7 +9,14 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
+            <asp:ListView ID="lv_insert" runat="server">
+                <InsertItemTemplate>
+                </InsertItemTemplate>
+                <EditItemTemplate>
+                </EditItemTemplate>
+                <ItemTemplate>
+                </ItemTemplate>
+            </asp:ListView>
     </div>
     </form>
 </body>
