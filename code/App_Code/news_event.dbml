@@ -54,19 +54,6 @@
       <Association Name="ndmh_department_listing_ndmh_donation" Member="ndmh_department_listing" ThisKey="d_id" OtherKey="dl_id" Type="ndmh_department_listing" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ndmh_events" Member="ndmh_events">
-    <Type Name="ndmh_event">
-      <Column Name="n_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="n_title" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="n_description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="n_image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="n_expires" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="n_event_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="n_contact_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="n_link" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="ndmh_staff_listing_ndmh_event" Member="ndmh_staff_listing" ThisKey="n_contact_id" OtherKey="sl_id" Type="ndmh_staff_listing" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.ndmh_external_links" Member="ndmh_external_links">
     <Type Name="ndmh_external_link">
       <Column Name="el_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -105,6 +92,19 @@
       <Column Name="r_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="r_content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="r_image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ndmh_events" Member="ndmh_events">
+    <Type Name="ndmh_event">
+      <Column Name="n_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="n_title" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="n_description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="n_image" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="n_expires" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="n_event_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="n_contact_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="n_link" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ndmh_staff_listing_ndmh_event" Member="ndmh_staff_listing" ThisKey="n_contact_id" OtherKey="sl_id" Type="ndmh_staff_listing" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
