@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Allow nodes to have "table" and "id" nodes that describe where the dynamic content is coming from-->
+<!-- update lastmod when changes are made-->
+
+<urlset>
+  <url>
+    <loc>~/navigation/index.aspx</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>Home</title>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>~/navigation/about.aspx</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>About Us</title>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>~/navigation/services.aspx</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>Services</title>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>~/navigation/patients_visitors.aspx</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>Patients &amp; Visitors</title>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>~/navigation/donate.aspx</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>Donate</title>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>~/navigation/policies.aspx</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>Policies</title>
+    <priority>1</priority>
+    <url>
+      <loc>~/navigation/policies.aspx</loc>
+      <lastmod>2013-03-30</lastmod>
+      <title>Policy 1</title>
+      <priority>1</priority>
+      <sourcetable>reports</sourcetable>
+      <sourceid>23</sourceid>
+    </url>
+    <url>
+      <loc>~/navigation/policies.aspx</loc>
+      <lastmod>2013-03-30</lastmod>
+      <title>Policy 2</title>
+      <priority>1</priority>
+      <sourcetable>reports</sourcetable>
+      <sourceid>13</sourceid>
+    </url>
+  </url>
+  <url>
+    <loc>~/navigation/map.aspx</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>Map</title>
+    <priority>2</priority>
+  </url>
+  <url>
+    <loc>~/navigation/hours.aspx</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>Hours</title>
+    <priority>2</priority>
+  </url>
+  <url>
+    <loc>~/navigation/erwait.aspx</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>ER Wait</title>
+    <priority>2</priority>
+  </url>
+  <url>
+    <loc>~/navigation/donate.aspx</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>Donate</title>
+    <priority>2</priority>
+  </url>
+  <url>
+    <loc>~/navigation/terms.aspx</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>Terms of Use</title>
+    <priority>4</priority>
+  </url>
+  <url>
+    <loc>~/navigation/legal.aspx</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>Legal</title>
+    <priority>4</priority>
+  </url>
+</urlset>
