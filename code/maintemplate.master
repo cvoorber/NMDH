@@ -17,11 +17,13 @@
     <form id="form1" runat="server">
     <asp:Panel ID="container" runat="server" SkinID="container">
   	
-
+    <asp:Image ID="img_search" runat="server" ImageUrl="~/img/search.png" CssClass="searchbar" />
     <asp:TextBox ID="txt_search" runat="server" SkinID="searchbar" />
-    <asp:Image ID="img_search" runat="server" ImageUrl="~/img/search.png" CssClass="searchbar" Width="20px" Height="20px" />
+    
+    <asp:ImageButton ID="font_decrease" runat="server" ImageUrl="~/img/fontminus.png" CssClass="fontchange" />
+    <asp:ImageButton ID="font_increase" runat="server" ImageUrl="~/img/fontplus.png" CssClass="fontchange" />
 
-    <asp:Image ID="main_logo" runat="server" Width="223" Height="126" AlternateText="Nipigon District Memorial Hospital" CssClass="main-logo" ImageUrl="~/img/ndmh-logo.gif" />
+    <asp:Image ID="main_logo" runat="server" AlternateText="Nipigon District Memorial Hospital" CssClass="main-logo" ImageUrl="~/img/logo-new2.png" />
 
         <asp:Panel runat="server" CssClass="primary-nav-contain">
             <asp:Menu ID="primary_menu" runat="server" SkinID="skin_primary_nav">

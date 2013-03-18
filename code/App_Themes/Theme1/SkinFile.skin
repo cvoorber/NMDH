@@ -12,6 +12,7 @@
     BorderColor="#327c42" 
     BorderWidth="1px" 
     ForeColor="#002704" 
+    Font-Size="15pt"
     Text="Search" 
     CssClass="searchbar" />
 
