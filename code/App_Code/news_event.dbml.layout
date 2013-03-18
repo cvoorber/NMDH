@@ -1,80 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.75, 11" name="news_event">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.75, 12" name="news_event">
   <DataContextMoniker Name="/news_eventDataContext" />
   <nestedChildShapes>
-    <classShape Id="1dede390-8aca-43e2-a1b5-1e2259b269a3" absoluteBounds="3.5, 1, 2, 2.3478011067708335">
-      <DataClassMoniker Name="/news_eventDataContext/ndmh_contact" />
+    <classShape Id="8e6d88bc-e204-46dc-8a9d-0da819111066" absoluteBounds="6.25, 1.25, 2, 1.7708968098958329">
+      <DataClassMoniker Name="/news_eventDataContext/ndmh_comment" />
       <nestedChildShapes>
-        <elementListCompartment Id="97d38b58-8792-4306-8f2d-87032f765f05" absoluteBounds="3.515, 1.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="97ea5428-3b2b-43bd-b684-97bb6b0149f2" absoluteBounds="6.265, 1.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="a08a4a39-6127-4098-b977-1c3b8d9d75ed" absoluteBounds="0.75, 5, 2, 2.3478011067708326">
+    <classShape Id="750c08e7-6cca-4c47-9d93-4e8eb49e8068" absoluteBounds="0.75, 1, 2, 2.3478011067708335">
       <DataClassMoniker Name="/news_eventDataContext/ndmh_staff_listing" />
       <nestedChildShapes>
-        <elementListCompartment Id="983a5375-4a7c-4488-a029-9c76c7ea5530" absoluteBounds="0.765, 5.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="1f134e08-c5a0-449b-8902-7d5e8cf25346" absoluteBounds="0.765, 1.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="ff027133-5d2d-43b3-b26c-e5647f4db054" absoluteBounds="6.75, 1.5, 2, 1.9631982421874998">
+    <classShape Id="a6aac6e7-70b6-4202-b539-244f8478aa63" absoluteBounds="3.5, 5, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/news_eventDataContext/ndmh_contact" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e34d16ac-8024-4bf5-a74f-d3c243de4c4d" absoluteBounds="3.515, 5.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f2a88ab4-c3bb-4307-b5b6-6ba6bdff8d8c" absoluteBounds="6.75, 5.5, 2, 1.9631982421875005">
       <DataClassMoniker Name="/news_eventDataContext/ndmh_department_listing" />
       <nestedChildShapes>
-        <elementListCompartment Id="20d0f140-94e6-405b-84ec-b1ff758811d6" absoluteBounds="6.765, 1.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="168c02e5-bdc1-4ebd-bb71-463bceb48728" absoluteBounds="6.765, 5.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="ac1e6c15-fe23-4d42-b0af-d18de03ea4a8" absoluteBounds="9.5, 1, 2, 3.1170068359375009">
+    <classShape Id="6ad1abd9-a7b7-46d4-af18-61475e7459c2" absoluteBounds="9.5, 5, 2, 3.1170068359375014">
       <DataClassMoniker Name="/news_eventDataContext/ndmh_donation" />
       <nestedChildShapes>
-        <elementListCompartment Id="86c3c810-a707-4f8e-bc22-0bdff263c995" absoluteBounds="9.515, 1.46, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="42a4f830-ce4b-4964-afd0-bcf4bf61692f" absoluteBounds="9.515, 5.46, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="0b80ccb1-ebbe-4f6c-91d3-6f0787a5d058" absoluteBounds="6.75, 5.75, 2, 1.7708968098958327">
-      <DataClassMoniker Name="/news_eventDataContext/ndmh_external_link" />
-      <nestedChildShapes>
-        <elementListCompartment Id="c6143240-fbc3-40ea-a06a-a4c95fdb1943" absoluteBounds="6.765, 6.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="828a4035-f024-4b35-8654-f60cfd7d71d2" absoluteBounds="0.75, 8.75, 2, 1.9631982421874987">
-      <DataClassMoniker Name="/news_eventDataContext/ndmh_general_page" />
-      <nestedChildShapes>
-        <elementListCompartment Id="4b9290b0-66a4-4fa5-9583-167d55b655fe" absoluteBounds="0.765, 9.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="3fbe6afd-b4f4-465e-a856-3a94115eba15" absoluteBounds="0.75, 1.125, 2, 1.9631982421875003">
-      <DataClassMoniker Name="/news_eventDataContext/ndmh_job" />
-      <nestedChildShapes>
-        <elementListCompartment Id="1b46f7b8-bc21-4759-9491-50c3c4e37d6f" absoluteBounds="0.765, 1.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="20dd8bc6-33ce-4c07-be9b-7abdda5a591d" absoluteBounds="3.75, 8.75, 2, 1.9631982421874987">
-      <DataClassMoniker Name="/news_eventDataContext/ndmh_report" />
-      <nestedChildShapes>
-        <elementListCompartment Id="cbf12dad-21e0-4322-996c-da54c20289d7" absoluteBounds="3.765, 9.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(8.75 : 2.48159912109375); (9.5 : 2.48159912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/news_eventDataContext/ndmh_department_listing/ndmh_department_listing_ndmh_donation" />
-      <nodes>
-        <classShapeMoniker Id="ff027133-5d2d-43b3-b26c-e5647f4db054" />
-        <classShapeMoniker Id="ac1e6c15-fe23-4d42-b0af-d18de03ea4a8" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 2.10659912109375); (3.5 : 2.10659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/news_eventDataContext/ndmh_job/ndmh_job_ndmh_contact" />
-      <nodes>
-        <classShapeMoniker Id="3fbe6afd-b4f4-465e-a856-3a94115eba15" />
-        <classShapeMoniker Id="1dede390-8aca-43e2-a1b5-1e2259b269a3" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="88f38951-a6f9-4450-abfa-6c8f8f343e45" absoluteBounds="3.875, 5.875, 2, 2.3478011067708335">
+    <classShape Id="3411cb91-0d3a-4cca-99e7-7ba39f035037" absoluteBounds="3.5, 1, 2, 2.3478011067708335">
       <DataClassMoniker Name="/news_eventDataContext/ndmh_event" />
       <nestedChildShapes>
-        <elementListCompartment Id="75ff0509-cace-4d2f-a0f7-744c722809a4" absoluteBounds="3.89, 6.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="230601a1-07bd-429b-b5fb-8d21ff1de750" absoluteBounds="3.515, 1.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 6.61140055338542); (3.875 : 6.61140055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="9f288f54-3d75-49b6-b97b-6f45cbeb68f0" absoluteBounds="8.75, 0.75, 2, 1.7708968098958329">
+      <DataClassMoniker Name="/news_eventDataContext/ndmh_external_link" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c5fa7b3d-299b-41f5-9d01-2baba0cc0a55" absoluteBounds="8.765, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c476af58-5031-488d-a76d-bf80156b421e" absoluteBounds="0.75, 8.75, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/news_eventDataContext/ndmh_general_page" />
+      <nestedChildShapes>
+        <elementListCompartment Id="85c73e50-5f2d-4fcf-b925-d1819393f8a9" absoluteBounds="0.765, 9.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4781156d-a039-40cf-969a-6b9829e6443e" absoluteBounds="0.75, 5.125, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/news_eventDataContext/ndmh_job" />
+      <nestedChildShapes>
+        <elementListCompartment Id="86d961d0-1c07-4c57-b15d-e9d3747e892f" absoluteBounds="0.765, 5.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8116884f-f63f-407b-9553-d9a678083e2e" absoluteBounds="3.75, 8.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/news_eventDataContext/ndmh_keyword" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0e14c8b3-216d-4ee4-bc1d-824dce4a3d38" absoluteBounds="3.765, 9.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6b0d53de-c6cc-4b1d-aafa-acc373b72637" absoluteBounds="6.75, 9.75, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/news_eventDataContext/ndmh_report" />
+      <nestedChildShapes>
+        <elementListCompartment Id="14560dc5-a2f8-4660-85bb-7f98ac3e0445" absoluteBounds="6.765, 10.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.75 : 6.48159912109375); (9.5 : 6.48159912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/news_eventDataContext/ndmh_department_listing/ndmh_department_listing_ndmh_donation" />
+      <nodes>
+        <classShapeMoniker Id="f2a88ab4-c3bb-4307-b5b6-6ba6bdff8d8c" />
+        <classShapeMoniker Id="6ad1abd9-a7b7-46d4-af18-61475e7459c2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 2.13544840494792); (6.25 : 2.13544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/news_eventDataContext/ndmh_event/ndmh_event_ndmh_comment" />
+      <nodes>
+        <classShapeMoniker Id="3411cb91-0d3a-4cca-99e7-7ba39f035037" />
+        <classShapeMoniker Id="8e6d88bc-e204-46dc-8a9d-0da819111066" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 2.17390055338542); (3.5 : 2.17390055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/news_eventDataContext/ndmh_staff_listing/ndmh_staff_listing_ndmh_event" />
       <nodes>
-        <classShapeMoniker Id="a08a4a39-6127-4098-b977-1c3b8d9d75ed" />
-        <classShapeMoniker Id="88f38951-a6f9-4450-abfa-6c8f8f343e45" />
+        <classShapeMoniker Id="750c08e7-6cca-4c47-9d93-4e8eb49e8068" />
+        <classShapeMoniker Id="3411cb91-0d3a-4cca-99e7-7ba39f035037" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.10659912109375); (3.5 : 6.10659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/news_eventDataContext/ndmh_job/ndmh_job_ndmh_contact" />
+      <nodes>
+        <classShapeMoniker Id="4781156d-a039-40cf-969a-6b9829e6443e" />
+        <classShapeMoniker Id="a6aac6e7-70b6-4202-b539-244f8478aa63" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

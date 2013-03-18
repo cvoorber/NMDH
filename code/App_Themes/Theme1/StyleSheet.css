@@ -174,7 +174,21 @@ body {
 
 /* - - Start of Content Area - - */
 
+.insertComment {
+border:1px solid gray;
+background-color:#B8D9BE;
+padding-top:10px;
+padding-left:15px;
+margin-bottom:20px;
+}
 
+.userComment {
+border:1px solid #CCC;
+font-size:15px;
+line-height:1.2;
+margin-top:15px;
+padding:10px;
+}
 
 /* - - End of Content Area - - */
 
