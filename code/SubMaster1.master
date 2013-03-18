@@ -3,7 +3,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
     <aside id="left_sidebar">
-        <asp:Menu ID="side_menu" runat="server >
+        <asp:Menu ID="side_menu" runat="server" StaticMenuItemStyle-CssClass="side-menu" >
             <Items>
                 <asp:MenuItem Text="About Us" Target="~/index.aspx" />
             </Items>

@@ -88,6 +88,9 @@ body {
     position:relative;
     float:right;
     margin:2px;
+    color:#4a5150;
+    font-family:'Rufina', serif;
+    background-color:#f8f8f8;
 }
 
 .fontchange
@@ -121,11 +124,13 @@ body {
     position:relative;
 	left:210px;
 	z-index:3; 
+	color:#f2f9f8;
 }
 
 .primary-nav:hover
 {
     background: #43ddc2;
+    color:#054d40;
 
 }
 
@@ -154,7 +159,20 @@ body {
 
 }
 
-.search {
+.side-menu
+{
+    font-size:14pt;
+    background-color:#11c1a2;
+    color:#f2f9f8;
+    padding:10px;
+    margin-bottom:1px;
+    width:180px;
+}
+
+.side-menu:hover
+{
+    background-color:#43ddc2;
+    color:#054d40;
 }
 
 .upper-foot 
@@ -167,7 +185,7 @@ body {
 
 .lower-foot
 {
-    width:600px;
+    width:610px;
     margin:10px auto;
 }
 
@@ -186,6 +204,8 @@ body {
     display:inline;
     position:relative;
     float:left;
+    border-left:3px solid #11c1a2;
+    padding-left:10px;
 }
 
 /* Added by Chris for SubMaster1 -- February 19, 2013 */
@@ -194,10 +214,8 @@ body {
 {
     position:relative;
     border:2px solid #11c1a2;
-    padding:15px;
     margin:10px;
     float:left;
-    height:500px;
     top:-100px;
 }
 
@@ -208,7 +226,8 @@ body {
 
 #right_content
 {
-    width:580px;
+    width:620px;
+    padding:15px;
 }
 
 /* Added by Chris for Homepage -- February 19, 2013 */
