@@ -17,6 +17,10 @@
     <form id="form1" runat="server">
     <asp:Panel ID="container" runat="server" SkinID="container">
   	
+
+    <asp:TextBox ID="txt_search" runat="server" SkinID="searchbar" />
+    <asp:Image ID="img_search" runat="server" ImageUrl="~/img/search.png" CssClass="searchbar" Width="20px" Height="20px" />
+
     <asp:Image ID="main_logo" runat="server" Width="223" Height="126" AlternateText="Nipigon District Memorial Hospital" CssClass="main-logo" ImageUrl="~/img/ndmh-logo.gif" />
 
         <asp:Panel runat="server" CssClass="primary-nav-contain">
@@ -26,12 +30,6 @@
                 </Items>
             </asp:Menu>
         </asp:Panel>
-  
-  		<!--<div id="search">
-     		<input type="text" />
-  		</div>end search--> 
-  
-
 
         <asp:Panel runat="server" CssClass="feature-nav-contain">
             <asp:Menu ID="feature_menu" runat="server" SkinID="skin_feature_nav">
@@ -41,53 +39,39 @@
             </asp:Menu>
         </asp:Panel>
     
-    <asp:panel runat="server" SkinID="maincontent">
+    <asp:panel runat="server" SkinID="maincontent" >
         <asp:ContentPlaceHolder id="content_area" runat="server">
         
+
+
+
         </asp:ContentPlaceHolder>
     </asp:panel>
     
 
-    <footer>
-  	<div id="upper-foot">
-  		<nav>
-  			<ul>
-  				<li>Home</li>
-  				<li>Patients &amp; Visitors</li>
-  				<li>Services</li>
-  				<li>Policies</li>
-  				<li>Donate</li>
-  				<li>Contact</li>
-  				<li>About Us</li>
-  				<li>Hours</li>
-  				<li>Map</li>
-  				<li>Wait Times</li>
-  			</ul>
-  		</nav>
-  		
-  	</div><!-- end upper-foot -->
-  	
+    <asp:Panel ID="upper_foot" runat="server" CssClass="upper-foot">
+        <asp:Menu ID="bottom_menu" runat="server" SkinID="skin_bottom_nav">
+            <Items>
+                <asp:MenuItem Text="About Us" Target="~/index.aspx" />
+            </Items>
+        </asp:Menu>
+    </asp:Panel>  	
 
-  	<div id="divider"><hr />
-    </div>
+    <asp:Panel ID="lower_foot" runat="server" CssClass="lower-foot">
+        <asp:Panel ID="lower_foot_menu" runat="server" CssClass="foot-menu-left" >
+            <asp:Menu ID="bottom_menu2" runat="server" SkinID="skin_bottom2_nav">
+                <Items>
+                    <asp:MenuItem Text="About Us" Target="~/index.aspx" />
+                </Items>
+            </asp:Menu>
+        </asp:Panel>
+        <asp:Panel ID="copyright" runat="server" CssClass="copyright">
+            Copyright 2012 Group of Six Designs. All Rights Reserved.
+        </asp:Panel>
+    </asp:Panel> 
 
-  	
-  	
-  	<div id="lower-foot">
-  		<nav>
-  			<ul>
-  				<li>Site Map</li>
-  				<li>Terms of Use</li>
-  				<li>Legal&nbsp;&nbsp;&nbsp;&nbsp;|</li>
-  				<li><span class="normal-font">Copyright 2012 Group of Six Designs. All Rights Reserved.</span></li>
-  			</ul>
-  		</nav>
-  		
-  	</div><!-- end lower-foot -->
-  
-    </footer><!--end footer-->
-    </asp:Panel><!--end container -->
-    </form>
+</asp:Panel><!--end container -->
+</form>
     
     
 </body>

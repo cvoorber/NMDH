@@ -51,5 +51,29 @@ public partial class maintemplate : System.Web.UI.MasterPage
 
         }
 
+        bottom_menu.Items.Clear();
+        foreach (XmlNode node in titleList)
+        {
+            if (node.ChildNodes[3].FirstChild.Value == "feature" || node.ChildNodes[3].FirstChild.Value == "home")
+            {
+                MenuItem output = new MenuItem((string)node.ChildNodes[2].FirstChild.Value);
+                output.Text = node.ChildNodes[2].FirstChild.Value;
+                output.NavigateUrl = node.ChildNodes[0].FirstChild.Value.ToString();
+                bottom_menu.Items.Add(output);
+            }
+
+        }
+
+        bottom_menu2.Items.Clear();
+        foreach (XmlNode node in titleList)
+        {
+            if (node.ChildNodes[3].FirstChild.Value == "footer")
+            {
+                MenuItem output = new MenuItem((string)node.ChildNodes[2].FirstChild.Value);
+                output.Text = node.ChildNodes[2].FirstChild.Value;
+                output.NavigateUrl = node.ChildNodes[0].FirstChild.Value.ToString();
+                bottom_menu2.Items.Add(output);
+            }
+        }
     }
 }

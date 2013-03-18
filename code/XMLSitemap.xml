@@ -81,6 +81,12 @@
     <parent>feature</parent>
   </url>
   <url>
+    <loc>~/XMLSitemap.xml</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>Sitemap</title>
+    <parent>footer</parent>
+  </url>
+  <url>
     <loc>~/navigation/terms.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Terms of Use</title>

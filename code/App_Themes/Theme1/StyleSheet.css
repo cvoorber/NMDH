@@ -64,6 +64,7 @@ body {
 	background-color: #327c42;
 	font-family: 'Rufina', serif;
 	font-size: 14px;
+	color:#002103;
 }
 
 #container 
@@ -81,6 +82,14 @@ body {
 }
 
 /* - - start of header area */
+
+.searchbar
+{
+    position:relative;
+    float:right;
+    top:-10px;
+    margin:2px;
+}
 
 .main-logo {
 	position:relative;
@@ -153,119 +162,40 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#235e30', end
 
 }
 
-#search {
-	position: relative;
-	z-index: 1;
-	right: -785px;
-	top: -42px;
+.search {
 }
 
-#search input {
-	-webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-     border-radius: 20px;
-     width: 105px;
-     height: 15px;
-    
-}
-
-#nav2 {
-	float: right;
-	position:relative;
-	top: -126px;
-	margin-bottom:-250px;
-}
-
-#secondary-nav {
-    position: relative;
-	z-index: 2;
-	font-size: 24px;
-	top: -45px;
-	left: 112px;
-	
-}
-
-#secondary-nav ul {
-	list-style:none;
-}
-
-#secondary-nav li {
-	display:inline;	
-	padding-left: 85px;
-}
-
-/* - - End of Header Area  - - */
-
-/* - - Start of Content Area - - */
-
-
-
-/* - - End of Content Area - - */
-
-
-/* - - Start of Footer Area - - */
-
-footer 
+.upper-foot 
 {
-	font-family: 'georgia', serif;
+    margin:0 auto;
+    width:690px;
+    padding-bottom:7px;
+    border-bottom:3px solid #327c42;
+    text-align:center;
 }
 
-#upper-foot {
-float: left;
-display: inline-block;
-font-weight: bold;
-width: 905px;
-margin-left: 25px;
-margin-bottom: 15px;
-
+.lower-foot
+{
+    width:600px;
+    margin:10px auto;
 }
 
-#upper-foot ul {
-	list-style: none;
-	
+.foot-menu-left
+{
+    display:inline;
+    position:relative;
+    float:left;
 }
 
-#upper-foot li {
-	display: inline;
-	padding-left: 15px;
+.copyright
+{
+    font-weight:normal;
+    font-style:italic;
+    font-size:10pt;
+    display:inline;
+    position:relative;
+    float:left;
 }
-
-#divider {
-	float: left;
-	margin: 0 auto;
-	width: 885px;
-	
-}
-
-#divider hr {
-	width: 795px;
-	height: 4px;
-	color: #327c42;
-	background-color:  #327c42;
-}
-
-#lower-foot {
-float: left;
-font-weight: bold;
-width: 675px;
-margin-left: 125px;
-margin-top: 15px;
-}
-
-#lower-foot ul {
-	list-style:none;
-}
-
-#lower-foot li {
-	display: inline;
-	padding-left: 10px;
-}
-
-
-/* - - End of Footer Area - - */
-
-
-/* - -  End of Base Master Page style - - */
 
 /* Added by Chris for SubMaster1 -- February 19, 2013 */
 
@@ -291,14 +221,6 @@ width:534px;
 
 .wait_time{
 text-align:center;
-}
-
-/* Added by Chris for NewsBlog -- February 23, 2013 */
-
-.footer_bar {
-background-color:#CCC;
-height:10px;
-width:100%;
 }
 
 
