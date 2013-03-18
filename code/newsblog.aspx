@@ -13,7 +13,7 @@
                         <asp:Label ID="lbl_date" runat="server" Text='<%#Eval("n_event_date") %>' Font-Italic="true" />
                         <br />
                         <asp:Label ID="lbl_desc" runat="server" Text='<%#Eval("n_description") %>' Font-Size="13" />
-                        <br /> <br />
+                        <br /> <br /> 
                     </ItemTemplate>
                     <FooterTemplate>
                         <div class="footer_bar"></div>

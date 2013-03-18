@@ -15,55 +15,37 @@
 <body>
     
     <form id="form1" runat="server">
-    <div id="container">
-    <header>	
+    <asp:Panel ID="container" runat="server" SkinID="container">
   	
-    <img id="main-logo" src="img/ndmh-logo.gif" width="223" height="126"  alt="ndmh-logo" />
-  	<div id="page-adjust">
-  		
-  		High Contrast&nbsp;&nbsp;&nbsp;&nbsp;
-  		Text Size + -
-  	</div><!--end page-adjust -->
+    <asp:Image ID="main_logo" runat="server" Width="223" Height="126" AlternateText="Nipigon District Memorial Hospital" CssClass="main-logo" ImageUrl="~/img/ndmh-logo.gif" />
+
+        <asp:Panel runat="server" CssClass="primary-nav-contain">
+            <asp:Menu ID="primary_menu" runat="server" SkinID="skin_primary_nav">
+                <Items>
+                    <asp:MenuItem Text="About Us" Target="~/index.aspx" />
+                </Items>
+            </asp:Menu>
+        </asp:Panel>
   
-  	<div id="nav1-search">
-  		<img src="img/nav-green.gif" width="902px" height="38px" alt="nav" />
-  		<nav id="primary-nav">
-  			<ul>
-  				<li>ABOUT US</li>
-  				<li>SERVICES</li>
-  				<li>VISITOR INFO</li>
-  				<li>DONATE</li>
-  				<li>&nbsp;&nbsp;POLICIES</li>
-  			</ul>
-  		</nav><!--end nav-->
-  
-  		<div id="search">
+  		<!--<div id="search">
      		<input type="text" />
-  		</div><!--end search--> 
-	  
-  	</div><!--end nav-search-->
+  		</div>end search--> 
   
-  	<div id="nav2">
-  		<img src="img/grey-bar.gif" width="826px" height="66px" alt="2nd-nav"/>
-  	
-  		<nav id="secondary-nav">
-  			<ul>
-  				<li>MAP</li>
-  				<li>HOURS</li>
-  				<li>ER WAIT</li>
-  				<li>DONATE</li>
-  			</ul>
-  		</nav><!--secondary-nav -->
-  
-  	</div><!--end nav2 -->
- 	
-    </header>
+
+
+        <asp:Panel runat="server" CssClass="feature-nav-contain">
+            <asp:Menu ID="feature_menu" runat="server" SkinID="skin_feature_nav">
+                <Items>
+                    <asp:MenuItem Text="About Us" Target="~/index.aspx" />
+                </Items>
+            </asp:Menu>
+        </asp:Panel>
     
-    <div>
+    <asp:panel runat="server" SkinID="maincontent">
         <asp:ContentPlaceHolder id="content_area" runat="server">
         
         </asp:ContentPlaceHolder>
-    </div>
+    </asp:panel>
     
 
     <footer>
@@ -86,7 +68,8 @@
   	</div><!-- end upper-foot -->
   	
 
-  	<div id="divider"><hr /></div>
+  	<div id="divider"><hr />
+    </div>
 
   	
   	
@@ -103,7 +86,7 @@
   	</div><!-- end lower-foot -->
   
     </footer><!--end footer-->
-    </div><!--end container -->
+    </asp:Panel><!--end container -->
     </form>
     
     

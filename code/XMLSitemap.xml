@@ -5,45 +5,45 @@
 
 <urlset>
   <url>
-    <loc>~/navigation/index.aspx</loc>
+    <loc>~/index.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Home</title>
-    <priority>1</priority>
+    <parent>home</parent>
   </url>
   <url>
     <loc>~/navigation/about.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>About Us</title>
-    <priority>1</priority>
+    <parent>home</parent>
   </url>
   <url>
     <loc>~/navigation/services.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Services</title>
-    <priority>1</priority>
+    <parent>home</parent>
   </url>
   <url>
-    <loc>~/navigation/patients_visitors.aspx</loc>
+    <loc>~/navigation/visitors.aspx</loc>
     <lastmod>2013-03-30</lastmod>
-    <title>Patients &amp; Visitors</title>
-    <priority>1</priority>
+    <title>Visitors</title>
+    <parent>home</parent>
   </url>
   <url>
     <loc>~/navigation/donate.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Donate</title>
-    <priority>1</priority>
+    <parent>home</parent>
   </url>
   <url>
     <loc>~/navigation/policies.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Policies</title>
-    <priority>1</priority>
+    <parent>home</parent>
     <url>
       <loc>~/navigation/policies.aspx</loc>
       <lastmod>2013-03-30</lastmod>
       <title>Policy 1</title>
-      <priority>1</priority>
+      <parent>policies</parent>
       <sourcetable>reports</sourcetable>
       <sourceid>23</sourceid>
     </url>
@@ -51,7 +51,7 @@
       <loc>~/navigation/policies.aspx</loc>
       <lastmod>2013-03-30</lastmod>
       <title>Policy 2</title>
-      <priority>1</priority>
+      <parent>policies</parent>
       <sourcetable>reports</sourcetable>
       <sourceid>13</sourceid>
     </url>
@@ -60,36 +60,36 @@
     <loc>~/navigation/map.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Map</title>
-    <priority>2</priority>
+    <parent>feature</parent>
   </url>
   <url>
     <loc>~/navigation/hours.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Hours</title>
-    <priority>2</priority>
+    <parent>feature</parent>
   </url>
   <url>
     <loc>~/navigation/erwait.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>ER Wait</title>
-    <priority>2</priority>
+    <parent>feature</parent>
   </url>
   <url>
-    <loc>~/navigation/donate.aspx</loc>
+    <loc>~/navigation/newsblog.aspx</loc>
     <lastmod>2013-03-30</lastmod>
-    <title>Donate</title>
-    <priority>2</priority>
+    <title>News</title>
+    <parent>feature</parent>
   </url>
   <url>
     <loc>~/navigation/terms.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Terms of Use</title>
-    <priority>4</priority>
+    <parent>footer</parent>
   </url>
   <url>
     <loc>~/navigation/legal.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Legal</title>
-    <priority>4</priority>
+    <parent>footer</parent>
   </url>
 </urlset>

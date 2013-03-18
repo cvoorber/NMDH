@@ -1,0 +1,29 @@
+﻿<%-- Default Skins --%>
+
+<asp:Panel runat="server" 
+    SkinID="container"
+    Width="900px"
+    CssClass="container"
+    BackColor="#f5f8f6" />
+
+<asp:Menu runat="server" 
+    SkinID="skin_primary_nav"
+    Orientation="Horizontal" 
+    Font-Size="15pt"
+    ForeColor="White" 
+    StaticMenuItemStyle-HorizontalPadding="14px" 
+    StaticMenuItemStyle-VerticalPadding="10px" 
+    StaticMenuItemStyle-CssClass="primary-nav" />
+
+<asp:Menu runat="server" 
+    SkinID="skin_feature_nav"
+    Orientation="Horizontal" 
+    Font-Size="17pt"
+    ForeColor="black" 
+    StaticMenuItemStyle-HorizontalPadding="50px" 
+    StaticMenuItemStyle-VerticalPadding="20px" 
+    StaticMenuItemStyle-CssClass="feature-nav" />
+
+<asp:Panel runat="server" 
+    SkinID="maincontent"
+    BackColor="#fcfdfc" />
