@@ -1,9 +1,14 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/maintemplate.master" AutoEventWireup="true" CodeFile="SubMaster1.master.cs" Inherits="SubMaster1" %>
+<%@ Mastertype VirtualPath="~/maintemplate.master" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
     <aside id="left_sidebar">
+        <asp:Menu ID="side_menu" runat="server >
+            <Items>
+                <asp:MenuItem Text="About Us" Target="~/index.aspx" />
+            </Items>
+        </asp:Menu>
         <asp:ContentPlaceHolder ID="l_sidebar" runat="server">
-            Default left_sidebar content
         </asp:ContentPlaceHolder>
     </aside>
     <section id="right_content">

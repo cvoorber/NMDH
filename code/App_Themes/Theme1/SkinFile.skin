@@ -4,14 +4,14 @@
     SkinID="container"
     Width="900px"
     CssClass="container"
-    BackColor="#f5f8f6" />
+    BackColor="#f2f9f8" />
 
 <asp:TextBox runat="server"
     SkinID="searchbar" 
     BorderStyle="Inset"
     BorderColor="#327c42" 
     BorderWidth="1px" 
-    ForeColor="#002704" 
+    ForeColor="#002b23" 
     Font-Size="15pt"
     Text="Search" 
     CssClass="searchbar" />
@@ -29,20 +29,20 @@
     SkinID="skin_feature_nav"
     Orientation="Horizontal" 
     Font-Size="17pt"
-    ForeColor="#002103" 
+    ForeColor="#002b23" 
     StaticMenuItemStyle-HorizontalPadding="50px" 
     StaticMenuItemStyle-VerticalPadding="20px" 
     StaticMenuItemStyle-CssClass="feature-nav" />
 
 <asp:Panel runat="server" 
     SkinID="maincontent"
-    BackColor="#fcfdfc" />
+    BackColor="#f2f9f8" />
 
 <asp:Menu runat="server" 
     SkinID="skin_bottom_nav"
     Orientation="Horizontal" 
     Font-Size="10pt"
-    ForeColor="#002103" 
+    ForeColor="#002b23" 
     Font-Bold="true"
     StaticMenuItemStyle-HorizontalPadding="12px" 
     StaticMenuItemStyle-VerticalPadding="1px" />
@@ -51,7 +51,7 @@
     SkinID="skin_bottom2_nav"
     Orientation="Horizontal" 
     Font-Size="10pt"
-    ForeColor="#002103" 
+    ForeColor="#002b23" 
     Font-Bold="true"
     StaticMenuItemStyle-HorizontalPadding="12px" 
     StaticMenuItemStyle-VerticalPadding="1px" />

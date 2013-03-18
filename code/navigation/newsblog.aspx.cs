@@ -11,10 +11,15 @@ public partial class newsblog : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        Master.pp_Url = "~/" + HttpContext.Current.Request.Url.AbsolutePath.ToString().Substring(6);
         if (!Page.IsPostBack)
         {
             _subRebind();
         }
+    }
+
+    protected void Page_LoadComplete(object sender, EventArgs e)
+    {
     }
 
     private void _subRebind()

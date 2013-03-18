@@ -10,20 +10,16 @@ public partial class maintemplate : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        _loadMenus();
+    }
+
+    void _loadMenus()
+    {
         string xmlPath = Request.PhysicalApplicationPath + @"XMLSitemap.xml";
         XmlDocument doc = new XmlDocument();
         doc.Load(xmlPath);
-        //XmlNode rootNode = doc.DocumentElement;
-        //DisplayNodes(rootNode);
+        XmlNodeList titleList = doc.GetElementsByTagName("url");
 
-
-        XmlNodeList urlList = doc.GetElementsByTagName("url");
-        otherload(urlList);
-    }
-
-    void otherload(XmlNodeList titleList)
-    {
-        //MenuItemCollection all = (MenuItemCollection)primary_menu.Items;
         primary_menu.Items.Clear();
         foreach (XmlNode node in titleList)
         {

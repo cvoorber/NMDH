@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head runat="server">
     <title>Nipigon District Memorial Hospital</title>
     <asp:ContentPlaceHolder id="head" runat="server">
@@ -23,7 +23,7 @@
     <asp:ImageButton ID="font_decrease" runat="server" ImageUrl="~/img/fontminus.png" CssClass="fontchange" />
     <asp:ImageButton ID="font_increase" runat="server" ImageUrl="~/img/fontplus.png" CssClass="fontchange" />
 
-    <asp:Image ID="main_logo" runat="server" AlternateText="Nipigon District Memorial Hospital" CssClass="main-logo" ImageUrl="~/img/logo-new2.png" />
+    <asp:ImageButton ID="main_logo" runat="server" AlternateText="Nipigon District Memorial Hospital" CssClass="main-logo" ImageUrl="~/img/logo-new5.png" />
 
         <asp:Panel runat="server" CssClass="primary-nav-contain">
             <asp:Menu ID="primary_menu" runat="server" SkinID="skin_primary_nav">
