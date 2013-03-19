@@ -76,16 +76,6 @@
       <Column Name="el_active" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ndmh_general_pages" Member="ndmh_general_pages">
-    <Type Name="ndmh_general_page">
-      <Column Name="gp_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="gp_title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="gp_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="gp_image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="gp_section" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="gp_active" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.ndmh_jobs" Member="ndmh_jobs">
     <Type Name="ndmh_job">
       <Column Name="j_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -95,16 +85,6 @@
       <Column Name="j_posted_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="j_expires" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Association Name="ndmh_job_ndmh_contact" Member="ndmh_contacts" ThisKey="j_id" OtherKey="j_id" Type="ndmh_contact" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ndmh_reports" Member="ndmh_reports">
-    <Type Name="ndmh_report">
-      <Column Name="r_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="r_title" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="r_importance" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="r_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="r_content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="r_image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
     </Type>
   </Table>
 </Database>
