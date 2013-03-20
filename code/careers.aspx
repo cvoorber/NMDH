@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubMaster1.master" AutoEventWireup="true" CodeFile="careers.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
-    
-    <asp:DropDownList ID="ddl_jobs" runat="server" OnSelectedIndexChanged="subChangeDesc" AutoPostBack="true"/>
+    <asp:DropDownList ID="ddl_jobs" runat="server" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
     <asp:Panel ID="pnl_description" runat="server" Visible="true">
