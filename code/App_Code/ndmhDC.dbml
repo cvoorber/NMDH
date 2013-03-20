@@ -1,16 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="cvoorber" Class="news_eventDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=cvoorber.db.10296660.hostedresource.com,1433;Initial Catalog=cvoorber;Persist Security Info=True;User ID=cvoorber" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="cvoorberConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.ndmh_contact" Member="ndmh_contacts">
-    <Type Name="ndmh_contact">
-      <Column Name="c_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="c_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="c_email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="c_phone" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="c_purpose" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="j_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="c_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="c_message" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Association Name="ndmh_job_ndmh_contact" Member="ndmh_job" ThisKey="j_id" OtherKey="j_id" Type="ndmh_job" IsForeignKey="true" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="cvoorber" Class="ndmhDCDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=cvoorber.db.10296660.hostedresource.com;Initial Catalog=cvoorber;Persist Security Info=True;User ID=cvoorber" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="cvoorberConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ndmh_comments" Member="ndmh_comments">
+    <Type Name="ndmh_comment">
+      <Column Name="comm_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="comm_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="comm_email" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="comm_text" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="n_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ndmh_event_ndmh_comment" Member="ndmh_event" ThisKey="n_id" OtherKey="n_id" Type="ndmh_event" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ndmh_staff_listing" Member="ndmh_staff_listings">
@@ -24,6 +21,19 @@
       <Column Name="sl_phone" Type="System.String" DbType="NChar(14)" CanBeNull="true" />
       <Column Name="sl_image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
       <Association Name="ndmh_staff_listing_ndmh_event" Member="ndmh_events" ThisKey="sl_id" OtherKey="n_contact_id" Type="ndmh_event" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ndmh_contact" Member="ndmh_contacts">
+    <Type Name="ndmh_contact">
+      <Column Name="c_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="c_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="c_email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="c_phone" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="c_purpose" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="j_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="c_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="c_message" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="ndmh_job_ndmh_contact" Member="ndmh_job" ThisKey="j_id" OtherKey="j_id" Type="ndmh_job" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ndmh_department_listing" Member="ndmh_department_listings">
@@ -59,11 +69,12 @@
       <Column Name="n_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="n_title" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="n_description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="n_image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="n_image" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="n_expires" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="n_event_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="n_contact_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="n_link" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ndmh_event_ndmh_comment" Member="ndmh_comments" ThisKey="n_id" OtherKey="n_id" Type="ndmh_comment" />
       <Association Name="ndmh_staff_listing_ndmh_event" Member="ndmh_staff_listing" ThisKey="n_contact_id" OtherKey="sl_id" Type="ndmh_staff_listing" IsForeignKey="true" />
     </Type>
   </Table>
@@ -76,6 +87,22 @@
       <Column Name="el_active" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.ndmh_general_pages" Member="ndmh_general_pages">
+    <Type Name="ndmh_general_page">
+      <Column Name="gp_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="gp_title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="gp_content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="gp_image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="gp_section" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="gp_active" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ndmh_job_category" Member="ndmh_job_categories">
+    <Type Name="ndmh_job_category">
+      <Column Name="j_category_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="j_category_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.ndmh_jobs" Member="ndmh_jobs">
     <Type Name="ndmh_job">
       <Column Name="j_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -84,7 +111,16 @@
       <Column Name="j_requirements" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="j_posted_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="j_expires" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="j_category_id" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="ndmh_job_ndmh_contact" Member="ndmh_contacts" ThisKey="j_id" OtherKey="j_id" Type="ndmh_contact" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ndmh_keywords" Member="ndmh_keywords">
+    <Type Name="ndmh_keyword">
+      <Column Name="keyword_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="page_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="page_title" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="keywords" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
