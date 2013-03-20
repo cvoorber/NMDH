@@ -2,19 +2,27 @@
 <%@ Mastertype VirtualPath="~/maintemplate.master" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
-    <aside id="left_sidebar">
-        <asp:Menu ID="side_menu" runat="server" StaticMenuItemStyle-CssClass="side-menu" >
+    <!-- section -->
+    <div id="left_sidebar">
+        <asp:Menu ID="side_menu" runat="server" StaticMenuItemStyle-CssClass="side-menu" OnMenuItemClick="sideMenu_Click" >
             <Items>
                 <asp:MenuItem Text="About Us" Target="~/index.aspx" />
             </Items>
         </asp:Menu>
         <asp:ContentPlaceHolder ID="l_sidebar" runat="server">
         </asp:ContentPlaceHolder>
-    </aside>
-    <section id="right_content">
+    </div>
+
+    <!-- aside -->
+    <div id="right_content">
+        <asp:Repeater ID="rpt_content" runat="server">
+            <ItemTemplate>
+                <asp:Label ID="lbltitle" runat="server" Text='<%#Eval("gp_title") %>' CssClass="h1" />
+                <asp:Label ID="lblcontent" runat="server" Text='<%#Eval("gp_content") %>' CssClass="pagecontent" />
+            </ItemTemplate>
+        </asp:Repeater>
         <asp:ContentPlaceHolder ID="r_content" runat="server">
-            Default right_content area
         </asp:ContentPlaceHolder>
-    </section>
+    </div>
 </asp:Content>
 
