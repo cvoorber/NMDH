@@ -17,6 +17,7 @@ public partial class _Default : System.Web.UI.Page
             ddl_jobs.DataValueField = "j_id";
             ddl_jobs.DataTextField = "j_title";
             ddl_jobs.DataBind();
+            //what the fudge 
 
             rpt_jobs.DataSource = jobObj.getItemByID(ddl_jobs.SelectedIndex + 1);
             rpt_jobs.DataBind();
