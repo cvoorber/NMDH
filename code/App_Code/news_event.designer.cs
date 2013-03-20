@@ -56,10 +56,13 @@ public partial class news_eventDataContext : System.Data.Linq.DataContext
   partial void Insertndmh_report(ndmh_report instance);
   partial void Updatendmh_report(ndmh_report instance);
   partial void Deletendmh_report(ndmh_report instance);
+  partial void Insertndmh_job_category(ndmh_job_category instance);
+  partial void Updatendmh_job_category(ndmh_job_category instance);
+  partial void Deletendmh_job_category(ndmh_job_category instance);
   #endregion
 	
 	public news_eventDataContext() : 
-			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["cvoorberConnectionString"].ConnectionString, mappingSource)
+			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["cvoorberConnectionString1"].ConnectionString, mappingSource)
 	{
 		OnCreated();
 	}
@@ -157,6 +160,14 @@ public partial class news_eventDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<ndmh_report>();
+		}
+	}
+	
+	public System.Data.Linq.Table<ndmh_job_category> ndmh_job_categories
+	{
+		get
+		{
+			return this.GetTable<ndmh_job_category>();
 		}
 	}
 }
@@ -624,7 +635,7 @@ public partial class ndmh_staff_listing : INotifyPropertyChanging, INotifyProper
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sl_image", DbType="Image", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sl_image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
 	public System.Data.Linq.Binary sl_image
 	{
 		get
@@ -1383,7 +1394,7 @@ public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChange
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_image", DbType="Image", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
 	public System.Data.Linq.Binary n_image
 	{
 		get
@@ -1801,7 +1812,7 @@ public partial class ndmh_general_page : INotifyPropertyChanging, INotifyPropert
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gp_image", DbType="Image", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gp_image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
 	public System.Data.Linq.Binary gp_image
 	{
 		get
@@ -2233,7 +2244,7 @@ public partial class ndmh_report : INotifyPropertyChanging, INotifyPropertyChang
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_r_image", DbType="Image", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_r_image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
 	public System.Data.Linq.Binary r_image
 	{
 		get
@@ -2249,6 +2260,92 @@ public partial class ndmh_report : INotifyPropertyChanging, INotifyPropertyChang
 				this._r_image = value;
 				this.SendPropertyChanged("r_image");
 				this.Onr_imageChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_job_category")]
+public partial class ndmh_job_category : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _j_category_id;
+	
+	private string _j_category_name;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onj_category_idChanging(int value);
+    partial void Onj_category_idChanged();
+    partial void Onj_category_nameChanging(string value);
+    partial void Onj_category_nameChanged();
+    #endregion
+	
+	public ndmh_job_category()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_category_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int j_category_id
+	{
+		get
+		{
+			return this._j_category_id;
+		}
+		set
+		{
+			if ((this._j_category_id != value))
+			{
+				this.Onj_category_idChanging(value);
+				this.SendPropertyChanging();
+				this._j_category_id = value;
+				this.SendPropertyChanged("j_category_id");
+				this.Onj_category_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_category_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string j_category_name
+	{
+		get
+		{
+			return this._j_category_name;
+		}
+		set
+		{
+			if ((this._j_category_name != value))
+			{
+				this.Onj_category_nameChanging(value);
+				this.SendPropertyChanging();
+				this._j_category_name = value;
+				this.SendPropertyChanged("j_category_name");
+				this.Onj_category_nameChanged();
 			}
 		}
 	}
