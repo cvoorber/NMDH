@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="donations">
+  <DataContextMoniker Name="/donationsDataContext" />
+  <nestedChildShapes>
+    <classShape Id="0243d0b2-72e5-4c03-8158-80a52c9a757f" absoluteBounds="3.125, 1.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/donationsDataContext/state_or_province" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d2960c65-cb84-4238-8b1d-586fa59473ba" absoluteBounds="3.14, 2.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b61b847d-5a3a-48a1-bde8-97ad4b9182bb" absoluteBounds="6.25, 2.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/donationsDataContext/base_country" />
+      <nestedChildShapes>
+        <elementListCompartment Id="518fb43f-822d-4a8f-82a2-77f174c03b57" absoluteBounds="6.265, 3.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="46b4fec9-a33a-4668-b96b-b9914347997c" absoluteBounds="0.5, 2.75, 2, 3.1170068359375">
+      <DataClassMoniker Name="/donationsDataContext/ndmh_donation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9f969279-57c1-45a1-bda1-70076599778c" absoluteBounds="0.51499999999999968, 3.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

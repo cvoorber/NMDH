@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 
 public partial class donations : System.Web.UI.Page
 {
+    donationsClass objDonate = new donationsClass();
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -66,5 +68,24 @@ public partial class donations : System.Web.UI.Page
     }
 
 
+    // this subroutine will bind the ddl to the list of countries
+    private void subDdlBind()
+    {
+        ddl_country.DataSource = objDonate.getAllCountries();
+        ddl_country.DataBind();
+    }
+
+    // this subroutine after a country is selected, will reveal the prov/state ddl if country selected
+    // is either canada or US and will specify eitehr postal code or zip (with label text and validation)
+    // depending upon if it is Canada or US.
+    protected void subCountryDisplayProvPost(object sender, EventArgs e)
+    {
+        // do a test based on the argument passed from the selectd country and if it is either 
+        // canada or US then the prov/state list should appear and the ZIP/Postal Code
+        // text box should appear, and the validation and label should be decided depeneding on 
+        //which nAMerican country it is.
+        // this should also happen Asynchronoously ... so might need to add another Trigger for this event
+        // that would have the target control id as the DDL in question.activdirectopia/rmccoleman  
+    }
 
 }

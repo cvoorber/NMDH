@@ -59,7 +59,8 @@
         
         <!--Country-->
         <asp:Label ID="lbl_country" runat="server" Text="Country" />
-            <asp:DropDownList ID="ddl_country" runat="server"  /><br /><br />
+            <asp:DropDownList ID="ddl_country" runat="server" OnSelectedIndexChanged="subCountryDisplayProvPost"  
+            /><br /><br />
             <!-- Have to put data source into the ddl later, once I get the table set up -->
             <!-- Also will have to add in some events on select Including one to enable the province/state list and ZIP vs
             postal code -->
