@@ -257,3 +257,20 @@ text-align:center;
 
 
 /* - - End of Master Page NDMH template style -- */
+
+/*Added by Ryan for Donations page - March 21*/
+
+.donate-box 
+{
+    padding: 50px;
+    border: 3px solid black;
+    margin: 30px 30px 0 30px;
+}
+
+.page-heading 
+{
+    font-size: 28px;
+    padding: 50px;
+}
+
+/* End of Ryan Donations page CSS */
