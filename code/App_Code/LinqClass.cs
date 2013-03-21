@@ -16,9 +16,7 @@ public class LinqClass<T> where T: class
     public IQueryable<T> getItems()
     {
        var allItems = dcObj.GetTable<T>().Select(x => x);
-
-        return allItems;
-        
+       return allItems;
     }
 
 

@@ -9,23 +9,25 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
 
     <asp:Panel ID="pnl_jobs" runat="server">
-    aeiou
+        <asp:Label ID="lbl_category" runat="server" />
         <asp:BulletedList ID="bl_jobs" runat="server" DisplayMode="LinkButton" />
     </asp:Panel>
 
     <asp:Panel ID="pnl_description" runat="server">
-        sometimes y
        <asp:Repeater runat="server" ID="rpt_jobs">
             <ItemTemplate>
-                <p><%#Eval("j_title") %></p>
-                <%#Eval("j_description") %>
-
-                <br />
-                <asp:Button ID="btn_apply" runat="server" Text="Apply Now" />
+                <p>Job Title: <%#Eval("j_title") %></p>
+                <p>Job Description: <%#Eval("j_description") %></p>
+                <p>Job Requirements: <%#Eval("j_requirements") %></p>
+                <p>Post Date: <%#Eval("j_posted_date") %></p>
+                <p>Expiry Date: <%#Eval("j_expires") %></p>
+                <asp:HiddenField runat="server" ID="hdf_jobID" Value='<%#Eval("j_id") %>' />
+                <asp:Button ID="btn_app" runat="server" Text="Apply Now" OnClick="showApplication" />
             </ItemTemplate>
        </asp:Repeater>
     </asp:Panel>
     <asp:Panel ID="pnl_form" runat="server">
+        <asp:Label ID="lbl_jID" runat="server" />
         <asp:Label ID="lbl_fname" runat="server" Text="First Name:" />
         <asp:TextBox ID="txt_fname" runat="server" />
         <br />
