@@ -1,7 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubMaster1.master" AutoEventWireup="true" CodeFile="careers.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubMaster1.master" AutoEventWireup="true" CodeFile="careers.aspx.cs" Inherits="careers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
-    <asp:DropDownList ID="ddl_jobs" runat="server" />
+    <h3>Job Categories</h3>
+    <asp:BulletedList ID="bl_cat" runat="server" DisplayMode="LinkButton" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
     <asp:Panel ID="pnl_description" runat="server" Visible="true">
