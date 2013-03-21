@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.75, 14.875" name="news_event">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.75, 10.75" name="news_event">
   <DataContextMoniker Name="/news_eventDataContext" />
   <nestedChildShapes>
     <classShape Id="1dede390-8aca-43e2-a1b5-1e2259b269a3" absoluteBounds="3.5, 1, 2, 2.0822371419270831">
@@ -44,12 +44,6 @@
         <elementListCompartment Id="4b9290b0-66a4-4fa5-9583-167d55b655fe" absoluteBounds="0.765, 9.21, 1.9700000000000002, 1.19354248046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="3fbe6afd-b4f4-465e-a856-3a94115eba15" absoluteBounds="0.75, 1.125, 2, 1.75354248046875">
-      <DataClassMoniker Name="/news_eventDataContext/ndmh_job" />
-      <nestedChildShapes>
-        <elementListCompartment Id="1b46f7b8-bc21-4759-9491-50c3c4e37d6f" absoluteBounds="0.765, 1.585, 1.9700000000000002, 1.19354248046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="20dd8bc6-33ce-4c07-be9b-7abdda5a591d" absoluteBounds="3.75, 8.75, 2, 1.7535424804687505">
       <DataClassMoniker Name="/news_eventDataContext/ndmh_report" />
       <nestedChildShapes>
@@ -63,25 +57,31 @@
         <classShapeMoniker Id="ac1e6c15-fe23-4d42-b0af-d18de03ea4a8" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 6.17390055338542); (3.5 : 6.17390055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 6.04111857096354); (3.5 : 6.04111857096354)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/news_eventDataContext/ndmh_staff_listing/ndmh_staff_listing_ndmh_event" />
       <nodes>
         <classShapeMoniker Id="a08a4a39-6127-4098-b977-1c3b8d9d75ed" />
         <classShapeMoniker Id="8544f4f1-cee4-49ed-b06e-32879e1c3a72" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 2.00177124023438); (3.5 : 2.00177124023438)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="b7d37731-9a75-4cc8-b169-34096046c1b4" absoluteBounds="6.875, 9, 2, 1.0961531575520833">
+      <DataClassMoniker Name="/news_eventDataContext/ndmh_job_category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ca1d8b92-1d18-4e76-896b-2c57fde7226c" absoluteBounds="6.8900000000000006, 9.46, 1.9700000000000002, 0.53615315755208326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fdc8a44d-c6c9-4507-b28c-899a9353f220" absoluteBounds="1.125, 2.75, 2, 1.9178898111979166">
+      <DataClassMoniker Name="/news_eventDataContext/ndmh_job" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a273bb18-778b-48db-9813-1c5f54644bd1" absoluteBounds="1.1400000000000001, 3.21, 1.9700000000000002, 1.3578898111979165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.125 : 2.75); (2.125 : 1.8749995); (3.5 : 1.8749995)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/news_eventDataContext/ndmh_job/ndmh_job_ndmh_contact" />
       <nodes>
-        <classShapeMoniker Id="3fbe6afd-b4f4-465e-a856-3a94115eba15" />
+        <classShapeMoniker Id="fdc8a44d-c6c9-4507-b28c-899a9353f220" />
         <classShapeMoniker Id="1dede390-8aca-43e2-a1b5-1e2259b269a3" />
       </nodes>
     </associationConnector>
-    <classShape Id="b7d37731-9a75-4cc8-b169-34096046c1b4" absoluteBounds="9, 13.5, 2, 1.0961531575520833">
-      <DataClassMoniker Name="/news_eventDataContext/ndmh_job_category" />
-      <nestedChildShapes>
-        <elementListCompartment Id="ca1d8b92-1d18-4e76-896b-2c57fde7226c" absoluteBounds="9.015, 13.96, 1.9700000000000002, 0.53615315755208326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

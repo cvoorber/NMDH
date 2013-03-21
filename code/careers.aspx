@@ -3,20 +3,29 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
     <h3>Job Categories</h3>
     <asp:BulletedList ID="bl_cat" runat="server" DisplayMode="LinkButton" />
+
+    <asp:Label ID="test" runat="server" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
-    <asp:Panel ID="pnl_description" runat="server" Visible="true">
+
+    <asp:Panel ID="pnl_jobs" runat="server">
+    aeiou
+        <asp:BulletedList ID="bl_jobs" runat="server" DisplayMode="LinkButton" />
+    </asp:Panel>
+
+    <asp:Panel ID="pnl_description" runat="server">
+        sometimes y
        <asp:Repeater runat="server" ID="rpt_jobs">
             <ItemTemplate>
                 <p><%#Eval("j_title") %></p>
                 <%#Eval("j_description") %>
 
                 <br />
-                <asp:Button ID="btn_apply" runat="server" OnClick="subShow" Text="Apply Now" />
+                <asp:Button ID="btn_apply" runat="server" Text="Apply Now" />
             </ItemTemplate>
        </asp:Repeater>
     </asp:Panel>
-    <asp:Panel ID="pnl_form" runat="server" Visible="false">
+    <asp:Panel ID="pnl_form" runat="server">
         <asp:Label ID="lbl_fname" runat="server" Text="First Name:" />
         <asp:TextBox ID="txt_fname" runat="server" />
         <br />

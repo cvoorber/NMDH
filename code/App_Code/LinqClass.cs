@@ -22,12 +22,12 @@ public class LinqClass<T> where T: class
     }
 
 
-    public IQueryable<ndmh_job> getItemByID(int id)
+    public IQueryable<T> getItem(Expression<Func<T,bool>> predicate)
     {
 		//select all from products where id = _id
         news_eventDataContext dcObj = new news_eventDataContext();
 
-        var item = dcObj.ndmh_jobs.Where(x => x.j_id == id).Select(x=>x);
+        var item = dcObj.GetTable<T>().Where(predicate).Select(x=>x);
         return item;
     }
 
