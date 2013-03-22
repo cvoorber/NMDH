@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 public partial class careers : System.Web.UI.Page
 {
@@ -47,6 +48,7 @@ public partial class careers : System.Web.UI.Page
         lbl_jCat.Text = item.Text + " Job Posts";
         rpt_joblist.DataSource = jobObj.getResultByColumn(m => m.j_category_id == catVal); 
         rpt_joblist.DataBind();
+        showPanel(pnl_jobs);
     }
 
 
@@ -73,7 +75,11 @@ public partial class careers : System.Web.UI.Page
 
     protected void subUpload(object sender, EventArgs e)
     {
-
+        if(fu_main.HasFile)
+        {
+            string fileName = Path.Combine();
+        }
+        
     }
 
     protected void subSubmit(object sender, EventArgs e)

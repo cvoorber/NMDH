@@ -40,6 +40,7 @@
     <asp:Panel ID="pnl_viewpost" runat="server">
        <asp:Repeater runat="server" ID="rpt_post">
             <ItemTemplate>
+                <p>Job ID: <%#Eval("j_id") %></p>
                 <p>Job Title: <%#Eval("j_title") %></p>
                 <p>Job Description: <%#Eval("j_description") %></p>
                 <p>Job Requirements: <%#Eval("j_requirements") %></p>
@@ -123,6 +124,12 @@
                 <asp:AsyncPostBackTrigger ControlID="btn_upload" EventName="Click" />
             </Triggers>
         </asp:UpdatePanel>
+        <asp:UpdateProgress ID="upr_main" runat="server" AssociatedUpdatePanelID="udp_main">
+            <ProgressTemplate>
+                <asp:Label ID="lbl_status" runat="server" />
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+        
         <asp:Button ID="btn_upload" runat="server" Text="Upload" OnClick="subUpload" UseSubmitBehavior="false" OnClientClick="this.disabled='true';this.value='Uploading'" />
 
         
