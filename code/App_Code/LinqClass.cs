@@ -20,7 +20,7 @@ public class LinqClass<T> where T: class
     }
 
 
-    public IQueryable<T> getItem(Expression<Func<T,bool>> predicate)
+    public IQueryable<T> getResultByColumn(Expression<Func<T,bool>> predicate)
     {
 		//select all from products where id = _id
         news_eventDataContext dcObj = new news_eventDataContext();
