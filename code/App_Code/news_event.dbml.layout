@@ -57,7 +57,7 @@
         <classShapeMoniker Id="ac1e6c15-fe23-4d42-b0af-d18de03ea4a8" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 6.04111857096354); (3.5 : 6.04111857096354)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 6.31370279947917); (3.5 : 6.31370279947917)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/news_eventDataContext/ndmh_staff_listing/ndmh_staff_listing_ndmh_event" />
       <nodes>
         <classShapeMoniker Id="a08a4a39-6127-4098-b977-1c3b8d9d75ed" />
@@ -76,12 +76,18 @@
         <elementListCompartment Id="a273bb18-778b-48db-9813-1c5f54644bd1" absoluteBounds="1.1400000000000001, 3.21, 1.9700000000000002, 1.3578898111979165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.125 : 2.75); (2.125 : 1.8749995); (3.5 : 1.8749995)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.0312495 : 2.75); (3.0312495 : 1.6249995); (3.5 : 1.6249995)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/news_eventDataContext/ndmh_job/ndmh_job_ndmh_contact" />
       <nodes>
         <classShapeMoniker Id="fdc8a44d-c6c9-4507-b28c-899a9353f220" />
         <classShapeMoniker Id="1dede390-8aca-43e2-a1b5-1e2259b269a3" />
       </nodes>
     </associationConnector>
+    <classShape Id="2452a4a0-b509-4fb7-b0d4-82d782dae5ea" absoluteBounds="0.875, 2.25, 2, 3.23266845703125">
+      <DataClassMoniker Name="/news_eventDataContext/ndmh_job_application" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b46bd112-64b2-48d9-89c5-ea3f62dcd364" absoluteBounds="0.89, 2.71, 1.9700000000000002, 2.67266845703125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

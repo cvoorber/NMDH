@@ -114,4 +114,23 @@
       <Association Name="ndmh_job_ndmh_contact" Member="ndmh_contacts" ThisKey="j_id" OtherKey="j_id" Type="ndmh_contact" />
     </Type>
   </Table>
+  <Table Name="dbo.ndmh_job_applications" Member="ndmh_job_applications">
+    <Type Name="ndmh_job_application">
+      <Column Name="j_application_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="j_first_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="j_last_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="j_address" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="j_city" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="j_province" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="j_postal" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="j_phone" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="j_alt_phone" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="j_email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="j_was_employee" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="j_is_eligible" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="j_of_age" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="j_was_convicted" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="j_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>

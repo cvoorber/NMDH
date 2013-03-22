@@ -170,6 +170,14 @@ public partial class news_eventDataContext : System.Data.Linq.DataContext
 			return this.GetTable<ndmh_job>();
 		}
 	}
+	
+	public System.Data.Linq.Table<ndmh_job_application> ndmh_job_applications
+	{
+		get
+		{
+			return this.GetTable<ndmh_job_application>();
+		}
+	}
 }
 
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_contact")]
@@ -2392,6 +2400,285 @@ public partial class ndmh_job : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		this.SendPropertyChanging();
 		entity.ndmh_job = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_job_applications")]
+public partial class ndmh_job_application
+{
+	
+	private int _j_application_id;
+	
+	private string _j_first_name;
+	
+	private string _j_last_name;
+	
+	private string _j_address;
+	
+	private string _j_city;
+	
+	private string _j_province;
+	
+	private string _j_postal;
+	
+	private string _j_phone;
+	
+	private string _j_alt_phone;
+	
+	private string _j_email;
+	
+	private char _j_was_employee;
+	
+	private char _j_is_eligible;
+	
+	private char _j_of_age;
+	
+	private char _j_was_convicted;
+	
+	private int _j_id;
+	
+	public ndmh_job_application()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_application_id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+	public int j_application_id
+	{
+		get
+		{
+			return this._j_application_id;
+		}
+		set
+		{
+			if ((this._j_application_id != value))
+			{
+				this._j_application_id = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_first_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string j_first_name
+	{
+		get
+		{
+			return this._j_first_name;
+		}
+		set
+		{
+			if ((this._j_first_name != value))
+			{
+				this._j_first_name = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_last_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string j_last_name
+	{
+		get
+		{
+			return this._j_last_name;
+		}
+		set
+		{
+			if ((this._j_last_name != value))
+			{
+				this._j_last_name = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_address", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string j_address
+	{
+		get
+		{
+			return this._j_address;
+		}
+		set
+		{
+			if ((this._j_address != value))
+			{
+				this._j_address = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_city", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string j_city
+	{
+		get
+		{
+			return this._j_city;
+		}
+		set
+		{
+			if ((this._j_city != value))
+			{
+				this._j_city = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_province", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string j_province
+	{
+		get
+		{
+			return this._j_province;
+		}
+		set
+		{
+			if ((this._j_province != value))
+			{
+				this._j_province = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_postal", DbType="Char(6) NOT NULL", CanBeNull=false)]
+	public string j_postal
+	{
+		get
+		{
+			return this._j_postal;
+		}
+		set
+		{
+			if ((this._j_postal != value))
+			{
+				this._j_postal = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_phone", DbType="Char(10) NOT NULL", CanBeNull=false)]
+	public string j_phone
+	{
+		get
+		{
+			return this._j_phone;
+		}
+		set
+		{
+			if ((this._j_phone != value))
+			{
+				this._j_phone = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_alt_phone", DbType="Char(10)")]
+	public string j_alt_phone
+	{
+		get
+		{
+			return this._j_alt_phone;
+		}
+		set
+		{
+			if ((this._j_alt_phone != value))
+			{
+				this._j_alt_phone = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string j_email
+	{
+		get
+		{
+			return this._j_email;
+		}
+		set
+		{
+			if ((this._j_email != value))
+			{
+				this._j_email = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_was_employee", DbType="Char(1) NOT NULL")]
+	public char j_was_employee
+	{
+		get
+		{
+			return this._j_was_employee;
+		}
+		set
+		{
+			if ((this._j_was_employee != value))
+			{
+				this._j_was_employee = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_is_eligible", DbType="Char(1) NOT NULL")]
+	public char j_is_eligible
+	{
+		get
+		{
+			return this._j_is_eligible;
+		}
+		set
+		{
+			if ((this._j_is_eligible != value))
+			{
+				this._j_is_eligible = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_of_age", DbType="Char(1) NOT NULL")]
+	public char j_of_age
+	{
+		get
+		{
+			return this._j_of_age;
+		}
+		set
+		{
+			if ((this._j_of_age != value))
+			{
+				this._j_of_age = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_was_convicted", DbType="Char(1) NOT NULL")]
+	public char j_was_convicted
+	{
+		get
+		{
+			return this._j_was_convicted;
+		}
+		set
+		{
+			if ((this._j_was_convicted != value))
+			{
+				this._j_was_convicted = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
+	public int j_id
+	{
+		get
+		{
+			return this._j_id;
+		}
+		set
+		{
+			if ((this._j_id != value))
+			{
+				this._j_id = value;
+			}
+		}
 	}
 }
 #pragma warning restore 1591
