@@ -2,15 +2,16 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
     <h3>Job Categories</h3>
-    <asp:BulletedList ID="bl_cat" runat="server" DisplayMode="LinkButton" />
+    <asp:BulletedList ID="bl_cat" runat="server" DisplayMode="LinkButton" OnClick="subGetJobs" />
 
     <asp:Label ID="test" runat="server" />
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
 
     <asp:Panel ID="pnl_jobs" runat="server">
         <asp:Label ID="lbl_category" runat="server" />
-        <asp:BulletedList ID="bl_jobs" runat="server" DisplayMode="LinkButton" />
+        <asp:BulletedList ID="bl_jobs" runat="server" DisplayMode="LinkButton" OnClick="subGetPost"/>
     </asp:Panel>
 
     <asp:Panel ID="pnl_description" runat="server">
@@ -21,11 +22,12 @@
                 <p>Job Requirements: <%#Eval("j_requirements") %></p>
                 <p>Post Date: <%#Eval("j_posted_date") %></p>
                 <p>Expiry Date: <%#Eval("j_expires") %></p>
-                <asp:HiddenField runat="server" ID="hdf_jobID" Value='<%#Eval("j_id") %>' />
+                <asp:HiddenField ID="hdf_jid" runat="server" value='<%#Eval("j_id") %>' />
                 <asp:Button ID="btn_app" runat="server" Text="Apply Now" OnClick="showApplication" />
             </ItemTemplate>
        </asp:Repeater>
     </asp:Panel>
+
     <asp:Panel ID="pnl_form" runat="server">
         <asp:Label ID="lbl_jID" runat="server" />
         <asp:Label ID="lbl_fname" runat="server" Text="First Name:" />

@@ -16,7 +16,6 @@ public partial class careers : System.Web.UI.Page
             bl_cat.DataTextField = "j_category_name";
             bl_cat.DataValueField = "j_category_id";
             bl_cat.DataBind();
-            bl_cat.Click += subGetJobs;
 
 
             lbl_category.Text = "Allied Health Postings";
@@ -24,7 +23,6 @@ public partial class careers : System.Web.UI.Page
             bl_jobs.DataTextField = "j_title";
             bl_jobs.DataValueField = "j_id";
             bl_jobs.DataBind();
-            bl_jobs.Click += subGetPost;
 
             showPanel(pnl_jobs);
 
@@ -46,12 +44,17 @@ public partial class careers : System.Web.UI.Page
     {
         LinqClass<ndmh_job> jobObj = new LinqClass<ndmh_job>();
 
+        ListItem li = bl_jobs.Items[b.Index];
+        int jID = Int32.Parse(li.Value);
+        rpt_jobs.DataSource = jobObj.getItem(m => m.j_id == jID);
+        bl_jobs.DataBind();
+
         showPanel(pnl_description);
     }
 
     protected void showApplication(object sender, EventArgs e)
     {
-        lbl_jID.Text = "Job ID: " + 
+        lbl_jID.Text = "Job ID: " + ((HiddenField)(pnl_description.FindControl("hdf_jid"))).Value;
         showPanel(pnl_form);
     }
 
@@ -61,5 +64,9 @@ public partial class careers : System.Web.UI.Page
         pnl_form.Visible = false;
         pnl_jobs.Visible = false;
         p.Visible = true;
+    }
+
+    protected void subSubmit(object sender, EventArgs e)
+    {
     }
 }
