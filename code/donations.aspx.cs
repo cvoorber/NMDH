@@ -21,19 +21,19 @@ public partial class donations : System.Web.UI.Page
         // this will be triggered when clicking on the UiNext button
         if (e.CommandName == "UiNext")
         {
-            // Taking the input from the ui panel and temporarily storing it in an array (make into a fucntion)
-            string[] userArray = new string[11];
-            userArray[0] = txt_fname.Text.ToString();
-            userArray[1] = txt_lname.Text.ToString();
-            userArray[2] = txt_email.Text.ToString();
-            userArray[3] = txt_mem.Text.ToString();
-            userArray[4] = txt_donate.Text.ToString();
-            userArray[5] = txt_address.Text.ToString();
-            userArray[6] = txt_city.Text.ToString();
-            userArray[7] = ddl_country.SelectedItem.Value.ToString();
-            userArray[8] = ddl_provstate.SelectedItem.Value.ToString();
-            userArray[9] = txt_postzip.Text.ToString();
-            userArray[10] = txt_comments.Text.ToString();
+            // Taking the input from the ui panel and temporarily storing it in properties (make into a fucntion)
+            
+            objDonate.uifirstName = txt_fname.Text.ToString();
+            objDonate.uilastName = txt_lname.Text.ToString();
+            objDonate.uiEmail = txt_email.Text.ToString();
+            objDonate.uiEmail = txt_mem.Text.ToString();
+            objDonate.uiDonate = txt_donate.Text.ToString();
+            objDonate.uiAddress = txt_address.Text.ToString();
+            objDonate.uiCity = txt_city.Text.ToString();
+            objDonate.uiCountry = ddl_country.SelectedItem.Value.ToString();
+            objDonate.uiProvState = ddl_provstate.SelectedItem.Value.ToString();
+            objDonate.uiPostZip = txt_postzip.Text.ToString();
+            objDonate.uiComments = txt_comments.Text.ToString();
 
             // hdiding user info panel, revealing credit info panel (make into a function)
             pnl_uinfo.Visible = false;
@@ -42,20 +42,22 @@ public partial class donations : System.Web.UI.Page
             // this will be triggered when clicking on CreditNext button
         else if (e.CommandName == "CreditNext")
         {
-            // Taking the input from the credit panel and temporarily storing it in an array (make into a fucntion)
-            string[] creditArray = new string[8];
-            creditArray[0] = txt_credname.Text.ToString();
-            creditArray[1] = txt_credaddress.Text.ToString();
-            creditArray[2] = txt_credcity.Text.ToString();
-            creditArray[3] = ddl_credcountry.SelectedItem.Value.ToString();
-            creditArray[4] = ddl_credprovstate.SelectedItem.Value.ToString();
-            creditArray[5] = txt_credpostzip.Text.ToString();
-            creditArray[6] = txt_crednumber.Text.ToString();
-            creditArray[7] = txt_credcode..Text.ToString();
+            // Taking the input from the credit panel and temporarily storing it in properties (make into a fucntion)
+            
+            objDonate.credName = txt_credname.Text.ToString();
+            objDonate.credAddress = txt_credaddress.Text.ToString();
+            objDonate.credCity = txt_credcity.Text.ToString();
+            objDonate.credCountry = ddl_credcountry.SelectedItem.Value.ToString();
+            objDonate.credProvState = ddl_credprovstate.SelectedItem.Value.ToString();
+            objDonate.credPostZip = txt_credpostzip.Text.ToString();
+            objDonate.credNumber = txt_crednumber.Text.ToString();
+            objDonate.credCode = txt_credcode.Text.ToString();
             
             // hiding credit info panel, showing confirmation panel (make into a function)
             pnl_credit.Visible = false;
             pnl_confirm.Visible = true;
+
+            // add code for taking information from both arrays to display on confirmation page
         }
     }
 
@@ -68,10 +70,12 @@ public partial class donations : System.Web.UI.Page
     }
 
 
-    // this subroutine will bind the ddl to the list of countries
-    private void subDdlBind()
+    // this subroutine will bind the ddl to the list of countries and set the value field and text field
+    private void subCountryBind()
     {
         ddl_country.DataSource = objDonate.getAllCountries();
+        ddl_country.DataValueField = "country_id";
+        ddl_country.DataTextField = "name_en";
         ddl_country.DataBind();
     }
 
@@ -86,6 +90,30 @@ public partial class donations : System.Web.UI.Page
         //which nAMerican country it is.
         // this should also happen Asynchronoously ... so might need to add another Trigger for this event
         // that would have the target control id as the DDL in question.activdirectopia/rmccoleman  
+        
+        // I think this represents the country, rather than the country id - not sure what value is.
+        var countryChoice = ddl_country.SelectedValue.ToString();
+
+        if (countryChoice == "Canada" || countryChoice == "United States")
+        {
+            // Show provstate dropdown list - this should be by AJAX
+            // call getAllStatesorProvinces
+
+            // show label and text box for postal code/ZIP
+            if (countryChoice == "Canada")
+            {
+                //postal code validation - ajax
+                // set label text to say Postal code -ajax
+            }
+            else
+            {
+                //zip code validation - ajax
+                // set label text to say ZIP code -ajax
+            }
+
+        }
+        // might need an else here to do nothing to make this work, not sure
+
     }
 
 }
