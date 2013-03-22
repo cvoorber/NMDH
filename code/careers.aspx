@@ -121,17 +121,12 @@
                 <asp:FileUpload ID="fu_main" runat="server"  />
             </ContentTemplate>
             <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="btn_upload" EventName="Click" />
+                <asp:PostBackTrigger ControlID="btn_upload" />
             </Triggers>
         </asp:UpdatePanel>
-        <asp:UpdateProgress ID="upr_main" runat="server" AssociatedUpdatePanelID="udp_main">
-            <ProgressTemplate>
-                <asp:Label ID="lbl_status" runat="server" />
-            </ProgressTemplate>
-        </asp:UpdateProgress>
-        
-        <asp:Button ID="btn_upload" runat="server" Text="Upload" OnClick="subUpload" UseSubmitBehavior="false" OnClientClick="this.disabled='true';this.value='Uploading'" />
-
+       
+        <asp:Button ID="btn_upload" runat="server" Text="Upload" OnClick="subUpload" />
+        <asp:Label ID="lbl_status" runat="server" />
         
         
        <br /><br />

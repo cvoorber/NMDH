@@ -75,11 +75,22 @@ public partial class careers : System.Web.UI.Page
 
     protected void subUpload(object sender, EventArgs e)
     {
-        if(fu_main.HasFile)
+        if (fu_main.HasFile)
         {
-            string fileName = Path.Combine();
+            string fExt = Path.GetExtension(fu_main.FileName).ToLower();
+            if (fExt == ".doc" || fExt == ".docx" || fExt == ".pdf")
+            {
+                string filename = Path.Combine(Server.MapPath("~/resumes/"), fu_main.FileName);
+                fu_main.SaveAs(filename);
+                lbl_status.Text = fu_main.FileName;
+            }
+            else
+                lbl_status.Text = "Requires filetype: doc/docx/pdf";
         }
-        
+        else
+        {
+            lbl_status.Text = "error.";
+        }
     }
 
     protected void subSubmit(object sender, EventArgs e)
