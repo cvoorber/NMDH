@@ -7,8 +7,13 @@ using System.Web.UI.WebControls;
 
 public partial class careers : System.Web.UI.Page
 {
+    LinqClass<ndmh_job_category> catObj = new LinqClass<ndmh_job_category>();
+    LinqClass<ndmh_job> jobObj = new LinqClass<ndmh_job>();
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!Page.IsPostBack)
+        {
             LinqClass<ndmh_job_category> catObj = new LinqClass<ndmh_job_category>();
             LinqClass<ndmh_job> jobObj = new LinqClass<ndmh_job>();
 
@@ -17,56 +22,62 @@ public partial class careers : System.Web.UI.Page
             bl_cat.DataValueField = "j_category_id";
             bl_cat.DataBind();
 
-
-            lbl_category.Text = "Allied Health Postings";
-            bl_jobs.DataSource = jobObj.getItem(m => m.j_category_id == 1);
-            bl_jobs.DataTextField = "j_title";
-            bl_jobs.DataValueField = "j_id";
-            bl_jobs.DataBind();
-
+            lbl_jCat.Text = "Allied Health Job Posts";
+            int catVal = Int32.Parse(bl_cat.Items.FindByText("Allied Health").Value);
+            rpt_joblist.DataSource = jobObj.getResultByColumn(m => m.j_category_id == catVal);
+            rpt_joblist.DataBind();
             showPanel(pnl_jobs);
+        }
+    }
 
+    protected void subShowPost(object sender, EventArgs e)
+    {
+        LinkButton btn = (LinkButton)sender;
+        int jobID = Int32.Parse(btn.CommandArgument);
+        rpt_post.DataSource = jobObj.getResultByColumn(m => m.j_id == jobID);
+        rpt_post.DataBind();
+
+        showPanel(pnl_viewpost);
     }
 
     protected void subGetJobs(object sender, BulletedListEventArgs b)
     {
-        LinqClass<ndmh_job> jobObj = new LinqClass<ndmh_job>();
-        ListItem li = bl_cat.Items[b.Index];
-        int catID = Int32.Parse(li.Value);
-        lbl_category.Text = li.Text + " Postings";
-        bl_jobs.DataSource = jobObj.getItem(m => m.j_category_id == catID);
-        bl_jobs.DataTextField = "j_title";
-        bl_jobs.DataValueField = "j_id";
-        bl_jobs.DataBind();
+        var item = bl_cat.Items[b.Index];
+        int catVal = Int32.Parse(item.Value);
+        lbl_jCat.Text = item.Text + " Job Posts";
+        rpt_joblist.DataSource = jobObj.getResultByColumn(m => m.j_category_id == catVal); 
+        rpt_joblist.DataBind();
     }
 
-    protected void subGetPost(object sender, BulletedListEventArgs b)
-    {
-        LinqClass<ndmh_job> jobObj = new LinqClass<ndmh_job>();
-
-        ListItem li = bl_jobs.Items[b.Index];
-        int jID = Int32.Parse(li.Value);
-        rpt_jobs.DataSource = jobObj.getItem(m => m.j_id == jID);
-        bl_jobs.DataBind();
-
-        showPanel(pnl_description);
-    }
-
-    protected void showApplication(object sender, EventArgs e)
-    {
-        lbl_jID.Text = "Job ID: " + ((HiddenField)(pnl_description.FindControl("hdf_jid"))).Value;
-        showPanel(pnl_form);
-    }
 
     private void showPanel(Panel p)
     {
-        pnl_description.Visible = false;
+        pnl_viewpost.Visible = false;
         pnl_form.Visible = false;
         pnl_jobs.Visible = false;
         p.Visible = true;
     }
 
+    protected void subShowApp(object sender, EventArgs e)
+    {
+        Button btn = (Button)sender;
+        HiddenField hdf = new HiddenField();
+        hdf.ID = "hdf_jobID";
+        hdf.Value = btn.CommandArgument;
+
+        pnl_form.Controls.Add(hdf);
+        lbl_jID.Text = "Job ID: " + hdf.Value + "<br />";
+        showPanel(pnl_form);
+        
+    }
+
+    protected void subUpload(object sender, EventArgs e)
+    {
+
+    }
+
     protected void subSubmit(object sender, EventArgs e)
     {
+
     }
 }

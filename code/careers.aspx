@@ -1,29 +1,51 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubMaster1.master" AutoEventWireup="true" CodeFile="careers.aspx.cs" Inherits="careers" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
     <h3>Job Categories</h3>
     <asp:BulletedList ID="bl_cat" runat="server" DisplayMode="LinkButton" OnClick="subGetJobs" />
-
-    <asp:Label ID="test" runat="server" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
 
     <asp:Panel ID="pnl_jobs" runat="server">
-        <asp:Label ID="lbl_category" runat="server" />
-        <asp:BulletedList ID="bl_jobs" runat="server" DisplayMode="LinkButton" OnClick="subGetPost"/>
+        <asp:Label ID="lbl_jCat" runat="server" />
+        <asp:Repeater ID="rpt_joblist" runat="server">
+            <HeaderTemplate>
+               <table>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Job Title</th>
+                        <th>Post Date</th>
+                        <th>Expiry Date</th>
+                        <th></th>
+                    </tr>
+            </HeaderTemplate>
+            <ItemTemplate>
+                <tr>
+                    <td><%#Eval("j_id") %></td>
+                    <td><%#Eval("j_title") %></td>
+                    <td><%#Eval("j_posted_date", "{0:MM/dd/yyyy}") %></td>
+                    <td><%#Eval("j_expires", "{0:MM/dd/yyyy}") %></td>
+                    <td><asp:LinkButton ID="lb_post" runat="server" OnClick="subShowPost" Text="View" CommandArgument='<%#Eval("j_id") %>' /></td>
+                </tr>
+            </ItemTemplate>
+            
+            <FooterTemplate>
+                </table>
+            </FooterTemplate>
+        </asp:Repeater>
     </asp:Panel>
 
-    <asp:Panel ID="pnl_description" runat="server">
-       <asp:Repeater runat="server" ID="rpt_jobs">
+    <asp:Panel ID="pnl_viewpost" runat="server">
+       <asp:Repeater runat="server" ID="rpt_post">
             <ItemTemplate>
                 <p>Job Title: <%#Eval("j_title") %></p>
                 <p>Job Description: <%#Eval("j_description") %></p>
                 <p>Job Requirements: <%#Eval("j_requirements") %></p>
-                <p>Post Date: <%#Eval("j_posted_date") %></p>
-                <p>Expiry Date: <%#Eval("j_expires") %></p>
-                <asp:HiddenField ID="hdf_jid" runat="server" value='<%#Eval("j_id") %>' />
-                <asp:Button ID="btn_app" runat="server" Text="Apply Now" OnClick="showApplication" />
+                <p>Post Date: <%#Eval("j_posted_date", "{0:MM/dd/yyyy}")%></p>
+                <p>Expiry Date: <%#Eval("j_expires", "{0:MM/dd/yyyy}")%></p>
+                <asp:Button ID="btn_app" runat="server" Text="Apply Now" OnClick="subShowApp" CommandArgument='<%#Eval("j_id") %>' />
             </ItemTemplate>
        </asp:Repeater>
     </asp:Panel>
@@ -52,9 +74,7 @@
         <asp:Label ID="lbl_pcode" runat="server" Text="Postal Code:" />
         <asp:TextBox ID="txt_pcode" runat="server" />
         <br />
-        <asp:Label ID="Label4" runat="server" Text="Address:" />
-        <asp:TextBox ID="TextBox4" runat="server" />
-        <br />
+
         <asp:Label ID="lbl_phone" runat="server" Text="Home Phone:" />
         <asp:TextBox ID="txt_phone" runat="server" />
         <br />
@@ -93,12 +113,22 @@
             <asp:ListItem Value="no">No</asp:ListItem>
         </asp:RadioButtonList>
         <br /><br />
+        <asp:ScriptManager ID="scm_main" runat="server" />
+        <asp:Label ID="lbl_file" runat="server" Text="Upload resume and cover letter (doc/docx/pdf):"  />
+        <asp:UpdatePanel ID="udp_main" runat="server">
+            <ContentTemplate>
+                <asp:FileUpload ID="fu_main" runat="server"  />
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="btn_upload" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
+        <asp:Button ID="btn_upload" runat="server" Text="Upload" OnClick="subUpload" UseSubmitBehavior="false" OnClientClick="this.disabled='true';this.value='Uploading'" />
 
-        <asp:Label ID="lbl_file" runat="server" Text="Upload resume and cover letter:" />
-        <asp:FileUpload ID="fu_main" runat="server" />
-       
-        <asp:Button ID="btn_clear" Text="Clear" runat="server" CausesValidation="false" 
-                    UseSubmitBehavior="false" OnClientClick="document.forms[0].reset();" />
+        
+        
+       <br /><br />
+        <input type="reset" value="Clear" />
         <asp:Button ID="btn_submit" Text="Submit" runat="server" OnClick="subSubmit" />
     </asp:Panel>
 </asp:Content>
