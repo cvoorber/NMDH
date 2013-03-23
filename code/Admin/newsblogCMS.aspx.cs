@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Globalization;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -23,8 +24,6 @@ public partial class Admin_newsblogCMS : System.Web.UI.Page
         txt_titleI.Text = string.Empty;
         txt_descI.Text = string.Empty;
         txt_imageI.Text = string.Empty;
-        txt_expiryI.Text = string.Empty;
-        txt_eventdateI.Text = string.Empty;
         txt_contactidI.Text = string.Empty;
         txt_linkI.Text = string.Empty;
 
@@ -59,28 +58,33 @@ public partial class Admin_newsblogCMS : System.Web.UI.Page
 
     protected void subInsert(object sender, EventArgs e)
     {
-        _strMessage(objLinq.commitInsert(txt_titleI.Text, txt_descI.Text, txt_imageI.Text, DateTime.Parse(txt_expiryI.Text), DateTime.Parse(txt_eventdateI.Text), int.Parse(txt_contactidI.Text.ToString()), txt_linkI.Text), "insert");
+        string format = "dd/MM/yyyy hh:mm tt";
+        string stringDate = DateTime.Now.ToString(format, CultureInfo.InvariantCulture);
+        DateTime dateTime = DateTime.ParseExact(stringDate, format, CultureInfo.InvariantCulture);
+
+        _strMessage(objLinq.commitInsert(txt_titleI.Text, txt_descI.Text, txt_imageI.Text, dateTime, dateTime, int.Parse(txt_contactidI.Text.ToString()), txt_linkI.Text), "insert");
         _subRebind();
     }
 
     protected void subAdmin(object sender, ListViewCommandEventArgs e)
     {
+ 
         switch (e.CommandName)
         {
             case "subUpdate":
+
                 TextBox txtTitle = (TextBox)e.Item.FindControl("txt_titleE");
                 TextBox txtDesc = (TextBox)e.Item.FindControl("txt_descE");
-                TextBox txtEventDate = (TextBox)e.Item.FindControl("txt_eventdateE");
                 TextBox txtImage = (TextBox)e.Item.FindControl("txt_imageE");
-                TextBox txtExpiry = (TextBox)e.Item.FindControl("txt_expiryE");
                 TextBox txtContactID = (TextBox)e.Item.FindControl("txt_contactidE");
                 TextBox txtLink = (TextBox)e.Item.FindControl("txt_linkE");
                 HiddenField hdfID = (HiddenField)e.Item.FindControl("hdf_idE");
                 int newsID = int.Parse(hdfID.Value.ToString());
 
-                _strMessage(objLinq.commitUpdate(newsID, txtTitle.Text, txtDesc.Text, txtImage.Text, DateTime.Parse(txtExpiry.Text), DateTime.Parse(txtEventDate.Text), int.Parse(txtContactID.Text.ToString()), txtLink.Text), "update");
+                _strMessage(objLinq.commitUpdate(newsID, txtTitle.Text, txtDesc.Text, txtImage.Text, int.Parse(txtContactID.Text.ToString()), txtLink.Text), "update");
                 _subRebind();
                 break;
+
             case "subDelete":
                 int _id = int.Parse(((HiddenField)e.Item.FindControl("hdf_idE")).Value);
                 _strMessage(objLinq.commitDelete(_id), "delete");

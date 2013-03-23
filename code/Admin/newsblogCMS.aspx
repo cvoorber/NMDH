@@ -9,7 +9,6 @@
 <body>
     <form id="form1" runat="server">
     <div>
-
         <asp:Label ID="lbl_message" runat="server" />
         <br />
         <br />
@@ -26,14 +25,6 @@
         <asp:Label ID="lbl_imageI" runat="server" Text="Image" AssociatedControlID="txt_imageI" />
         <br />
         <asp:TextBox ID="txt_imageI" runat="server" />
-        <br />
-        <asp:Label ID="lbl_expiryI" runat="server" Text="Expiry" AssociatedControlID="txt_expiryI" />
-        <br />
-        <asp:TextBox ID="txt_expiryI" runat="server" />
-        <br />
-        <asp:Label ID="lbl_eventdateI" runat="server" Text="Event Date" AssociatedControlID="txt_eventdateI" />
-        <br />
-        <asp:TextBox ID="txt_eventdateI" runat="server" />
         <br />
         <asp:Label ID="lbl_contactidI" runat="server" Text="Contact ID" AssociatedControlID="txt_contactidI" />
         <br />
@@ -57,9 +48,7 @@
                     <thead>
                         <tr>
                             <th>Event/News Title</th>
-                            <th>Event Date</th>
                             <th>Image</th>
-                            <th>Expiry</th>
                             <th>Contact ID</th>
                             <th>Link</th>
                             <th>Description</th>
@@ -77,13 +66,7 @@
                         <asp:TextBox ID="txt_titleE" runat="server" Text='<%#Bind("n_title") %>' />
                     </td>
                     <td>
-                        <asp:TextBox ID="txt_descE" runat="server" Text='<%#Bind("n_event_date") %>' />
-                    </td>
-                    <td>
                         <asp:TextBox ID="txt_imageE" runat="server" Text='<%#Bind("n_image") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txt_expiryE" runat="server" Text='<%#Bind("n_expires") %>' />
                     </td>
                     <td>
                         <asp:TextBox ID="txt_contactidE" runat="server" Text='<%#Bind("n_contact_id") %>' />
@@ -92,15 +75,17 @@
                         <asp:TextBox ID="txt_linkE" runat="server" Text='<%#Bind("n_link") %>' />
                     </td>
                     <td>
-                        <asp:TextBox ID="txt_eventdateE" runat="server" Text='<%#Bind("n_description") %>' TextMode="MultiLine" Columns="40" Rows="4" />
+                        <asp:TextBox ID="txt_descE" runat="server" Text='<%#Bind("n_description") %>' TextMode="MultiLine" Columns="40" Rows="4" />
                     </td>
+                    <tr>
                     <td>
-                        <asp:LinkButton ID="lb_update" runat="server" Text="Update" CommandName="subUpdate" />
                     </td>
-                    <td>
-                        <asp:LinkButton ID="lb_delete" runat="server" Text="Delete" CommandName="subDelete" OnClientClick="return confirm('Are you sure you want to delete this record?');" />
+                        <td>
+                        <asp:LinkButton ID="lb_update" runat="server" Text="Update" CommandName="subUpdate" BackColor="LightGray" Font-Size="14" Style="padding:5px;" BorderWidth="1" BorderColor="Black" />
+                    
+                        <asp:LinkButton ID="lb_delete" runat="server" Text="Delete" CommandName="subDelete" OnClientClick="return confirm('Are you sure you want to delete this record?');" BackColor="LightGray" Font-Size="14" Style="padding:5px;" BorderWidth="1" BorderColor="Black" />
                     </td>
-                </tr>
+                    </tr>
             </ItemTemplate>
         </asp:ListView>
 
