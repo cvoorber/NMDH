@@ -8,7 +8,7 @@ public class newsClass
 	public IQueryable<ndmh_event> getNews()
     {
         //create an instance of the LINQ object
-        news_eventDataContext objNewsDC = new news_eventDataContext();
+        ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
         //create an anonymous variable with its value being the instance of the LINQ object
         var allNews = objNewsDC.ndmh_events.Select(x => x);
         //return IQueryable<news> for data bound control to bind to 
@@ -17,13 +17,13 @@ public class newsClass
 
     public IQueryable<ndmh_event> getNewsByID(int _id)
     {
-        news_eventDataContext objNewsDC = new news_eventDataContext();
+        ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
         var allNews = objNewsDC.ndmh_events.Where(x => x.n_id == _id).Select(x => x);
         return allNews;
     }
-    public bool commitInsert(int _id, string _title, string _desc, System.Data.Linq.Binary _image, DateTime _expires, DateTime _date, int _contact, string _link)
+    public bool commitInsert(int _id, string _title, string _desc, string _image, DateTime _expires, DateTime _date, int _contact, string _link)
     {
-        news_eventDataContext objNewsDC = new news_eventDataContext();
+        ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
         //to ensure all data will be disposed when finished
         using (objNewsDC)
         {
@@ -44,9 +44,9 @@ public class newsClass
             return true;
         }
     }
-    public bool commitUpdate(int _id, string _title, string _desc, System.Data.Linq.Binary _image, DateTime _expires, DateTime _date, int _contact, string _link)
+    public bool commitUpdate(int _id, string _title, string _desc, string _image, DateTime _expires, DateTime _date, int _contact, string _link)
     {
-        news_eventDataContext objNewsDC = new news_eventDataContext();
+        ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
         using (objNewsDC)
         {
             var objUpNews = objNewsDC.ndmh_events.Single(x => x.n_id == _id);
@@ -64,7 +64,7 @@ public class newsClass
     }
     public bool commitDelete(int _id)
     {
-        news_eventDataContext objNewsDC = new news_eventDataContext();
+        ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
         using (objNewsDC)
         {
             var objDelNews = objNewsDC.ndmh_events.Single(x => x.n_contact_id == _id);

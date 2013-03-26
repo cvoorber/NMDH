@@ -22,19 +22,22 @@ using System.Reflection;
 
 
 [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="cvoorber")]
-public partial class news_eventDataContext : System.Data.Linq.DataContext
+public partial class ndmhDCDataContext : System.Data.Linq.DataContext
 {
 	
 	private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
 	
   #region Extensibility Method Definitions
   partial void OnCreated();
-  partial void Insertndmh_contact(ndmh_contact instance);
-  partial void Updatendmh_contact(ndmh_contact instance);
-  partial void Deletendmh_contact(ndmh_contact instance);
+  partial void Insertndmh_comment(ndmh_comment instance);
+  partial void Updatendmh_comment(ndmh_comment instance);
+  partial void Deletendmh_comment(ndmh_comment instance);
   partial void Insertndmh_staff_listing(ndmh_staff_listing instance);
   partial void Updatendmh_staff_listing(ndmh_staff_listing instance);
   partial void Deletendmh_staff_listing(ndmh_staff_listing instance);
+  partial void Insertndmh_contact(ndmh_contact instance);
+  partial void Updatendmh_contact(ndmh_contact instance);
+  partial void Deletendmh_contact(ndmh_contact instance);
   partial void Insertndmh_department_listing(ndmh_department_listing instance);
   partial void Updatendmh_department_listing(ndmh_department_listing instance);
   partial void Deletendmh_department_listing(ndmh_department_listing instance);
@@ -50,6 +53,21 @@ public partial class news_eventDataContext : System.Data.Linq.DataContext
   partial void Insertndmh_general_page(ndmh_general_page instance);
   partial void Updatendmh_general_page(ndmh_general_page instance);
   partial void Deletendmh_general_page(ndmh_general_page instance);
+<<<<<<< HEAD:code/App_Code/news_event.designer.cs
+=======
+  partial void Insertndmh_job_category(ndmh_job_category instance);
+  partial void Updatendmh_job_category(ndmh_job_category instance);
+  partial void Deletendmh_job_category(ndmh_job_category instance);
+  partial void Insertndmh_job(ndmh_job instance);
+  partial void Updatendmh_job(ndmh_job instance);
+  partial void Deletendmh_job(ndmh_job instance);
+  partial void Insertndmh_keyword(ndmh_keyword instance);
+  partial void Updatendmh_keyword(ndmh_keyword instance);
+  partial void Deletendmh_keyword(ndmh_keyword instance);
+  partial void Insertndmh_product(ndmh_product instance);
+  partial void Updatendmh_product(ndmh_product instance);
+  partial void Deletendmh_product(ndmh_product instance);
+>>>>>>> master:code/App_Code/ndmhDC.designer.cs
   partial void Insertndmh_report(ndmh_report instance);
   partial void Updatendmh_report(ndmh_report instance);
   partial void Deletendmh_report(ndmh_report instance);
@@ -61,41 +79,41 @@ public partial class news_eventDataContext : System.Data.Linq.DataContext
   partial void Deletendmh_job(ndmh_job instance);
   #endregion
 	
-	public news_eventDataContext() : 
+	public ndmhDCDataContext() : 
 			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["cvoorberConnectionString"].ConnectionString, mappingSource)
 	{
 		OnCreated();
 	}
 	
-	public news_eventDataContext(string connection) : 
+	public ndmhDCDataContext(string connection) : 
 			base(connection, mappingSource)
 	{
 		OnCreated();
 	}
 	
-	public news_eventDataContext(System.Data.IDbConnection connection) : 
+	public ndmhDCDataContext(System.Data.IDbConnection connection) : 
 			base(connection, mappingSource)
 	{
 		OnCreated();
 	}
 	
-	public news_eventDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+	public ndmhDCDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 			base(connection, mappingSource)
 	{
 		OnCreated();
 	}
 	
-	public news_eventDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+	public ndmhDCDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 			base(connection, mappingSource)
 	{
 		OnCreated();
 	}
 	
-	public System.Data.Linq.Table<ndmh_contact> ndmh_contacts
+	public System.Data.Linq.Table<ndmh_comment> ndmh_comments
 	{
 		get
 		{
-			return this.GetTable<ndmh_contact>();
+			return this.GetTable<ndmh_comment>();
 		}
 	}
 	
@@ -104,6 +122,14 @@ public partial class news_eventDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<ndmh_staff_listing>();
+		}
+	}
+	
+	public System.Data.Linq.Table<ndmh_contact> ndmh_contacts
+	{
+		get
+		{
+			return this.GetTable<ndmh_contact>();
 		}
 	}
 	
@@ -147,11 +173,19 @@ public partial class news_eventDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
+<<<<<<< HEAD:code/App_Code/news_event.designer.cs
 	public System.Data.Linq.Table<ndmh_report> ndmh_reports
 	{
 		get
 		{
 			return this.GetTable<ndmh_report>();
+=======
+	public System.Data.Linq.Table<ndmh_job_application> ndmh_job_applications
+	{
+		get
+		{
+			return this.GetTable<ndmh_job_application>();
+>>>>>>> master:code/App_Code/ndmhDC.designer.cs
 		}
 	}
 	
@@ -171,7 +205,27 @@ public partial class news_eventDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
+<<<<<<< HEAD:code/App_Code/news_event.designer.cs
 	public System.Data.Linq.Table<ndmh_job_application> ndmh_job_applications
+=======
+	public System.Data.Linq.Table<ndmh_keyword> ndmh_keywords
+	{
+		get
+		{
+			return this.GetTable<ndmh_keyword>();
+		}
+	}
+	
+	public System.Data.Linq.Table<ndmh_product> ndmh_products
+	{
+		get
+		{
+			return this.GetTable<ndmh_product>();
+		}
+	}
+	
+	public System.Data.Linq.Table<ndmh_report> ndmh_reports
+>>>>>>> master:code/App_Code/ndmhDC.designer.cs
 	{
 		get
 		{
@@ -180,252 +234,180 @@ public partial class news_eventDataContext : System.Data.Linq.DataContext
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_contact")]
-public partial class ndmh_contact : INotifyPropertyChanging, INotifyPropertyChanged
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_comments")]
+public partial class ndmh_comment : INotifyPropertyChanging, INotifyPropertyChanged
 {
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private int _c_id;
+	private int _comm_id;
 	
-	private string _c_name;
+	private string _comm_name;
 	
-	private string _c_email;
+	private string _comm_email;
 	
-	private string _c_phone;
+	private string _comm_text;
 	
-	private string _c_purpose;
+	private int _n_id;
 	
-	private System.Nullable<int> _j_id;
-	
-	private System.Nullable<System.DateTime> _c_date;
-	
-	private string _c_message;
-	
-	private EntityRef<ndmh_job> _ndmh_job;
+	private EntityRef<ndmh_event> _ndmh_event;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onc_idChanging(int value);
-    partial void Onc_idChanged();
-    partial void Onc_nameChanging(string value);
-    partial void Onc_nameChanged();
-    partial void Onc_emailChanging(string value);
-    partial void Onc_emailChanged();
-    partial void Onc_phoneChanging(string value);
-    partial void Onc_phoneChanged();
-    partial void Onc_purposeChanging(string value);
-    partial void Onc_purposeChanged();
-    partial void Onj_idChanging(System.Nullable<int> value);
-    partial void Onj_idChanged();
-    partial void Onc_dateChanging(System.Nullable<System.DateTime> value);
-    partial void Onc_dateChanged();
-    partial void Onc_messageChanging(string value);
-    partial void Onc_messageChanged();
+    partial void Oncomm_idChanging(int value);
+    partial void Oncomm_idChanged();
+    partial void Oncomm_nameChanging(string value);
+    partial void Oncomm_nameChanged();
+    partial void Oncomm_emailChanging(string value);
+    partial void Oncomm_emailChanged();
+    partial void Oncomm_textChanging(string value);
+    partial void Oncomm_textChanged();
+    partial void Onn_idChanging(int value);
+    partial void Onn_idChanged();
     #endregion
 	
-	public ndmh_contact()
+	public ndmh_comment()
 	{
-		this._ndmh_job = default(EntityRef<ndmh_job>);
+		this._ndmh_event = default(EntityRef<ndmh_event>);
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int c_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comm_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int comm_id
 	{
 		get
 		{
-			return this._c_id;
+			return this._comm_id;
 		}
 		set
 		{
-			if ((this._c_id != value))
+			if ((this._comm_id != value))
 			{
-				this.Onc_idChanging(value);
+				this.Oncomm_idChanging(value);
 				this.SendPropertyChanging();
-				this._c_id = value;
-				this.SendPropertyChanged("c_id");
-				this.Onc_idChanged();
+				this._comm_id = value;
+				this.SendPropertyChanged("comm_id");
+				this.Oncomm_idChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_name", DbType="VarChar(50)")]
-	public string c_name
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comm_name", DbType="VarChar(50)")]
+	public string comm_name
 	{
 		get
 		{
-			return this._c_name;
+			return this._comm_name;
 		}
 		set
 		{
-			if ((this._c_name != value))
+			if ((this._comm_name != value))
 			{
-				this.Onc_nameChanging(value);
+				this.Oncomm_nameChanging(value);
 				this.SendPropertyChanging();
-				this._c_name = value;
-				this.SendPropertyChanged("c_name");
-				this.Onc_nameChanged();
+				this._comm_name = value;
+				this.SendPropertyChanged("comm_name");
+				this.Oncomm_nameChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-	public string c_email
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comm_email", DbType="VarChar(MAX)")]
+	public string comm_email
 	{
 		get
 		{
-			return this._c_email;
+			return this._comm_email;
 		}
 		set
 		{
-			if ((this._c_email != value))
+			if ((this._comm_email != value))
 			{
-				this.Onc_emailChanging(value);
+				this.Oncomm_emailChanging(value);
 				this.SendPropertyChanging();
-				this._c_email = value;
-				this.SendPropertyChanged("c_email");
-				this.Onc_emailChanged();
+				this._comm_email = value;
+				this.SendPropertyChanged("comm_email");
+				this.Oncomm_emailChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_phone", DbType="NChar(10)")]
-	public string c_phone
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comm_text", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string comm_text
 	{
 		get
 		{
-			return this._c_phone;
+			return this._comm_text;
 		}
 		set
 		{
-			if ((this._c_phone != value))
+			if ((this._comm_text != value))
 			{
-				this.Onc_phoneChanging(value);
+				this.Oncomm_textChanging(value);
 				this.SendPropertyChanging();
-				this._c_phone = value;
-				this.SendPropertyChanged("c_phone");
-				this.Onc_phoneChanged();
+				this._comm_text = value;
+				this.SendPropertyChanged("comm_text");
+				this.Oncomm_textChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_purpose", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-	public string c_purpose
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_id", DbType="Int NOT NULL")]
+	public int n_id
 	{
 		get
 		{
-			return this._c_purpose;
+			return this._n_id;
 		}
 		set
 		{
-			if ((this._c_purpose != value))
+			if ((this._n_id != value))
 			{
-				this.Onc_purposeChanging(value);
-				this.SendPropertyChanging();
-				this._c_purpose = value;
-				this.SendPropertyChanged("c_purpose");
-				this.Onc_purposeChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int")]
-	public System.Nullable<int> j_id
-	{
-		get
-		{
-			return this._j_id;
-		}
-		set
-		{
-			if ((this._j_id != value))
-			{
-				if (this._ndmh_job.HasLoadedOrAssignedValue)
+				if (this._ndmh_event.HasLoadedOrAssignedValue)
 				{
 					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 				}
-				this.Onj_idChanging(value);
+				this.Onn_idChanging(value);
 				this.SendPropertyChanging();
-				this._j_id = value;
-				this.SendPropertyChanged("j_id");
-				this.Onj_idChanged();
+				this._n_id = value;
+				this.SendPropertyChanged("n_id");
+				this.Onn_idChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_date", DbType="Date")]
-	public System.Nullable<System.DateTime> c_date
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_event_ndmh_comment", Storage="_ndmh_event", ThisKey="n_id", OtherKey="n_id", IsForeignKey=true)]
+	public ndmh_event ndmh_event
 	{
 		get
 		{
-			return this._c_date;
+			return this._ndmh_event.Entity;
 		}
 		set
 		{
-			if ((this._c_date != value))
-			{
-				this.Onc_dateChanging(value);
-				this.SendPropertyChanging();
-				this._c_date = value;
-				this.SendPropertyChanged("c_date");
-				this.Onc_dateChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_message", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-	public string c_message
-	{
-		get
-		{
-			return this._c_message;
-		}
-		set
-		{
-			if ((this._c_message != value))
-			{
-				this.Onc_messageChanging(value);
-				this.SendPropertyChanging();
-				this._c_message = value;
-				this.SendPropertyChanged("c_message");
-				this.Onc_messageChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_job_ndmh_contact", Storage="_ndmh_job", ThisKey="j_id", OtherKey="j_id", IsForeignKey=true)]
-	public ndmh_job ndmh_job
-	{
-		get
-		{
-			return this._ndmh_job.Entity;
-		}
-		set
-		{
-			ndmh_job previousValue = this._ndmh_job.Entity;
+			ndmh_event previousValue = this._ndmh_event.Entity;
 			if (((previousValue != value) 
-						|| (this._ndmh_job.HasLoadedOrAssignedValue == false)))
+						|| (this._ndmh_event.HasLoadedOrAssignedValue == false)))
 			{
 				this.SendPropertyChanging();
 				if ((previousValue != null))
 				{
-					this._ndmh_job.Entity = null;
-					previousValue.ndmh_contacts.Remove(this);
+					this._ndmh_event.Entity = null;
+					previousValue.ndmh_comments.Remove(this);
 				}
-				this._ndmh_job.Entity = value;
+				this._ndmh_event.Entity = value;
 				if ((value != null))
 				{
-					value.ndmh_contacts.Add(this);
-					this._j_id = value.j_id;
+					value.ndmh_comments.Add(this);
+					this._n_id = value.n_id;
 				}
 				else
 				{
-					this._j_id = default(Nullable<int>);
+					this._n_id = default(int);
 				}
-				this.SendPropertyChanged("ndmh_job");
+				this.SendPropertyChanged("ndmh_event");
 			}
 		}
 	}
@@ -706,6 +688,277 @@ public partial class ndmh_staff_listing : INotifyPropertyChanging, INotifyProper
 	{
 		this.SendPropertyChanging();
 		entity.ndmh_staff_listing = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_contact")]
+public partial class ndmh_contact : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _c_id;
+	
+	private string _c_name;
+	
+	private string _c_email;
+	
+	private string _c_phone;
+	
+	private string _c_purpose;
+	
+	private System.Nullable<int> _j_id;
+	
+	private System.Nullable<System.DateTime> _c_date;
+	
+	private string _c_message;
+	
+	private EntityRef<ndmh_job> _ndmh_job;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onc_idChanging(int value);
+    partial void Onc_idChanged();
+    partial void Onc_nameChanging(string value);
+    partial void Onc_nameChanged();
+    partial void Onc_emailChanging(string value);
+    partial void Onc_emailChanged();
+    partial void Onc_phoneChanging(string value);
+    partial void Onc_phoneChanged();
+    partial void Onc_purposeChanging(string value);
+    partial void Onc_purposeChanged();
+    partial void Onj_idChanging(System.Nullable<int> value);
+    partial void Onj_idChanged();
+    partial void Onc_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Onc_dateChanged();
+    partial void Onc_messageChanging(string value);
+    partial void Onc_messageChanged();
+    #endregion
+	
+	public ndmh_contact()
+	{
+		this._ndmh_job = default(EntityRef<ndmh_job>);
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int c_id
+	{
+		get
+		{
+			return this._c_id;
+		}
+		set
+		{
+			if ((this._c_id != value))
+			{
+				this.Onc_idChanging(value);
+				this.SendPropertyChanging();
+				this._c_id = value;
+				this.SendPropertyChanged("c_id");
+				this.Onc_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_name", DbType="VarChar(50)")]
+	public string c_name
+	{
+		get
+		{
+			return this._c_name;
+		}
+		set
+		{
+			if ((this._c_name != value))
+			{
+				this.Onc_nameChanging(value);
+				this.SendPropertyChanging();
+				this._c_name = value;
+				this.SendPropertyChanged("c_name");
+				this.Onc_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string c_email
+	{
+		get
+		{
+			return this._c_email;
+		}
+		set
+		{
+			if ((this._c_email != value))
+			{
+				this.Onc_emailChanging(value);
+				this.SendPropertyChanging();
+				this._c_email = value;
+				this.SendPropertyChanged("c_email");
+				this.Onc_emailChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_phone", DbType="NChar(10)")]
+	public string c_phone
+	{
+		get
+		{
+			return this._c_phone;
+		}
+		set
+		{
+			if ((this._c_phone != value))
+			{
+				this.Onc_phoneChanging(value);
+				this.SendPropertyChanging();
+				this._c_phone = value;
+				this.SendPropertyChanged("c_phone");
+				this.Onc_phoneChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_purpose", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string c_purpose
+	{
+		get
+		{
+			return this._c_purpose;
+		}
+		set
+		{
+			if ((this._c_purpose != value))
+			{
+				this.Onc_purposeChanging(value);
+				this.SendPropertyChanging();
+				this._c_purpose = value;
+				this.SendPropertyChanged("c_purpose");
+				this.Onc_purposeChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int")]
+	public System.Nullable<int> j_id
+	{
+		get
+		{
+			return this._j_id;
+		}
+		set
+		{
+			if ((this._j_id != value))
+			{
+				if (this._ndmh_job.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onj_idChanging(value);
+				this.SendPropertyChanging();
+				this._j_id = value;
+				this.SendPropertyChanged("j_id");
+				this.Onj_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_date", DbType="Date")]
+	public System.Nullable<System.DateTime> c_date
+	{
+		get
+		{
+			return this._c_date;
+		}
+		set
+		{
+			if ((this._c_date != value))
+			{
+				this.Onc_dateChanging(value);
+				this.SendPropertyChanging();
+				this._c_date = value;
+				this.SendPropertyChanged("c_date");
+				this.Onc_dateChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c_message", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string c_message
+	{
+		get
+		{
+			return this._c_message;
+		}
+		set
+		{
+			if ((this._c_message != value))
+			{
+				this.Onc_messageChanging(value);
+				this.SendPropertyChanging();
+				this._c_message = value;
+				this.SendPropertyChanged("c_message");
+				this.Onc_messageChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_job_ndmh_contact", Storage="_ndmh_job", ThisKey="j_id", OtherKey="j_id", IsForeignKey=true)]
+	public ndmh_job ndmh_job
+	{
+		get
+		{
+			return this._ndmh_job.Entity;
+		}
+		set
+		{
+			ndmh_job previousValue = this._ndmh_job.Entity;
+			if (((previousValue != value) 
+						|| (this._ndmh_job.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._ndmh_job.Entity = null;
+					previousValue.ndmh_contacts.Remove(this);
+				}
+				this._ndmh_job.Entity = value;
+				if ((value != null))
+				{
+					value.ndmh_contacts.Add(this);
+					this._j_id = value.j_id;
+				}
+				else
+				{
+					this._j_id = default(Nullable<int>);
+				}
+				this.SendPropertyChanged("ndmh_job");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
 	}
 }
 
@@ -1302,7 +1555,7 @@ public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChange
 	
 	private string _n_description;
 	
-	private System.Data.Linq.Binary _n_image;
+	private string _n_image;
 	
 	private System.Nullable<System.DateTime> _n_expires;
 	
@@ -1311,6 +1564,8 @@ public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChange
 	private System.Nullable<int> _n_contact_id;
 	
 	private string _n_link;
+	
+	private EntitySet<ndmh_comment> _ndmh_comments;
 	
 	private EntityRef<ndmh_staff_listing> _ndmh_staff_listing;
 	
@@ -1324,7 +1579,7 @@ public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChange
     partial void Onn_titleChanged();
     partial void Onn_descriptionChanging(string value);
     partial void Onn_descriptionChanged();
-    partial void Onn_imageChanging(System.Data.Linq.Binary value);
+    partial void Onn_imageChanging(string value);
     partial void Onn_imageChanged();
     partial void Onn_expiresChanging(System.Nullable<System.DateTime> value);
     partial void Onn_expiresChanged();
@@ -1338,6 +1593,7 @@ public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChange
 	
 	public ndmh_event()
 	{
+		this._ndmh_comments = new EntitySet<ndmh_comment>(new Action<ndmh_comment>(this.attach_ndmh_comments), new Action<ndmh_comment>(this.detach_ndmh_comments));
 		this._ndmh_staff_listing = default(EntityRef<ndmh_staff_listing>);
 		OnCreated();
 	}
@@ -1402,8 +1658,8 @@ public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChange
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-	public System.Data.Linq.Binary n_image
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_image", DbType="VarChar(MAX)")]
+	public string n_image
 	{
 		get
 		{
@@ -1422,7 +1678,7 @@ public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChange
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_expires", DbType="Date")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_expires", DbType="DateTime")]
 	public System.Nullable<System.DateTime> n_expires
 	{
 		get
@@ -1442,7 +1698,7 @@ public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChange
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_event_date", DbType="Date")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_event_date", DbType="DateTime")]
 	public System.Nullable<System.DateTime> n_event_date
 	{
 		get
@@ -1506,6 +1762,19 @@ public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChange
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_event_ndmh_comment", Storage="_ndmh_comments", ThisKey="n_id", OtherKey="n_id")]
+	public EntitySet<ndmh_comment> ndmh_comments
+	{
+		get
+		{
+			return this._ndmh_comments;
+		}
+		set
+		{
+			this._ndmh_comments.Assign(value);
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_staff_listing_ndmh_event", Storage="_ndmh_staff_listing", ThisKey="n_contact_id", OtherKey="sl_id", IsForeignKey=true)]
 	public ndmh_staff_listing ndmh_staff_listing
 	{
@@ -1558,6 +1827,18 @@ public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChange
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
+	}
+	
+	private void attach_ndmh_comments(ndmh_comment entity)
+	{
+		this.SendPropertyChanging();
+		entity.ndmh_event = this;
+	}
+	
+	private void detach_ndmh_comments(ndmh_comment entity)
+	{
+		this.SendPropertyChanging();
+		entity.ndmh_event = null;
 	}
 }
 
@@ -1800,7 +2081,7 @@ public partial class ndmh_general_page : INotifyPropertyChanging, INotifyPropert
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gp_content", DbType="NVarChar(MAX)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gp_content", DbType="Text", UpdateCheck=UpdateCheck.Never)]
 	public string gp_content
 	{
 		get
@@ -1860,7 +2141,7 @@ public partial class ndmh_general_page : INotifyPropertyChanging, INotifyPropert
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gp_active", DbType="VarChar(3)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gp_active", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
 	public string gp_active
 	{
 		get
@@ -1876,6 +2157,389 @@ public partial class ndmh_general_page : INotifyPropertyChanging, INotifyPropert
 				this._gp_active = value;
 				this.SendPropertyChanged("gp_active");
 				this.Ongp_activeChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_job_applications")]
+public partial class ndmh_job_application
+{
+	
+	private int _j_application_id;
+	
+	private string _j_first_name;
+	
+	private string _j_last_name;
+	
+	private string _j_address;
+	
+	private string _j_city;
+	
+	private string _j_province;
+	
+	private string _j_postal;
+	
+	private string _j_phone;
+	
+	private string _j_alt_phone;
+	
+	private string _j_email;
+	
+	private char _j_was_employee;
+	
+	private char _j_is_eligible;
+	
+	private char _j_of_age;
+	
+	private char _j_was_convicted;
+	
+	private int _j_id;
+	
+	private string _j_resume;
+	
+	public ndmh_job_application()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_application_id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+	public int j_application_id
+	{
+		get
+		{
+			return this._j_application_id;
+		}
+		set
+		{
+			if ((this._j_application_id != value))
+			{
+				this._j_application_id = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_first_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string j_first_name
+	{
+		get
+		{
+			return this._j_first_name;
+		}
+		set
+		{
+			if ((this._j_first_name != value))
+			{
+				this._j_first_name = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_last_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string j_last_name
+	{
+		get
+		{
+			return this._j_last_name;
+		}
+		set
+		{
+			if ((this._j_last_name != value))
+			{
+				this._j_last_name = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_address", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string j_address
+	{
+		get
+		{
+			return this._j_address;
+		}
+		set
+		{
+			if ((this._j_address != value))
+			{
+				this._j_address = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_city", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string j_city
+	{
+		get
+		{
+			return this._j_city;
+		}
+		set
+		{
+			if ((this._j_city != value))
+			{
+				this._j_city = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_province", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string j_province
+	{
+		get
+		{
+			return this._j_province;
+		}
+		set
+		{
+			if ((this._j_province != value))
+			{
+				this._j_province = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_postal", DbType="Char(6) NOT NULL", CanBeNull=false)]
+	public string j_postal
+	{
+		get
+		{
+			return this._j_postal;
+		}
+		set
+		{
+			if ((this._j_postal != value))
+			{
+				this._j_postal = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_phone", DbType="Char(10) NOT NULL", CanBeNull=false)]
+	public string j_phone
+	{
+		get
+		{
+			return this._j_phone;
+		}
+		set
+		{
+			if ((this._j_phone != value))
+			{
+				this._j_phone = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_alt_phone", DbType="Char(10)")]
+	public string j_alt_phone
+	{
+		get
+		{
+			return this._j_alt_phone;
+		}
+		set
+		{
+			if ((this._j_alt_phone != value))
+			{
+				this._j_alt_phone = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string j_email
+	{
+		get
+		{
+			return this._j_email;
+		}
+		set
+		{
+			if ((this._j_email != value))
+			{
+				this._j_email = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_was_employee", DbType="Char(1) NOT NULL")]
+	public char j_was_employee
+	{
+		get
+		{
+			return this._j_was_employee;
+		}
+		set
+		{
+			if ((this._j_was_employee != value))
+			{
+				this._j_was_employee = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_is_eligible", DbType="Char(1) NOT NULL")]
+	public char j_is_eligible
+	{
+		get
+		{
+			return this._j_is_eligible;
+		}
+		set
+		{
+			if ((this._j_is_eligible != value))
+			{
+				this._j_is_eligible = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_of_age", DbType="Char(1) NOT NULL")]
+	public char j_of_age
+	{
+		get
+		{
+			return this._j_of_age;
+		}
+		set
+		{
+			if ((this._j_of_age != value))
+			{
+				this._j_of_age = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_was_convicted", DbType="Char(1) NOT NULL")]
+	public char j_was_convicted
+	{
+		get
+		{
+			return this._j_was_convicted;
+		}
+		set
+		{
+			if ((this._j_was_convicted != value))
+			{
+				this._j_was_convicted = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_id", DbType="Int NOT NULL")]
+	public int j_id
+	{
+		get
+		{
+			return this._j_id;
+		}
+		set
+		{
+			if ((this._j_id != value))
+			{
+				this._j_id = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_resume", DbType="VarChar(50)")]
+	public string j_resume
+	{
+		get
+		{
+			return this._j_resume;
+		}
+		set
+		{
+			if ((this._j_resume != value))
+			{
+				this._j_resume = value;
+			}
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_job_category")]
+public partial class ndmh_job_category : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _j_category_id;
+	
+	private string _j_category_name;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onj_category_idChanging(int value);
+    partial void Onj_category_idChanged();
+    partial void Onj_category_nameChanging(string value);
+    partial void Onj_category_nameChanged();
+    #endregion
+	
+	public ndmh_job_category()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_category_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int j_category_id
+	{
+		get
+		{
+			return this._j_category_id;
+		}
+		set
+		{
+			if ((this._j_category_id != value))
+			{
+				this.Onj_category_idChanging(value);
+				this.SendPropertyChanging();
+				this._j_category_id = value;
+				this.SendPropertyChanged("j_category_id");
+				this.Onj_category_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_j_category_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string j_category_name
+	{
+		get
+		{
+			return this._j_category_name;
+		}
+		set
+		{
+			if ((this._j_category_name != value))
+			{
+				this.Onj_category_nameChanging(value);
+				this.SendPropertyChanging();
+				this._j_category_name = value;
+				this.SendPropertyChanged("j_category_name");
+				this.Onj_category_nameChanged();
 			}
 		}
 	}
@@ -2403,8 +3067,305 @@ public partial class ndmh_job : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
+<<<<<<< HEAD:code/App_Code/news_event.designer.cs
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_job_applications")]
 public partial class ndmh_job_application
+=======
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_keywords")]
+public partial class ndmh_keyword : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _keyword_id;
+	
+	private System.Nullable<int> _page_id;
+	
+	private string _page_title;
+	
+	private string _keywords;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onkeyword_idChanging(int value);
+    partial void Onkeyword_idChanged();
+    partial void Onpage_idChanging(System.Nullable<int> value);
+    partial void Onpage_idChanged();
+    partial void Onpage_titleChanging(string value);
+    partial void Onpage_titleChanged();
+    partial void OnkeywordsChanging(string value);
+    partial void OnkeywordsChanged();
+    #endregion
+	
+	public ndmh_keyword()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_keyword_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int keyword_id
+	{
+		get
+		{
+			return this._keyword_id;
+		}
+		set
+		{
+			if ((this._keyword_id != value))
+			{
+				this.Onkeyword_idChanging(value);
+				this.SendPropertyChanging();
+				this._keyword_id = value;
+				this.SendPropertyChanged("keyword_id");
+				this.Onkeyword_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_id", DbType="Int")]
+	public System.Nullable<int> page_id
+	{
+		get
+		{
+			return this._page_id;
+		}
+		set
+		{
+			if ((this._page_id != value))
+			{
+				this.Onpage_idChanging(value);
+				this.SendPropertyChanging();
+				this._page_id = value;
+				this.SendPropertyChanged("page_id");
+				this.Onpage_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_title", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string page_title
+	{
+		get
+		{
+			return this._page_title;
+		}
+		set
+		{
+			if ((this._page_title != value))
+			{
+				this.Onpage_titleChanging(value);
+				this.SendPropertyChanging();
+				this._page_title = value;
+				this.SendPropertyChanged("page_title");
+				this.Onpage_titleChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_keywords", DbType="VarChar(MAX)")]
+	public string keywords
+	{
+		get
+		{
+			return this._keywords;
+		}
+		set
+		{
+			if ((this._keywords != value))
+			{
+				this.OnkeywordsChanging(value);
+				this.SendPropertyChanging();
+				this._keywords = value;
+				this.SendPropertyChanged("keywords");
+				this.OnkeywordsChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_products")]
+public partial class ndmh_product : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _p_id;
+	
+	private string _p_name;
+	
+	private string _p_desc;
+	
+	private string _p_image;
+	
+	private System.Nullable<decimal> _p_price;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onp_idChanging(int value);
+    partial void Onp_idChanged();
+    partial void Onp_nameChanging(string value);
+    partial void Onp_nameChanged();
+    partial void Onp_descChanging(string value);
+    partial void Onp_descChanged();
+    partial void Onp_imageChanging(string value);
+    partial void Onp_imageChanged();
+    partial void Onp_priceChanging(System.Nullable<decimal> value);
+    partial void Onp_priceChanged();
+    #endregion
+	
+	public ndmh_product()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int p_id
+	{
+		get
+		{
+			return this._p_id;
+		}
+		set
+		{
+			if ((this._p_id != value))
+			{
+				this.Onp_idChanging(value);
+				this.SendPropertyChanging();
+				this._p_id = value;
+				this.SendPropertyChanged("p_id");
+				this.Onp_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p_name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+	public string p_name
+	{
+		get
+		{
+			return this._p_name;
+		}
+		set
+		{
+			if ((this._p_name != value))
+			{
+				this.Onp_nameChanging(value);
+				this.SendPropertyChanging();
+				this._p_name = value;
+				this.SendPropertyChanged("p_name");
+				this.Onp_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p_desc", DbType="VarChar(MAX)")]
+	public string p_desc
+	{
+		get
+		{
+			return this._p_desc;
+		}
+		set
+		{
+			if ((this._p_desc != value))
+			{
+				this.Onp_descChanging(value);
+				this.SendPropertyChanging();
+				this._p_desc = value;
+				this.SendPropertyChanged("p_desc");
+				this.Onp_descChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p_image", DbType="VarChar(MAX)")]
+	public string p_image
+	{
+		get
+		{
+			return this._p_image;
+		}
+		set
+		{
+			if ((this._p_image != value))
+			{
+				this.Onp_imageChanging(value);
+				this.SendPropertyChanging();
+				this._p_image = value;
+				this.SendPropertyChanged("p_image");
+				this.Onp_imageChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p_price", DbType="Decimal(7,2)")]
+	public System.Nullable<decimal> p_price
+	{
+		get
+		{
+			return this._p_price;
+		}
+		set
+		{
+			if ((this._p_price != value))
+			{
+				this.Onp_priceChanging(value);
+				this.SendPropertyChanging();
+				this._p_price = value;
+				this.SendPropertyChanged("p_price");
+				this.Onp_priceChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_reports")]
+public partial class ndmh_report : INotifyPropertyChanging, INotifyPropertyChanged
+>>>>>>> master:code/App_Code/ndmhDC.designer.cs
 {
 	
 	private int _j_application_id;

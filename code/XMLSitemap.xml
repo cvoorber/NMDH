@@ -9,36 +9,80 @@
     <lastmod>2013-03-30</lastmod>
     <title>Home</title>
     <parent>home</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
   </url>
   <url>
     <loc>~/navigation/about.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>About Us</title>
     <parent>home</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
+    <url>
+      <loc>~/navigation/about.aspx</loc>
+      <lastmod>2013-03-30</lastmod>
+      <title>Our Guiding Principals</title>
+      <parent>About Us</parent>
+      <sourcetable>ndmh_general_pages</sourcetable>
+      <sourceid>2</sourceid>
+    </url>
+    <url>
+      <loc>~/navigation/about.aspx</loc>
+      <lastmod>2013-03-30</lastmod>
+      <title>Board of Directors</title>
+      <parent>About Us</parent>
+      <sourcetable>ndmh_general_pages</sourcetable>
+      <sourceid>3</sourceid>
+    </url>
   </url>
   <url>
     <loc>~/navigation/services.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Services</title>
     <parent>home</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
+    <url>
+      <loc>~/navigation/services.aspx</loc>
+      <lastmod>2013-03-30</lastmod>
+      <title>Alternate Level of Care</title>
+      <parent>services</parent>
+      <sourcetable></sourcetable>
+      <sourceid>0</sourceid>
+    </url>
+    <url>
+      <loc>~/navigation/services.aspx</loc>
+      <lastmod>2013-03-30</lastmod>
+      <title>Medical Day Care</title>
+      <parent>services</parent>
+      <sourcetable></sourcetable>
+      <sourceid>0</sourceid>
+    </url>
   </url>
   <url>
     <loc>~/navigation/visitors.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Visitors</title>
     <parent>home</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
   </url>
   <url>
     <loc>~/navigation/donate.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Donate</title>
     <parent>home</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
   </url>
   <url>
     <loc>~/navigation/policies.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Policies</title>
     <parent>home</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
     <url>
       <loc>~/navigation/policies.aspx</loc>
       <lastmod>2013-03-30</lastmod>
@@ -61,41 +105,55 @@
     <lastmod>2013-03-30</lastmod>
     <title>Map</title>
     <parent>feature</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
   </url>
   <url>
     <loc>~/navigation/hours.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Hours</title>
     <parent>feature</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
   </url>
   <url>
     <loc>~/navigation/erwait.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>ER Wait</title>
     <parent>feature</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
   </url>
   <url>
     <loc>~/navigation/newsblog.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>News</title>
     <parent>feature</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
   </url>
   <url>
     <loc>~/XMLSitemap.xml</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Sitemap</title>
     <parent>footer</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
   </url>
   <url>
     <loc>~/navigation/terms.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Terms of Use</title>
     <parent>footer</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
   </url>
   <url>
     <loc>~/navigation/legal.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Legal</title>
     <parent>footer</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
   </url>
 </urlset>

@@ -11,8 +11,8 @@ public class LinqClass<T> where T: class
 {
 	//creating an instance of the Linq object
 	//accessible by all functions in file
-     
-    news_eventDataContext dcObj = new news_eventDataContext();
+
+    ndmhDCDataContext dcObj = new ndmhDCDataContext();
     public IQueryable<T> getItems()
     {
        var allItems = dcObj.GetTable<T>().Select(x => x);
@@ -23,7 +23,7 @@ public class LinqClass<T> where T: class
     public IQueryable<T> getResultByColumn(Expression<Func<T,bool>> predicate)
     {
 		//select all from products where id = _id
-        news_eventDataContext dcObj = new news_eventDataContext();
+        ndmhDCDataContext dcObj = new ndmhDCDataContext();
 
         var item = dcObj.GetTable<T>().Where(predicate).Select(x=>x);
         return item;
@@ -33,7 +33,7 @@ public class LinqClass<T> where T: class
 
     public static bool Insert<T>(T insertItem) where T: class
     {
-    	news_eventDataContext dcObj = new news_eventDataContext();
+        ndmhDCDataContext dcObj = new ndmhDCDataContext();
     		
     		//automatic opening and closing of Linq object connection
         using (dcObj)
@@ -47,7 +47,7 @@ public class LinqClass<T> where T: class
     public static bool Update<T>(T updateItem) where T: class
     {
 		//creating own copy of Linq object
-        news_eventDataContext dcObj = new news_eventDataContext();
+        ndmhDCDataContext dcObj = new ndmhDCDataContext();
 		
 		//automatic opening and closing of Linq object connection
         using (dcObj)
@@ -60,7 +60,7 @@ public class LinqClass<T> where T: class
 
     public static bool Delete(Expression<Func<T,bool>> predicate)
     {
-        news_eventDataContext dcObj = new news_eventDataContext();
+        ndmhDCDataContext dcObj = new ndmhDCDataContext();
         using(dcObj)
         {
             var delObj = dcObj.GetTable<T>().Where<T>(predicate).Single();
