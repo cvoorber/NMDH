@@ -10,10 +10,10 @@
         <br />
         <asp:Label ID="lbl_emailI" runat="server" Text="Email:" AssociatedControlID="txt_emailI" Font-Bold="true" />
         <asp:TextBox ID="txt_emailI" runat="server" />
-        <br />
+        <br /><br />
         <asp:Label ID="lbl_commentI" runat="server" Text="Comment:" AssociatedControlID="txt_commentI" Font-Bold="true" />
-        <asp:TextBox ID="txt_commentI" runat="server" TextMode="MultiLine" Width="230" Height="100" MaxLength="500" />
-        <br />
+        <asp:TextBox ID="txt_commentI" runat="server" TextMode="MultiLine" Width="200" Height="100" MaxLength="500" />
+        <br /><br />
         <asp:HiddenField ID="hdf_id" runat="server" Value='<%#Eval("n_id") %>' />
         <asp:Button ID="btn_submit" runat="server" Text="Submit Comment" OnClick="subInsert" Font-Bold="true" />
         <br /><br />
