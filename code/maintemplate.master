@@ -11,6 +11,8 @@
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
       <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
 <![endif]-->
+    <script type="text/javascript" language="javascript" src="scripts/jquery-ui-1.10.2.custom/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" language="javascript" src="scripts/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
 </head>
 <body>
     

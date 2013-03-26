@@ -251,8 +251,21 @@ h1, .h1
 text-align:center;
 }
 
+/* Added by Chris for Giftshop -- March 25, 2013 */
 
-
+#shoppingCart {
+height:200px;
+width:200px;
+padding:70px 20px 0 17px;
+margin:0px;
+position:fixed;
+overflow:auto;
+background-image:url("../../img/shopping_cart.png");
+background-size:200px;
+background-position:center;
+background-repeat:no-repeat;
+border:1px solid gray;
+}
 
 
 
