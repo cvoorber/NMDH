@@ -251,15 +251,39 @@ h1, .h1
 text-align:center;
 }
 
+/* Added by Chris for Giftshop -- March 25, 2013 */
 
+#shoppingCart {
+height:200px;
+width:200px;
+padding:70px 20px 0 17px;
+margin:0px;
+position:fixed;
+overflow:auto;
+background-image:url("../../img/shopping_cart.png");
+background-size:200px;
+background-position:center;
+background-repeat:no-repeat;
+border:1px solid gray;
+}
 
+/* - - Added by Chris for NewsBlog March 26/13 - - */
 
+.insertComment {
+border:1px solid gray;
+background-color:#B8D9BE;
+padding-top:10px;
+padding-left:10px;
+margin-bottom:20px;
+}
 
-
-
-
-
-
+.userComment {
+border:1px solid #CCC;
+font-size:15px;
+line-height:1.2;
+margin-top:15px;
+padding:10px;
+}
 
 
 
