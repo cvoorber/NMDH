@@ -21,14 +21,14 @@
         </asp:Menu>
         
         <asp:Panel ID="pnl_cat" runat="server" Visible="false">
-            
+            categories panel
         </asp:Panel>    
         
         <asp:Panel ID="pnl_posts" runat="server" Visible="false">
-            
+            JobPosts panel
         </asp:Panel>   
         <asp:Panel ID="pnl_apps" runat="server" Visible="false">
-            
+            applications panel
         </asp:Panel>   
     </div>
     </form>
