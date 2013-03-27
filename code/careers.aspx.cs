@@ -33,23 +33,25 @@ public partial class careers : System.Web.UI.Page
         }
     }
 
+    //show individual jobposts
     protected void subShowPost(object sender, EventArgs e)
     {
         LinkButton btn = (LinkButton)sender;
         int jobID = Int32.Parse(btn.CommandArgument);
-        var allJobPostsByID = jobObj.getResultByColumn(m => m.j_id == jobID);
-        rpt_post.DataSource = allJobPostsByID.Where(x=>x.j_expires > DateTime.Now.Date);
+        rpt_post.DataSource = jobObj.getResultByColumn(m => m.j_id == jobID);
         rpt_post.DataBind();
 
         showPanel(pnl_viewpost);
     }
 
+    //get jobs by category
     protected void subGetJobs(object sender, BulletedListEventArgs b)
     {
         var item = bl_cat.Items[b.Index];
         int catVal = Int32.Parse(item.Value);
         lbl_jCat.Text = item.Text + " Job Posts";
-        rpt_joblist.DataSource = jobObj.getResultByColumn(m => m.j_category_id == catVal); 
+        var jobsByCategory = jobObj.getResultByColumn(m => m.j_category_id == catVal);
+        rpt_joblist.DataSource = jobsByCategory.Where(x=>x.j_expires > DateTime.Now.Date);
         rpt_joblist.DataBind();
         showPanel(pnl_jobs);
     }
