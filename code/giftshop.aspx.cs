@@ -23,4 +23,21 @@ public partial class giftshop : System.Web.UI.Page
         listProducts.DataBind();
     }
 
+    protected void btnAddShoes_Click(object sender, EventArgs e) {  
+        // Add product 1 to the shopping cart  
+        cartClass.Instance.AddItem(1);  
+  
+        // Redirect the user to view their shopping cart  
+        Response.Redirect("ViewCart.aspx");  
+    }  
+  
+    protected void btnAddShirt_Click(object sender, EventArgs e) {  
+        cartClass.Instance.AddItem(2);  
+        Response.Redirect("ViewCart.aspx");  
+    }
+
+    protected void btnAddPants_Click(object sender, EventArgs e) {
+        cartClass.Instance.AddItem(3);
+        Response.Redirect("ViewCart.aspx");
+    }
 }

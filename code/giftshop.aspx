@@ -3,6 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
     <asp:Label ID="lblCartHeading" runat="server" Text="Transactions and cart info display here" />
     <div id="shoppingCart">
+        <div>Shoes - <asp:LinkButton runat="server" ID="btnAddShirt" OnClick="btnAddShoes_Click">Add To Cart</asp:LinkButton></div>  
+  
+        <div>Shirt - <asp:LinkButton runat="server" ID="btnAddShorts" OnClick="btnAddShirt_Click">Add To Cart</asp:LinkButton></div>  
+        <div>Pants - <asp:LinkButton runat="server" ID="btnAddShoes" OnClick="btnAddPants_Click">Add To Cart</asp:LinkButton></div>
     </div>
 </asp:Content>
 

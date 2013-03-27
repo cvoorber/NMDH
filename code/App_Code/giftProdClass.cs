@@ -6,37 +6,27 @@ using System.Web.Configuration;
 
 public class giftProdClass
 {
-    private static readonly string _connectionString;
-    static giftProdClass()
-    {
-        _connectionString = WebConfigurationManager.ConnectionStrings["cvoorberConnectionString1"].ConnectionString;
-    }
+    public int Id { get; set; }
+    public decimal Price { get; set; }
+    public string Description { get; set; }
 
-    public int proID;
-    private int _proID
+    public giftProdClass(int id)  
     {
-        get { return _proID; }
-        set { _proID = value; }
-    }
+        this.Id = id;  
+        switch (id) {  
+            case 1:
+                this.Price = 19.95m;
+                this.Description = "Shoes";  
+                break;  
+            case 2:
+                this.Price = 9.95m;
+                this.Description = "Shirt";  
+                break;  
+            case 3:
+                this.Price = 14.95m;
+                this.Description = "Pants";  
+                break;  
+        }  
+    }  
 
-    public string proName;
-    private string _proName
-    {
-        get { return _proName; }
-        set { _proName = value; }
-    }
-
-    public int proDesc;
-    private int _proDesc
-    {
-        get { return _proDesc; }
-        set { _proDesc = value; }
-    }
-
-    public int proPrice;
-    private int _proPrice
-    {
-        get { return _proPrice; }
-        set { _proPrice = value; }
-    }
 }
