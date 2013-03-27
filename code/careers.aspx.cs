@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
 
+using System.Text.RegularExpressions; //to use regular expressions
+
 public partial class careers : System.Web.UI.Page
 {
     LinqClass<ndmh_job_category> catObj = new LinqClass<ndmh_job_category>();
@@ -93,8 +95,42 @@ public partial class careers : System.Web.UI.Page
         }
     }
 
+    protected void subDDLValidate(object sender, ServerValidateEventArgs e)
+    {
+        if (ddl_prov.SelectedValue == "")
+            e.IsValid = false;
+    }
+
+    protected void subValidPhone(object sender, ServerValidateEventArgs e)
+    {
+        if(!Regex.IsMatch(txt_altphone.Text,"^[2-9]\\d{2}$(\\s|-)?\\d{3}(\\s|-)?\\d{4}$"))
+            e.IsValid = false;
+    }
+
     protected void subSubmit(object sender, EventArgs e)
     {
+        LinqClass<ndmh_job_application> jobDB = new LinqClass<ndmh_job_application>();
+        ndmh_job_application jobObj = new ndmh_job_application();
+
+        jobObj.j_first_name = txt_fname.Text;
+        jobObj.j_last_name = txt_lname.Text;
+        jobObj.j_address = txt_address.Text;
+        jobObj.j_city = txt_city.Text;
+        jobObj.j_province = ddl_prov.SelectedValue;
+        jobObj.j_postal = txt_pcode.Text;
+        jobObj.j_phone = Regex.Replace(txt_phone.Text,"^(\\s|-)$","");
+        jobObj.j_alt_phone = (txt_altphone.Text == "" ? txt_altphone.Text : Regex.Replace(txt_altphone.Text, "^(\\s|-)$", ""));
+        jobObj.j_email = txt_email.Text;
+        jobObj.j_was_employee = char.Parse(rbl_cur_emp.SelectedValue);
+        jobObj.j_is_eligible = char.Parse(rbl_elig.SelectedValue);
+        jobObj.j_of_age = char.Parse(rbl_legal.SelectedValue);
+        jobObj.j_was_convicted = char.Parse(rbl_convict.SelectedValue);
+        jobObj.j_resume = lbl_status.Text;
+        jobObj.j_id = Int32.Parse(lbl_jID.Text);
+
+        if (!jobDB.Insert(jobObj))
+            throw new Exception("Failed to apply for job.");
+
 
     }
 }

@@ -31,7 +31,7 @@ public class LinqClass<T> where T: class
 
 
 
-    public static bool Insert<T>(T insertItem) where T: class
+    public bool Insert(T insertItem)
     {
         ndmhDCDataContext dcObj = new ndmhDCDataContext();
     		
@@ -44,7 +44,7 @@ public class LinqClass<T> where T: class
         return true;
     }
 
-    public static bool Update<T>(T updateItem) where T: class
+    public bool Update(T updateItem)
     {
 		//creating own copy of Linq object
         ndmhDCDataContext dcObj = new ndmhDCDataContext();
@@ -58,7 +58,7 @@ public class LinqClass<T> where T: class
         return true;
     }
 
-    public static bool Delete(Expression<Func<T,bool>> predicate)
+    public bool Delete(Expression<Func<T,bool>> predicate)
     {
         ndmhDCDataContext dcObj = new ndmhDCDataContext();
         using(dcObj)
