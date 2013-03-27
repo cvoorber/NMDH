@@ -37,7 +37,8 @@ public partial class careers : System.Web.UI.Page
     {
         LinkButton btn = (LinkButton)sender;
         int jobID = Int32.Parse(btn.CommandArgument);
-        rpt_post.DataSource = jobObj.getResultByColumn(m => m.j_id == jobID);
+        var allJobPostsByID = jobObj.getResultByColumn(m => m.j_id == jobID);
+        rpt_post.DataSource = allJobPostsByID.Where(x=>x.j_expires > DateTime.Now.Date);
         rpt_post.DataBind();
 
         showPanel(pnl_viewpost);
@@ -59,6 +60,7 @@ public partial class careers : System.Web.UI.Page
         pnl_viewpost.Visible = false;
         pnl_form.Visible = false;
         pnl_jobs.Visible = false;
+        pnl_thankyou.Visible = false;
         p.Visible = true;
     }
 
@@ -70,7 +72,7 @@ public partial class careers : System.Web.UI.Page
         hdf.Value = btn.CommandArgument;
 
         pnl_form.Controls.Add(hdf);
-        lbl_jID.Text = "Job ID: " + hdf.Value + "<br />";
+        lbl_jID.Text = hdf.Value;
         showPanel(pnl_form);
         
     }
@@ -103,7 +105,7 @@ public partial class careers : System.Web.UI.Page
 
     protected void subValidPhone(object sender, ServerValidateEventArgs e)
     {
-        if(!Regex.IsMatch(txt_altphone.Text,"^[2-9]\\d{2}$(\\s|-)?\\d{3}(\\s|-)?\\d{4}$"))
+        if(!Regex.IsMatch(txt_altphone.Text,"^[2-9]\\d{2}(\\s|-)?\\d{3}(\\s|-)?\\d{4}$"))
             e.IsValid = false;
     }
 
@@ -125,12 +127,29 @@ public partial class careers : System.Web.UI.Page
         jobObj.j_is_eligible = char.Parse(rbl_elig.SelectedValue);
         jobObj.j_of_age = char.Parse(rbl_legal.SelectedValue);
         jobObj.j_was_convicted = char.Parse(rbl_convict.SelectedValue);
-        jobObj.j_resume = lbl_status.Text;
+        
         jobObj.j_id = Int32.Parse(lbl_jID.Text);
+
+        string newfile = jobObj.j_first_name + "_" + jobObj.j_last_name + "_" + jobObj.j_id.ToString() + Path.GetExtension(lbl_status.Text);
+        jobObj.j_resume = newfile;
+
+        //renaming file
+        File.Move(
+                Path.Combine(Server.MapPath("~/resumes/"), lbl_status.Text),
+                Path.Combine(Server.MapPath("~/resumes/"), newfile)
+                );
 
         if (!jobDB.Insert(jobObj))
             throw new Exception("Failed to apply for job.");
+        else
+        {
+            showPanel(pnl_thankyou);
+        }
 
+    }
 
+    private bool sendEmail(string name, string email)
+    {
+        return true;
     }
 }

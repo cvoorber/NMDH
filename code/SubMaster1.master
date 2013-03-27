@@ -2,24 +2,17 @@
 <%@ Mastertype VirtualPath="~/maintemplate.master" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
-<<<<<<< HEAD
-    <section id="left_sidebar">
-        <asp:Menu ID="side_menu" runat="server" StaticMenuItemStyle-CssClass="side-menu" >
-=======
+
     <!-- section -->
     <div id="left_sidebar">
         <asp:Menu ID="side_menu" runat="server" StaticMenuItemStyle-CssClass="side-menu" OnMenuItemClick="sideMenu_Click" >
->>>>>>> master
+
             <Items>
                 <asp:MenuItem Text="About Us" Target="~/index.aspx" />
             </Items>
         </asp:Menu>
         <asp:ContentPlaceHolder ID="l_sidebar" runat="server">
         </asp:ContentPlaceHolder>
-<<<<<<< HEAD
-    </section>
-    <section id="right_content">
-=======
     </div>
 
     <!-- aside -->
@@ -30,7 +23,6 @@
                 <asp:Label ID="lblcontent" runat="server" Text='<%#Eval("gp_content") %>' CssClass="pagecontent" />
             </ItemTemplate>
         </asp:Repeater>
->>>>>>> master
         <asp:ContentPlaceHolder ID="r_content" runat="server">
         </asp:ContentPlaceHolder>
     </div>

@@ -52,6 +52,7 @@
     </asp:Panel>
 
     <asp:Panel ID="pnl_form" runat="server">
+        <asp:Label ID="lbl_jlabel" runat="server" Text="Job ID: " />
         <asp:Label ID="lbl_jID" runat="server" />
         <asp:Label ID="lbl_fname" runat="server" Text="First Name:" />
         <asp:TextBox ID="txt_fname" runat="server" />
@@ -86,7 +87,7 @@
         <asp:Label ID="lbl_phone" runat="server" Text="Home Phone:" />
         <asp:TextBox ID="txt_phone" runat="server" />
         <asp:RequiredFieldValidator ID="rfv_phone" runat="server" ControlToValidate="txt_phone" ErrorMessage="*required" />
-        <asp:RegularExpressionValidator ID="reg_phone" runat="server" ControlToValidate="txt_phone" ErrorMessage="*valid phone number required eg 416-000-0000" ValidationExpression="^[2-9]\\d{2}$(\\s|-)?\\d{3}(\\s|-)?\\d{4}$" />
+        <asp:RegularExpressionValidator ID="reg_phone" runat="server" ControlToValidate="txt_phone" ErrorMessage="*valid phone number required eg 416-000-0000" ValidationExpression="^[2-9]\d{2}(\s|-)?\d{3}(\s|-)?\d{4}$" />
         <br />
 
         <asp:Label ID="lbl_altphone" runat="server" Text="Alternate Phone:" />
@@ -103,8 +104,8 @@
         <hr />
         <asp:Label ID="lbl_cur_emp" runat="server" Text="Are you a current or former NDMH employee?" />
         <asp:RadioButtonList ID="rbl_cur_emp" runat="server" RepeatDirection="Horizontal">
-            <asp:ListItem Value="yes">Yes</asp:ListItem>
-            <asp:ListItem Value="no">No</asp:ListItem>
+            <asp:ListItem Value="y">Yes</asp:ListItem>
+            <asp:ListItem Value="n">No</asp:ListItem>
         </asp:RadioButtonList>
         <asp:RequiredFieldValidator ID="rfv_cur_emp" runat="server" ErrorMessage="*required" ControlToValidate="rbl_cur_emp" />
         <br />
@@ -150,6 +151,11 @@
        <br /><br />
         <input type="reset" value="Clear" />
         <asp:Button ID="btn_submit" Text="Submit" runat="server" OnClick="subSubmit" />
+    </asp:Panel>
+    <asp:Panel ID="pnl_thankyou" runat="server">
+        <asp:Label ID="lbl_thank" runat="server" Text="Thank you for applying for a position at NDMH." />
+        <br /><br />
+        <asp:HyperLink ID="hl_career" runat="server" NavigateUrl="~/careers.aspx" Text="Back to Careers page." />
     </asp:Panel>
 </asp:Content>
 
