@@ -23,40 +23,36 @@ public partial class careers : System.Web.UI.Page
             if(Request.QueryString["catID"]!=null)
             {
                 int catVal = Int32.Parse(Request.QueryString["catID"]);
-                lbl_jCat.Text = "Allied Health Job Posts";
+                lbl_jCat.Text = (catObj.getResultByColumn(m => m.j_category_id == catVal).Single()).j_category_name.ToString() + " Job Posts";
                 rpt_joblist.DataSource = jobObj.getResultByColumn(m => m.j_category_id == catVal);
                 rpt_joblist.DataBind();
                 showPanel(pnl_jobs);
+            }
+
+            if (Request.QueryString["jobID"] != null && Request.QueryString["apply"]==null)
+            {
+                showPost(Int32.Parse(Request.QueryString["jobID"]));
+            }
+
+            if (Request.QueryString["jobID"] != null && Request.QueryString["apply"]=="y")
+            {
+                showApplication(Int32.Parse(Request.QueryString["jobID"]));
             }
         }
     }
 
 
     //show individual jobposts
-    protected void subShowPost(object sender, EventArgs e)
+    private void showPost(int jobID)
     {
-        LinkButton btn = (LinkButton)sender;
-        int jobID = Int32.Parse(btn.CommandArgument);
         rpt_post.DataSource = jobObj.getResultByColumn(m => m.j_id == jobID);
         rpt_post.DataBind();
 
         showPanel(pnl_viewpost);
     }
 
-    //get jobs by category
-    protected void subGetJobs(object sender, BulletedListEventArgs b)
-    {
-        /*var item = bl_cat.Items[b.Index];
-        int catVal = Int32.Parse(item.Value);
-        lbl_jCat.Text = item.Text + " Job Posts";
-        var jobsByCategory = jobObj.getResultByColumn(m => m.j_category_id == catVal);
-        rpt_joblist.DataSource = jobsByCategory.Where(x=>x.j_expires > DateTime.Now.Date);
-        rpt_joblist.DataBind();
-        showPanel(pnl_jobs);*/
-    }
 
-
-    private void showPanel(Panel p)
+    public void showPanel(Panel p)
     {
         pnl_viewpost.Visible = false;
         pnl_form.Visible = false;
@@ -65,17 +61,22 @@ public partial class careers : System.Web.UI.Page
         p.Visible = true;
     }
 
-    protected void subShowApp(object sender, EventArgs e)
+    private void showApplication(int jobID)
     {
-        Button btn = (Button)sender;
         HiddenField hdf = new HiddenField();
         hdf.ID = "hdf_jobID";
-        hdf.Value = btn.CommandArgument;
+        hdf.Value = jobID.ToString();
 
         pnl_form.Controls.Add(hdf);
         lbl_jID.Text = hdf.Value;
         showPanel(pnl_form);
         
+    }
+
+    protected void subApply(object sender, EventArgs e)
+    {
+        string url = "~/careers.aspx?apply=y&jobID=" + ((Button)sender).CommandArgument;
+        Response.Redirect(url);
     }
 
     protected void subUpload(object sender, EventArgs e)
@@ -135,10 +136,14 @@ public partial class careers : System.Web.UI.Page
         jobObj.j_resume = newfile;
 
         //renaming file
-        File.Move(
+        if (!File.Exists("~/resumes/" + newfile))
+        {
+            //must check if a file was chosen--will be done later
+            File.Move(
                 Path.Combine(Server.MapPath("~/resumes/"), lbl_status.Text),
                 Path.Combine(Server.MapPath("~/resumes/"), newfile)
                 );
+        }
 
         if (!jobDB.Insert(jobObj))
             throw new Exception("Failed to apply for job.");

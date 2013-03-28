@@ -36,7 +36,7 @@
                     <td><%#Eval("j_title") %></td>
                     <td><%#Eval("j_posted_date", "{0:MM/dd/yyyy}") %></td>
                     <td><%#Eval("j_expires", "{0:MM/dd/yyyy}") %></td>
-                    <td><asp:LinkButton ID="lb_post" runat="server" OnClick="subShowPost" Text="View" CommandArgument='<%#Eval("j_id") %>' /></td>
+                    <td><asp:HyperLink ID="hl_post" runat="server" Text="View" NavigateUrl='<%#String.Format("~/careers.aspx?jobID={0}",Eval("j_id")) %>'  /></td>
                 </tr>
             </ItemTemplate>
             
@@ -55,7 +55,7 @@
                 <p>Job Requirements: <%#Eval("j_requirements") %></p>
                 <p>Post Date: <%#Eval("j_posted_date", "{0:MM/dd/yyyy}")%></p>
                 <p>Expiry Date: <%#Eval("j_expires", "{0:MM/dd/yyyy}")%></p>
-                <asp:Button ID="btn_app" runat="server" Text="Apply Now" OnClick="subShowApp" CommandArgument='<%#Eval("j_id") %>' />
+                <asp:Button ID="btn_app" runat="server" Text="Apply Now" OnClick="subApply" CommandArgument='<%#Eval("j_id") %>' />
             </ItemTemplate>
        </asp:Repeater>
     </asp:Panel>
@@ -125,6 +125,7 @@
             <asp:ListItem Value="n">No</asp:ListItem>
         </asp:RadioButtonList>
         <asp:RequiredFieldValidator ID="rfv_elig" runat="server" ErrorMessage="*required" ControlToValidate="rbl_elig" />
+        <br />
        
        <asp:Label ID="lbl_convict" runat="server" Text="Have you ever been convicted of a federal criminal offence?" />
         <asp:RadioButtonList ID="rbl_convict" runat="server" RepeatDirection="Horizontal">
