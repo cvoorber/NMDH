@@ -2,8 +2,17 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
-    <h3>Job Categories</h3>
-    <asp:BulletedList ID="bl_cat" runat="server" DisplayMode="LinkButton" OnClick="subGetJobs" />
+    
+    <asp:Repeater ID="rpt_careers" runat="server">
+        <HeaderTemplate>
+            <h3>Job Categories</h3>
+        </HeaderTemplate>
+        <ItemTemplate>
+            <asp:HyperLink ID="hl_cat" runat="server" NavigateUrl='<%#String.Format("~/careers.aspx?catID={0}",Eval("j_category_id")) %>' Text='<%#Eval("j_category_name") %>' />
+            <br />
+        </ItemTemplate>
+    </asp:Repeater>
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
@@ -37,7 +46,7 @@
         </asp:Repeater>
     </asp:Panel>
 
-    <asp:Panel ID="pnl_viewpost" runat="server">
+    <asp:Panel ID="pnl_viewpost" runat="server" Visible="false">
        <asp:Repeater runat="server" ID="rpt_post">
             <ItemTemplate>
                 <p>Job ID: <%#Eval("j_id") %></p>
@@ -51,7 +60,7 @@
        </asp:Repeater>
     </asp:Panel>
 
-    <asp:Panel ID="pnl_form" runat="server">
+    <asp:Panel ID="pnl_form" runat="server" Visible="false">
         <asp:Label ID="lbl_jlabel" runat="server" Text="Job ID: " />
         <asp:Label ID="lbl_jID" runat="server" />
         <asp:Label ID="lbl_fname" runat="server" Text="First Name:" />
@@ -152,7 +161,7 @@
         <input type="reset" value="Clear" />
         <asp:Button ID="btn_submit" Text="Submit" runat="server" OnClick="subSubmit" />
     </asp:Panel>
-    <asp:Panel ID="pnl_thankyou" runat="server">
+    <asp:Panel ID="pnl_thankyou" runat="server" Visible="false">
         <asp:Label ID="lbl_thank" runat="server" Text="Thank you for applying for a position at NDMH." />
         <br /><br />
         <asp:HyperLink ID="hl_career" runat="server" NavigateUrl="~/careers.aspx" Text="Back to Careers page." />

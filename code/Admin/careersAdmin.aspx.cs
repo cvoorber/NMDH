@@ -16,26 +16,35 @@ public partial class Admin_careersAdmin : System.Web.UI.Page
     protected void subShowSection(object sender, EventArgs e)
     {
         string selected = mnu_career.SelectedItem.Value;
-        switch (selected)
+        if (selected == "1")
         {
-            case "1":
-                showPanel(pnl_cat);
-                break;
-            case "2":
-                showPanel(pnl_posts);
-                break;
-            case "3":
-                showPanel(pnl_apps);
-                break;
+            LinqClass<ndmh_job_category> catObj = new LinqClass<ndmh_job_category>();
+            dtl_cats.DataSource = catObj.getItems();
+            dtl_cats.DataBind();
+            showPanel(pnl_cats);
         }
+        else if (selected == "2")
+        {
+            LinqClass<ndmh_job> jobObj = new LinqClass<ndmh_job>();
+            dtl_jobs.DataSource = jobObj.getItems();
+            dtl_jobs.DataBind();
+            showPanel(pnl_jobs);
+        }
+        else
+        {
+            LinqClass<ndmh_job_application> appObj = new LinqClass<ndmh_job_application>();
+            dtl_apps.DataSource = appObj.getItems();
+            dtl_apps.DataBind();
+            showPanel(pnl_apps);
+        }
+        
     }
 
     private void showPanel(Panel p)
     {
         pnl_apps.Visible = false;
-        pnl_cat.Visible = false;
-        pnl_posts.Visible = false;
+        pnl_cats.Visible = false;
+        pnl_jobs.Visible = false;
         p.Visible = true;
     }
 }
-

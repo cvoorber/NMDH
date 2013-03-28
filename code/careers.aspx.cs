@@ -17,21 +17,20 @@ public partial class careers : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            LinqClass<ndmh_job_category> catObj = new LinqClass<ndmh_job_category>();
-            LinqClass<ndmh_job> jobObj = new LinqClass<ndmh_job>();
+            rpt_careers.DataSource = catObj.getItems();
+            rpt_careers.DataBind();
 
-            bl_cat.DataSource = catObj.getItems();
-            bl_cat.DataTextField = "j_category_name";
-            bl_cat.DataValueField = "j_category_id";
-            bl_cat.DataBind();
-
-            lbl_jCat.Text = "Allied Health Job Posts";
-            int catVal = Int32.Parse(bl_cat.Items.FindByText("Allied Health").Value);
-            rpt_joblist.DataSource = jobObj.getResultByColumn(m => m.j_category_id == catVal);
-            rpt_joblist.DataBind();
-            showPanel(pnl_jobs);
+            if(Request.QueryString["catID"]!=null)
+            {
+                int catVal = Int32.Parse(Request.QueryString["catID"]);
+                lbl_jCat.Text = "Allied Health Job Posts";
+                rpt_joblist.DataSource = jobObj.getResultByColumn(m => m.j_category_id == catVal);
+                rpt_joblist.DataBind();
+                showPanel(pnl_jobs);
+            }
         }
     }
+
 
     //show individual jobposts
     protected void subShowPost(object sender, EventArgs e)
@@ -47,13 +46,13 @@ public partial class careers : System.Web.UI.Page
     //get jobs by category
     protected void subGetJobs(object sender, BulletedListEventArgs b)
     {
-        var item = bl_cat.Items[b.Index];
+        /*var item = bl_cat.Items[b.Index];
         int catVal = Int32.Parse(item.Value);
         lbl_jCat.Text = item.Text + " Job Posts";
         var jobsByCategory = jobObj.getResultByColumn(m => m.j_category_id == catVal);
         rpt_joblist.DataSource = jobsByCategory.Where(x=>x.j_expires > DateTime.Now.Date);
         rpt_joblist.DataBind();
-        showPanel(pnl_jobs);
+        showPanel(pnl_jobs);*/
     }
 
 
