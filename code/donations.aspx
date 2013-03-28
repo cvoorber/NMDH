@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="donations.aspx.cs" Inherits="donations" MasterPageFile="~/maintemplate.master"  %>
-
+<asp:Content ID="cnt_headdonate" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
 <asp:Content ID="form_donate" ContentPlaceHolderID="content_area" Runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
     

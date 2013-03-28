@@ -274,3 +274,18 @@ text-align:center;
 }
 
 /* End of Ryan Donations page CSS */
+
+/* Ryan Virt-Tour CSS start */
+.tour-box
+{
+    
+    border: 3px solid black;
+}
+
+#floor-list
+{
+    margin: 0 auto;
+    font-size: 40px;
+}
+
+/* Ryan end of Virt-Tour CSS */

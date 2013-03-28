@@ -1,23 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="cvoorber" Class="donationsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=cvoorber.db.10296660.hostedresource.com;Initial Catalog=cvoorber;Persist Security Info=True;User ID=cvoorber" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="cvoorberConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.state_or_province" Member="state_or_provinces">
-    <Type Name="state_or_province">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="code" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
-      <Column Name="country_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.base_country" Member="base_countries">
-    <Type Name="base_country">
-      <Column Name="country_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="iso2" Type="System.String" DbType="Char(2)" CanBeNull="true" />
-      <Column Name="iso3" Type="System.String" DbType="Char(3)" CanBeNull="true" />
-      <Column Name="name_en" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
-      <Column Name="name_fr" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
-      <Column Name="name_de" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
-    </Type>
-  </Table>
+  <Connection Mode="WebSettings" ConnectionString="Data Source=cvoorber.db.10296660.hostedresource.com;Initial Catalog=cvoorber;Persist Security Info=True;User ID=cvoorber" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="cvoorberConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ndmh_donations" Member="ndmh_donations">
     <Type Name="ndmh_donation">
       <Column Name="d_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -32,6 +14,26 @@
       <Column Name="d_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="d_comments" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="dl_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.state_or_province" Member="state_or_provinces">
+    <Type Name="state_or_province">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="country_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="base_country_state_or_province" Member="base_country" ThisKey="country_id" OtherKey="country_id" Type="base_country" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.base_country" Member="base_countries">
+    <Type Name="base_country">
+      <Column Name="country_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="iso2" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="iso3" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="name_en" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="name_fr" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Column Name="name_de" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
+      <Association Name="base_country_state_or_province" Member="state_or_provinces" ThisKey="country_id" OtherKey="country_id" Type="state_or_province" />
     </Type>
   </Table>
 </Database>

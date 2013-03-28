@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="VirtTour">
+  <DataContextMoniker Name="/VirtTourDataContext" />
+  <nestedChildShapes>
+    <classShape Id="fd12c443-2a66-4119-965f-1e591741d4b5" absoluteBounds="4.75, 2.25, 2, 2.5401025390625">
+      <DataClassMoniker Name="/VirtTourDataContext/ndmh_department_listing" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0db295c8-4059-4a88-b062-8a4fe7d7cf47" absoluteBounds="4.765, 2.71, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="708156e3-c7d8-4a96-9d15-7fad6cc70df7" absoluteBounds="2.375, 1.375, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/VirtTourDataContext/ndmh_dep_list_image" />
+      <nestedChildShapes>
+        <elementListCompartment Id="52f88210-ee80-4e1c-9410-2d7fb5bc9821" absoluteBounds="2.3899999999999997, 1.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.75 : 2.98640055338542); (4.375 : 2.98640055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/VirtTourDataContext/ndmh_department_listing/ndmh_department_listing_ndmh_dep_list_image" />
+      <nodes>
+        <classShapeMoniker Id="fd12c443-2a66-4119-965f-1e591741d4b5" />
+        <classShapeMoniker Id="708156e3-c7d8-4a96-9d15-7fad6cc70df7" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

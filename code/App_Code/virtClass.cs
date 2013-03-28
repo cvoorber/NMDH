@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+/// <summary>
+/// Summary description for virtClass
+/// </summary>
+public class virtClass
+{
+    VirtTourDataContext objVirtTour = new VirtTourDataContext();
+
+    // this method will get the list of all departments
+    public IQueryable<ndmh_department_listing> getDepartments()
+    {
+        var allDepartments = objVirtTour.ndmh_department_listings.Select(x => x);
+        return allDepartments;
+    }
+
+    // this method will get a department record, based on its dl_id
+    public IQueryable<ndmh_department_listing> getDepartmentByID(int _id)
+    {
+        var chosenDeparment = objVirtTour.ndmh_department_listings.Where(x => x.dl_id == _id).Select(x => x);
+        return chosenDeparment;
+            
+    }
+
+
+
+
+
+
+}
