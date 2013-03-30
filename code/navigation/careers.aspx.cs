@@ -169,20 +169,24 @@ public partial class careers : System.Web.UI.Page
         jobObj.j_id = Int32.Parse(lbl_jID.Text);
 
         //rename the uploaded resume based on firstname, lastname and jobID
-        string newfile = jobObj.j_first_name + "_" + jobObj.j_last_name + "_" + jobObj.j_id.ToString() + Path.GetExtension(lbl_status.Text);
+        string newfile = jobObj.j_first_name + "_" + jobObj.j_last_name + "_" + jobObj.j_id.ToString() + Path.GetExtension(lbl_status.Text).ToLower();
         jobObj.j_resume = newfile;
 
         //renaming file
-        if (!File.Exists("~/resumes/" + newfile))
+        if (File.Exists("~/resumes/" + newfile))
         {
-            //must check if a file was chosen--will be done later
-
-            //akin to linux command line renaming e.g., mv ass.txt abs.txt
-            File.Move(
-                Path.Combine(Server.MapPath("~/resumes/"), lbl_status.Text),
-                Path.Combine(Server.MapPath("~/resumes/"), newfile)
-                );
+            //must check if a file was chosen
+            //delete if exist
+            File.Delete("~/resumes/" + newfile);
+           
         }
+        
+        //akin to linux command line renaming e.g., mv ass.txt abs.txt
+        File.Move(
+        Path.Combine(Server.MapPath("~/resumes/"), lbl_status.Text),
+        Path.Combine(Server.MapPath("~/resumes/"), newfile)
+                    );
+  
 
         //insert the job application record object to the database
         if (!jobDB.Insert(jobObj))
