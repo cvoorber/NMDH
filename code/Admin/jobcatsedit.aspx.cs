@@ -9,9 +9,15 @@ public partial class Admin_careersAdmin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
 
+    protected void subDelete(object sender, EventArgs e)
+    {
+    }
+
+    protected void subUpdateCat(object sender, EventArgs e)
+    {
+    }
 
     protected void subShowSection(object sender, EventArgs e)
     {
