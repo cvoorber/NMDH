@@ -25,6 +25,14 @@ public class virtClass
             
     }
 
+    // this method will get list of departments based on which floor they are on (floor_no)
+
+    public IQueryable<ndmh_department_listing> getDepartmentsByFloorNo(int _floor_no)
+    {
+        var chosenDepartments = objVirtTour.ndmh_department_listings.Where(x => x.dl_floor_no == _floor_no).Select(x => x);
+        return chosenDepartments;
+    }
+
 
 
 

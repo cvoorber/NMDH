@@ -16,10 +16,14 @@
         <asp:Label ID="lbl_floorheading" runat="server" Text="Which Floor Would You Like To Search Through?" />
     <div id="floor-list">
     <ul>
-        <li><a href="#">Floor 1</a></li>
-        <li><a href="#">Floor 2</a></li>
-        <li><a href="#">Floor 3</a></li>
-        <li><a href="#">All Floors</a></li>
+        <li><asp:LinkButton ID="lnb_fl1" runat="server" Text="Floor 1" OnCommand="subChooseFloor" CommandName="ChooseFloor"
+         CommandArgument="floor1" /></li>
+        <li><asp:LinkButton ID="lnb_fl2" runat="server" Text="Floor 2" CommandName="ChooseFloor"
+         CommandArgument="floor2" OnCommand="subChooseFloor" /></li>
+        <li><asp:LinkButton ID="lnb_fl3" runat="server" Text="Floor 3" CommandName="ChooseFloor"
+         CommandArgument="floor3" OnCommand="subChooseFloor" /></li>
+        <li><asp:LinkButton ID="lnb_flall" runat="server" Text="All Floors" CommandName="ChooseFloor"
+         CommandArgument="floorall" OnCommand="subChooseFloor" /></li>
     </ul>
     </div>
     </asp:Panel><!--/floor-list -->
@@ -47,7 +51,12 @@
     <asp:Panel ID="pnl_deptpage" runat="server" CssClass="tour-box" Visible="true">
         <asp:Repeater ID="rpt_deptpage" runat="server" >
             <ItemTemplate>
-                <asp:Label ID="Label1" runat="server" Text='<%#Eval("dl_name") %>' />
+                Department Name: <asp:Label ID="lbl_pgname" runat="server" Text='<%#Eval("dl_name") %>' Font-Bold="true" /><br />
+                Floor Number: <asp:Label ID="lbl_pgfloor" runat="server" Text='<%#Eval("dl_floor_no") %>' Font-Bold="true" /> <br />
+                Room Number: <asp:Label ID="lbl_pgroom" runat="server" Text='<%#Eval("dl_room_no") %>' Font-Bold="true" /> <br />
+                Phone Extension: <asp:Label ID="lbl_pgextension" runat="server" Text='<%#Eval("dl_extention") %>' Font-Bold="true" /><br />
+                <asp:Image ID="img_pgimg" runat="server" AlternateText='<%#Eval("dl_img_alt") %>' ImageUrl='<%#Eval("dl_img_url") %>' /> <br />
+                Description: <asp:Label ID="lbl_pgdesc" runat="server" Text='<%#Eval("dl_description") %>' BorderColor="Black"  />
             </ItemTemplate>
         </asp:Repeater>
     </asp:Panel>

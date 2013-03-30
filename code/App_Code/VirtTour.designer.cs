@@ -32,9 +32,6 @@ public partial class VirtTourDataContext : System.Data.Linq.DataContext
   partial void Insertndmh_department_listing(ndmh_department_listing instance);
   partial void Updatendmh_department_listing(ndmh_department_listing instance);
   partial void Deletendmh_department_listing(ndmh_department_listing instance);
-  partial void Insertndmh_dep_list_image(ndmh_dep_list_image instance);
-  partial void Updatendmh_dep_list_image(ndmh_dep_list_image instance);
-  partial void Deletendmh_dep_list_image(ndmh_dep_list_image instance);
   #endregion
 	
 	public VirtTourDataContext() : 
@@ -74,14 +71,6 @@ public partial class VirtTourDataContext : System.Data.Linq.DataContext
 			return this.GetTable<ndmh_department_listing>();
 		}
 	}
-	
-	public System.Data.Linq.Table<ndmh_dep_list_image> ndmh_dep_list_images
-	{
-		get
-		{
-			return this.GetTable<ndmh_dep_list_image>();
-		}
-	}
 }
 
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_department_listing")]
@@ -108,7 +97,15 @@ public partial class ndmh_department_listing : INotifyPropertyChanging, INotifyP
 	
 	private string _dl_description;
 	
-	private EntitySet<ndmh_dep_list_image> _ndmh_dep_list_images;
+	private string _dl_img_url;
+	
+	private string _dl_img_alt;
+	
+	private string _dl_img_desc;
+	
+	private System.Nullable<int> _dl_img_width;
+	
+	private System.Nullable<int> _dl_img_height;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -132,11 +129,20 @@ public partial class ndmh_department_listing : INotifyPropertyChanging, INotifyP
     partial void Ondl_room_noChanged();
     partial void Ondl_descriptionChanging(string value);
     partial void Ondl_descriptionChanged();
+    partial void Ondl_img_urlChanging(string value);
+    partial void Ondl_img_urlChanged();
+    partial void Ondl_img_altChanging(string value);
+    partial void Ondl_img_altChanged();
+    partial void Ondl_img_descChanging(string value);
+    partial void Ondl_img_descChanged();
+    partial void Ondl_img_widthChanging(System.Nullable<int> value);
+    partial void Ondl_img_widthChanged();
+    partial void Ondl_img_heightChanging(System.Nullable<int> value);
+    partial void Ondl_img_heightChanged();
     #endregion
 	
 	public ndmh_department_listing()
 	{
-		this._ndmh_dep_list_images = new EntitySet<ndmh_dep_list_image>(new Action<ndmh_dep_list_image>(this.attach_ndmh_dep_list_images), new Action<ndmh_dep_list_image>(this.detach_ndmh_dep_list_images));
 		OnCreated();
 	}
 	
@@ -320,298 +326,102 @@ public partial class ndmh_department_listing : INotifyPropertyChanging, INotifyP
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_department_listing_ndmh_dep_list_image", Storage="_ndmh_dep_list_images", ThisKey="dl_id", OtherKey="dl_id")]
-	public EntitySet<ndmh_dep_list_image> ndmh_dep_list_images
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dl_img_url", DbType="VarChar(1000)")]
+	public string dl_img_url
 	{
 		get
 		{
-			return this._ndmh_dep_list_images;
+			return this._dl_img_url;
 		}
 		set
 		{
-			this._ndmh_dep_list_images.Assign(value);
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-	
-	private void attach_ndmh_dep_list_images(ndmh_dep_list_image entity)
-	{
-		this.SendPropertyChanging();
-		entity.ndmh_department_listing = this;
-	}
-	
-	private void detach_ndmh_dep_list_images(ndmh_dep_list_image entity)
-	{
-		this.SendPropertyChanging();
-		entity.ndmh_department_listing = null;
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_dep_list_images")]
-public partial class ndmh_dep_list_image : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _dli_id;
-	
-	private string _dli_url;
-	
-	private string _dli_alt;
-	
-	private string _dli_desc;
-	
-	private System.Nullable<decimal> _dli_width;
-	
-	private System.Nullable<decimal> _dli_height;
-	
-	private int _dl_id;
-	
-	private string _dli_name;
-	
-	private EntityRef<ndmh_department_listing> _ndmh_department_listing;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Ondli_idChanging(int value);
-    partial void Ondli_idChanged();
-    partial void Ondli_urlChanging(string value);
-    partial void Ondli_urlChanged();
-    partial void Ondli_altChanging(string value);
-    partial void Ondli_altChanged();
-    partial void Ondli_descChanging(string value);
-    partial void Ondli_descChanged();
-    partial void Ondli_widthChanging(System.Nullable<decimal> value);
-    partial void Ondli_widthChanged();
-    partial void Ondli_heightChanging(System.Nullable<decimal> value);
-    partial void Ondli_heightChanged();
-    partial void Ondl_idChanging(int value);
-    partial void Ondl_idChanged();
-    partial void Ondli_nameChanging(string value);
-    partial void Ondli_nameChanged();
-    #endregion
-	
-	public ndmh_dep_list_image()
-	{
-		this._ndmh_department_listing = default(EntityRef<ndmh_department_listing>);
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dli_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int dli_id
-	{
-		get
-		{
-			return this._dli_id;
-		}
-		set
-		{
-			if ((this._dli_id != value))
+			if ((this._dl_img_url != value))
 			{
-				this.Ondli_idChanging(value);
+				this.Ondl_img_urlChanging(value);
 				this.SendPropertyChanging();
-				this._dli_id = value;
-				this.SendPropertyChanged("dli_id");
-				this.Ondli_idChanged();
+				this._dl_img_url = value;
+				this.SendPropertyChanged("dl_img_url");
+				this.Ondl_img_urlChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dli_url", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-	public string dli_url
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dl_img_alt", DbType="VarChar(1000)")]
+	public string dl_img_alt
 	{
 		get
 		{
-			return this._dli_url;
+			return this._dl_img_alt;
 		}
 		set
 		{
-			if ((this._dli_url != value))
+			if ((this._dl_img_alt != value))
 			{
-				this.Ondli_urlChanging(value);
+				this.Ondl_img_altChanging(value);
 				this.SendPropertyChanging();
-				this._dli_url = value;
-				this.SendPropertyChanged("dli_url");
-				this.Ondli_urlChanged();
+				this._dl_img_alt = value;
+				this.SendPropertyChanged("dl_img_alt");
+				this.Ondl_img_altChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dli_alt", DbType="VarChar(500)")]
-	public string dli_alt
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dl_img_desc", DbType="VarChar(1000)")]
+	public string dl_img_desc
 	{
 		get
 		{
-			return this._dli_alt;
+			return this._dl_img_desc;
 		}
 		set
 		{
-			if ((this._dli_alt != value))
+			if ((this._dl_img_desc != value))
 			{
-				this.Ondli_altChanging(value);
+				this.Ondl_img_descChanging(value);
 				this.SendPropertyChanging();
-				this._dli_alt = value;
-				this.SendPropertyChanged("dli_alt");
-				this.Ondli_altChanged();
+				this._dl_img_desc = value;
+				this.SendPropertyChanged("dl_img_desc");
+				this.Ondl_img_descChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dli_desc", DbType="VarChar(500)")]
-	public string dli_desc
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dl_img_width", DbType="Int")]
+	public System.Nullable<int> dl_img_width
 	{
 		get
 		{
-			return this._dli_desc;
+			return this._dl_img_width;
 		}
 		set
 		{
-			if ((this._dli_desc != value))
+			if ((this._dl_img_width != value))
 			{
-				this.Ondli_descChanging(value);
+				this.Ondl_img_widthChanging(value);
 				this.SendPropertyChanging();
-				this._dli_desc = value;
-				this.SendPropertyChanged("dli_desc");
-				this.Ondli_descChanged();
+				this._dl_img_width = value;
+				this.SendPropertyChanged("dl_img_width");
+				this.Ondl_img_widthChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dli_width", DbType="Decimal(18,2)")]
-	public System.Nullable<decimal> dli_width
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dl_img_height", DbType="Int")]
+	public System.Nullable<int> dl_img_height
 	{
 		get
 		{
-			return this._dli_width;
+			return this._dl_img_height;
 		}
 		set
 		{
-			if ((this._dli_width != value))
+			if ((this._dl_img_height != value))
 			{
-				this.Ondli_widthChanging(value);
+				this.Ondl_img_heightChanging(value);
 				this.SendPropertyChanging();
-				this._dli_width = value;
-				this.SendPropertyChanged("dli_width");
-				this.Ondli_widthChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dli_height", DbType="Decimal(18,2)")]
-	public System.Nullable<decimal> dli_height
-	{
-		get
-		{
-			return this._dli_height;
-		}
-		set
-		{
-			if ((this._dli_height != value))
-			{
-				this.Ondli_heightChanging(value);
-				this.SendPropertyChanging();
-				this._dli_height = value;
-				this.SendPropertyChanged("dli_height");
-				this.Ondli_heightChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dl_id", DbType="Int NOT NULL")]
-	public int dl_id
-	{
-		get
-		{
-			return this._dl_id;
-		}
-		set
-		{
-			if ((this._dl_id != value))
-			{
-				if (this._ndmh_department_listing.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Ondl_idChanging(value);
-				this.SendPropertyChanging();
-				this._dl_id = value;
-				this.SendPropertyChanged("dl_id");
-				this.Ondl_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dli_name", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-	public string dli_name
-	{
-		get
-		{
-			return this._dli_name;
-		}
-		set
-		{
-			if ((this._dli_name != value))
-			{
-				this.Ondli_nameChanging(value);
-				this.SendPropertyChanging();
-				this._dli_name = value;
-				this.SendPropertyChanged("dli_name");
-				this.Ondli_nameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_department_listing_ndmh_dep_list_image", Storage="_ndmh_department_listing", ThisKey="dl_id", OtherKey="dl_id", IsForeignKey=true)]
-	public ndmh_department_listing ndmh_department_listing
-	{
-		get
-		{
-			return this._ndmh_department_listing.Entity;
-		}
-		set
-		{
-			ndmh_department_listing previousValue = this._ndmh_department_listing.Entity;
-			if (((previousValue != value) 
-						|| (this._ndmh_department_listing.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._ndmh_department_listing.Entity = null;
-					previousValue.ndmh_dep_list_images.Remove(this);
-				}
-				this._ndmh_department_listing.Entity = value;
-				if ((value != null))
-				{
-					value.ndmh_dep_list_images.Add(this);
-					this._dl_id = value.dl_id;
-				}
-				else
-				{
-					this._dl_id = default(int);
-				}
-				this.SendPropertyChanged("ndmh_department_listing");
+				this._dl_img_height = value;
+				this.SendPropertyChanged("dl_img_height");
+				this.Ondl_img_heightChanged();
 			}
 		}
 	}
