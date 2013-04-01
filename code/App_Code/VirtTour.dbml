@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="cvoorber" Class="VirtTourDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=cvoorber.db.10296660.hostedresource.com;Initial Catalog=cvoorber;Persist Security Info=True;User ID=cvoorber" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="cvoorberConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ndmh_department_listing" Member="ndmh_department_listings">
+    <Type Name="ndmh_department_listing">
+      <Column Name="dl_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dl_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="dl_extention" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dl_open_hour" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="dl_close_hour" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="dl_days_open" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="dl_floor_no" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dl_room_no" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dl_description" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="dl_img_url" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="dl_img_alt" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="dl_img_desc" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="dl_img_width" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dl_img_height" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
