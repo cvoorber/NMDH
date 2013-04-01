@@ -4,6 +4,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 
+using System.Data.Linq;
+
 /// <summary>
 /// Summary description for LinqClass
 /// </summary>
@@ -48,11 +50,18 @@ public class LinqClass<T> where T: class
     {
 		//creating own copy of Linq object
         ndmhDCDataContext dcObj = new ndmhDCDataContext();
-		
+
+        
 		//automatic opening and closing of Linq object connection
         using (dcObj)
         {
+            //T oldItem = dcObj.GetTable<T>().Where<T>(predicate).Single();
+
 			dcObj.GetTable<T>().Attach(updateItem);
+
+            //resolves conflicts by overwriting values of the object in question
+            dcObj.Refresh(RefreshMode.KeepCurrentValues, updateItem);
+            
             dcObj.SubmitChanges();
         }
         return true;

@@ -2,14 +2,27 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
-    <h3>Job Categories</h3>
-    <asp:BulletedList ID="bl_cat" runat="server" DisplayMode="LinkButton" OnClick="subGetJobs" />
+    <%-- repeater to populate the job categories --%>
+    <asp:Repeater ID="rpt_careers" runat="server">
+        <HeaderTemplate>
+            <h3>Job Categories</h3>
+        </HeaderTemplate>
+        <ItemTemplate>
+            <%-- each category will be link that postback to the page with a category id for bookmarking --%>
+            <asp:HyperLink ID="hl_cat" runat="server" NavigateUrl='<%#String.Format("~/navigation/careers.aspx?catID={0}",Eval("j_category_id")) %>' Text='<%#Eval("j_category_name") %>' />
+            <br />
+        </ItemTemplate>
+    </asp:Repeater>
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
 
+    <%-- panel that shows up upon selecting a category --%>
     <asp:Panel ID="pnl_jobs" runat="server">
         <asp:Label ID="lbl_jCat" runat="server" />
+
+        <%-- repeater that shows all job postings based on a category id --%>
         <asp:Repeater ID="rpt_joblist" runat="server">
             <HeaderTemplate>
                <table>
@@ -27,7 +40,9 @@
                     <td><%#Eval("j_title") %></td>
                     <td><%#Eval("j_posted_date", "{0:MM/dd/yyyy}") %></td>
                     <td><%#Eval("j_expires", "{0:MM/dd/yyyy}") %></td>
-                    <td><asp:LinkButton ID="lb_post" runat="server" OnClick="subShowPost" Text="View" CommandArgument='<%#Eval("j_id") %>' /></td>
+                    
+                    <%-- view link will postback to show the information on the job clicked --%>
+                    <td><asp:HyperLink ID="hl_post" runat="server" Text="View" NavigateUrl='<%#String.Format("~/navigation/careers.aspx?jobID={0}",Eval("j_id")) %>'  /></td>
                 </tr>
             </ItemTemplate>
             
@@ -37,7 +52,8 @@
         </asp:Repeater>
     </asp:Panel>
 
-    <asp:Panel ID="pnl_viewpost" runat="server">
+    <%-- panel to show information on a specific job when its 'view' link is clicked --%>
+    <asp:Panel ID="pnl_viewpost" runat="server" Visible="false">
        <asp:Repeater runat="server" ID="rpt_post">
             <ItemTemplate>
                 <p>Job ID: <%#Eval("j_id") %></p>
@@ -46,12 +62,15 @@
                 <p>Job Requirements: <%#Eval("j_requirements") %></p>
                 <p>Post Date: <%#Eval("j_posted_date", "{0:MM/dd/yyyy}")%></p>
                 <p>Expiry Date: <%#Eval("j_expires", "{0:MM/dd/yyyy}")%></p>
-                <asp:Button ID="btn_app" runat="server" Text="Apply Now" OnClick="subShowApp" CommandArgument='<%#Eval("j_id") %>' />
+
+                <%-- button that will direct the user to the form to apply for the job --%>
+                <asp:Button ID="btn_app" runat="server" Text="Apply Now" OnClick="subApply" CommandArgument='<%#Eval("j_id") %>' />
             </ItemTemplate>
        </asp:Repeater>
     </asp:Panel>
 
-    <asp:Panel ID="pnl_form" runat="server">
+    <%-- panel that the application form resides in --%>
+    <asp:Panel ID="pnl_form" runat="server" Visible="false">
         <asp:Label ID="lbl_jlabel" runat="server" Text="Job ID: " />
         <asp:Label ID="lbl_jID" runat="server" />
         <asp:Label ID="lbl_fname" runat="server" Text="First Name:" />
@@ -116,6 +135,7 @@
             <asp:ListItem Value="n">No</asp:ListItem>
         </asp:RadioButtonList>
         <asp:RequiredFieldValidator ID="rfv_elig" runat="server" ErrorMessage="*required" ControlToValidate="rbl_elig" />
+        <br />
        
        <asp:Label ID="lbl_convict" runat="server" Text="Have you ever been convicted of a federal criminal offence?" />
         <asp:RadioButtonList ID="rbl_convict" runat="server" RepeatDirection="Horizontal">
@@ -133,6 +153,8 @@
         <asp:RequiredFieldValidator ID="rfv_legal" runat="server" ErrorMessage="*required" ControlToValidate="rbl_legal" />
 
         <br /><br />
+
+        <%-- file upload using ajax --%>
         <asp:ScriptManager ID="scm_main" runat="server" />
         <asp:Label ID="lbl_file" runat="server" Text="Upload resume and cover letter (doc/docx/pdf):"  />
         <asp:UpdatePanel ID="udp_main" runat="server">
@@ -152,10 +174,12 @@
         <input type="reset" value="Clear" />
         <asp:Button ID="btn_submit" Text="Submit" runat="server" OnClick="subSubmit" />
     </asp:Panel>
-    <asp:Panel ID="pnl_thankyou" runat="server">
+
+    <%-- panel to hold thank you message upon submission of application --%>
+    <asp:Panel ID="pnl_thankyou" runat="server" Visible="false">
         <asp:Label ID="lbl_thank" runat="server" Text="Thank you for applying for a position at NDMH." />
         <br /><br />
-        <asp:HyperLink ID="hl_career" runat="server" NavigateUrl="~/careers.aspx" Text="Back to Careers page." />
+        <asp:HyperLink ID="hl_career" runat="server" NavigateUrl="~/navigation/careers.aspx" Text="Back to Careers page." />
     </asp:Panel>
 </asp:Content>
 
