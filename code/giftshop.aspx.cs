@@ -23,21 +23,22 @@ public partial class giftshop : System.Web.UI.Page
         listProducts.DataBind();
     }
 
-    protected void btnAddShoes_Click(object sender, EventArgs e) {  
-        // Add product 1 to the shopping cart  
-        cartClass.Instance.AddItem(1);  
-  
-        // Redirect the user to view their shopping cart  
-        Response.Redirect("ViewCart.aspx");  
-    }  
-  
-    protected void btnAddShirt_Click(object sender, EventArgs e) {  
-        cartClass.Instance.AddItem(2);  
-        Response.Redirect("ViewCart.aspx");  
+    private int getOrder(int customerID)
+    {
+        if (Session["OrderID"] != null && Session["OrderID"].ToString().Length > 0)
+        {
+            //set session and insert order
+            return 1;
+        }
+        else
+        {
+            //use current session
+            return int.Parse(Session["OrderID"].ToString());
+        }
     }
 
-    protected void btnAddPants_Click(object sender, EventArgs e) {
-        cartClass.Instance.AddItem(3);
-        Response.Redirect("ViewCart.aspx");
+    protected void subAddItem(object sender, EventArgs e)
+    {
+
     }
 }
