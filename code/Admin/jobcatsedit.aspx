@@ -12,7 +12,7 @@
         <asp:Label ID="lbl_title" runat="server" Text="Careers" />
         <br /><br />
 
-        <asp:Menu ID="mnu_career" runat="server" OnMenuItemClick="subShowSection" Orientation="Vertical">
+        <asp:Menu ID="mnu_career" runat="server" Orientation="Vertical">
             <Items>
                 <asp:MenuItem Value="1" Text="Categories" />
                 <asp:MenuItem Value="2" Text="Job Postings" />
@@ -20,6 +20,14 @@
             </Items>
         </asp:Menu>
         
+        <asp:Panel ID="pnl_insert" runat="server">
+            <asp:Label Text="Category Name: " runat="server" />
+            <asp:TextBox ID="txt_catNameI" runat="server" />
+            <asp:RequiredFieldValidator ID="rfv_catNameI" runat="server" ControlToValidate="txt_catNameI" ErrorMessage="*required" />
+            <br />
+            <asp:Button ID="btn_insert" runat="server" Text="Insert" OnClick="subInsert" />
+        </asp:Panel>
+
         <asp:Panel ID="pnl_cats" runat="server">
             <asp:DataList ID="dtl_cats" runat="server" GridLines="Both">
                 <HeaderTemplate>
@@ -35,8 +43,8 @@
                     <tr>
                         <td><%#Eval("j_category_id") %></td>
                         <td><%#Eval("j_category_name") %></td>
-                        <td><asp:Button ID="btn_update" runat="server" Text="Edit" CommandName="Edit" /></td>
-                        <td><asp:Button ID="btn_delete" runat="server" Text="Delete" /></td>
+                        <td><asp:Button ID="btn_edit" runat="server" Text="Edit" OnClick="subEdit" CommandArgument='<%#Eval("j_category_id") %>' /></td>
+                        <td><asp:Button ID="btn_delete" runat="server" Text="Delete" OnClick="subDelete" OnClientClick="return confirm('Are you sure?');" CommandArgument='<%#Eval("j_category_id") %>' /></td>
                     </tr>
                 </ItemTemplate>
                 <FooterTemplate>
@@ -48,8 +56,22 @@
         
         
         <asp:Panel ID="pnl_update" runat="server">
-        
+            <asp:DataList ID="dtl_update" runat="server">
+                <ItemTemplate>
+                    <asp:Label ID="lbl_jid" runat="server" Text='<%# String.Format("Category ID: {0}",Eval("j_category_id")) %>' />
+                    <br />
+                    <asp:Label runat="server" Text="Category Name: " />
+                    <asp:TextBox id="txt_update" runat="server" Text='<%#Bind("j_category_name") %>' />
+                    <asp:RequiredFieldValidator ID="rfv_catname" runat="server" ControlToValidate="txt_update" ErrorMessage="*required" />
+                    <br />
+                    <asp:Button ID="btn_update" runat="server" OnClick="subUpdate" CommandArgument='<%#Eval("j_category_id") %>' Text="Update" />
+                    <asp:Button ID="btn_cancel" runat="server" OnClick="subCancel" Text="Cancel" />
+                    <br />
+                    <asp:Label ID="lbl_result" runat="server" />
+                </ItemTemplate>
+            </asp:DataList>
         </asp:Panel>   
+        <asp:Label ID="lbl_result" runat="server" />
     </div>
     </form>
 </body>

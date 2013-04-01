@@ -9,6 +9,17 @@
 <body>
     <form id="form1" runat="server">
     <div
+        <asp:Label ID="lbl_title" runat="server" Text="Careers" />
+        <br /><br />
+
+        <asp:Menu ID="mnu_career" runat="server" Orientation="Vertical">
+            <Items>
+                <asp:MenuItem Value="1" Text="Categories" />
+                <asp:MenuItem Value="2" Text="Job Postings" />
+                <asp:MenuItem Value="3" Text="Job Applications" />
+            </Items>
+        </asp:Menu>
+
         <asp:Panel ID="pnl_jobs" runat="server" Visible="false">
             <asp:DataList ID="dtl_jobs" runat="server" GridLines="Both">
                 <HeaderTemplate>
@@ -34,7 +45,7 @@
                         <td><%#Eval("j_posted_date","{0:MM/dd/yyyy}") %></td>
                         <td><%#Eval("j_expires","{0:MM/dd/yyyy}") %></td>
                         <td><%#Eval("j_category_id") %></td>
-                        <td><asp:Button ID="btn_update" runat="server" Text="Edit" CommandName="Edit" /></td>
+                        <td><asp:Button ID="btn_update" runat="server" Text="Edit" /></td>
                         <td><asp:Button ID="btn_delete" runat="server" Text="Delete" /></td>
                     </tr>
                 </ItemTemplate>
