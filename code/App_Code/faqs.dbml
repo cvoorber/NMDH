@@ -4,6 +4,16 @@
     <Type Name="ndmh_faq">
       <Column Name="ndmh_faq_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="ndmh_faq_title" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Association Name="ndmh_faq_ndmh_faq_keyword" Member="ndmh_faq_keywords" ThisKey="ndmh_faq_id" OtherKey="ndmh_faq_id" Type="ndmh_faq_keyword" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ndmh_faq_keywords" Member="ndmh_faq_keywords">
+    <Type Name="ndmh_faq_keyword">
+      <Column Name="fkword_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="faq_keyword" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="ndmh_faq_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="associated_faq_name" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Association Name="ndmh_faq_ndmh_faq_keyword" Member="ndmh_faq" ThisKey="ndmh_faq_id" OtherKey="ndmh_faq_id" Type="ndmh_faq" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

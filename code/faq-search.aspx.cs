@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 public partial class _Default : System.Web.UI.Page
 {
     faqsClass objFaqs = new faqsClass();
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         
@@ -29,6 +30,34 @@ public partial class _Default : System.Web.UI.Page
     }
 
     
-   
+   // start condition: on click of search button -> uses string from the search box
+    // end condition: subroutine called that will display top matching faq articles
+    protected void subSearchSubmit(object sender, EventArgs e)
+    {
+        string words = txt_faqsearch.Text;
+        
+        // take string from search box and getting a list (Idictionary -> like associative array) 
+        //of scores for the string againgst each faq.
+        IDictionary<int, int> scorelist = objFaqs.compareToKeywords(words);
+      
+      foreach (KeyValuePair<int, int> item in scorelist.OrderBy(key => key.Value))
+        {
+            // run function to return faq content for each of the faq ordered results in a repeater
+          //*** As of first test, just the first item on the list is showing up -> probe this further laster
+          // my understanding of ordering an IDictionary array, and getting them to be listed out is not perfect.
+            subResultPanelBind(item.Key);
+        }
+    }
+
+
+
+    // called by subSearchSubmit to bind the top search results to the display repeater.
+    private void subResultPanelBind(int _id)
+    {
+        rpt_searchresults.DataSource = objFaqs.getAllFaqsByID(_id);
+        rpt_searchresults.DataBind();
+    }
+
+    
 
 }
