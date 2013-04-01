@@ -19,7 +19,7 @@
             
         }
     </style>
-    <asp:Timer ID="tmr_main" runat="server" OnTick="subTick" Interval="1000" />
+    <asp:Timer ID="tmr_main" runat="server" OnTick="subTick" Interval="1500" />
 
 
     Username: <asp:TextBox ID="txt_uname" runat="server" />
@@ -34,12 +34,16 @@
        </asp:UpdatePanel>
        
     </div>
-    <br />
-    <asp:TextBox ID="txt_message" runat="server" Width="400px" Height="60px" TextMode="MultiLine" />
-    <br />
-    <asp:Button ID="btn_send" runat="server" OnClick="subSend"  Text="Send" Width="60px" Height="60px"/>
-
-    </div>
+    <asp:UpdatePanel ID="udp_send" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+            <asp:TextBox ID="txt_message" runat="server" Width="400px" Height="60px" TextMode="MultiLine" />
+            <br />
+            <asp:Button ID="btn_send" runat="server" OnClick="subSend"  Text="Send" Width="60px" Height="60px"/>
+        </ContentTemplate>
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="btn_send" EventName="Click" />
+        </Triggers>
+     </asp:UpdatePanel>       
     </form>
 </body>
 </html>

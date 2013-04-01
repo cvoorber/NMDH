@@ -14,10 +14,7 @@
     
     void Application_End(object sender, EventArgs e) 
     {
-        Application.Lock();
-        Application["msg"] = "";
-        Application["adminOn"] = false;
-        Application.UnLock();
+       
     }
         
     void Application_Error(object sender, EventArgs e) 
@@ -32,7 +29,6 @@
 
     void Session_End(object sender, EventArgs e) 
     {
-        Session["adminOn"] = false;
 
     }
        
