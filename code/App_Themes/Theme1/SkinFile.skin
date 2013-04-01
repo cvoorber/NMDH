@@ -27,10 +27,10 @@
 <asp:Menu runat="server" 
     SkinID="skin_feature_nav"
     Orientation="Horizontal" 
-    Font-Size="17pt"
-    ForeColor="#002b23" 
-    StaticMenuItemStyle-HorizontalPadding="50px" 
-    StaticMenuItemStyle-VerticalPadding="20px" 
+    Font-Size="18pt"
+    ForeColor="#002b23"
+    StaticMenuItemStyle-HorizontalPadding="45px"  
+    StaticMenuItemStyle-VerticalPadding="20px"
     StaticMenuItemStyle-CssClass="feature-nav" />
 
 <asp:Panel runat="server" 
@@ -43,14 +43,14 @@
     Font-Size="10pt"
     ForeColor="#002b23" 
     Font-Bold="true"
-    StaticMenuItemStyle-HorizontalPadding="12px" 
+    StaticMenuItemStyle-HorizontalPadding="11px" 
     StaticMenuItemStyle-VerticalPadding="1px" />
 
 <asp:Menu runat="server" 
     SkinID="skin_bottom2_nav"
     Orientation="Horizontal" 
-    Font-Size="10pt"
+    Font-Size="9pt"
     ForeColor="#002b23" 
     Font-Bold="true"
-    StaticMenuItemStyle-HorizontalPadding="12px" 
+    StaticMenuItemStyle-HorizontalPadding="5px" 
     StaticMenuItemStyle-VerticalPadding="1px" />

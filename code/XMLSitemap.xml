@@ -67,6 +67,7 @@
     <parent>home</parent>
     <sourcetable></sourcetable>
     <sourceid>0</sourceid>
+<<<<<<< HEAD
   </url>
   <url>
     <loc>~/navigation/donate.aspx</loc>
@@ -75,6 +76,8 @@
     <parent>home</parent>
     <sourcetable></sourcetable>
     <sourceid>0</sourceid>
+=======
+>>>>>>> 68c92fe1e2df55acba28055363ec524f66abbfeb
   </url>
   <url>
     <loc>~/navigation/policies.aspx</loc>
@@ -101,6 +104,14 @@
     </url>
   </url>
   <url>
+    <loc>~/navigation/donate.aspx</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>Donate</title>
+    <parent>home</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
+  </url>
+  <url>
     <loc>~/navigation/map.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Map</title>
@@ -117,9 +128,9 @@
     <sourceid>0</sourceid>
   </url>
   <url>
-    <loc>~/navigation/erwait.aspx</loc>
+    <loc>~/navigation/giftshop.aspx</loc>
     <lastmod>2013-03-30</lastmod>
-    <title>ER Wait</title>
+    <title>Giftshop</title>
     <parent>feature</parent>
     <sourcetable></sourcetable>
     <sourceid>0</sourceid>
@@ -131,6 +142,17 @@
     <parent>feature</parent>
     <sourcetable></sourcetable>
     <sourceid>0</sourceid>
+<<<<<<< HEAD
+=======
+  </url>
+  <url>
+    <loc>~/navigation/careers.aspx</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>Careers</title>
+    <parent>footer</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
+>>>>>>> 68c92fe1e2df55acba28055363ec524f66abbfeb
   </url>
   <url>
     <loc>~/XMLSitemap.xml</loc>
