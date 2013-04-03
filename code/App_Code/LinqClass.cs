@@ -22,12 +22,12 @@ public class LinqClass<T> where T: class
     }
 
 
-    public IQueryable<T> getResultByColumn(Expression<Func<T,bool>> predicate)
+    public IQueryable<T> getResultByColumn(Expression<Func<T,bool>> lambda)
     {
 		//select all from products where id = _id
         ndmhDCDataContext dcObj = new ndmhDCDataContext();
 
-        var item = dcObj.GetTable<T>().Where(predicate).Select(x=>x);
+        var item = dcObj.GetTable<T>().Where(lambda).Select(x=>x);
         return item;
     }
 
@@ -67,12 +67,12 @@ public class LinqClass<T> where T: class
         return true;
     }
 
-    public bool Delete(Expression<Func<T,bool>> predicate)
+    public bool Delete(Expression<Func<T,bool>> lambda)
     {
         ndmhDCDataContext dcObj = new ndmhDCDataContext();
         using(dcObj)
         {
-            var delObj = dcObj.GetTable<T>().Where<T>(predicate).Single();
+            var delObj = dcObj.GetTable<T>().Where<T>(lambda).Single();
             dcObj.GetTable<T>().DeleteOnSubmit(delObj);
             dcObj.SubmitChanges();
         }
