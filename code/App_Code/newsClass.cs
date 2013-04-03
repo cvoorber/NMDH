@@ -21,11 +21,8 @@ public class newsClass
         var allNews = objNewsDC.ndmh_events.Where(x => x.n_id == _id).Select(x => x);
         return allNews;
     }
-<<<<<<< HEAD
-    public bool commitInsert(int _id, string _title, string _desc, string _image, DateTime _expires, DateTime _date, int _contact, string _link)
-=======
+
     public bool commitInsert(string _title, string _desc, string _image, DateTime _expires, DateTime _date, int _contact, string _link)
->>>>>>> 68c92fe1e2df55acba28055363ec524f66abbfeb
     {
         ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
         //to ensure all data will be disposed when finished
@@ -48,11 +45,8 @@ public class newsClass
             return true;
         }
     }
-<<<<<<< HEAD
-    public bool commitUpdate(int _id, string _title, string _desc, string _image, DateTime _expires, DateTime _date, int _contact, string _link)
-=======
+
     public bool commitUpdate(int _id, string _title, string _desc, string _image, int _contact, string _link)
->>>>>>> 68c92fe1e2df55acba28055363ec524f66abbfeb
     {
         ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
         using (objNewsDC)
