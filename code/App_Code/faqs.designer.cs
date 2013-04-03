@@ -29,12 +29,12 @@ public partial class faqsDataContext : System.Data.Linq.DataContext
 	
   #region Extensibility Method Definitions
   partial void OnCreated();
-  partial void Insertndmh_faq(ndmh_faq instance);
-  partial void Updatendmh_faq(ndmh_faq instance);
-  partial void Deletendmh_faq(ndmh_faq instance);
   partial void Insertndmh_faq_keyword(ndmh_faq_keyword instance);
   partial void Updatendmh_faq_keyword(ndmh_faq_keyword instance);
   partial void Deletendmh_faq_keyword(ndmh_faq_keyword instance);
+  partial void Insertndmh_faq(ndmh_faq instance);
+  partial void Updatendmh_faq(ndmh_faq instance);
+  partial void Deletendmh_faq(ndmh_faq instance);
   #endregion
 	
 	public faqsDataContext() : 
@@ -67,14 +67,6 @@ public partial class faqsDataContext : System.Data.Linq.DataContext
 		OnCreated();
 	}
 	
-	public System.Data.Linq.Table<ndmh_faq> ndmh_faqs
-	{
-		get
-		{
-			return this.GetTable<ndmh_faq>();
-		}
-	}
-	
 	public System.Data.Linq.Table<ndmh_faq_keyword> ndmh_faq_keywords
 	{
 		get
@@ -82,119 +74,13 @@ public partial class faqsDataContext : System.Data.Linq.DataContext
 			return this.GetTable<ndmh_faq_keyword>();
 		}
 	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_faqs")]
-public partial class ndmh_faq : INotifyPropertyChanging, INotifyPropertyChanged
-{
 	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _ndmh_faq_id;
-	
-	private string _ndmh_faq_title;
-	
-	private EntitySet<ndmh_faq_keyword> _ndmh_faq_keywords;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onndmh_faq_idChanging(int value);
-    partial void Onndmh_faq_idChanged();
-    partial void Onndmh_faq_titleChanging(string value);
-    partial void Onndmh_faq_titleChanged();
-    #endregion
-	
-	public ndmh_faq()
-	{
-		this._ndmh_faq_keywords = new EntitySet<ndmh_faq_keyword>(new Action<ndmh_faq_keyword>(this.attach_ndmh_faq_keywords), new Action<ndmh_faq_keyword>(this.detach_ndmh_faq_keywords));
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ndmh_faq_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int ndmh_faq_id
+	public System.Data.Linq.Table<ndmh_faq> ndmh_faqs
 	{
 		get
 		{
-			return this._ndmh_faq_id;
+			return this.GetTable<ndmh_faq>();
 		}
-		set
-		{
-			if ((this._ndmh_faq_id != value))
-			{
-				this.Onndmh_faq_idChanging(value);
-				this.SendPropertyChanging();
-				this._ndmh_faq_id = value;
-				this.SendPropertyChanged("ndmh_faq_id");
-				this.Onndmh_faq_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ndmh_faq_title", DbType="VarChar(1000)")]
-	public string ndmh_faq_title
-	{
-		get
-		{
-			return this._ndmh_faq_title;
-		}
-		set
-		{
-			if ((this._ndmh_faq_title != value))
-			{
-				this.Onndmh_faq_titleChanging(value);
-				this.SendPropertyChanging();
-				this._ndmh_faq_title = value;
-				this.SendPropertyChanged("ndmh_faq_title");
-				this.Onndmh_faq_titleChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_faq_ndmh_faq_keyword", Storage="_ndmh_faq_keywords", ThisKey="ndmh_faq_id", OtherKey="ndmh_faq_id")]
-	public EntitySet<ndmh_faq_keyword> ndmh_faq_keywords
-	{
-		get
-		{
-			return this._ndmh_faq_keywords;
-		}
-		set
-		{
-			this._ndmh_faq_keywords.Assign(value);
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-	
-	private void attach_ndmh_faq_keywords(ndmh_faq_keyword entity)
-	{
-		this.SendPropertyChanging();
-		entity.ndmh_faq = this;
-	}
-	
-	private void detach_ndmh_faq_keywords(ndmh_faq_keyword entity)
-	{
-		this.SendPropertyChanging();
-		entity.ndmh_faq = null;
 	}
 }
 
@@ -370,6 +256,144 @@ public partial class ndmh_faq_keyword : INotifyPropertyChanging, INotifyProperty
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_faqs")]
+public partial class ndmh_faq : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _ndmh_faq_id;
+	
+	private string _ndmh_faq_title;
+	
+	private string _ndmh_content;
+	
+	private EntitySet<ndmh_faq_keyword> _ndmh_faq_keywords;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onndmh_faq_idChanging(int value);
+    partial void Onndmh_faq_idChanged();
+    partial void Onndmh_faq_titleChanging(string value);
+    partial void Onndmh_faq_titleChanged();
+    partial void Onndmh_contentChanging(string value);
+    partial void Onndmh_contentChanged();
+    #endregion
+	
+	public ndmh_faq()
+	{
+		this._ndmh_faq_keywords = new EntitySet<ndmh_faq_keyword>(new Action<ndmh_faq_keyword>(this.attach_ndmh_faq_keywords), new Action<ndmh_faq_keyword>(this.detach_ndmh_faq_keywords));
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ndmh_faq_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int ndmh_faq_id
+	{
+		get
+		{
+			return this._ndmh_faq_id;
+		}
+		set
+		{
+			if ((this._ndmh_faq_id != value))
+			{
+				this.Onndmh_faq_idChanging(value);
+				this.SendPropertyChanging();
+				this._ndmh_faq_id = value;
+				this.SendPropertyChanged("ndmh_faq_id");
+				this.Onndmh_faq_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ndmh_faq_title", DbType="VarChar(1000)")]
+	public string ndmh_faq_title
+	{
+		get
+		{
+			return this._ndmh_faq_title;
+		}
+		set
+		{
+			if ((this._ndmh_faq_title != value))
+			{
+				this.Onndmh_faq_titleChanging(value);
+				this.SendPropertyChanging();
+				this._ndmh_faq_title = value;
+				this.SendPropertyChanged("ndmh_faq_title");
+				this.Onndmh_faq_titleChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ndmh_content", DbType="VarChar(MAX)")]
+	public string ndmh_content
+	{
+		get
+		{
+			return this._ndmh_content;
+		}
+		set
+		{
+			if ((this._ndmh_content != value))
+			{
+				this.Onndmh_contentChanging(value);
+				this.SendPropertyChanging();
+				this._ndmh_content = value;
+				this.SendPropertyChanged("ndmh_content");
+				this.Onndmh_contentChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_faq_ndmh_faq_keyword", Storage="_ndmh_faq_keywords", ThisKey="ndmh_faq_id", OtherKey="ndmh_faq_id")]
+	public EntitySet<ndmh_faq_keyword> ndmh_faq_keywords
+	{
+		get
+		{
+			return this._ndmh_faq_keywords;
+		}
+		set
+		{
+			this._ndmh_faq_keywords.Assign(value);
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_ndmh_faq_keywords(ndmh_faq_keyword entity)
+	{
+		this.SendPropertyChanging();
+		entity.ndmh_faq = this;
+	}
+	
+	private void detach_ndmh_faq_keywords(ndmh_faq_keyword entity)
+	{
+		this.SendPropertyChanging();
+		entity.ndmh_faq = null;
 	}
 }
 #pragma warning restore 1591
