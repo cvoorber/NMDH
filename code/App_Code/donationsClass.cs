@@ -1,8 +1,8 @@
-<<<<<<< HEAD
-﻿using System;
-=======
+
+
+
 using System;
->>>>>>> 3e4c087f65551606484a5e844c587a5206f75c8b
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
