@@ -67,6 +67,17 @@
     <parent>home</parent>
     <sourcetable></sourcetable>
     <sourceid>0</sourceid>
+<<<<<<< HEAD
+  </url>
+  <url>
+    <loc>~/navigation/donate.aspx</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>Donate</title>
+    <parent>home</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
+=======
+>>>>>>> 68c92fe1e2df55acba28055363ec524f66abbfeb
   </url>
   <url>
     <loc>~/navigation/policies.aspx</loc>
@@ -131,6 +142,8 @@
     <parent>feature</parent>
     <sourcetable></sourcetable>
     <sourceid>0</sourceid>
+<<<<<<< HEAD
+=======
   </url>
   <url>
     <loc>~/navigation/careers.aspx</loc>
@@ -139,6 +152,7 @@
     <parent>footer</parent>
     <sourcetable></sourcetable>
     <sourceid>0</sourceid>
+>>>>>>> 68c92fe1e2df55acba28055363ec524f66abbfeb
   </url>
   <url>
     <loc>~/XMLSitemap.xml</loc>

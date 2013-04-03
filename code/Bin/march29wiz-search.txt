@@ -1,0 +1,29 @@
+Plan for the FAQ Search Function:
+
+1 - I can do the autofill first -> this will be based on the title of the
+articles -> i.e. if someone starts typing out the letters to a title, or
+number of titles, a suggestion will be given that they can click on
+to get to the appropriate article (*** Use the functionalliity that
+comes from the AJAX extender for .NET -> a page that explains this should
+be saved in my bookmarks on the win VM.
+
+2 - When someone enters a search query and clicks search, the .Split
+function will be used to seperate the text into an array (also will be 
+using the seperators (they specify which characters get removed) and
+the trim function will be used when you are accessing the array (see
+example in the page on .Split that is saved in bookmarks. (also
+remember when you are doing the seperator for the .Split function, 
+to seperate out words such as "the" "it" "and" etc that will not
+provide any meaning and will be useless for finding a meaningful match.
+
+3 - The array produced by the .Split function will then be compared 
+against the keywords that are associated with each of the articles...
+for each matching keyword, the article gets awarded a value of +1 that
+will be stored in memory.... the top 3 articles that had a score will be ordered and displayed, according to their score (*Note, if no articles
+have any match, default most popular articles will be spliced in. 
+*** When this happen, could provide text above the "common" article,
+explaining that there weren't any more matches and this was a common article.
+
+*** When coming up with the titles and keywords, keep them very simple...
+note this as it would be an instruction to give to a client... in order
+to use the function to the best of its ability.

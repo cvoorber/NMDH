@@ -3,10 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
     <asp:Label ID="lblCartHeading" runat="server" Text="Transactions and cart info display here" />
     <div id="shoppingCart">
-        <div>Shoes - <asp:LinkButton runat="server" ID="btnAddShirt" OnClick="btnAddShoes_Click">Add To Cart</asp:LinkButton></div>  
-  
-        <div>Shirt - <asp:LinkButton runat="server" ID="btnAddShorts" OnClick="btnAddShirt_Click">Add To Cart</asp:LinkButton></div>  
-        <div>Pants - <asp:LinkButton runat="server" ID="btnAddShoes" OnClick="btnAddPants_Click">Add To Cart</asp:LinkButton></div>
     </div>
 </asp:Content>
 
@@ -17,32 +13,63 @@
     <br /><br />
     <asp:ListView ID="listProducts" runat="server">
         <ItemTemplate>
-            <div class="item" style="float:left;width:200px;height:320px;border:1px solid gray;padding:20px 30px;margin:15px 15px;background:#FFF;cursor:hand;cursor:grab;cursor:-moz-grab;cursor:-webkit-grab;">
+            <div class="item">
                 <asp:Label ID="lblName" runat="server" Text='<%#Eval("p_name") %>' Font-Bold="true" Font-Size="16" />
                 <br />
-                <asp:Image ID="imgProd" runat="server" ImageUrl='<%#Eval("p_image") %>' Width="199" Height="200" />
+                <asp:Image ID="imgProd" runat="server" ImageUrl='<%#Eval("p_image") %>' CssClass="prodImg" />
                 <br />
-                <asp:Label ID="lblDesc" runat="server" Text='<%#Eval("p_desc") %>' Font-Size="13" />
+                <asp:Label ID="lblDesc" runat="server" Text='<%#Eval("p_desc") %>' />
                 <br /><br />
-                <asp:Label ID="lblPriceTitle" runat="server" Text="Price: $" Font-Size="14" />
-                <asp:Label ID="lblPrice" runat="server" Text='<%#Eval("p_price") %>' Font-Size="14" />&nbsp;
-                <div class="itemDrop" style="float:right;font-size:14px;border:1px solid gray;background:#CCC;padding:4px;">Drag to Cart</div>
+                <asp:Label ID="lblPriceTitle" runat="server" Text="Price: $" />
+                <asp:Label ID="lblPrice" runat="server" Text='<%#Eval("p_price") %>' />&nbsp;
+                <%--<div class="itemDrop" style="float:right;border:1px solid gray;background:#CCC;padding:4px;">Drag to Cart</div>--%>
+                <asp:LinkButton ID="lnk_buy" runat="server" OnClick="subAddItem" Text="Add to Cart" />
             </div>
         </ItemTemplate>
     </asp:ListView>
     <script type="text/javascript" language="javascript">
         $(document).ready(function () {
 
-            $(".item").draggable({ helper: "clone" });
+            //creating a draggable item
+            $(".item").draggable({ helper: "clone", opacity: "0.8" });
 
+            //creating a drop area and event
             $("#shoppingCart").droppable(
                 {
                     accept: ".item",
                     drop: (function (ev, ui) {
-
-                        var droppedItem = $(ui.draggable).clone();
+                        
+                        //creating the drop variable and changing css-class to shrink
+                        var droppedItem = $(ui.draggable).clone().removeClass("item").addClass("droppedItemShrink");
                         $("#shoppingCart").append(droppedItem);
-                        addToList();
+
+                        //creating a Remove link for the item in the shopping cart
+                        var removeLink = document.createElement("a");
+                        removeLink.innerHTML = "Remove";
+                        removeLink.className = "deleteLink";
+                        removeLink.href = "#";
+                        removeLink.onclick = function () {
+                            $("#shoppingCart").children("#" + droppedItem[0].id).fadeOut('slow', function () { $(this).remove(); });
+                            $.ajax({
+                                type: "POST",
+                                url: "giftshop.aspx/RemoveItem",
+                                contentType: "application/json; charset=utf-8",
+                                data: "{id:'" + productCode + "'}",
+                                dataType: "json"
+                            });
+                        }
+
+                        droppedItem[0].appendChild(removeLink);
+                        $(this).append(droppedItem);
+
+                        $.ajax({
+                            type: "POST",
+                            url: "giftshop.aspx",
+                            contentType: "application/json; charset=utf-8",
+                            data: "{id:'" + productCode + "'}",
+                            dataType: "json"
+                        });
+                        
                     })
                 });
 

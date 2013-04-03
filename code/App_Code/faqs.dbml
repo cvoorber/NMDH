@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="cvoorber" Class="faqsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=cvoorber.db.10296660.hostedresource.com;Initial Catalog=cvoorber;Persist Security Info=True;User ID=cvoorber" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="cvoorberConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ndmh_faqs" Member="ndmh_faqs">
+    <Type Name="ndmh_faq">
+      <Column Name="ndmh_faq_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ndmh_faq_title" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Association Name="ndmh_faq_ndmh_faq_keyword" Member="ndmh_faq_keywords" ThisKey="ndmh_faq_id" OtherKey="ndmh_faq_id" Type="ndmh_faq_keyword" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ndmh_faq_keywords" Member="ndmh_faq_keywords">
+    <Type Name="ndmh_faq_keyword">
+      <Column Name="fkword_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="faq_keyword" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="ndmh_faq_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="associated_faq_name" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Association Name="ndmh_faq_ndmh_faq_keyword" Member="ndmh_faq" ThisKey="ndmh_faq_id" OtherKey="ndmh_faq_id" Type="ndmh_faq" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

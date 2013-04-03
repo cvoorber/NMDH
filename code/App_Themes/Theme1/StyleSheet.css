@@ -268,6 +268,41 @@ background-repeat:no-repeat;
 border:1px solid gray;
 }
 
+.item {
+float:left;
+width:200px;
+height:320px;
+font-size:15px;
+border:1px solid gray;
+padding:20px 30px;
+margin:15px 15px;
+background:#FFF;
+cursor:hand;
+cursor:grab;
+cursor:-moz-grab;
+cursor:-webkit-grab;
+}
+
+.droppedItemShrink {
+width:100px;
+height:200px;
+border:1px solid gray;
+font-size:8px;
+padding:10px 30px;
+margin:5px;
+background:#FFF;
+}
+
+.droppedItemShrink img {
+width:100px;
+height:100px;
+}
+
+.prodImg {
+width:199px;
+height:200px;
+}
+
 /* - - Added by Chris for NewsBlog March 26/13 - - */
 
 .insertComment {
@@ -297,3 +332,35 @@ padding:10px;
 
 
 /* - - End of Master Page NDMH template style -- */
+
+/*Added by Ryan for Donations page - March 21*/
+
+.donate-box 
+{
+    padding: 50px;
+    border: 3px solid black;
+    margin: 30px 30px 0 30px;
+}
+
+.page-heading 
+{
+    font-size: 28px;
+    padding: 50px;
+}
+
+/* End of Ryan Donations page CSS */
+
+/* Ryan Virt-Tour CSS start */
+.tour-box
+{
+    
+    border: 3px solid black;
+}
+
+#floor-list
+{
+    margin: 0 auto;
+    font-size: 40px;
+}
+
+/* Ryan end of Virt-Tour CSS */

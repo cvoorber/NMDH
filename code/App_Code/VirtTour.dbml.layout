@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="VirtTour">
+  <DataContextMoniker Name="/VirtTourDataContext" />
+  <nestedChildShapes>
+    <classShape Id="dc346aeb-0ef1-403c-a425-0e0a2731dc9c" absoluteBounds="4.375, 2.25, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/VirtTourDataContext/ndmh_department_listing" />
+      <nestedChildShapes>
+        <elementListCompartment Id="183a4dda-21be-4315-b4f5-af8beb6c35f4" absoluteBounds="4.39, 2.71, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
