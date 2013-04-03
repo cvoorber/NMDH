@@ -2,17 +2,11 @@
 <%@ Mastertype VirtualPath="~/maintemplate.master" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
-<<<<<<< HEAD
-    <!-- section -->
-    <div id="left_sidebar">
-        <asp:Menu ID="side_menu" runat="server" StaticMenuItemStyle-CssClass="side-menu" OnMenuItemClick="sideMenu_Click" >
-=======
 
     <!-- section -->
     <div id="left_sidebar">
         <asp:Menu ID="side_menu" runat="server" StaticMenuItemStyle-CssClass="side-menu" OnMenuItemClick="sideMenu_Click" >
 
->>>>>>> 68c92fe1e2df55acba28055363ec524f66abbfeb
             <Items>
                 <asp:MenuItem Text="About Us" Target="~/index.aspx" />
             </Items>
