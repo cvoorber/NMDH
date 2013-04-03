@@ -80,10 +80,16 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
   partial void Insertndmh_staff_listing(ndmh_staff_listing instance);
   partial void Updatendmh_staff_listing(ndmh_staff_listing instance);
   partial void Deletendmh_staff_listing(ndmh_staff_listing instance);
+  partial void Insertbase_country(base_country instance);
+  partial void Updatebase_country(base_country instance);
+  partial void Deletebase_country(base_country instance);
+  partial void Insertstate_or_province(state_or_province instance);
+  partial void Updatestate_or_province(state_or_province instance);
+  partial void Deletestate_or_province(state_or_province instance);
   #endregion
 	
 	public ndmhDCDataContext() : 
-			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["cvoorberConnectionString"].ConnectionString, mappingSource)
+			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["cvoorberConnectionString1"].ConnectionString, mappingSource)
 	{
 		OnCreated();
 	}
@@ -245,6 +251,22 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<ndmh_staff_listing>();
+		}
+	}
+	
+	public System.Data.Linq.Table<base_country> base_countries
+	{
+		get
+		{
+			return this.GetTable<base_country>();
+		}
+	}
+	
+	public System.Data.Linq.Table<state_or_province> state_or_provinces
+	{
+		get
+		{
+			return this.GetTable<state_or_province>();
 		}
 	}
 }
@@ -2363,7 +2385,7 @@ public partial class ndmh_general_page : INotifyPropertyChanging, INotifyPropert
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gp_image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gp_image", DbType="Image", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 	public System.Data.Linq.Binary gp_image
 	{
 		get
@@ -3619,7 +3641,7 @@ public partial class ndmh_report : INotifyPropertyChanging, INotifyPropertyChang
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_r_image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_r_image", DbType="Image", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 	public System.Data.Linq.Binary r_image
 	{
 		get
@@ -4034,7 +4056,7 @@ public partial class ndmh_staff_listing : INotifyPropertyChanging, INotifyProper
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sl_image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sl_image", DbType="Image", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 	public System.Data.Linq.Binary sl_image
 	{
 		get
@@ -4097,6 +4119,391 @@ public partial class ndmh_staff_listing : INotifyPropertyChanging, INotifyProper
 	{
 		this.SendPropertyChanging();
 		entity.ndmh_staff_listing = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.base_country")]
+public partial class base_country : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _country_id;
+	
+	private string _iso2;
+	
+	private string _iso3;
+	
+	private string _name_en;
+	
+	private string _name_fr;
+	
+	private string _name_de;
+	
+	private EntitySet<state_or_province> _state_or_provinces;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Oncountry_idChanging(int value);
+    partial void Oncountry_idChanged();
+    partial void Oniso2Changing(string value);
+    partial void Oniso2Changed();
+    partial void Oniso3Changing(string value);
+    partial void Oniso3Changed();
+    partial void Onname_enChanging(string value);
+    partial void Onname_enChanged();
+    partial void Onname_frChanging(string value);
+    partial void Onname_frChanged();
+    partial void Onname_deChanging(string value);
+    partial void Onname_deChanged();
+    #endregion
+	
+	public base_country()
+	{
+		this._state_or_provinces = new EntitySet<state_or_province>(new Action<state_or_province>(this.attach_state_or_provinces), new Action<state_or_province>(this.detach_state_or_provinces));
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_country_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+	public int country_id
+	{
+		get
+		{
+			return this._country_id;
+		}
+		set
+		{
+			if ((this._country_id != value))
+			{
+				this.Oncountry_idChanging(value);
+				this.SendPropertyChanging();
+				this._country_id = value;
+				this.SendPropertyChanged("country_id");
+				this.Oncountry_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_iso2", DbType="Char(2)")]
+	public string iso2
+	{
+		get
+		{
+			return this._iso2;
+		}
+		set
+		{
+			if ((this._iso2 != value))
+			{
+				this.Oniso2Changing(value);
+				this.SendPropertyChanging();
+				this._iso2 = value;
+				this.SendPropertyChanged("iso2");
+				this.Oniso2Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_iso3", DbType="Char(3)")]
+	public string iso3
+	{
+		get
+		{
+			return this._iso3;
+		}
+		set
+		{
+			if ((this._iso3 != value))
+			{
+				this.Oniso3Changing(value);
+				this.SendPropertyChanging();
+				this._iso3 = value;
+				this.SendPropertyChanged("iso3");
+				this.Oniso3Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name_en", DbType="VarChar(64)")]
+	public string name_en
+	{
+		get
+		{
+			return this._name_en;
+		}
+		set
+		{
+			if ((this._name_en != value))
+			{
+				this.Onname_enChanging(value);
+				this.SendPropertyChanging();
+				this._name_en = value;
+				this.SendPropertyChanged("name_en");
+				this.Onname_enChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name_fr", DbType="VarChar(64)")]
+	public string name_fr
+	{
+		get
+		{
+			return this._name_fr;
+		}
+		set
+		{
+			if ((this._name_fr != value))
+			{
+				this.Onname_frChanging(value);
+				this.SendPropertyChanging();
+				this._name_fr = value;
+				this.SendPropertyChanged("name_fr");
+				this.Onname_frChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name_de", DbType="VarChar(64)")]
+	public string name_de
+	{
+		get
+		{
+			return this._name_de;
+		}
+		set
+		{
+			if ((this._name_de != value))
+			{
+				this.Onname_deChanging(value);
+				this.SendPropertyChanging();
+				this._name_de = value;
+				this.SendPropertyChanged("name_de");
+				this.Onname_deChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="base_country_state_or_province", Storage="_state_or_provinces", ThisKey="country_id", OtherKey="country_id")]
+	public EntitySet<state_or_province> state_or_provinces
+	{
+		get
+		{
+			return this._state_or_provinces;
+		}
+		set
+		{
+			this._state_or_provinces.Assign(value);
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_state_or_provinces(state_or_province entity)
+	{
+		this.SendPropertyChanging();
+		entity.base_country = this;
+	}
+	
+	private void detach_state_or_provinces(state_or_province entity)
+	{
+		this.SendPropertyChanging();
+		entity.base_country = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.state_or_province")]
+public partial class state_or_province : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _id;
+	
+	private string _code;
+	
+	private string _name;
+	
+	private int _country_id;
+	
+	private EntityRef<base_country> _base_country;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OncodeChanging(string value);
+    partial void OncodeChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void Oncountry_idChanging(int value);
+    partial void Oncountry_idChanged();
+    #endregion
+	
+	public state_or_province()
+	{
+		this._base_country = default(EntityRef<base_country>);
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int id
+	{
+		get
+		{
+			return this._id;
+		}
+		set
+		{
+			if ((this._id != value))
+			{
+				this.OnidChanging(value);
+				this.SendPropertyChanging();
+				this._id = value;
+				this.SendPropertyChanged("id");
+				this.OnidChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_code", DbType="Char(2) NOT NULL", CanBeNull=false)]
+	public string code
+	{
+		get
+		{
+			return this._code;
+		}
+		set
+		{
+			if ((this._code != value))
+			{
+				this.OncodeChanging(value);
+				this.SendPropertyChanging();
+				this._code = value;
+				this.SendPropertyChanged("code");
+				this.OncodeChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(64) NOT NULL", CanBeNull=false)]
+	public string name
+	{
+		get
+		{
+			return this._name;
+		}
+		set
+		{
+			if ((this._name != value))
+			{
+				this.OnnameChanging(value);
+				this.SendPropertyChanging();
+				this._name = value;
+				this.SendPropertyChanged("name");
+				this.OnnameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_country_id", DbType="Int NOT NULL")]
+	public int country_id
+	{
+		get
+		{
+			return this._country_id;
+		}
+		set
+		{
+			if ((this._country_id != value))
+			{
+				if (this._base_country.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Oncountry_idChanging(value);
+				this.SendPropertyChanging();
+				this._country_id = value;
+				this.SendPropertyChanged("country_id");
+				this.Oncountry_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="base_country_state_or_province", Storage="_base_country", ThisKey="country_id", OtherKey="country_id", IsForeignKey=true)]
+	public base_country base_country
+	{
+		get
+		{
+			return this._base_country.Entity;
+		}
+		set
+		{
+			base_country previousValue = this._base_country.Entity;
+			if (((previousValue != value) 
+						|| (this._base_country.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._base_country.Entity = null;
+					previousValue.state_or_provinces.Remove(this);
+				}
+				this._base_country.Entity = value;
+				if ((value != null))
+				{
+					value.state_or_provinces.Add(this);
+					this._country_id = value.country_id;
+				}
+				else
+				{
+					this._country_id = default(int);
+				}
+				this.SendPropertyChanged("base_country");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
 	}
 }
 #pragma warning restore 1591

@@ -9,7 +9,8 @@ using System.Web;
 public class faqsClass
 {
     // instance of faq data context
-    faqsDataContext objFaqs = new faqsDataContext();
+    
+    ndmhDCDataContext objFaqs = new ndmhDCDataContext();
 
     // this method performs a linq query to get FAQ titles, and retuns an array of the titles 
     public string[] getAllFaqTitles()

@@ -8,7 +8,7 @@ using System.Web;
 /// </summary>
 public class faqsadminClass
 {
-    faqsDataContext objFaqs = new faqsDataContext();
+    ndmhDCDataContext objFaqs = new ndmhDCDataContext();
 
 	// method to get all faq data
     public IQueryable<ndmh_faq> getAllFaqs()

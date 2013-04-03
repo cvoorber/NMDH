@@ -8,7 +8,8 @@ using System.Web;
 /// </summary>
 public class virtClass
 {
-    VirtTourDataContext objVirtTour = new VirtTourDataContext();
+    
+    ndmhDCDataContext objVirtTour = new ndmhDCDataContext();
 
     // this method will get the list of all departments
     public IQueryable<ndmh_department_listing> getDepartments()

@@ -8,7 +8,8 @@ using System.Web;
 /// </summary>
 public class donationsClass
 {
-    donationsDataContext objDonDC = new donationsDataContext();
+    
+    ndmhDCDataContext objDonDC = new ndmhDCDataContext();
     // this function will return the entire list of countries for the country DDL's
     public IQueryable<base_country> getAllCountries()
     {
