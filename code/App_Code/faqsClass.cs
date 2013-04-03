@@ -51,10 +51,10 @@ public class faqsClass
 
         
 
-        string[] split = _words.Split(new Char[] { ' ', ',', '.', ':', '\t', '?' });
-        string[] peas = allkeywords; 
+        string[] splitsearchstring = _words.Split(new Char[] { ' ', ',', '.', ':', '\t', '?' });
+        string[] faqkeywords = allkeywords; 
         int score = 0;
-        foreach (string s in split)
+        foreach (string s in splitsearchstring)
         {
             
             // just before doing the comparrision, we do the trim test to eliminate blank cells.
@@ -62,7 +62,7 @@ public class faqsClass
             {
                 // contains function looks at how many of the words from the split _words string are contained in the 
                 // peas array that has the list of all keywords for the particular faq
-                if (peas.Contains(s))
+                if (faqkeywords.Contains(s))
                 {
                     score += 1;
                 }
