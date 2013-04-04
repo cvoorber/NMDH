@@ -18,11 +18,18 @@ public class faqsadminClass
     }
 
     // method to get all faq data by ID
-    public IQueryable<ndmh_faq> getAllFaqsByID(int _ndmh_faq_id)
+    public IQueryable<ndmh_faq> getFaqByID(int _ndmh_faq_id)
     {
         var allFaqsID = objFaqs.ndmh_faqs.Where(x => x.ndmh_faq_id == _ndmh_faq_id).Select(x => x);
         return allFaqsID;
 
+    }
+
+    // method to get all keyword data for a particular faq ID - returns an Iqueryable object
+    public IQueryable<ndmh_faq_keyword> getFaqKeysByID(int _ndmh_faq_id)
+    {
+        var allFaqKeysID = objFaqs.ndmh_faq_keywords.Where(x => x.ndmh_faq_id == _ndmh_faq_id).Select(x => x);
+        return allFaqKeysID;
     }
 
     // method to insert new faq record
