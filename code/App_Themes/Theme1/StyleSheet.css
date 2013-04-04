@@ -255,11 +255,10 @@ text-align:center;
 /* Added by Chris for Giftshop -- March 25, 2013 */
 
 #shoppingCart {
-height:200px;
-width:200px;
+height:400px;
+width:190px;
 padding:70px 20px 0 17px;
 margin:0px;
-position:fixed;
 overflow:auto;
 background-image:url("../../img/shopping_cart.png");
 background-size:200px;
@@ -277,10 +276,6 @@ border:1px solid gray;
 padding:20px 30px;
 margin:15px 15px;
 background:#FFF;
-cursor:hand;
-cursor:grab;
-cursor:-moz-grab;
-cursor:-webkit-grab;
 }
 
 .droppedItemShrink {
