@@ -7,24 +7,24 @@ using System.Web;
 using System.Data.Linq;
 
 /// <summary>
-/// Summary description for LinqClass
+/// semi generic linq class to handle multiple table objects onf datacontext
 /// </summary>
 public class LinqClass<T> where T: class
 {
-	//creating an instance of the Linq object
-	//accessible by all functions in file
-
+	
+    //create new datacontext object
     ndmhDCDataContext dcObj = new ndmhDCDataContext();
+
+    //get all items of type T from datacontext
     public IQueryable<T> getItems()
     {
        var allItems = dcObj.GetTable<T>().Select(x => x);
        return allItems;
     }
 
-
+    //get all items of type T based on lambda expression
     public IQueryable<T> getResultByColumn(Expression<Func<T,bool>> lambda)
     {
-		//select all from products where id = _id
         ndmhDCDataContext dcObj = new ndmhDCDataContext();
 
         var item = dcObj.GetTable<T>().Where(lambda).Select(x=>x);
@@ -32,7 +32,7 @@ public class LinqClass<T> where T: class
     }
 
 
-
+    //insert into item of type T 
     public bool Insert(T insertItem)
     {
         ndmhDCDataContext dcObj = new ndmhDCDataContext();
@@ -55,8 +55,7 @@ public class LinqClass<T> where T: class
 		//automatic opening and closing of Linq object connection
         using (dcObj)
         {
-            //T oldItem = dcObj.GetTable<T>().Where<T>(predicate).Single();
-
+            //attach the updated object (record)
 			dcObj.GetTable<T>().Attach(updateItem);
 
             //resolves conflicts by overwriting values of the object in question
@@ -67,12 +66,13 @@ public class LinqClass<T> where T: class
         return true;
     }
 
+    //takes a lambda expression and deletes record
     public bool Delete(Expression<Func<T,bool>> lambda)
     {
         ndmhDCDataContext dcObj = new ndmhDCDataContext();
         using(dcObj)
         {
-            var delObj = dcObj.GetTable<T>().Where<T>(lambda).Single();
+            var delObj = dcObj.GetTable<T>().Where(lambda).Single();
             dcObj.GetTable<T>().DeleteOnSubmit(delObj);
             dcObj.SubmitChanges();
         }
