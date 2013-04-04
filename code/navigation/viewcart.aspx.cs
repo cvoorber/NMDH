@@ -10,7 +10,7 @@ public partial class navigation_viewcart : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
         {
             // Binding the items
-            if (!IsPostBack)
+            if (!Page.IsPostBack)
             {
                 BindData();
             }
@@ -22,6 +22,7 @@ public partial class navigation_viewcart : System.Web.UI.Page
             cartClass cart = cartClass.GetShoppingCart();
             gridCart.DataSource = cart.Items;
             gridCart.DataBind();
+            PanelControl(pnl_order);
         }
 
         protected void gridCart_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -82,13 +83,21 @@ public partial class navigation_viewcart : System.Web.UI.Page
             txt_emailrepeat.Text = string.Empty;
         }
 
+        protected void btnSubCheckout(object sender, EventArgs e)
+        {
+            PanelControl(pnl_checkout);
+        }    
+
         protected void subOrder(object sender, EventArgs e)
         {
 
         }
 
-        protected void btnSubCheckout(object sender, EventArgs e)
+        // control panel visibility for checkout details
+        protected void PanelControl(Panel pnl)
         {
-
+            pnl_order.Visible = false;
+            pnl_checkout.Visible = false;
+            pnl.Visible = true;
         }
 }

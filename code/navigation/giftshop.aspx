@@ -1,12 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubMaster1.master" AutoEventWireup="true" CodeFile="giftshop.aspx.cs" Inherits="giftshop" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/maintemplate.master" AutoEventWireup="true" CodeFile="giftshop.aspx.cs" Inherits="giftshop" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
-    <asp:Label ID="lblCartHeading" runat="server" Text="Transactions and cart info display here" />
-    <div id="shoppingCart">
-    </div>
-</asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
+<div id="giftshop">
     <asp:Label ID="lblProdHeading" runat="server" Text="Welcome to our Gift Shop!" Font-Bold="true" Font-Size="22" />
     <br /><br />
     <asp:Label ID="Label1" runat="server" Text="*Select from the items below*" Font-Size="16" Font-Italic="true" />
@@ -27,5 +22,6 @@
             </div>
         </ItemTemplate>
     </asp:ListView>
+</div>
 </asp:Content>
 

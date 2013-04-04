@@ -3,12 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
-<div id="viewcart">
-<h1>NDMH Giftshop - Your Shopping Cart</h1>
+<asp:Panel ID="pnl_order" runat="server">
+    <h1>NDMH Giftshop - Your Current Shopping Cart</h1>
     <br /><br />  
-    <asp:GridView runat="server" ID="gridCart" AutoGenerateColumns="false" EmptyDataText="Your Shopping Cart is empty." GridLines="None" Width="100%" CellPadding="5" CellSpacing="5" ShowFooter="true" DataKeyNames="ProductId" OnRowDataBound="gridCart_RowDataBound" OnRowCommand="gridCart_RowCommand" Font-Size="14">  
-        <HeaderStyle CssClass="cartStyle" HorizontalAlign="Left" BackColor="#3D7169" ForeColor="#FFFFFF" Height="20" />  
-        <FooterStyle  CssClass="cartStyle" HorizontalAlign="Right" BackColor="#6C6B66" ForeColor="#FFFFFF" Height="20" /> 
+    <asp:GridView runat="server" ID="gridCart" AutoGenerateColumns="false" EmptyDataText="Your Shopping Cart is empty." GridLines="None" Width="100%" CellPadding="5" CellSpacing="5" ShowFooter="true" DataKeyNames="ProductId" OnRowDataBound="gridCart_RowDataBound" OnRowCommand="gridCart_RowCommand" Font-Size="12" CssClass="cartStyle" RowStyle-Height="60">  
+        <HeaderStyle Font-Size="15" Font-Bold="true" HorizontalAlign="Left" BackColor="#11c1a2" ForeColor="#000" Height="25" />  
+        <FooterStyle Font-Size="15" Font-Bold="true" HorizontalAlign="Right" BackColor="#6C6B66" ForeColor="#FFFFFF" Height="25" /> 
         <AlternatingRowStyle BackColor="#F8F8F8" />  
         <Columns>
             <asp:BoundField DataField="Description" HeaderText="Description" />  
@@ -26,9 +26,9 @@
     <asp:Button runat="server" ID="btnUpdateCart" Text="Update Cart" Style="float:right;" OnClick="btnSubUpdate" />  
     <br /><br />
     <asp:Button runat="server" ID="btnCheckout" Text="Checkout" Style="float:right;" OnClick="btnSubCheckout" />
-</div>
-<hr />
-<div id="checkout">
+</asp:Panel>
+
+<asp:Panel ID="pnl_checkout" runat="server" Style="margin-left:200px;">
     <h1>Ready to Checkout? Please Fill in the Form Below.</h1>
     <table width="550">
         <tr>
@@ -100,8 +100,8 @@
             <td><asp:Button ID="btn_clear" runat="server" Text="Clear Form" OnClick="clearForm" />&nbsp;&nbsp;<asp:Button ID="btn_submit" runat="server" Text="Submit" ValidationGroup="subForm" OnClientClick="return confirm('Confirm Purchase?');" OnClick="subOrder" /></td>
         </tr>
     </table>
-
+    <br />
     <asp:ValidationSummary ValidationGroup="subForm" ID="vds_1" runat="server" HeaderText="The Form Contains Errors" ForeColor="Red" />    
-</div>
+</asp:Panel>
 </asp:Content>
 
