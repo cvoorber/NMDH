@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubMaster1.master" AutoEventWireup="true" CodeFile="careers.aspx.cs" Inherits="careers" %>
+﻿<%@ Page Title="" Theme="Theme1" Language="C#" MasterPageFile="~/SubMaster1.master" AutoEventWireup="true" CodeFile="careers.aspx.cs" Inherits="careers" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
@@ -73,6 +73,7 @@
     <asp:Panel ID="pnl_form" runat="server" Visible="false">
         <asp:Label ID="lbl_jlabel" runat="server" Text="Job ID: " />
         <asp:Label ID="lbl_jID" runat="server" />
+        <br />
         <asp:Label ID="lbl_fname" runat="server" Text="First Name:" />
         <asp:TextBox ID="txt_fname" runat="server" />
         <asp:RequiredFieldValidator ID="rfv_fname" runat="server" ControlToValidate="txt_fname" ErrorMessage="*required" />

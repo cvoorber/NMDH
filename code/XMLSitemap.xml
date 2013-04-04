@@ -69,6 +69,14 @@
     <sourceid>0</sourceid>
   </url>
   <url>
+    <loc>~/navigation/donations.aspx</loc>
+    <lastmod>2013-03-30</lastmod>
+    <title>Donate</title>
+    <parent>home</parent>
+    <sourcetable></sourcetable>
+    <sourceid>0</sourceid>
+  </url>
+  <url>
     <loc>~/navigation/policies.aspx</loc>
     <lastmod>2013-03-30</lastmod>
     <title>Policies</title>
@@ -91,14 +99,6 @@
       <sourcetable>reports</sourcetable>
       <sourceid>13</sourceid>
     </url>
-  </url>
-  <url>
-    <loc>~/navigation/donate.aspx</loc>
-    <lastmod>2013-03-30</lastmod>
-    <title>Donate</title>
-    <parent>home</parent>
-    <sourcetable></sourcetable>
-    <sourceid>0</sourceid>
   </url>
   <url>
     <loc>~/navigation/map.aspx</loc>

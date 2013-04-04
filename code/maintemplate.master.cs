@@ -8,68 +8,68 @@ using System.Xml;
 
 public partial class maintemplate : System.Web.UI.MasterPage
 {
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        _loadMenus();
-    }
+    //protected void Page_Load(object sender, EventArgs e)
+    //{
+    //    _loadMenus();
+    //}
 
-    void _loadMenus()
-    {
-        string xmlPath = Request.PhysicalApplicationPath + @"XMLSitemap.xml";
-        XmlDocument doc = new XmlDocument();
-        doc.Load(xmlPath);
-        XmlNodeList titleList = doc.GetElementsByTagName("url");
+    //void _loadMenus()
+    //{
+    //    string xmlPath = Request.PhysicalApplicationPath + @"XMLSitemap.xml";
+    //    XmlDocument doc = new XmlDocument();
+    //    doc.Load(xmlPath);
+    //    XmlNodeList titleList = doc.GetElementsByTagName("url");
 
-        primary_menu.Items.Clear();
-        foreach (XmlNode node in titleList)
-        {
-            if (node.ChildNodes[3].FirstChild.Value == "home")
-            {
-                MenuItem output = new MenuItem((string)node.ChildNodes[2].FirstChild.Value.ToUpper());
-                output.Text = node.ChildNodes[2].FirstChild.Value.ToUpper();
-                output.NavigateUrl = node.ChildNodes[0].FirstChild.Value.ToString();
-                primary_menu.Items.Add(output);
-            }
+    //    primary_menu.Items.Clear();
+    //    foreach (XmlNode node in titleList)
+    //    {
+    //        if (node.ChildNodes[3].FirstChild.Value == "home")
+    //        {
+    //            MenuItem output = new MenuItem((string)node.ChildNodes[2].FirstChild.Value.ToUpper());
+    //            output.Text = node.ChildNodes[2].FirstChild.Value.ToUpper();
+    //            output.NavigateUrl = node.ChildNodes[0].FirstChild.Value.ToString();
+    //            primary_menu.Items.Add(output);
+    //        }
 
-        }
+    //    }
 
-        //MenuItemCollection all = (MenuItemCollection)primary_menu.Items;
-        feature_menu.Items.Clear();
-        foreach (XmlNode node in titleList)
-        {
-            if (node.ChildNodes[3].FirstChild.Value == "feature")
-            {
-                MenuItem output = new MenuItem((string)node.ChildNodes[2].FirstChild.Value.ToUpper());
-                output.Text = node.ChildNodes[2].FirstChild.Value.ToUpper();
-                output.NavigateUrl = node.ChildNodes[0].FirstChild.Value.ToString();
-                feature_menu.Items.Add(output);
-            }
+    //    //MenuItemCollection all = (MenuItemCollection)primary_menu.Items;
+    //    feature_menu.Items.Clear();
+    //    foreach (XmlNode node in titleList)
+    //    {
+    //        if (node.ChildNodes[3].FirstChild.Value == "feature")
+    //        {
+    //            MenuItem output = new MenuItem((string)node.ChildNodes[2].FirstChild.Value.ToUpper());
+    //            output.Text = node.ChildNodes[2].FirstChild.Value.ToUpper();
+    //            output.NavigateUrl = node.ChildNodes[0].FirstChild.Value.ToString();
+    //            feature_menu.Items.Add(output);
+    //        }
 
-        }
+    //    }
 
-        bottom_menu.Items.Clear();
-        foreach (XmlNode node in titleList)
-        {
-            if (node.ChildNodes[3].FirstChild.Value == "feature" || node.ChildNodes[3].FirstChild.Value == "home")
-            {
-                MenuItem output = new MenuItem((string)node.ChildNodes[2].FirstChild.Value);
-                output.Text = node.ChildNodes[2].FirstChild.Value;
-                output.NavigateUrl = node.ChildNodes[0].FirstChild.Value.ToString();
-                bottom_menu.Items.Add(output);
-            }
+    //    bottom_menu.Items.Clear();
+    //    foreach (XmlNode node in titleList)
+    //    {
+    //        if (node.ChildNodes[3].FirstChild.Value == "feature" || node.ChildNodes[3].FirstChild.Value == "home")
+    //        {
+    //            MenuItem output = new MenuItem((string)node.ChildNodes[2].FirstChild.Value);
+    //            output.Text = node.ChildNodes[2].FirstChild.Value;
+    //            output.NavigateUrl = node.ChildNodes[0].FirstChild.Value.ToString();
+    //            bottom_menu.Items.Add(output);
+    //        }
 
-        }
+    //    }
 
-        bottom_menu2.Items.Clear();
-        foreach (XmlNode node in titleList)
-        {
-            if (node.ChildNodes[3].FirstChild.Value == "footer")
-            {
-                MenuItem output = new MenuItem((string)node.ChildNodes[2].FirstChild.Value);
-                output.Text = node.ChildNodes[2].FirstChild.Value;
-                output.NavigateUrl = node.ChildNodes[0].FirstChild.Value.ToString();
-                bottom_menu2.Items.Add(output);
-            }
-        }
-    }
+    //    bottom_menu2.Items.Clear();
+    //    foreach (XmlNode node in titleList)
+    //    {
+    //        if (node.ChildNodes[3].FirstChild.Value == "footer")
+    //        {
+    //            MenuItem output = new MenuItem((string)node.ChildNodes[2].FirstChild.Value);
+    //            output.Text = node.ChildNodes[2].FirstChild.Value;
+    //            output.NavigateUrl = node.ChildNodes[0].FirstChild.Value.ToString();
+    //            bottom_menu2.Items.Add(output);
+    //        }
+    //    }
+    //}
 }

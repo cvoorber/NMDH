@@ -21,6 +21,7 @@ public class newsClass
         var allNews = objNewsDC.ndmh_events.Where(x => x.n_id == _id).Select(x => x);
         return allNews;
     }
+
     public bool commitInsert(string _title, string _desc, string _image, DateTime _expires, DateTime _date, int _contact, string _link)
     {
         ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
@@ -44,6 +45,7 @@ public class newsClass
             return true;
         }
     }
+
     public bool commitUpdate(int _id, string _title, string _desc, string _image, int _contact, string _link)
     {
         ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
