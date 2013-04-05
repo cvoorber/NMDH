@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -22,6 +23,7 @@ public partial class navigation_viewcart : System.Web.UI.Page
             cartClass cart = cartClass.GetShoppingCart();
             gridCart.DataSource = cart.Items;
             gridCart.DataBind();
+            //shows only the order panel
             PanelControl(pnl_order);
         }
 
@@ -31,7 +33,7 @@ public partial class navigation_viewcart : System.Web.UI.Page
             if (e.Row.RowType == DataControlRowType.Footer) 
             {
                 cartClass cart = cartClass.GetShoppingCart();
-                e.Row.Cells[3].Text = "Total: " + cart.GetSubTotal().ToString("C"); 
+                e.Row.Cells[3].Text = "Total: $" + cart.GetSubTotal().ToString(); 
             }
         }
 
@@ -83,14 +85,51 @@ public partial class navigation_viewcart : System.Web.UI.Page
             txt_emailrepeat.Text = string.Empty;
         }
 
+        // displays the checkout panel
         protected void btnSubCheckout(object sender, EventArgs e)
         {
             PanelControl(pnl_checkout);
-        }    
+        }
 
+        protected void backtocart(object sender, EventArgs e)
+        {
+            BindData();
+        }
+
+        // sends email with order information
         protected void subOrder(object sender, EventArgs e)
         {
+            //instantiating the class
+            cartClass cart = cartClass.GetShoppingCart();
+            //getting subtotal value for the email message
+            string Details = "Details ~ " + cart.GetDetails().ToString();
+            string SubTotal = "Total ~ $" + cart.GetSubTotal().ToString();
 
+            //setting the content/data for the email
+            string emaildata = "Name: " + txt_name.Text + ", Address: " + txt_address.Text + ", " + txt_city.Text + ", " + txt_postal.Text + ", " + ddl_province.Text.ToString() + ", Order: " + SubTotal + " ~ " + Details + " ~ THANK-YOU";
+            //specifying the object and contents of the message
+            MailMessage objMailOrder = new MailMessage("giftshop@ndmh.ca", "chris.voorberg@gmail.com", "New NDMH Giftshop Order", emaildata);
+            
+            //carrying out the mail procedure
+            SmtpClient server = new SmtpClient();
+            server.Host = "localhost";
+            server.Port = 25;
+            server.Send(objMailOrder);
+
+            //alert to the client confirming their order
+            Response.Write("<script>alert('Thanks for your Order! You will be contacted regarding payment and invoicing.');</script>");
+
+            //killing the shopping cart session
+            Session.Abandon();
+
+            //clearing the form
+            txt_name.Text = string.Empty;
+            txt_address.Text = string.Empty;
+            txt_city.Text = string.Empty;
+            txt_postal.Text = string.Empty;
+            ddl_province.SelectedValue = "0";
+            txt_email.Text = string.Empty;
+            txt_emailrepeat.Text = string.Empty;
         }
 
         // control panel visibility for checkout details

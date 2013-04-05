@@ -286,6 +286,10 @@ margin-bottom:40px;
 margin-left:200px;
 }
 
+#giftContents {
+clear:both;
+}
+
 /* - - Added by Chris for NewsBlog March 26/13 - - */
 
 .insertComment {

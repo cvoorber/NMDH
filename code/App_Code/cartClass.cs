@@ -23,7 +23,7 @@ public class cartClass
         return (cartClass)HttpContext.Current.Session["ShoppingCart"];
     }
 
-    // Subroutine for adding items to the cart
+    // Method for adding items to the cart
     public void AddItem(int productId)
     {
         cartItemClass newItem = new cartItemClass(productId);
@@ -46,7 +46,7 @@ public class cartClass
         }
     }
 
-    // Subroutine for updating item quantity
+    // Method for updating item quantity
     public void SetItemQuantity(int productId, int quantity)
     {
         if (quantity == 0)
@@ -67,13 +67,25 @@ public class cartClass
         }
     }
 
-    // Subroutine for removing all quantities of an item
+    // Method for removing all quantities of an item
     public void RemoveItem(int productId)
     {
         cartItemClass removedItem = new cartItemClass(productId);
         Items.Remove(removedItem);
     }
 
+    // function to return details for Order Email
+    public string GetDetails()
+    {
+        string desc = "";
+        foreach (cartItemClass item in Items)
+        {
+            desc += item.Description + " x [" + item.Quantity + "] ~ ";
+        }
+        return desc;
+    }
+
+    // function to return the subTotal of items
     public decimal GetSubTotal()
     {
         decimal subTotal = 0;

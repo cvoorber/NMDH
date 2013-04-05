@@ -5,11 +5,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
 <asp:Panel ID="pnl_order" runat="server">
     <h1>NDMH Giftshop - Your Current Shopping Cart</h1>
-    <br /><br />  
-    <asp:GridView runat="server" ID="gridCart" AutoGenerateColumns="false" EmptyDataText="Your Shopping Cart is empty." GridLines="None" Width="100%" CellPadding="5" CellSpacing="5" ShowFooter="true" DataKeyNames="ProductId" OnRowDataBound="gridCart_RowDataBound" OnRowCommand="gridCart_RowCommand" Font-Size="12" CssClass="cartStyle" RowStyle-Height="60">  
+    <asp:HyperLink ID="hyp_return" runat="server" Text="Continue Shopping" NavigateUrl="giftshop.aspx" Font-Size="14" Style="margin-left:10px;" />
+    <br />
+    <br />  
+    <asp:GridView runat="server" ID="gridCart" AutoGenerateColumns="false" EmptyDataText="Your Shopping Cart is empty." GridLines="None" Width="100%" CellPadding="5" CellSpacing="5" ShowFooter="true" DataKeyNames="ProductId" OnRowDataBound="gridCart_RowDataBound" OnRowCommand="gridCart_RowCommand" Font-Size="12" CssClass="cartStyle" RowStyle-Height="60" BackColor="White">  
         <HeaderStyle Font-Size="15" Font-Bold="true" HorizontalAlign="Left" BackColor="#11c1a2" ForeColor="#000" Height="25" />  
         <FooterStyle Font-Size="15" Font-Bold="true" HorizontalAlign="Right" BackColor="#6C6B66" ForeColor="#FFFFFF" Height="25" /> 
-        <AlternatingRowStyle BackColor="#F8F8F8" />  
+        <AlternatingRowStyle BackColor="LightGray" />  
         <Columns>
             <asp:BoundField DataField="Description" HeaderText="Description" />  
             <asp:TemplateField HeaderText="Quantity">  
@@ -28,8 +30,11 @@
     <asp:Button runat="server" ID="btnCheckout" Text="Checkout" Style="float:right;" OnClick="btnSubCheckout" />
 </asp:Panel>
 
-<asp:Panel ID="pnl_checkout" runat="server" Style="margin-left:200px;">
+<asp:Panel ID="pnl_checkout" runat="server" Style="margin-left:150px;">
+<span style="float:left;">Not Ready for Committment? Click here --></span><asp:Button ID="btn_backtocart" runat="server" Text="Return To Cart" OnClick="backtocart" />
+    <br /><br />
     <h1>Ready to Checkout? Please Fill in the Form Below.</h1>
+    <asp:Label ID="lbl_sendErr" runat="server" />
     <table width="550">
         <tr>
             <%-- Name field --%>
