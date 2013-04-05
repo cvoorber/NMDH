@@ -38,9 +38,28 @@
     <table width="550">
         <tr>
             <%-- Name field --%>
-            <td><asp:Label ID="lbl_name" runat="server" Text="Full Name:  " AssociatedControlID="txt_name" /></td>
+            <td><asp:Label ID="lbl_name" runat="server" Text="Full Name on Credit Card:  " AssociatedControlID="txt_name" /></td>
             <td><asp:TextBox ID="txt_name" runat="server" />
             <asp:RequiredFieldValidator ID="rfv_name" runat="server" ControlToValidate="txt_name" Text="*Required" Display="Dynamic" SetFocusOnError="true" ValidationGroup="subForm" /></td>
+        </tr>
+        <tr>
+            <%-- Credit card field --%>
+            <td><asp:Label ID="lbl_credit" runat="server" Text="Credit Card Number:  " AssociatedControlID="txt_credit" /></td>
+            <td><asp:TextBox ID="txt_credit" runat="server" />
+            <asp:RequiredFieldValidator ID="rfv_credit" runat="server" ControlToValidate="txt_credit" Text="*Required" Display="Dynamic" SetFocusOnError="true" ValidationGroup="subForm" />
+            <asp:RegularExpressionValidator ID="rev_credit" runat="server" Text="Invalid Credit Card Number" ControlToValidate="txt_credit" Display="Dynamic" ValidationExpression="^((67\d{2})|(4\d{3})|(5[1-5]\d{2})|(6011))-?\s?\d{4}-?\s?\d{4}-?\s?\d{4}|3[4,7]\d{13}$" ErrorMessage="Please enter a valid credit card number." ValidationGroup="subForm" /></td>
+        </tr>
+        <tr>
+            <%-- Expiry field --%>
+            <td><asp:Label ID="lbl_expiry" runat="server" Text="Expiry Date:  " AssociatedControlID="txt_expiry" /></td>
+            <td><asp:TextBox ID="txt_expiry" runat="server" />
+            <asp:RequiredFieldValidator ID="rfv_expiry" runat="server" ControlToValidate="txt_expiry" Text="*Required" Display="Dynamic" SetFocusOnError="true" ValidationGroup="subForm" /></td>
+        </tr>
+        <tr>
+            <%-- CVV field --%>
+            <td><asp:Label ID="lbl_cvv" runat="server" Text="CVV Security:  " AssociatedControlID="txt_cvv" /></td>
+            <td><asp:TextBox ID="txt_cvv" runat="server" />
+            <asp:RequiredFieldValidator ID="rfv_cvv" runat="server" ControlToValidate="txt_cvv" Text="*Required" Display="Dynamic" SetFocusOnError="true" ValidationGroup="subForm" /></td>
         </tr>
         <tr>
             <%-- Address field --%>
