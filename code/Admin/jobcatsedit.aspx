@@ -23,9 +23,9 @@
         <asp:Panel ID="pnl_insert" runat="server">
             <asp:Label Text="Category Name: " runat="server" />
             <asp:TextBox ID="txt_catNameI" runat="server" />
-            <asp:RequiredFieldValidator ID="rfv_catNameI" runat="server" ControlToValidate="txt_catNameI" ErrorMessage="*required" />
+            <asp:RequiredFieldValidator ID="rfv_catNameI" runat="server" ControlToValidate="txt_catNameI" ErrorMessage="*required" ValidationGroup="insertgroup" />
             <br />
-            <asp:Button ID="btn_insert" runat="server" Text="Insert" OnClick="subInsert" />
+            <asp:Button ID="btn_insert" runat="server" Text="Insert" OnClick="subInsert" ValidationGroup="insertgroup" />
         </asp:Panel>
 
         <asp:Panel ID="pnl_cats" runat="server">
@@ -56,18 +56,18 @@
         
         
         <asp:Panel ID="pnl_update" runat="server">
-            <asp:DataList ID="dtl_update" runat="server">
+            <asp:DataList ID="dtl_update" runat="server" OnItemCommand="subUpdate">
                 <ItemTemplate>
+                    <asp:HiddenField ID="hdf_jcatID" runat="server" Value='<%#Eval("j_category_id") %>' />
                     <asp:Label ID="lbl_jid" runat="server" Text='<%# String.Format("Category ID: {0}",Eval("j_category_id")) %>' />
                     <br />
                     <asp:Label runat="server" Text="Category Name: " />
                     <asp:TextBox id="txt_update" runat="server" Text='<%#Bind("j_category_name") %>' />
                     <asp:RequiredFieldValidator ID="rfv_catname" runat="server" ControlToValidate="txt_update" ErrorMessage="*required" />
                     <br />
-                    <asp:Button ID="btn_update" runat="server" OnClick="subUpdate" CommandArgument='<%#Eval("j_category_id") %>' Text="Update" />
-                    <asp:Button ID="btn_cancel" runat="server" OnClick="subCancel" Text="Cancel" />
+                    <asp:Button ID="btn_update" runat="server" CommandName="update" Text="Update" />
+                    <asp:Button ID="btn_cancel" runat="server" Text="Cancel" CommandName="cancel" />
                     <br />
-                    <asp:Label ID="lbl_result" runat="server" />
                 </ItemTemplate>
             </asp:DataList>
         </asp:Panel>   

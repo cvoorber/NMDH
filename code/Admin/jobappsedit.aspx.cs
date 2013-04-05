@@ -95,4 +95,9 @@ public partial class Admin_jobappsedit : System.Web.UI.Page
         pnl_update.Visible = false;
         p.Visible = true;
     }
+
+    protected void subValidatePhone()
+    {
+        dtl_update.Controls[0].FindControl("txt_altphoneU");
+    }
 }

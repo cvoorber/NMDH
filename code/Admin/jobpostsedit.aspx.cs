@@ -27,27 +27,30 @@ public partial class Admin_jobpostsedit : System.Web.UI.Page
             lbl_result.Text = "Update was not successful.";
     }
 
-    protected void subUpdate(object sender, EventArgs e)
+    protected void subUpdate(object sender, DataListCommandEventArgs e)
     {
-        int jid = Int32.Parse((((Button)sender).CommandArgument));
-
-        ndmh_job newJobOjb = new ndmh_job()
-        {
-            j_id = jid,
-            j_title = ((TextBox)dtl_update.Controls[0].Controls[1].FindControl("txt_titleU")).Text,
-            j_description = ((TextBox)dtl_update.Controls[0].Controls[1].FindControl("txt_descU")).Text,
-            j_requirements = ((TextBox)dtl_update.Controls[0].Controls[1].FindControl("txt_reqU")).Text,
-            j_posted_date = DateTime.Parse(((TextBox)dtl_update.Controls[0].Controls[1].FindControl("txt_postU")).Text),
-            j_category_id = Int32.Parse (((TextBox)dtl_update.Controls[0].Controls[1].FindControl("txt_jcatU")).Text),
-            j_expires = DateTime.Parse(((TextBox)dtl_update.Controls[0].Controls[1].FindControl("txt_expiresU")).Text)
-        };
-        Label lbl = (Label)dtl_update.Controls[0].Controls[1].FindControl("lbl_result");
-
-        if (jobObj.Update(newJobOjb))
-            lbl.Text = "Update was successful.";
+        if (e.CommandName == "cancel")
+            rebind();
         else
-            lbl.Text = "Update was not successful.";
-        
+        {
+            int jid = Int32.Parse(((HiddenField)e.Item.FindControl("hdf_jid")).Value);
+
+            ndmh_job newJobOjb = new ndmh_job()
+            {
+                j_id = jid,
+                j_title = ((TextBox)e.Item.FindControl("txt_titleU")).Text,
+                j_description = ((TextBox)e.Item.FindControl("txt_descU")).Text,
+                j_requirements = ((TextBox)e.Item.FindControl("txt_reqU")).Text,
+                j_posted_date = DateTime.Parse(((TextBox)e.Item.FindControl("txt_postU")).Text),
+                j_category_id = Int32.Parse(((TextBox)e.Item.FindControl("txt_jcatU")).Text),
+                j_expires = DateTime.Parse(((TextBox)e.Item.FindControl("txt_expiresU")).Text)
+            };
+
+            if (jobObj.Update(newJobOjb))
+                lbl_result.Text = "Update was successful.";
+            else
+                lbl_result.Text = "Update was not successful.";
+        }
     }
 
     protected void subInsert(object sender, EventArgs e)
@@ -75,11 +78,6 @@ public partial class Admin_jobpostsedit : System.Web.UI.Page
         dtl_update.DataSource = jobObj.getResultByColumn(m => m.j_id == jid);
         dtl_update.DataBind();
         showPanel(pnl_update);
-    }
-
-    protected void subCancel(object sender, EventArgs e)
-    {
-        rebind();
     }
 
     private void rebind()

@@ -150,6 +150,7 @@ public partial class careers : System.Web.UI.Page
         jobObj.j_city = txt_city.Text;
         jobObj.j_province = ddl_prov.SelectedValue;
         jobObj.j_postal = txt_pcode.Text;
+        jobObj.j_date_applied = DateTime.Now.Date;
 
         //strips spaces and dashes in phone number before setting the object's property
         jobObj.j_phone = Regex.Replace(txt_phone.Text,"^(\\s|-)$","");

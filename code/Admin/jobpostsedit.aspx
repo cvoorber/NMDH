@@ -23,36 +23,36 @@
         <asp:Panel ID="pnl_insert" runat="server">
                     <asp:Label ID="Label1" runat="server" Text="Job Title: " />
                     <asp:TextBox runat="server" ID="txt_titleU"/>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_titleU" ErrorMessage="*required" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_titleU" ErrorMessage="*required" ValidationGroup="insertgroup" />
                     <br />
 
                     <asp:Label ID="Label2" runat="server" Text="Description: " />
                     <asp:TextBox runat="server" ID="txt_descU" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txt_descU" ErrorMessage="*required" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txt_descU" ErrorMessage="*required" ValidationGroup="insertgroup" />
                     <br />
 
                     <asp:Label ID="Label3" runat="server" Text="Requirements: " />
                     <asp:TextBox runat="server" ID="txt_reqU"  />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txt_reqU" ErrorMessage="*required" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txt_reqU" ErrorMessage="*required" ValidationGroup="insertgroup" />
                     <br />
 
                     <asp:Label ID="Label4" runat="server" Text="Post Date: " />
                     <asp:TextBox runat="server" ID="txt_postU" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txt_postU" ErrorMessage="*required" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txt_postU" ErrorMessage="*required" ValidationGroup="insertgroup" />
                     <br />
                     
                     <asp:Label ID="Label5" runat="server" Text="Expires on: " />
                     <asp:TextBox runat="server" ID="txt_expiresU" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txt_expiresU" ErrorMessage="*required" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txt_expiresU" ErrorMessage="*required" ValidationGroup="insertgroup" />
                     <br />
                     
                     <asp:Label ID="Label6" runat="server" Text="Job Category ID: " />
                     <asp:TextBox runat="server" ID="txt_jcatU" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txt_jcatU" ErrorMessage="*required" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txt_jcatU" ErrorMessage="*required" ValidationGroup="insertgroup" />
                     <br />
                     
             <br />
-            <asp:Button ID="btn_insert" runat="server" Text="Insert" OnClick="subInsert" />
+            <asp:Button ID="btn_insert" runat="server" Text="Insert" OnClick="subInsert"  ValidationGroup="insertgroup" />
         </asp:Panel>
         
         <asp:Panel ID="pnl_jobs" runat="server">
@@ -93,8 +93,9 @@
         
         
         <asp:Panel ID="pnl_update" runat="server">
-            <asp:DataList ID="dtl_update" runat="server">
+            <asp:DataList ID="dtl_update" runat="server" OnItemCommand="subUpdate">
                 <ItemTemplate>
+                    <asp:HiddenField ID="hdf_jid" runat="server" Value='<%#Eval("j_id") %>' />
                     <asp:Label ID="lbl_jid" runat="server" Text='<%# String.Format("Job ID: {0}",Eval("j_id")) %>' />
                     <br />
                         
@@ -127,10 +128,9 @@
                     <asp:TextBox runat="server" ID="txt_jcatU" Text='<%#Bind("j_category_id") %>' />
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="txt_jcatU" ErrorMessage="*required" />
                     <br />
-                    <asp:Button ID="btn_update" runat="server" OnClick="subUpdate" CommandArgument='<%#Eval("j_id") %>' Text="Update" />
-                    <asp:Button ID="btn_cancel" runat="server" OnClick="subCancel" Text="Cancel" />
+                    <asp:Button ID="btn_update" runat="server" CommandName="update" Text="Update" />
+                    <asp:Button ID="btn_cancel" runat="server" CommandName="cancel" Text="Cancel" />
                     <br />
-                    <asp:Label ID="lbl_result" runat="server" />
                 </ItemTemplate>
             </asp:DataList>
         </asp:Panel>   
