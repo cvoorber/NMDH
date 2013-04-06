@@ -77,5 +77,49 @@ public class faqsadminClass
         }
     }
 
+    // method to update faq keyword record
+    public bool updateFaqKeyWordByID(int _fkword_id, string _faq_keyword)
+    {
+        using (objFaqs)
+        {
+            var objUpFaqKey = objFaqs.ndmh_faq_keywords.Single(x => x.fkword_id == _fkword_id);
+            objUpFaqKey.faq_keyword = _faq_keyword;
+            
+            // commit against db
+            objFaqs.SubmitChanges();
+            return true;
+        }
+    }
 
+    // method to delete faq keyword record by id
+
+    public bool deleteFaqKeyword(int _fkword_id)
+    {
+        using (objFaqs)
+        {
+            var objDelFaqKey = objFaqs.ndmh_faq_keywords.Single(x => x.fkword_id == _fkword_id);
+            // delete command
+            objFaqs.ndmh_faq_keywords.DeleteOnSubmit(objDelFaqKey);
+            // commit delte against db
+            objFaqs.SubmitChanges();
+            return true;
+        }
+    }
+
+    // method to insert new faq keyword
+    public bool insertFaqKeywordByFaqID(int _ndmh_faq_id, string _faq_keyword)
+    {
+        using (objFaqs)
+        {
+            // create an instance of a faq key table
+            ndmh_faq_keyword objNewFaqKey = new ndmh_faq_keyword();
+            objNewFaqKey.ndmh_faq_id = _ndmh_faq_id;
+            objNewFaqKey.faq_keyword = _faq_keyword;
+            // insert command
+            objFaqs.ndmh_faq_keywords.InsertOnSubmit(objNewFaqKey);
+            // commit insert against db
+            objFaqs.SubmitChanges();
+            return true;
+        }
+    }
 }

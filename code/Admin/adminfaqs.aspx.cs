@@ -20,7 +20,7 @@ public partial class _Default : System.Web.UI.Page
     }
 
     // event opens the edit panel
-    protected void subEdit(object sender, CommandEventArgs e)
+    protected void subEditView(object sender, CommandEventArgs e)
     {
         pnl_edit.Visible = true;
         pnl_faqadm.Visible = false;
@@ -85,6 +85,40 @@ public partial class _Default : System.Web.UI.Page
         }
     }
 
+    
+    
+
+    // this will do the edit and delete of keywords for the edit view
+    protected void subEditKeys(object sender, RepeaterCommandEventArgs e)
+    {
+        // declare these values here so they can be used in both cases below if need be.
+        TextBox txtEditKeys = (TextBox)e.Item.FindControl("txt_ekeys");
+        HiddenField hdfEditKeys = (HiddenField)e.Item.FindControl("hdf_ekeys");
+        int idval = int.Parse(hdfEditKeys.Value.ToString());
+        // will have to create the child repeater like I did above then find the controls, and do the update function
+
+        switch (e.CommandName)
+        {
+
+                // updates keyword in edit menu
+            case "UpdateKeys":
+                
+                string keystring = txtEditKeys.Text;
+                _strMessage(objFaqsAd.updateFaqKeyWordByID(idval, keystring), "Keyword Update");
+                break;
+                // deletes a keyword in edit menu
+            case "DeleteKeys":
+                _strMessage(objFaqsAd.deleteFaqKeyword(idval), "Keyword Delete");
+                break;
+        }
+    }
+
+    // this will add a new keyword within the edit view
+    protected void subNewKey(object sender, EventArgs e)
+    {
+        // will have to create the child repeater like I did above then find the text box and do the insert method
+    }
+
   
 
    
@@ -116,6 +150,22 @@ public partial class _Default : System.Web.UI.Page
         }
     }
 
+    // this will bind the keywords child repeater within the editview so that the list of keyword textboxes shows up
+    protected void subEditKeysChildBind(object sender, RepeaterItemEventArgs e)
+    {
+        // will have to create a repeater using the method that I used above, and then do the databind to the
+        // getFaqKeysByID method
+        HiddenField hdfEditChildID = (HiddenField)e.Item.FindControl("hdf_eid");
+
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            Repeater keylistrepeater = (Repeater)e.Item.FindControl("rpt_edchildekeys");
+            keylistrepeater.DataSource = objFaqsAd.getFaqKeysByID(int.Parse(hdfEditChildID.Value.ToString()));
+            keylistrepeater.DataBind();
+        }
+    }
+
+
     // routine for pinding the edit repeater control
 
     private void subEditViewBind(int _ndmh_faq_id)
@@ -135,5 +185,7 @@ public partial class _Default : System.Web.UI.Page
         else
             lbl_execmess.Text = "Sorry, the article " + str + " did not occur.";
     }
+
+    
 
 }
