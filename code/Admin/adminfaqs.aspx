@@ -91,6 +91,7 @@
                     <td><asp:Label ID="lbl_icontent" runat="server" Text="FAQ Content" /> </td>
                     <td><asp:TextBox ID="txt_icontent" runat="server"   /></td>
                 </tr>
+                
                 <tr>
                     <td>
                         <asp:Button ID="btn_isave" runat="server" Text="Create New FAQ" OnCommand="subInsPanel"
@@ -131,7 +132,7 @@
                     <td><asp:Label ID="lbl_ekeys" runat="server" Text="FAQ Keywords" /> </td>
                     <td>
                     <ul>
-                    <asp:Repeater ID="rpt_edchildekeys" runat="server" OnItemCommand="subEditKeys">
+                    <asp:Repeater ID="rpt_edchildekeys" runat="server" OnItemCommand="subEditKeys" >
                     <ItemTemplate>  
                     <li><asp:TextBox ID="txt_ekeys" runat="server" Text='<%#Eval("faq_keyword") %>'  />
                         <asp:HiddenField ID="hdf_ekeys" runat="server" Value='<%#Eval("fkword_id") %>' />
@@ -141,6 +142,9 @@
                     </li>
                     </ItemTemplate> 
                     <FooterTemplate>
+                    
+                    </FooterTemplate>
+                    </asp:Repeater>
                     </ul>
                     </td>
                     <td>
@@ -151,11 +155,9 @@
                     <%--This hidden value will be value of id of faq this new keyword will be associated with--%>
                     <asp:HiddenField ID="hdf_assocfaqid" runat="server" Value='<%#Eval("ndmh_faq_id") %>' />
                     <%--Insert Keyword to faq by faq_id--%>
-                    <asp:Button ID="btn_ekeysnew" runat="server" OnClick="subNewKey" Text="Create New Keyword" />
+                    <asp:Button ID="btn_ekeysnew" runat="server" CommandName="NewKey" Text="Create New Keyword" />
                     </td>
                 </tr>
-                    </FooterTemplate>
-                    </asp:Repeater>
                    
                <tr>
                     <td><asp:Label ID="lbl_econtent" runat="server" Text="FAQ Content" /> </td>

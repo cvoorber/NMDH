@@ -46,23 +46,31 @@ public partial class _Default : System.Web.UI.Page
 
     // onitem command passed here: two commands - SaveEdit and CancelEdit
     // save edit saves the changes made in the edit view, and cancel, cancels changes and returns to main view.
+    // New key inserts a new keyword from the create new keyword textbox
     protected void subEdit(object sender, RepeaterCommandEventArgs e)
     {
+        // hidden value that will be used in multiple cases below
+        HiddenField hdfid = (HiddenField)e.Item.FindControl("hdf_eid");
+        var faqidval = int.Parse(hdfid.Value.ToString());
         switch (e.CommandName)
         {
             case "SaveEdit":
-
-        HiddenField hdfid = (HiddenField)e.Item.FindControl("hdf_eid");
         TextBox txt_edittitle = (TextBox)e.Item.FindControl("txt_etitle");
         TextBox txt_editcontent = (TextBox)e.Item.FindControl("txt_econtent");
         
-        var idval = int.Parse(hdfid.Value.ToString());
-        _strMessage(objFaqsAd.updateFaqs(idval, txt_edittitle.Text.ToString(), txt_editcontent.Text.ToString()), "Edit Save");
+        
+        _strMessage(objFaqsAd.updateFaqs(faqidval, txt_edittitle.Text.ToString(), txt_editcontent.Text.ToString()), "Edit Save");
         break;
         
             case "CancelEdit":
         subMaindBind();
                 break;
+
+            case "NewKey":
+        TextBox txtNewKey = (TextBox)e.Item.FindControl("txt_ekeysnew");
+        string faqkeyw = txtNewKey.Text;
+        _strMessage(objFaqsAd.insertFaqKeywordByFaqID(faqidval, faqkeyw), "Keyword Insert");        
+        break;
 
     }
     }
@@ -77,6 +85,7 @@ public partial class _Default : System.Web.UI.Page
                 string _ndmh_faq_title = txt_ititle.Text.ToString();
                 string _ndmh_faq_content = txt_icontent.Text.ToString();
                 _strMessage(objFaqsAd.insertFaqs(_ndmh_faq_title, _ndmh_faq_content), "Inserted");
+
                 break;
 
             case "Cancel":
@@ -113,11 +122,7 @@ public partial class _Default : System.Web.UI.Page
         }
     }
 
-    // this will add a new keyword within the edit view
-    protected void subNewKey(object sender, EventArgs e)
-    {
-        // will have to create the child repeater like I did above then find the text box and do the insert method
-    }
+    
 
   
 
