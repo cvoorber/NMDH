@@ -226,4 +226,13 @@
       <Association Name="base_country_state_or_province" Member="base_country" ThisKey="country_id" OtherKey="country_id" Type="base_country" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.ndmh_wait" Member="ndmh_waits">
+    <Type Name="ndmh_wait">
+      <Column Name="w_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="w_patients" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="w_onstaff" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="w_updated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="w_estimate" Type="System.Decimal" DbType="Decimal(18,1)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

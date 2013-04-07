@@ -110,49 +110,49 @@
         <elementListCompartment Id="8cb31e74-2d99-4f50-a986-5fa7eb64cf37" absoluteBounds="11.515, 1.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 11.8085034179688); (3.5 : 11.8085034179688)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 11.8085034179688); (3.5 : 11.8085034179688)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ndmhDCDataContext/ndmh_department_listing/ndmh_department_listing_ndmh_donation" />
       <nodes>
         <classShapeMoniker Id="fa994955-95ec-4633-8efe-ea03c00d3d2c" />
         <classShapeMoniker Id="d3c17a91-5aa4-4e3d-b76a-106f071a604c" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(13.5 : 5.13544840494792); (14.25 : 5.13544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(13.5 : 5.13544840494792); (14.25 : 5.13544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ndmhDCDataContext/ndmh_event/ndmh_event_ndmh_comment" />
       <nodes>
         <classShapeMoniker Id="1a20b178-aa13-4138-9089-3f973bfa9bc1" />
         <classShapeMoniker Id="6efa256a-5489-4988-884f-95287bffaf24" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.75 : 4.52005126953125); (11.5 : 4.52005126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(10.75 : 4.52005126953125); (11.5 : 4.52005126953125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ndmhDCDataContext/ndmh_staff_listing/ndmh_staff_listing_ndmh_event" />
       <nodes>
         <classShapeMoniker Id="9f8f68a8-00c6-4e70-9277-f319e9410e7c" />
         <classShapeMoniker Id="1a20b178-aa13-4138-9089-3f973bfa9bc1" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.75 : 8.69314697265625); (11.5 : 8.69314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(10.75 : 8.69314697265625); (11.5 : 8.69314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ndmhDCDataContext/ndmh_faq/ndmh_faq_ndmh_faq_keyword" />
       <nodes>
         <classShapeMoniker Id="fed648ee-d691-4b20-9eae-25deddcd9eb6" />
         <classShapeMoniker Id="73179886-a148-4ab2-b89f-1b9ea944796e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.5 : 3.75); (4.5 : 2.29890055338542); (5.91666666666667 : 2.29890055338542 : JumpStart); (6.08333333333333 : 2.29890055338542 : JumpEnd); (6.25 : 2.29890055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.34375 : 3.75); (5.34375 : 2.71079752604167); (5.91666666666667 : 2.71079752604167 : JumpStart); (6.08333333333333 : 2.71079752604167 : JumpEnd); (6.25 : 2.71079752604167)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ndmhDCDataContext/ndmh_job/ndmh_job_ndmh_contact" />
       <nodes>
         <classShapeMoniker Id="9baf6008-ff9e-42f4-8835-a6a415fbae28" />
         <classShapeMoniker Id="cdb36659-00c7-4ff8-9952-519fba39f9c5" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 5.07774983723958); (5.91666666666667 : 5.07774983723958 : JumpStart); (6.08333333333333 : 5.07774983723958 : JumpEnd); (6.25 : 5.07774983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 5.07774983723958); (5.91666666666667 : 5.07774983723958 : JumpStart); (6.08333333333333 : 5.07774983723958 : JumpEnd); (6.25 : 5.07774983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ndmhDCDataContext/ndmh_job/ndmh_job_ndmh_job_application" />
       <nodes>
         <classShapeMoniker Id="9baf6008-ff9e-42f4-8835-a6a415fbae28" />
         <classShapeMoniker Id="3cb901dc-4fe1-458d-8dd1-9bd461051ca2" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.72199625651042); (3.5 : 4.72199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 4.82139322916667); (3.5 : 4.82139322916667)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ndmhDCDataContext/ndmh_job_category/ndmh_job_category_ndmh_job" />
       <nodes>
         <classShapeMoniker Id="61b8ab59-0cf1-4384-8172-d3466ad58ecf" />
@@ -172,12 +172,18 @@
         <elementListCompartment Id="1e022713-826a-41cb-9183-74cc0163adb5" absoluteBounds="12.64, 14.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 1.52445077669271); (6 : 1.52445077669271); (6 : 10.5); (12.5 : 10.5); (12.5 : 14); (13.625 : 14); (13.625 : 14.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 1.73039926302084); (6 : 1.73039926302084); (6 : 10.5); (12.5 : 10.5); (12.5 : 14); (13.625 : 14); (13.625 : 14.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/ndmhDCDataContext/base_country/base_country_state_or_province" />
       <nodes>
         <classShapeMoniker Id="3a3bc79b-3a41-4efe-88e1-32c01c328b97" />
         <classShapeMoniker Id="64c23e3f-46c7-4081-afdf-2a6f07674d6b" />
       </nodes>
     </associationConnector>
+    <classShape Id="2f922045-82ee-4480-8cd7-d8b2e7941671" absoluteBounds="8.875, 0.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_wait" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ce5cb1a9-c3c6-4ae9-a02c-33479178d5b9" absoluteBounds="8.89, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

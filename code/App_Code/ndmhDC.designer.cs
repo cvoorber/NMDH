@@ -86,6 +86,9 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
   partial void Insertstate_or_province(state_or_province instance);
   partial void Updatestate_or_province(state_or_province instance);
   partial void Deletestate_or_province(state_or_province instance);
+  partial void Insertndmh_wait(ndmh_wait instance);
+  partial void Updatendmh_wait(ndmh_wait instance);
+  partial void Deletendmh_wait(ndmh_wait instance);
   #endregion
 	
 	public ndmhDCDataContext() : 
@@ -267,6 +270,14 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<state_or_province>();
+		}
+	}
+	
+	public System.Data.Linq.Table<ndmh_wait> ndmh_waits
+	{
+		get
+		{
+			return this.GetTable<ndmh_wait>();
 		}
 	}
 }
@@ -4761,6 +4772,164 @@ public partial class state_or_province : INotifyPropertyChanging, INotifyPropert
 					this._country_id = default(int);
 				}
 				this.SendPropertyChanged("base_country");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_wait")]
+public partial class ndmh_wait : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _w_id;
+	
+	private System.Nullable<decimal> _w_patients;
+	
+	private System.Nullable<decimal> _w_onstaff;
+	
+	private System.Nullable<System.DateTime> _w_updated;
+	
+	private System.Nullable<decimal> _w_estimate;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onw_idChanging(int value);
+    partial void Onw_idChanged();
+    partial void Onw_patientsChanging(System.Nullable<decimal> value);
+    partial void Onw_patientsChanged();
+    partial void Onw_onstaffChanging(System.Nullable<decimal> value);
+    partial void Onw_onstaffChanged();
+    partial void Onw_updatedChanging(System.Nullable<System.DateTime> value);
+    partial void Onw_updatedChanged();
+    partial void Onw_estimateChanging(System.Nullable<decimal> value);
+    partial void Onw_estimateChanged();
+    #endregion
+	
+	public ndmh_wait()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_w_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int w_id
+	{
+		get
+		{
+			return this._w_id;
+		}
+		set
+		{
+			if ((this._w_id != value))
+			{
+				this.Onw_idChanging(value);
+				this.SendPropertyChanging();
+				this._w_id = value;
+				this.SendPropertyChanged("w_id");
+				this.Onw_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_w_patients", DbType="Decimal(18,0)")]
+	public System.Nullable<decimal> w_patients
+	{
+		get
+		{
+			return this._w_patients;
+		}
+		set
+		{
+			if ((this._w_patients != value))
+			{
+				this.Onw_patientsChanging(value);
+				this.SendPropertyChanging();
+				this._w_patients = value;
+				this.SendPropertyChanged("w_patients");
+				this.Onw_patientsChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_w_onstaff", DbType="Decimal(18,0)")]
+	public System.Nullable<decimal> w_onstaff
+	{
+		get
+		{
+			return this._w_onstaff;
+		}
+		set
+		{
+			if ((this._w_onstaff != value))
+			{
+				this.Onw_onstaffChanging(value);
+				this.SendPropertyChanging();
+				this._w_onstaff = value;
+				this.SendPropertyChanged("w_onstaff");
+				this.Onw_onstaffChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_w_updated", DbType="DateTime")]
+	public System.Nullable<System.DateTime> w_updated
+	{
+		get
+		{
+			return this._w_updated;
+		}
+		set
+		{
+			if ((this._w_updated != value))
+			{
+				this.Onw_updatedChanging(value);
+				this.SendPropertyChanging();
+				this._w_updated = value;
+				this.SendPropertyChanged("w_updated");
+				this.Onw_updatedChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_w_estimate", DbType="Decimal(18,1)")]
+	public System.Nullable<decimal> w_estimate
+	{
+		get
+		{
+			return this._w_estimate;
+		}
+		set
+		{
+			if ((this._w_estimate != value))
+			{
+				this.Onw_estimateChanging(value);
+				this.SendPropertyChanging();
+				this._w_estimate = value;
+				this.SendPropertyChanged("w_estimate");
+				this.Onw_estimateChanged();
 			}
 		}
 	}

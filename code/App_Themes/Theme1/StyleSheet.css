@@ -245,10 +245,79 @@ h1, .h1
     background-color:#f7f5e9;
 }
 
-/* Added by Chris for Homepage -- February 19, 2013 */
+/* - - End of Master Page NDMH template style -- */
 
-.wait_time{
+/*Added by Ryan for Donations page - March 21*/
+
+.donate-box 
+{
+    padding: 50px;
+    border: 3px solid black;
+    margin: 30px 30px 0 30px;
+}
+
+.page-heading 
+{
+    font-size: 28px;
+    padding: 50px;
+}
+
+/* End of Ryan Donations page CSS */
+
+/* Ryan Virt-Tour CSS start */
+.tour-box
+{
+    
+    border: 3px solid black;
+}
+
+#floor-list
+{
+    margin: 0 auto;
+    font-size: 40px;
+}
+
+/* Ryan end of Virt-Tour CSS */
+
+/* - - Added by Chris for NewsBlog March 26/13 - - */
+
+.insertComment {
+border:1px solid gray;
+background-color:#B8D9BE;
+padding-top:10px;
+padding-left:10px;
+margin-bottom:20px;
+}
+
+.userComment {
+border:1px solid #CCC;
+font-size:15px;
+line-height:1.2;
+margin-top:15px;
+padding:10px;
+}
+
+/* Updated by Chris for Wait time -- April 7, 2013 */
+
+#waitTime {
+background-color:#FFF;
+border:2px solid #CCC;
+border-radius:6px;
+margin:3px;
+padding:15px 0;
 text-align:center;
+width:220px;
+}
+
+/* Updated by Chris for Wait time CMS -- April 7, 2013 */
+
+#editWait {
+border:2px solid #CCC;
+float:left;
+margin-left:170px;
+margin-bottom:100px;
+padding:10px 25px;
+width:500px;
 }
 
 /* Added by Chris for Giftshop -- March 25, 2013 */
@@ -289,55 +358,3 @@ margin-left:200px;
 #giftContents {
 clear:both;
 }
-
-/* - - Added by Chris for NewsBlog March 26/13 - - */
-
-.insertComment {
-border:1px solid gray;
-background-color:#B8D9BE;
-padding-top:10px;
-padding-left:10px;
-margin-bottom:20px;
-}
-
-.userComment {
-border:1px solid #CCC;
-font-size:15px;
-line-height:1.2;
-margin-top:15px;
-padding:10px;
-}
-
-/* - - End of Master Page NDMH template style -- */
-
-/*Added by Ryan for Donations page - March 21*/
-
-.donate-box 
-{
-    padding: 50px;
-    border: 3px solid black;
-    margin: 30px 30px 0 30px;
-}
-
-.page-heading 
-{
-    font-size: 28px;
-    padding: 50px;
-}
-
-/* End of Ryan Donations page CSS */
-
-/* Ryan Virt-Tour CSS start */
-.tour-box
-{
-    
-    border: 3px solid black;
-}
-
-#floor-list
-{
-    margin: 0 auto;
-    font-size: 40px;
-}
-
-/* Ryan end of Virt-Tour CSS */

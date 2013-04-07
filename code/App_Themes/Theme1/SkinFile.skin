@@ -54,3 +54,30 @@
     Font-Bold="true"
     StaticMenuItemStyle-HorizontalPadding="5px" 
     StaticMenuItemStyle-VerticalPadding="1px" />
+
+<asp:Label runat="server"
+    SkinID="waitTitle"
+    Font-Bold="true"
+    Font-Size="16"
+    ForeColor="	#11a68c" />
+
+<asp:Label runat="server"
+    SkinID="waitLabel"
+    Font-Italic="true"
+    Font-Size="12"
+    ForeColor="#000"
+    Style="margin-left:25px" />
+
+<asp:Label runat="server"
+    SkinID="waitResults"
+    Font-Bold="true"
+    Font-Size="13"
+    ForeColor="#5C5C5C" />
+
+<asp:RequiredFieldValidator runat="server"
+    SkinID="RFvalidators"
+    ForeColor="red" />
+
+<asp:RegularExpressionValidator runat="server"
+    SkinID="REvalidators"
+    ForeColor="red" />
