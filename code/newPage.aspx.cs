@@ -108,6 +108,8 @@ public partial class newPage : System.Web.UI.Page
         doc.WriteTo(wrtr);
         wrtr.Close();
 
+        _rebind();
+
     }
 
     private string _message(bool success, string action)
@@ -170,17 +172,10 @@ public partial class newPage : System.Web.UI.Page
 
                     output.Text = _message(objNav.updatePage(_id, title, section, content, active), "edit");
 
-
-
                     string xmlpath = Request.PhysicalApplicationPath + "XMLSitemap.xml";
                     XmlDocument doc = new XmlDocument();
-                    doc.Load(xmlpath);                      // This code assumes that the XML file is in the same folder.
+                    doc.Load(xmlpath); 
 
-
-                    //http://support.microsoft.com/kb/317664
-                    //http://support.microsoft.com/kb/317666
-                    // A. Addition
-                    // 1. Create a new item element.
                     string parent = "";
                     string path = "";
                     switch (section)
@@ -203,13 +198,13 @@ public partial class newPage : System.Web.UI.Page
                             break;
                     }
 
-                    XmlElement newElem = new XmlElement();
-                    newElem.InnerXml = "<loc></loc><lastmod></lastmod><title></title><parent></parent><sourceid></sourceid>";
-                    newElem["loc"].InnerText = path;
-                    newElem["lastmod"].InnerText = DateTime.Now.ToString("yyyy-MM-dd");
-                    newElem["title"].InnerText = title;
-                    newElem["parent"].InnerText = parent;
-                    newElem["sourceid"].InnerText = _id.ToString();
+                    XmlElement updElem = doc.CreateElement("url");
+                    updElem.InnerXml = "<loc></loc><lastmod></lastmod><title></title><parent></parent><sourceid></sourceid>";
+                    updElem["loc"].InnerText = path;
+                    updElem["lastmod"].InnerText = DateTime.Now.ToString("yyyy-MM-dd");
+                    updElem["title"].InnerText = title;
+                    updElem["parent"].InnerText = parent;
+                    updElem["sourceid"].InnerText = _id.ToString();
 
                     var elements = doc.GetElementsByTagName("sourceid");
                     foreach(XmlNode el in elements)
@@ -218,7 +213,8 @@ public partial class newPage : System.Web.UI.Page
                         {
                             if(el.ParentNode.ChildNodes[0].InnerText == path)
                             {
-                                el.ReplaceChild(newElem, el.ParentNode);
+                                el.ParentNode.ParentNode.ReplaceChild(updElem, el.ParentNode);
+                                break;
                             }
                         }
                     }
@@ -228,15 +224,14 @@ public partial class newPage : System.Web.UI.Page
                     XmlTextWriter wrtr = new XmlTextWriter(xmlpath, System.Text.Encoding.Unicode);
                     doc.WriteTo(wrtr);
                     wrtr.Close();
-                }
-
-                
+                }       
                 
                 break;
             case "cancel":
-                dtv_edit.Dispose();
+                _rebind();
                 break;
             case "delete":
+
                 break;
         }
     }

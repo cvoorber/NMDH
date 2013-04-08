@@ -11,7 +11,7 @@
 <table>
     <tr>
         <td><asp:Label ID="lbl_type" runat="server" Text="Page Type: " /></td>
-        <td><asp:DropDownList ID="ddl_type" runat="server" AutoPostBack="true" OnSelectedIndexChanged="setType" /></td>
+        <td><asp:DropDownList ID="ddl_type" runat="server" /></td>
     </tr>
     <tr>
         <td><asp:Label ID="lbl_title" runat="server" Text="Page Title: " /></td>
