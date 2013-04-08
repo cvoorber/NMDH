@@ -443,3 +443,10 @@ clear:both;
     color:white;
     z-index:50;
 }
+
+.editContent
+{
+    width:550px;
+    height:300px;
+    font-family:Arial;
+}

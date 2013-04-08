@@ -13,6 +13,7 @@ public partial class newPage : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
             _bindDDL();
+            _rebind();
         }
     }
 
@@ -118,6 +119,47 @@ public partial class newPage : System.Web.UI.Page
         else
         {
             return "Epic fail.";
+        }
+    }
+
+    private void _rebind()
+    {
+        navClass objPages = new navClass();
+        rpt_all.DataSource = objPages.getAll();
+        rpt_all.DataBind();
+    }
+
+    protected void subEdit(object sender, RepeaterCommandEventArgs e)
+    {
+        navClass objDetails = new navClass();
+        dtv_edit.DataSource = objDetails.getPageByID(int.Parse(e.CommandArgument.ToString()));
+        dtv_edit.DataBind();
+        DropDownList sections = (DropDownList)dtv_edit.FindControl("ddl_section");
+        sections.DataSource = getTypes();
+        sections.DataBind();
+        var selected = objDetails.getPageByID(int.Parse(e.CommandArgument.ToString()));
+        string sel = "";
+        foreach (var s in selected)
+        {
+            sel = s.gp_section.ToString();
+        }
+        sections.SelectedValue = sel;
+        dtv_edit.ChangeMode(DetailsViewMode.Edit);
+    }
+
+    protected void subChange(object sender, DetailsViewCommandEventArgs e)
+    {
+        navClass objNav = new navClass();
+        switch (e.CommandName)
+        {
+            case "save":
+                int _id = int.Parse(e.CommandArgument.ToString());
+                break;
+            case "cancel":
+                dtv_edit.Dispose();
+                break;
+            case "delete":
+                break;
         }
     }
 }
