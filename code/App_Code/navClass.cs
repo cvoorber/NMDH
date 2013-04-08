@@ -49,7 +49,7 @@ public class navClass
         }
     }
 
-    public bool updatePage(int _id, string _title, string _type, string _content, string _image, bool _publish)
+    public bool updatePage(int _id, string _title, string _type, string _content, bool _publish)
     {
         ndmhDCDataContext objPageDC = new ndmhDCDataContext();
         //to ensure all data will be disposed when finished
@@ -59,11 +59,11 @@ public class navClass
             ndmh_general_page objNewPage = new ndmh_general_page();
             //set table columns to new values being passed from *.aspx page
             var objEdit = objPageDC.ndmh_general_pages.Single(x => x.gp_id == _id);
-            objNewPage.gp_title = _title;
-            objNewPage.gp_section = _type;
-            objNewPage.gp_content = _content;
-            objNewPage.gp_image = _image;
-            objNewPage.gp_active = _publish;
+            objEdit.gp_title = _title;
+            objEdit.gp_section = _type;
+            objEdit.gp_content = _content;
+            objEdit.gp_image = "image";
+            objEdit.gp_active = _publish;
             objPageDC.SubmitChanges();
             return true;
         }

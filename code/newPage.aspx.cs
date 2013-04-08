@@ -46,7 +46,7 @@ public partial class newPage : System.Web.UI.Page
         string _type = ddl_type.SelectedValue.ToString();
         string _image = "testimg";
         bool _pub = chk_publish.Checked;
-        output.Text = _message(objPage.newPage(_title, _type, _content, _image, _pub));
+        output.Text = _message(objPage.newPage(_title, _type, _content, _image, _pub), "add");
 
         string xmlpath = Request.PhysicalApplicationPath + "XMLSitemap.xml";
         XmlDocument doc = new XmlDocument();
@@ -110,11 +110,11 @@ public partial class newPage : System.Web.UI.Page
 
     }
 
-    private string _message(bool success)
+    private string _message(bool success, string action)
     {
         if (success == true)
         {
-            return txt_title.Text.ToString() + " has been added successfully!";
+           return "Page has been " + action + "ed successfully!";      
         }
         else
         {
@@ -154,6 +154,84 @@ public partial class newPage : System.Web.UI.Page
         {
             case "save":
                 int _id = int.Parse(e.CommandArgument.ToString());
+                if (dtv_edit.CurrentMode == DetailsViewMode.Edit)
+                {
+                    TextBox txt_title = (TextBox)dtv_edit.FindControl("txt_title");
+                    string title = txt_title.Text;
+
+                    TextBox txt_content = (TextBox)dtv_edit.FindControl("txt_content");
+                    string content = txt_content.Text;
+
+                    CheckBox chk_active = (CheckBox)dtv_edit.FindControl("chk_activeE");
+                    bool active = chk_active.Checked;
+
+                    DropDownList ddl_section = (DropDownList)dtv_edit.FindControl("ddl_section");
+                    string section = ddl_section.SelectedValue.ToString();
+
+                    output.Text = _message(objNav.updatePage(_id, title, section, content, active), "edit");
+
+
+
+                    string xmlpath = Request.PhysicalApplicationPath + "XMLSitemap.xml";
+                    XmlDocument doc = new XmlDocument();
+                    doc.Load(xmlpath);                      // This code assumes that the XML file is in the same folder.
+
+
+                    //http://support.microsoft.com/kb/317664
+                    //http://support.microsoft.com/kb/317666
+                    // A. Addition
+                    // 1. Create a new item element.
+                    string parent = "";
+                    string path = "";
+                    switch (section)
+                    {
+                        case "About":
+                            parent = "about";
+                            path = "~/navigation/about.aspx";
+                            break;
+                        case "Services":
+                            parent = "services";
+                            path = "~/navigation/services.aspx";
+                            break;
+                        case "Visitors":
+                            parent = "visitors";
+                            path = "~/navigation/visitors.aspx";
+                            break;
+                        case "Policies":
+                            parent = "policies";
+                            path = "~/navigation/policies.aspx";
+                            break;
+                    }
+
+                    XmlElement newElem = new XmlElement();
+                    newElem.InnerXml = "<loc></loc><lastmod></lastmod><title></title><parent></parent><sourceid></sourceid>";
+                    newElem["loc"].InnerText = path;
+                    newElem["lastmod"].InnerText = DateTime.Now.ToString("yyyy-MM-dd");
+                    newElem["title"].InnerText = title;
+                    newElem["parent"].InnerText = parent;
+                    newElem["sourceid"].InnerText = _id.ToString();
+
+                    var elements = doc.GetElementsByTagName("sourceid");
+                    foreach(XmlNode el in elements)
+                    {
+                        if (el.InnerText == _id.ToString())
+                        {
+                            if(el.ParentNode.ChildNodes[0].InnerText == path)
+                            {
+                                el.ReplaceChild(newElem, el.ParentNode);
+                            }
+                        }
+                    }
+
+                    // 3. Save the modified XML to a file in Unicode format.
+                    doc.PreserveWhitespace = true;
+                    XmlTextWriter wrtr = new XmlTextWriter(xmlpath, System.Text.Encoding.Unicode);
+                    doc.WriteTo(wrtr);
+                    wrtr.Close();
+                }
+
+                
+                
                 break;
             case "cancel":
                 dtv_edit.Dispose();
