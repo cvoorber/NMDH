@@ -174,11 +174,11 @@ public partial class careers : System.Web.UI.Page
         jobObj.j_resume = newfile;
 
         //renaming file
-        if (File.Exists("~/resumes/" + newfile))
+        if (File.Exists(Server.MapPath("~/resumes/" + newfile)))
         {
             //must check if a file was chosen
             //delete if exist
-            File.Delete("~/resumes/" + newfile);
+            File.Delete(Server.MapPath("~/resumes/" + newfile));
            
         }
         

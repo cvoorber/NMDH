@@ -11,7 +11,11 @@
     <div>
     <asp:Label ID="lbl_title" runat="server" Text="Careers" />
         <br /><br />
-    
+    <script type="text/javascript">
+        function confirmMessage() {
+            return confirm("Are you sure? The associated resume file will be deleted as well.");
+        }
+    </script>
 
     <asp:Menu ID="mnu_career" runat="server" Orientation="Vertical">
         <Items>
@@ -25,7 +29,7 @@
         Does not make sense to allow inserting of a job application 
     --%>
     
-    <asp:Panel ID="pnl_apps" runat="server" Visible="false">
+    <asp:Panel ID="pnl_apps" runat="server">
            <asp:DataList ID="dtl_apps" runat="server" GridLines="Both">
                 <HeaderTemplate>
                     <table>
@@ -70,8 +74,8 @@
                         <td><%#Eval("j_id") %></td>
                         <td><%#Eval("j_resume") %></td>
                         <td><%#Eval("j_date_applied") %></td>
-                        <td><asp:Button ID="btn_update" runat="server" Text="Edit" CommandName="Edit" /></td>
-                        <td><asp:Button ID="btn_delete" runat="server" Text="Delete" CommandName="subDelete" /></td>
+                        <td><asp:Button ID="btn_update" runat="server" Text="Edit" OnClick="subEdit" CommandArgument='<%#Eval("j_application_id") %>' /></td>
+                        <td><asp:Button ID="btn_delete" runat="server" Text="Delete" OnClick="subDelete" OnClientClick="confirmMessage();" CommandArgument='<%#Eval("j_application_id") %>' /></td>
                     </tr>
                 </ItemTemplate>
                 <FooterTemplate>
@@ -86,92 +90,103 @@
                     <asp:Label ID="lbl_jidU" runat="server" Text='<%#Eval("j_application_id") %>' />
                     <br />
                     <asp:Label ID="lbl_fnameU" runat="server" Text="First Name: " />
-                    <asp:TextBox ID="txt_fnameU" runat="server" />
+                    <asp:TextBox ID="txt_fnameU" runat="server" Text='<%#Bind("j_first_name") %>' />
                     <asp:RequiredFieldValidator ID="rfv_fnameU" runat="server" ControlToValidate="txt_fnameU" ErrorMessage="*required" />
                     <br />
         
                     <asp:Label ID="lbl_lnameU" runat="server" Text="Last Name: " />
-                    <asp:TextBox ID="TextBox2" runat="server" />
+                    <asp:TextBox ID="txt_lnameU" runat="server" Text='<%#Bind("j_last_name") %>' />
                     <asp:RequiredFieldValidator ID="rfv_lnameU" runat="server" ControlToValidate="txt_lnameU" ErrorMessage="*required" />
                     <br />
 
                     <asp:Label ID="lbl_addressU" runat="server" Text="Address: " />
-                    <asp:TextBox ID="txt_addressU" runat="server" />
+                    <asp:TextBox ID="txt_addressU" runat="server" Text='<%#Bind("j_address") %>' />
                     <asp:RequiredFieldValidator ID="rfv_addressU" runat="server" ControlToValidate="txt_addressU" ErrorMessage="*required" />
                     <br />
             
                     <asp:Label ID="lbl_cityU" runat="server" Text="City: " />
-                    <asp:TextBox ID="txt_cityU" runat="server" />
+                    <asp:TextBox ID="txt_cityU" runat="server" Text='<%#Bind("j_city") %>' />
                     <asp:RequiredFieldValidator ID="rfv_cityU" runat="server" ControlToValidate="txt_cityU" ErrorMessage="*required" />
                     <br />
 
                     <asp:Label ID="lbl_provinceU" runat="server" Text="Province: " />
-                    <asp:TextBox ID="txt_provinceU" runat="server" />
+                    <asp:TextBox ID="txt_provinceU" runat="server" Text='<%#Bind("j_province") %>' />
                     <asp:RequiredFieldValidator ID="rfv_provinceU" runat="server" ControlToValidate="txt_provinceU" ErrorMessage="*required" />
                     <br />
                     
                     <asp:Label ID="lbl_postalU" runat="server" Text="Postal Code: " />
-                    <asp:TextBox ID="txt_postalU" runat="server" />
+                    <asp:TextBox ID="txt_postalU" runat="server" Text='<%#Bind("j_postal") %>' />
                     <asp:RequiredFieldValidator ID="rfv_postalU" runat="server" ControlToValidate="txt_postalU" ErrorMessage="*required" />
-                    <asp:RegularExpressionValidator ID="reg_postalU" runat="server" ControlToValidate="txt_postalU" ErrorMessage="*invalid postal code (e.g., m4m3b2,m4m-3b2,M4M 3B2)" ValidationExpression="^[a-ZA-Z]\d[a-zA-Z](\s|-)?[a-ZA-Z]\d[a-zA-Z]$" />
+                    <asp:RegularExpressionValidator ID="reg_postalU" runat="server" ControlToValidate="txt_postalU" ErrorMessage="*invalid postal code (e.g., m4m3b2,m4m-3b2,M4M 3B2)" ValidationExpression="^[a-zA-Z]\d[a-zA-Z](\s|-)?\d[a-zA-Z]\d$" />
                     <br />
 
                     <asp:Label ID="lbl_phoneU" runat="server" Text="Phone Number: " />
-                    <asp:TextBox ID="txt_phoneU" runat="server" />
+                    <asp:TextBox ID="txt_phoneU" runat="server" Text='<%#Bind("j_phone") %>' />
                     <asp:RequiredFieldValidator ID="rfv_phoneU" runat="server" ControlToValidate="txt_phoneU" ErrorMessage="*required" />
-                    <asp:RegularExpressionValidator ID="reg_phoneU" runat="server" ControlToValidate="txt_phoneU" ErrorMessage="*invalid phone number (e.g., 4166666666, 416-666-6666, 416 666 6666)" ValidationExpression="^[2-9]\d{3}(\s|-)?\d{3}(\s|-)?\d{4}$" />
+                    <asp:RegularExpressionValidator ID="reg_phoneU" runat="server" ControlToValidate="txt_phoneU" ErrorMessage="*invalid phone number (e.g., 4166666666, 416-666-6666, 416 666 6666)" ValidationExpression="^[2-9]\d{2}(\s|-)?\d{3}(\s|-)?\d{4}$" />
                     <br />
 
                     <asp:Label ID="lbl_altphoneU" runat="server" Text="Alt. Phone: " />
-                    <asp:TextBox ID="txt_altphoneU" runat="server" />
+                    <asp:TextBox ID="txt_altphoneU" runat="server" Text='<%#Bind("j_alt_phone") %>' />
                     <asp:CustomValidator ID="ctv_altphoneU" runat="server" ControlToValidate="txt_altphoneU" ErrorMessage="*invalid phone number (e.g., 4166666666, 416-666-6666, 416 666 6666)" ClientValidationFunction="subValidatePhone" />
                     <br />
 
-                    <asp:Label ID="Label6" runat="server" Text="Address: " />
-                    <asp:TextBox ID="TextBox7" runat="server" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txt_addressU" ErrorMessage="*required" />
+                    <asp:Label ID="lbl_emailU" runat="server" Text="Email: " />
+                    <asp:TextBox ID="txt_emailU" runat="server" Text='<%#Bind("j_email") %>' />
+                    <asp:RequiredFieldValidator ID="rfv_emailU" runat="server" ControlToValidate="txt_emailU" ErrorMessage="*required" />
+                    <asp:RegularExpressionValidator ID="reg_emailU" runat="server" ControlToValidate="txt_emailU" ErrorMessage="*invalid email (e.g., abc@fafsf.com)" ValidationExpression="^[^@ ]+@[^@ ]+\.[^@ \.]+$" />
                     <br />
 
-
-                    <asp:Label ID="Label7" runat="server" Text="Address: " />
-                    <asp:TextBox ID="TextBox8" runat="server" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txt_addressU" ErrorMessage="*required" />
+                    <asp:Label ID="lbl_employeeU" runat="server" Text="Was Employee: " />
+                    <asp:DropDownList ID="ddl_employeeU" runat="server" SelectedValue='<%#Eval("j_was_employee") %>'>
+                        <asp:ListItem Value="y" Text="Yes" />
+                        <asp:ListItem Value="n" Text="No" />
+                    </asp:DropDownList>
                     <br />
 
-                    <asp:Label ID="Label8" runat="server" Text="Address: " />
-                    <asp:TextBox ID="TextBox9" runat="server" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txt_addressU" ErrorMessage="*required" />
+                    <asp:Label ID="lbl_eligibleU" runat="server" Text="Is Eligible: " />
+                    <asp:DropDownList ID="ddl_eligibleU" runat="server" SelectedValue='<%#Eval("j_is_eligible") %>'>
+                        <asp:ListItem Value="y" Text="Yes" />
+                        <asp:ListItem Value="n" Text="No" />
+                    </asp:DropDownList>
                     <br />
 
-                    <asp:Label ID="Label9" runat="server" Text="Address: " />
-                    <asp:TextBox ID="TextBox10" runat="server" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txt_addressU" ErrorMessage="*required" />
+                    <asp:Label ID="lbl_ageU" runat="server" Text="Is of Age: " />
+                    <asp:DropDownList ID="ddl_ageU" runat="server"  SelectedValue='<%#Eval("j_of_age") %>'>
+                        <asp:ListItem Value="y" Text="Yes" />
+                        <asp:ListItem Value="n" Text="No" />
+                    </asp:DropDownList>
+                    <br />
+                   
+                    <asp:Label ID="lbl_convictU" runat="server" Text="Was Convicted: " />
+                    <asp:DropDownList ID="ddl_convictU" runat="server" SelectedValue='<%#Eval("j_was_convicted") %>' >
+                        <asp:ListItem Value="y" Text="Yes" />
+                        <asp:ListItem Value="n" Text="No" />
+                    </asp:DropDownList>
                     <br />
 
-                    <asp:Label ID="Label10" runat="server" Text="Address: " />
-                    <asp:TextBox ID="TextBox11" runat="server" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txt_addressU" ErrorMessage="*required" />
+                    <asp:Label ID="lbl_jobIDU" runat="server" Text="Job ID: " />
+                    <asp:TextBox ID="txt_jobIDU" runat="server" Text='<%#Bind("j_id") %>' />
+                    <asp:RequiredFieldValidator ID="rfv_jobIDU" runat="server" ControlToValidate="txt_jobIDU" ErrorMessage="*required" />
                     <br />
 
-                    <asp:Label ID="Label11" runat="server" Text="Address: " />
-                    <asp:TextBox ID="TextBox12" runat="server" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txt_addressU" ErrorMessage="*required" />
+                    <asp:Label ID="lbl_resumeU" runat="server" Text="Resume File: " />
+                    <asp:TextBox ID="txt_resumeU" runat="server" Text='<%#Bind("j_resume") %>' />
+                    <asp:RequiredFieldValidator ID="rfv_resumeU" runat="server" ControlToValidate="txt_resumeU" ErrorMessage="*required" />
                     <br />
 
-                    <asp:Label ID="Label12" runat="server" Text="Address: " />
-                    <asp:TextBox ID="TextBox13" runat="server" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txt_addressU" ErrorMessage="*required" />
+                    <asp:Label ID="lbl_dateU" runat="server" Text="Date Applied: " />
+                    <asp:TextBox ID="txt_dateU" runat="server" Text='<%#Bind("j_date_applied") %>' />
+                    <asp:RequiredFieldValidator ID="rfv_dateU" runat="server" ControlToValidate="txt_dateU" ErrorMessage="*required" />
                     <br />
 
-                    <asp:Label ID="Label13" runat="server" Text="Address: " />
-                    <asp:TextBox ID="TextBox14" runat="server" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txt_addressU" ErrorMessage="*required" />
-                    <br />
-
-
+                    <asp:HiddenField ID="hdf_jappID" runat="server" Value='<%#Eval("j_application_id") %>' />
+                    <asp:Button ID="btn_update" runat="server" CommandName="update" Text="Update" />
+                    <asp:Button ID="btn_clear" runat="server" CommandName="cancel" Text="Cancel" CausesValidation="false" />
                 </ItemTemplate>
             </asp:DataList>
         </asp:Panel>
+        <asp:Label ID="lbl_result" runat="server" />
     </div>
     </form>
 </body>
