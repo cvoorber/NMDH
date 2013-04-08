@@ -28,10 +28,11 @@ public partial class Admindonations : System.Web.UI.Page
     
     }
 
-    // routine for when the button for inserting gets hit
-    protected void subItemInsert(object sender, ListViewInsertEventArgs e)
+    // routine for insert view appearing
+    protected void subInsertView(object sender, CommandEventArgs e)
     {
-
+        pnl_main.Visible = false;
+        pnl_insert.Visible = true;
 
     }
 

@@ -41,9 +41,6 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
   partial void Insertndmh_department_listing(ndmh_department_listing instance);
   partial void Updatendmh_department_listing(ndmh_department_listing instance);
   partial void Deletendmh_department_listing(ndmh_department_listing instance);
-  partial void Insertndmh_donation(ndmh_donation instance);
-  partial void Updatendmh_donation(ndmh_donation instance);
-  partial void Deletendmh_donation(ndmh_donation instance);
   partial void Insertndmh_event(ndmh_event instance);
   partial void Updatendmh_event(ndmh_event instance);
   partial void Deletendmh_event(ndmh_event instance);
@@ -86,6 +83,9 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
   partial void Insertstate_or_province(state_or_province instance);
   partial void Updatestate_or_province(state_or_province instance);
   partial void Deletestate_or_province(state_or_province instance);
+  partial void Insertndmh_donation(ndmh_donation instance);
+  partial void Updatendmh_donation(ndmh_donation instance);
+  partial void Deletendmh_donation(ndmh_donation instance);
   #endregion
 	
 	public ndmhDCDataContext() : 
@@ -147,14 +147,6 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<ndmh_department_listing>();
-		}
-	}
-	
-	public System.Data.Linq.Table<ndmh_donation> ndmh_donations
-	{
-		get
-		{
-			return this.GetTable<ndmh_donation>();
 		}
 	}
 	
@@ -267,6 +259,14 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<state_or_province>();
+		}
+	}
+	
+	public System.Data.Linq.Table<ndmh_donation> ndmh_donations
+	{
+		get
+		{
+			return this.GetTable<ndmh_donation>();
 		}
 	}
 }
@@ -1332,373 +1332,6 @@ public partial class ndmh_department_listing : INotifyPropertyChanging, INotifyP
 					value.ndmh_department_listing = this;
 				}
 				this.SendPropertyChanged("ndmh_donation");
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_donations")]
-public partial class ndmh_donation : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _d_id;
-	
-	private string _d_title;
-	
-	private string _d_fname;
-	
-	private string _d_lname;
-	
-	private string _d_in_memory_of;
-	
-	private decimal _d_amount;
-	
-	private string _d_credit_type;
-	
-	private string _d_credit_number;
-	
-	private string _d_credit_expiry;
-	
-	private System.Nullable<System.DateTime> _d_date;
-	
-	private string _d_comments;
-	
-	private System.Nullable<int> _dl_id;
-	
-	private EntityRef<ndmh_department_listing> _ndmh_department_listing;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Ond_idChanging(int value);
-    partial void Ond_idChanged();
-    partial void Ond_titleChanging(string value);
-    partial void Ond_titleChanged();
-    partial void Ond_fnameChanging(string value);
-    partial void Ond_fnameChanged();
-    partial void Ond_lnameChanging(string value);
-    partial void Ond_lnameChanged();
-    partial void Ond_in_memory_ofChanging(string value);
-    partial void Ond_in_memory_ofChanged();
-    partial void Ond_amountChanging(decimal value);
-    partial void Ond_amountChanged();
-    partial void Ond_credit_typeChanging(string value);
-    partial void Ond_credit_typeChanged();
-    partial void Ond_credit_numberChanging(string value);
-    partial void Ond_credit_numberChanged();
-    partial void Ond_credit_expiryChanging(string value);
-    partial void Ond_credit_expiryChanged();
-    partial void Ond_dateChanging(System.Nullable<System.DateTime> value);
-    partial void Ond_dateChanged();
-    partial void Ond_commentsChanging(string value);
-    partial void Ond_commentsChanged();
-    partial void Ondl_idChanging(System.Nullable<int> value);
-    partial void Ondl_idChanged();
-    #endregion
-	
-	public ndmh_donation()
-	{
-		this._ndmh_department_listing = default(EntityRef<ndmh_department_listing>);
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int d_id
-	{
-		get
-		{
-			return this._d_id;
-		}
-		set
-		{
-			if ((this._d_id != value))
-			{
-				if (this._ndmh_department_listing.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Ond_idChanging(value);
-				this.SendPropertyChanging();
-				this._d_id = value;
-				this.SendPropertyChanged("d_id");
-				this.Ond_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_title", DbType="VarChar(50)")]
-	public string d_title
-	{
-		get
-		{
-			return this._d_title;
-		}
-		set
-		{
-			if ((this._d_title != value))
-			{
-				this.Ond_titleChanging(value);
-				this.SendPropertyChanging();
-				this._d_title = value;
-				this.SendPropertyChanged("d_title");
-				this.Ond_titleChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_fname", DbType="VarChar(50)")]
-	public string d_fname
-	{
-		get
-		{
-			return this._d_fname;
-		}
-		set
-		{
-			if ((this._d_fname != value))
-			{
-				this.Ond_fnameChanging(value);
-				this.SendPropertyChanging();
-				this._d_fname = value;
-				this.SendPropertyChanged("d_fname");
-				this.Ond_fnameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_lname", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-	public string d_lname
-	{
-		get
-		{
-			return this._d_lname;
-		}
-		set
-		{
-			if ((this._d_lname != value))
-			{
-				this.Ond_lnameChanging(value);
-				this.SendPropertyChanging();
-				this._d_lname = value;
-				this.SendPropertyChanged("d_lname");
-				this.Ond_lnameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_in_memory_of", DbType="VarChar(50)")]
-	public string d_in_memory_of
-	{
-		get
-		{
-			return this._d_in_memory_of;
-		}
-		set
-		{
-			if ((this._d_in_memory_of != value))
-			{
-				this.Ond_in_memory_ofChanging(value);
-				this.SendPropertyChanging();
-				this._d_in_memory_of = value;
-				this.SendPropertyChanged("d_in_memory_of");
-				this.Ond_in_memory_ofChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_amount", DbType="Decimal(18,2) NOT NULL")]
-	public decimal d_amount
-	{
-		get
-		{
-			return this._d_amount;
-		}
-		set
-		{
-			if ((this._d_amount != value))
-			{
-				this.Ond_amountChanging(value);
-				this.SendPropertyChanging();
-				this._d_amount = value;
-				this.SendPropertyChanged("d_amount");
-				this.Ond_amountChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_credit_type", DbType="VarChar(50)")]
-	public string d_credit_type
-	{
-		get
-		{
-			return this._d_credit_type;
-		}
-		set
-		{
-			if ((this._d_credit_type != value))
-			{
-				this.Ond_credit_typeChanging(value);
-				this.SendPropertyChanging();
-				this._d_credit_type = value;
-				this.SendPropertyChanged("d_credit_type");
-				this.Ond_credit_typeChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_credit_number", DbType="Char(16)")]
-	public string d_credit_number
-	{
-		get
-		{
-			return this._d_credit_number;
-		}
-		set
-		{
-			if ((this._d_credit_number != value))
-			{
-				this.Ond_credit_numberChanging(value);
-				this.SendPropertyChanging();
-				this._d_credit_number = value;
-				this.SendPropertyChanged("d_credit_number");
-				this.Ond_credit_numberChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_credit_expiry", DbType="VarChar(50)")]
-	public string d_credit_expiry
-	{
-		get
-		{
-			return this._d_credit_expiry;
-		}
-		set
-		{
-			if ((this._d_credit_expiry != value))
-			{
-				this.Ond_credit_expiryChanging(value);
-				this.SendPropertyChanging();
-				this._d_credit_expiry = value;
-				this.SendPropertyChanged("d_credit_expiry");
-				this.Ond_credit_expiryChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_date", DbType="Date")]
-	public System.Nullable<System.DateTime> d_date
-	{
-		get
-		{
-			return this._d_date;
-		}
-		set
-		{
-			if ((this._d_date != value))
-			{
-				this.Ond_dateChanging(value);
-				this.SendPropertyChanging();
-				this._d_date = value;
-				this.SendPropertyChanged("d_date");
-				this.Ond_dateChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_comments", DbType="VarChar(50)")]
-	public string d_comments
-	{
-		get
-		{
-			return this._d_comments;
-		}
-		set
-		{
-			if ((this._d_comments != value))
-			{
-				this.Ond_commentsChanging(value);
-				this.SendPropertyChanging();
-				this._d_comments = value;
-				this.SendPropertyChanged("d_comments");
-				this.Ond_commentsChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dl_id", DbType="Int")]
-	public System.Nullable<int> dl_id
-	{
-		get
-		{
-			return this._dl_id;
-		}
-		set
-		{
-			if ((this._dl_id != value))
-			{
-				this.Ondl_idChanging(value);
-				this.SendPropertyChanging();
-				this._dl_id = value;
-				this.SendPropertyChanged("dl_id");
-				this.Ondl_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_department_listing_ndmh_donation", Storage="_ndmh_department_listing", ThisKey="d_id", OtherKey="dl_id", IsForeignKey=true)]
-	public ndmh_department_listing ndmh_department_listing
-	{
-		get
-		{
-			return this._ndmh_department_listing.Entity;
-		}
-		set
-		{
-			ndmh_department_listing previousValue = this._ndmh_department_listing.Entity;
-			if (((previousValue != value) 
-						|| (this._ndmh_department_listing.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._ndmh_department_listing.Entity = null;
-					previousValue.ndmh_donation = null;
-				}
-				this._ndmh_department_listing.Entity = value;
-				if ((value != null))
-				{
-					value.ndmh_donation = this;
-					this._d_id = value.dl_id;
-				}
-				else
-				{
-					this._d_id = default(int);
-				}
-				this.SendPropertyChanged("ndmh_department_listing");
 			}
 		}
 	}
@@ -4506,6 +4139,661 @@ public partial class state_or_province : INotifyPropertyChanging, INotifyPropert
 					this._country_id = default(int);
 				}
 				this.SendPropertyChanged("base_country");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_donations")]
+public partial class ndmh_donation : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _d_id;
+	
+	private string _d_title;
+	
+	private string _d_fname;
+	
+	private string _d_lname;
+	
+	private string _d_in_memory_of;
+	
+	private decimal _d_amount;
+	
+	private string _d_credit_type;
+	
+	private string _d_credit_number;
+	
+	private string _d_credit_expiry;
+	
+	private System.Nullable<System.DateTime> _d_date;
+	
+	private string _d_comments;
+	
+	private System.Nullable<int> _dl_id;
+	
+	private string _d_email;
+	
+	private string _d_name_billing;
+	
+	private string _d_address_mailing;
+	
+	private string _d_address_billing;
+	
+	private string _d_city_mailing;
+	
+	private string _d_city_billing;
+	
+	private string _d_country_mailing;
+	
+	private string _d_country_billing;
+	
+	private string _d_provstate_mailing;
+	
+	private string _d_provstate_billing;
+	
+	private string _d_postzip_mailing;
+	
+	private string _d_postzip_billing;
+	
+	private EntityRef<ndmh_department_listing> _ndmh_department_listing;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Ond_idChanging(int value);
+    partial void Ond_idChanged();
+    partial void Ond_titleChanging(string value);
+    partial void Ond_titleChanged();
+    partial void Ond_fnameChanging(string value);
+    partial void Ond_fnameChanged();
+    partial void Ond_lnameChanging(string value);
+    partial void Ond_lnameChanged();
+    partial void Ond_in_memory_ofChanging(string value);
+    partial void Ond_in_memory_ofChanged();
+    partial void Ond_amountChanging(decimal value);
+    partial void Ond_amountChanged();
+    partial void Ond_credit_typeChanging(string value);
+    partial void Ond_credit_typeChanged();
+    partial void Ond_credit_numberChanging(string value);
+    partial void Ond_credit_numberChanged();
+    partial void Ond_credit_expiryChanging(string value);
+    partial void Ond_credit_expiryChanged();
+    partial void Ond_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Ond_dateChanged();
+    partial void Ond_commentsChanging(string value);
+    partial void Ond_commentsChanged();
+    partial void Ondl_idChanging(System.Nullable<int> value);
+    partial void Ondl_idChanged();
+    partial void Ond_emailChanging(string value);
+    partial void Ond_emailChanged();
+    partial void Ond_name_billingChanging(string value);
+    partial void Ond_name_billingChanged();
+    partial void Ond_address_mailingChanging(string value);
+    partial void Ond_address_mailingChanged();
+    partial void Ond_address_billingChanging(string value);
+    partial void Ond_address_billingChanged();
+    partial void Ond_city_mailingChanging(string value);
+    partial void Ond_city_mailingChanged();
+    partial void Ond_city_billingChanging(string value);
+    partial void Ond_city_billingChanged();
+    partial void Ond_country_mailingChanging(string value);
+    partial void Ond_country_mailingChanged();
+    partial void Ond_country_billingChanging(string value);
+    partial void Ond_country_billingChanged();
+    partial void Ond_provstate_mailingChanging(string value);
+    partial void Ond_provstate_mailingChanged();
+    partial void Ond_provstate_billingChanging(string value);
+    partial void Ond_provstate_billingChanged();
+    partial void Ond_postzip_mailingChanging(string value);
+    partial void Ond_postzip_mailingChanged();
+    partial void Ond_postzip_billingChanging(string value);
+    partial void Ond_postzip_billingChanged();
+    #endregion
+	
+	public ndmh_donation()
+	{
+		this._ndmh_department_listing = default(EntityRef<ndmh_department_listing>);
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int d_id
+	{
+		get
+		{
+			return this._d_id;
+		}
+		set
+		{
+			if ((this._d_id != value))
+			{
+				if (this._ndmh_department_listing.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Ond_idChanging(value);
+				this.SendPropertyChanging();
+				this._d_id = value;
+				this.SendPropertyChanged("d_id");
+				this.Ond_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_title", DbType="VarChar(50)")]
+	public string d_title
+	{
+		get
+		{
+			return this._d_title;
+		}
+		set
+		{
+			if ((this._d_title != value))
+			{
+				this.Ond_titleChanging(value);
+				this.SendPropertyChanging();
+				this._d_title = value;
+				this.SendPropertyChanged("d_title");
+				this.Ond_titleChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_fname", DbType="VarChar(50)")]
+	public string d_fname
+	{
+		get
+		{
+			return this._d_fname;
+		}
+		set
+		{
+			if ((this._d_fname != value))
+			{
+				this.Ond_fnameChanging(value);
+				this.SendPropertyChanging();
+				this._d_fname = value;
+				this.SendPropertyChanged("d_fname");
+				this.Ond_fnameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_lname", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string d_lname
+	{
+		get
+		{
+			return this._d_lname;
+		}
+		set
+		{
+			if ((this._d_lname != value))
+			{
+				this.Ond_lnameChanging(value);
+				this.SendPropertyChanging();
+				this._d_lname = value;
+				this.SendPropertyChanged("d_lname");
+				this.Ond_lnameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_in_memory_of", DbType="VarChar(50)")]
+	public string d_in_memory_of
+	{
+		get
+		{
+			return this._d_in_memory_of;
+		}
+		set
+		{
+			if ((this._d_in_memory_of != value))
+			{
+				this.Ond_in_memory_ofChanging(value);
+				this.SendPropertyChanging();
+				this._d_in_memory_of = value;
+				this.SendPropertyChanged("d_in_memory_of");
+				this.Ond_in_memory_ofChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_amount", DbType="Decimal(18,2) NOT NULL")]
+	public decimal d_amount
+	{
+		get
+		{
+			return this._d_amount;
+		}
+		set
+		{
+			if ((this._d_amount != value))
+			{
+				this.Ond_amountChanging(value);
+				this.SendPropertyChanging();
+				this._d_amount = value;
+				this.SendPropertyChanged("d_amount");
+				this.Ond_amountChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_credit_type", DbType="VarChar(50)")]
+	public string d_credit_type
+	{
+		get
+		{
+			return this._d_credit_type;
+		}
+		set
+		{
+			if ((this._d_credit_type != value))
+			{
+				this.Ond_credit_typeChanging(value);
+				this.SendPropertyChanging();
+				this._d_credit_type = value;
+				this.SendPropertyChanged("d_credit_type");
+				this.Ond_credit_typeChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_credit_number", DbType="Char(16)")]
+	public string d_credit_number
+	{
+		get
+		{
+			return this._d_credit_number;
+		}
+		set
+		{
+			if ((this._d_credit_number != value))
+			{
+				this.Ond_credit_numberChanging(value);
+				this.SendPropertyChanging();
+				this._d_credit_number = value;
+				this.SendPropertyChanged("d_credit_number");
+				this.Ond_credit_numberChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_credit_expiry", DbType="VarChar(50)")]
+	public string d_credit_expiry
+	{
+		get
+		{
+			return this._d_credit_expiry;
+		}
+		set
+		{
+			if ((this._d_credit_expiry != value))
+			{
+				this.Ond_credit_expiryChanging(value);
+				this.SendPropertyChanging();
+				this._d_credit_expiry = value;
+				this.SendPropertyChanged("d_credit_expiry");
+				this.Ond_credit_expiryChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_date", DbType="Date")]
+	public System.Nullable<System.DateTime> d_date
+	{
+		get
+		{
+			return this._d_date;
+		}
+		set
+		{
+			if ((this._d_date != value))
+			{
+				this.Ond_dateChanging(value);
+				this.SendPropertyChanging();
+				this._d_date = value;
+				this.SendPropertyChanged("d_date");
+				this.Ond_dateChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_comments", DbType="VarChar(50)")]
+	public string d_comments
+	{
+		get
+		{
+			return this._d_comments;
+		}
+		set
+		{
+			if ((this._d_comments != value))
+			{
+				this.Ond_commentsChanging(value);
+				this.SendPropertyChanging();
+				this._d_comments = value;
+				this.SendPropertyChanged("d_comments");
+				this.Ond_commentsChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dl_id", DbType="Int")]
+	public System.Nullable<int> dl_id
+	{
+		get
+		{
+			return this._dl_id;
+		}
+		set
+		{
+			if ((this._dl_id != value))
+			{
+				this.Ondl_idChanging(value);
+				this.SendPropertyChanging();
+				this._dl_id = value;
+				this.SendPropertyChanged("dl_id");
+				this.Ondl_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_email", DbType="VarChar(MAX)")]
+	public string d_email
+	{
+		get
+		{
+			return this._d_email;
+		}
+		set
+		{
+			if ((this._d_email != value))
+			{
+				this.Ond_emailChanging(value);
+				this.SendPropertyChanging();
+				this._d_email = value;
+				this.SendPropertyChanged("d_email");
+				this.Ond_emailChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_name_billing", DbType="VarChar(MAX)")]
+	public string d_name_billing
+	{
+		get
+		{
+			return this._d_name_billing;
+		}
+		set
+		{
+			if ((this._d_name_billing != value))
+			{
+				this.Ond_name_billingChanging(value);
+				this.SendPropertyChanging();
+				this._d_name_billing = value;
+				this.SendPropertyChanged("d_name_billing");
+				this.Ond_name_billingChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_address_mailing", DbType="VarChar(500)")]
+	public string d_address_mailing
+	{
+		get
+		{
+			return this._d_address_mailing;
+		}
+		set
+		{
+			if ((this._d_address_mailing != value))
+			{
+				this.Ond_address_mailingChanging(value);
+				this.SendPropertyChanging();
+				this._d_address_mailing = value;
+				this.SendPropertyChanged("d_address_mailing");
+				this.Ond_address_mailingChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_address_billing", DbType="VarChar(500)")]
+	public string d_address_billing
+	{
+		get
+		{
+			return this._d_address_billing;
+		}
+		set
+		{
+			if ((this._d_address_billing != value))
+			{
+				this.Ond_address_billingChanging(value);
+				this.SendPropertyChanging();
+				this._d_address_billing = value;
+				this.SendPropertyChanged("d_address_billing");
+				this.Ond_address_billingChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_city_mailing", DbType="VarChar(100)")]
+	public string d_city_mailing
+	{
+		get
+		{
+			return this._d_city_mailing;
+		}
+		set
+		{
+			if ((this._d_city_mailing != value))
+			{
+				this.Ond_city_mailingChanging(value);
+				this.SendPropertyChanging();
+				this._d_city_mailing = value;
+				this.SendPropertyChanged("d_city_mailing");
+				this.Ond_city_mailingChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_city_billing", DbType="VarChar(100)")]
+	public string d_city_billing
+	{
+		get
+		{
+			return this._d_city_billing;
+		}
+		set
+		{
+			if ((this._d_city_billing != value))
+			{
+				this.Ond_city_billingChanging(value);
+				this.SendPropertyChanging();
+				this._d_city_billing = value;
+				this.SendPropertyChanged("d_city_billing");
+				this.Ond_city_billingChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_country_mailing", DbType="VarChar(100)")]
+	public string d_country_mailing
+	{
+		get
+		{
+			return this._d_country_mailing;
+		}
+		set
+		{
+			if ((this._d_country_mailing != value))
+			{
+				this.Ond_country_mailingChanging(value);
+				this.SendPropertyChanging();
+				this._d_country_mailing = value;
+				this.SendPropertyChanged("d_country_mailing");
+				this.Ond_country_mailingChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_country_billing", DbType="VarChar(100)")]
+	public string d_country_billing
+	{
+		get
+		{
+			return this._d_country_billing;
+		}
+		set
+		{
+			if ((this._d_country_billing != value))
+			{
+				this.Ond_country_billingChanging(value);
+				this.SendPropertyChanging();
+				this._d_country_billing = value;
+				this.SendPropertyChanged("d_country_billing");
+				this.Ond_country_billingChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_provstate_mailing", DbType="VarChar(100)")]
+	public string d_provstate_mailing
+	{
+		get
+		{
+			return this._d_provstate_mailing;
+		}
+		set
+		{
+			if ((this._d_provstate_mailing != value))
+			{
+				this.Ond_provstate_mailingChanging(value);
+				this.SendPropertyChanging();
+				this._d_provstate_mailing = value;
+				this.SendPropertyChanged("d_provstate_mailing");
+				this.Ond_provstate_mailingChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_provstate_billing", DbType="VarChar(100)")]
+	public string d_provstate_billing
+	{
+		get
+		{
+			return this._d_provstate_billing;
+		}
+		set
+		{
+			if ((this._d_provstate_billing != value))
+			{
+				this.Ond_provstate_billingChanging(value);
+				this.SendPropertyChanging();
+				this._d_provstate_billing = value;
+				this.SendPropertyChanged("d_provstate_billing");
+				this.Ond_provstate_billingChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_postzip_mailing", DbType="VarChar(100)")]
+	public string d_postzip_mailing
+	{
+		get
+		{
+			return this._d_postzip_mailing;
+		}
+		set
+		{
+			if ((this._d_postzip_mailing != value))
+			{
+				this.Ond_postzip_mailingChanging(value);
+				this.SendPropertyChanging();
+				this._d_postzip_mailing = value;
+				this.SendPropertyChanged("d_postzip_mailing");
+				this.Ond_postzip_mailingChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_postzip_billing", DbType="VarChar(100)")]
+	public string d_postzip_billing
+	{
+		get
+		{
+			return this._d_postzip_billing;
+		}
+		set
+		{
+			if ((this._d_postzip_billing != value))
+			{
+				this.Ond_postzip_billingChanging(value);
+				this.SendPropertyChanging();
+				this._d_postzip_billing = value;
+				this.SendPropertyChanged("d_postzip_billing");
+				this.Ond_postzip_billingChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_department_listing_ndmh_donation", Storage="_ndmh_department_listing", ThisKey="d_id", OtherKey="dl_id", IsForeignKey=true)]
+	public ndmh_department_listing ndmh_department_listing
+	{
+		get
+		{
+			return this._ndmh_department_listing.Entity;
+		}
+		set
+		{
+			ndmh_department_listing previousValue = this._ndmh_department_listing.Entity;
+			if (((previousValue != value) 
+						|| (this._ndmh_department_listing.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._ndmh_department_listing.Entity = null;
+					previousValue.ndmh_donation = null;
+				}
+				this._ndmh_department_listing.Entity = value;
+				if ((value != null))
+				{
+					value.ndmh_donation = this;
+					this._d_id = value.dl_id;
+				}
+				else
+				{
+					this._d_id = default(int);
+				}
+				this.SendPropertyChanged("ndmh_department_listing");
 			}
 		}
 	}
