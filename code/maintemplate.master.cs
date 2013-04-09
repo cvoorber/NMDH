@@ -95,7 +95,10 @@ public partial class maintemplate : System.Web.UI.MasterPage
         feature_menu.Font.Size = FontUnit.Point(newsizeFeat);
         feature_menu.StaticMenuItemStyle.HorizontalPadding = paddingFeat;
 
-        this.upFont(this, e);
+        if (content_area.Page.Master.Master == this)
+        {
+            this.upFont(this, e);
+        }
     }
 
     public void fontDec(object sender, EventArgs e)
@@ -116,6 +119,9 @@ public partial class maintemplate : System.Web.UI.MasterPage
         feature_menu.Font.Size = FontUnit.Point(newsizeFeat);
         feature_menu.StaticMenuItemStyle.HorizontalPadding = paddingFeat;
 
-        this.downFont(this, e);
+        if (content_area.Page.Master.Master == this)
+        {
+            this.downFont(this, e);
+        }
     }
 }

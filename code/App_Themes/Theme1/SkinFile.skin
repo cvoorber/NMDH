@@ -35,7 +35,7 @@
 
 <asp:Menu runat="server" 
     SkinID="skin_side_nav" 
-    Font-Size="14pt" />
+    Font-Size="12pt" />
 
 <asp:Panel runat="server" 
     SkinID="maincontent"

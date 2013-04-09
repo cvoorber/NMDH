@@ -19,8 +19,8 @@
     <div id="right_content">
         <asp:Repeater ID="rpt_content" runat="server">
             <ItemTemplate>
-                <asp:Label ID="lbltitle" runat="server" Text='<%#Eval("gp_title") %>' CssClass="h1" />
-                <asp:Label ID="lblcontent" runat="server" Text='<%#Eval("gp_content") %>' CssClass="pagecontent" />
+                <asp:Label ID="lbltitle" runat="server" Text='<%#Eval("gp_title") %>' CssClass="h1" Font-Size="18pt" />
+                <asp:Label ID="lblcontent" runat="server" Text='<%#Eval("gp_content") %>' CssClass="pagecontent" Font-Size="12pt" />
             </ItemTemplate>
         </asp:Repeater>
         <asp:ContentPlaceHolder ID="r_content" runat="server">

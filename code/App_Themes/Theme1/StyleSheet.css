@@ -181,6 +181,7 @@ h1, .h1
     margin-bottom:1px;
     width:210px;
     max-width:210px;
+    display:block;
 }
 
 .side-menu:hover

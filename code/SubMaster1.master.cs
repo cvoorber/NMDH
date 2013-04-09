@@ -90,23 +90,50 @@ public partial class SubMaster1 : System.Web.UI.MasterPage
 
     protected void fontInc(object sender, EventArgs e)
     {
+        Label title = new Label();
+        Label content = new Label();
+        foreach (RepeaterItem ri in rpt_content.Items)
+        {
+            title = (Label)ri.FindControl("lbltitle");
+            content = (Label)ri.FindControl("lblcontent");
+        }
         int newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2)) + 2;
+        int newsizeHead = int.Parse(title.Font.Size.Unit.ToString().Substring(0, 2)) + 2;
+        int newsizeContent = int.Parse(content.Font.Size.Unit.ToString().Substring(0, 2)) + 2;
 
-        if (newsizeSide > 20)
+        if (newsizeSide > 16)
         {
             newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2));
+            newsizeHead = int.Parse(title.Font.Size.Unit.ToString().Substring(0, 2));
+            newsizeContent = int.Parse(content.Font.Size.Unit.ToString().Substring(0, 2));
         }
         side_menu.Font.Size = FontUnit.Point(newsizeSide);
+        title.Font.Size = FontUnit.Point(newsizeHead);
+        content.Font.Size = FontUnit.Point(newsizeContent);
     }
 
     protected void fontDec(object sender, EventArgs e)
     {
-        int newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2)) - 2;
+        Label title = new Label();
+        Label content = new Label();
+        foreach (RepeaterItem ri in rpt_content.Items)
+        {
+            title = (Label)ri.FindControl("lbltitle");
+            content = (Label)ri.FindControl("lblcontent");
+        }
 
-        if (newsizeSide < 12)
+        int newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2)) - 2;
+        int newsizeHead = int.Parse(title.Font.Size.Unit.ToString().Substring(0, 2)) - 2;
+        int newsizeContent = int.Parse(content.Font.Size.Unit.ToString().Substring(0, 2)) - 2;
+
+        if (newsizeSide < 10)
         {
             newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2));
+            newsizeHead = int.Parse(title.Font.Size.Unit.ToString().Substring(0, 2));
+            newsizeContent = int.Parse(content.Font.Size.Unit.ToString().Substring(0, 2));
         }
         side_menu.Font.Size = FontUnit.Point(newsizeSide);
+        title.Font.Size = FontUnit.Point(newsizeHead);
+        content.Font.Size = FontUnit.Point(newsizeContent);
     }
 }
