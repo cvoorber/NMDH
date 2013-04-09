@@ -79,10 +79,7 @@
             <asp:RequiredFieldValidator ID="rfv_postzip" runat="server" ErrorMessage="*Required" ControlToValidate="txt_postzip" />
 
         
-        <!--Comments -->
-        <asp:Label ID="lbl_comments" runat="server" Text="Comments:" />
-        <asp:TextBox ID="txt_comments" runat="server" TextMode="MultiLine" /><br /><br />
-        <asp:RequiredFieldValidator ID="rfv_comments" runat="server" ErrorMessage="*Required" ControlToValidate="txt_comments" />    
+            
  
 
         <asp:Button ID="btn_uinext" runat="server" Text="Next" OnClick="subNextUiClick"    />
@@ -148,10 +145,7 @@
     will have to insert url based on type of card. -->
         <asp:Image ID="img_cred" runat="server" />
     
-    <!-- Back of Card Code -->
-     <asp:Label ID="lbl_credcode" runat="server" Text="Back of Card Code" /><!-- dependent upon country -->
-            <asp:TextBox ID="txt_credcode" runat="server" /><br /><br />
-            <asp:RequiredFieldValidator ID="rfv_credcode" runat="server" ErrorMessage="*Required" ControlToValidate="txt_credcode" />
+    
    
     <!-- Next Button -->
    <asp:Button ID="btn_creditnext" runat="server" Text="Next" OnCommand="subNextCredClick"   />
@@ -170,38 +164,69 @@
     <asp:Panel runat="server" ID="pnl_confirm" CssClass="donate-box" Visible="false">
     
     <!-- Use a data bound control here in order to display the records from the fist page -->
-        Confirmation name <br />
-        <!-- Confirmation Name -->
-        <asp:Label ID="lbl_confname" runat="server"  /><br /><br />
+        Donation/Mailing Info: <br /><br />
+        First Name:&nbsp;
+         <asp:Label ID="lbl_mfname" runat="server"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Last Name:&nbsp;
+         <asp:Label ID="lbl_mlname" runat="server"  /><br /><br />
+        In Memory of:&nbsp;
+         <asp:Label ID="lbl_mmemory" runat="server"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-        Donation Amount <br />
+        Donation Amount:&nbsp;
         <!-- Donation Amount -->
-        <asp:Label ID="lbl_confamount" runat="server"  /><br /><br />
+        <asp:Label ID="lbl_confamount" runat="server"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-        Mailing Address <br />
+        Mailing Address:&nbsp;
         <!-- Mailing Address -->
-        <asp:Label ID="lbl_confaddress" runat="server"  /><br /><br />
+        <asp:Label ID="lbl_maddress" runat="server"  /><br /><br />
 
-        Mailing Country <br />
+        Mailing Country:&nbsp;
         <!-- Mailing Country -->
-        <asp:Label ID="lbl_confcountry" runat="server"  /><br /><br />
+        <asp:Label ID="lbl_mcountry" runat="server"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-        Mailing Province/State <br />
+        Mailing Province/State:&nbsp;
         <!-- Mailing Province/State -->
-        <asp:Label ID="lbl_confprovstate" runat="server"  /><br /><br />
+        <asp:Label ID="lbl_mprovstate" runat="server"  /><br /><br />
 
-        Email <br />
+        Mailing Postal/ZIP:&nbsp;
+         <asp:Label ID="lbl_mpostzip" runat="server"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Mailing City:&nbsp;
+         <asp:Label ID="lbl_mcity" runat="server"  /><br /><br />
+        Email:&nbsp;
         <!-- Email Address -->
         <asp:Label ID="lbl_confemail" runat="server"  /><br /><br />
 
-        Credit Card Number <br />
+        Billing Info:<br /><br />
+         
+        Billing Name:&nbsp;
+        <!-- Confirmation Name -->
+        <asp:Label ID="lbl_billname" runat="server"  />&nbsp;&nbsp;
+
+        Credit Card Number:&nbsp;
         <!-- Credit Card Number -->
-        <asp:Label ID="lbl_confcnumber" runat="server"  />
+        <asp:Label ID="lbl_confcnumber" runat="server"  /><br /><br />
+
+       <%-- Don't Worry about this for now--%>
+        <%--Credit Card Expiry Date:--%>
+
+        Billing Address:&nbsp;
+         <asp:Label ID="lbl_baddress" runat="server"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Billing City:&nbsp;
+         <asp:Label ID="lbl_bcity" runat="server"  /><br /><br />
+        Billing Country:&nbsp;
+         <asp:Label ID="lbl_bcountry" runat="server"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Billing Province/State:&nbsp;
+         <asp:Label ID="lbl_bprovstate" runat="server"  /><br /><br />
+        <%--Hold off on this one for now, till I get things totally working properly--%>
+       <%-- Billing Postal/ZIP:--%>
+
+
     
     
     <!-- Include a Submit button -->
-
+        <asp:Button ID="btn_submit" runat="server" Text="Submit" OnCommand="subConfPgAction" CommandName="Submit" />&nbsp;&nbsp;
     <!-- Include a Cancel button -->
+    <asp:Button ID="btn_cancel" runat="server" Text="Cancel" OnCommand="subConfPgAction" CommandName="Cancel" />
      
     </asp:Panel>
     <%--</ContentTemplate>
@@ -210,13 +235,17 @@
 
     <%--Will Have the image at bottom of the screen, but worry about this later - it will become clearer as you proceed through the
     form stages--%>
+    <asp:Label ID="lbl_execmess" runat="server"  />
      </ContentTemplate>
     <Triggers>
     <asp:AsyncPostBackTrigger ControlID="btn_uinext" EventName="Click" />
     <asp:AsyncPostBackTrigger ControlID="ddl_country" EventName="SelectedIndexChanged" />
     <asp:AsyncPostBackTrigger ControlID="btn_creditnext" EventName="Click" />
-
+    <asp:asyncpostbacktrigger controlid="btn_submit" eventname="command" />
+    <asp:asyncpostbacktrigger controlid="btn_cancel" eventname="command" />
     </Triggers>
     </asp:UpdatePanel>
+
+    
    </asp:Content>
    

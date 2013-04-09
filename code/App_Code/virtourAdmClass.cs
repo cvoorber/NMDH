@@ -35,7 +35,7 @@ public class virtourAdmClass
         using (objDC)
         {
             var objUpDept = objDC.ndmh_department_listings.Single(x => x.dl_id == _dl_id);
-            objUpDept.dl_id = _dl_id;
+            
             objUpDept.dl_name = _dl_name;
             objUpDept.dl_extention = _dl_extention;
             objUpDept.dl_days_open = _dl_days_open;
