@@ -1,12 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="newPage.aspx.cs" MasterPageFile="~/Admin/subAdmin.master" Inherits="newPage" ValidateRequest="false" %>
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%@ Mastertype VirtualPath="~/Admin/subAdmin.master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
-<cc1:ToolKitScriptManager runat="server" />
+<AJAX:ToolkitScriptManager runat="server" />
 <asp:Label ID="output" runat="server" />
 <br />
 <asp:LinkButton ID="lbn_new" runat="server" Text="New Page" OnClick="showNew" />
@@ -20,14 +19,18 @@
     </tr>
     <tr>
         <td><asp:Label ID="lbl_title" runat="server" Text="Page Title: " /></td>
-        <td>
-            <asp:TextBox ID="txt_title" runat="server" />
-            <cc1:HtmlEditorExtender runat="server" TargetControlID="txt_title" />
-        </td>
+        <td><asp:TextBox ID="txt_title" runat="server" /></td>
     </tr>    
     <tr>
         <td><asp:Label ID="lbl_content" runat="server" Text="Page Content: " /></td>
-        <td><asp:TextBox ID="txt_content" runat="server" TextMode="MultiLine" /></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="pagecontentClass">
+            <AJAX:HtmlEditorExtender ID="HtmlEditorExtender1" runat="server" TargetControlID="txt_content" EnableSanitization="false" />
+            <asp:TextBox ID="txt_content" runat="server" TextMode="MultiLine" Width="400" Height="200" CssClass="editContent" />
+        </td>
     </tr>
 </table>
     <asp:CheckBox ID="chk_publish" runat="server" Text="Publish Immediately" Checked="true" />
@@ -89,6 +92,8 @@
                     </tr>
                     <tr><td>Content:</td></tr>
                 </table>
+                
+                    <AJAX:HtmlEditorExtender ID="HtmlEditorExtender1" runat="server" TargetControlID="txt_content" EnableSanitization="false" />
                     <asp:TextBox runat="server" ID="txt_content" Text='<%# Bind("gp_content") %>' TextMode="MultiLine" CssClass="editContent" />
                 <asp:Button runat="server" ID="btn_save" Text="Save" CommandArgument='<%# Bind("gp_id") %>' CommandName="save" />
                 <asp:Button runat="server" ID="btn_cancel" Text="Cancel" CommandArgument='<%# Bind("gp_id") %>' CommandName="cancel" CausesValidation="false" />

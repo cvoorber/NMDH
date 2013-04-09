@@ -344,6 +344,7 @@ namespace ilanaCustom
             _desc = new TextBox();
             _desc.ID = "txt_desc";
             _desc.TextMode = TextBoxMode.MultiLine; //longer length is accepted
+            _desc.Width = 130;
             this.Controls.Add(_desc);
             _lbldesc.AssociatedControlID = _desc.ID;
 
