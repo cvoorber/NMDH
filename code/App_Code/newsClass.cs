@@ -22,6 +22,13 @@ public class newsClass
         return allNews;
     }
 
+    public IQueryable<ndmh_event> getLatestNews()
+    {
+        ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
+        var allNews = objNewsDC.ndmh_events.OrderByDescending(x => x.n_id).Select(x => x).Take(2);
+        return allNews;
+    }
+
     public bool commitInsert(string _title, string _desc, string _image, DateTime _expires, DateTime _date, int _contact, string _link)
     {
         ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
