@@ -460,6 +460,12 @@ float:left;
     width:550px;
     height:300px;
     font-family:Arial;
+    margin-bottom:60px;
+}
+
+.pagecontentClass
+{
+    padding:6px;
 }
 
 .pagePanel
