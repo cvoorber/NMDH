@@ -38,6 +38,9 @@
         <elementListCompartment Id="aea82d52-e3c0-4b20-a1c9-3f3127a0fc61" absoluteBounds="0.765, 14.46, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+<<<<<<< HEAD
+    <classShape Id="54a45f9c-2a29-4073-a23e-4b8fec60a1b3" absoluteBounds="3.5, 1, 2, 2.3478011067708335">
+=======
     <classShape Id="1f71d3ac-6f39-4de8-839e-73cb5c288dea" absoluteBounds="3.5, 13.125, 2, 5.4246240234374987">
       <DataClassMoniker Name="/ndmhDCDataContext/ndmh_donation" />
       <nestedChildShapes>
@@ -45,6 +48,7 @@
       </nestedChildShapes>
     </classShape>
     <classShape Id="b52965eb-edc8-455d-a617-c010384ffc89" absoluteBounds="15.5, 4, 2, 2.347801106770834">
+>>>>>>> 29d909502356c3b00377d756e8c34ddeaaad994e
       <DataClassMoniker Name="/ndmhDCDataContext/ndmh_event" />
       <nestedChildShapes>
         <elementListCompartment Id="ce2ed72e-4cc7-4339-9daf-3e3e7a4944a9" absoluteBounds="15.515, 4.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
@@ -122,6 +126,9 @@
         <elementListCompartment Id="fa0b1b52-ad07-4f03-9477-bf76fc5425eb" absoluteBounds="12.765, 2.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+<<<<<<< HEAD
+    <associationConnector edgePoints="[(5.5 : 2.13544840494792); (6.25 : 2.13544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+=======
     <associationConnector edgePoints="[(3.75 : 5.16429768880208); (4.125 : 5.16429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/ndmhDCDataContext/base_country/base_country_state_or_province" />
       <nodes>
@@ -137,6 +144,7 @@
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(17.5 : 5.13544840494792); (18.25 : 5.13544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+>>>>>>> 29d909502356c3b00377d756e8c34ddeaaad994e
       <AssociationMoniker Name="/ndmhDCDataContext/ndmh_event/ndmh_event_ndmh_comment" />
       <nodes>
         <classShapeMoniker Id="b52965eb-edc8-455d-a617-c010384ffc89" />
@@ -178,11 +186,35 @@
         <classShapeMoniker Id="b52965eb-edc8-455d-a617-c010384ffc89" />
       </nodes>
     </associationConnector>
+<<<<<<< HEAD
+    <classShape Id="6094aac0-c69f-4bc0-a79b-ec589c79fd8d" absoluteBounds="1.625, 4.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ndmhDCDataContext/state_or_province" />
+      <nestedChildShapes>
+        <elementListCompartment Id="148a5edc-1044-4979-b786-fc28b5388a78" absoluteBounds="1.6400000000000001, 4.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(9.125 : 2.7131982421875); (9.125 : 4.46875); (3.625 : 4.46875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ndmhDCDataContext/base_country/base_country_state_or_province" />
+=======
     <associationConnector edgePoints="[(14.75 : 2.89024983723958); (15.5 : 2.89024983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/ndmhDCDataContext/ndmh_staff_listing/ndmh_staff_listing_ndmh_roomBooking" />
+>>>>>>> 29d909502356c3b00377d756e8c34ddeaaad994e
       <nodes>
         <classShapeMoniker Id="c1e8ccbc-0e5f-4922-979e-c62210af55f0" />
         <classShapeMoniker Id="62575006-5d93-4bd2-9145-a780bf634995" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="3753ea3c-156b-480b-9349-911af31e87a4" absoluteBounds="4.375, 9.125, 2, 5.4246240234375">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_donation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="61c68f00-7878-4a9a-9284-c8b372607871" absoluteBounds="4.39, 9.585, 1.9700000000000002, 4.8646240234375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.75 : 10.3133048502604); (6.375 : 10.3133048502604)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ndmhDCDataContext/ndmh_department_listing/ndmh_department_listing_ndmh_donation" />
+      <nodes>
+        <classShapeMoniker Id="fa1e5a2c-5d37-4ca2-ae4d-df674c386d25" />
+        <classShapeMoniker Id="3753ea3c-156b-480b-9349-911af31e87a4" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

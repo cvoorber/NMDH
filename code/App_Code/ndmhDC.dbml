@@ -71,6 +71,8 @@
       <Association Name="ndmh_department_listing_ndmh_donation" Member="ndmh_donation" ThisKey="dl_id" OtherKey="d_id" Type="ndmh_donation" Cardinality="One" />
     </Type>
   </Table>
+<<<<<<< HEAD
+=======
   <Table Name="dbo.ndmh_donations" Member="ndmh_donations">
     <Type Name="ndmh_donation">
       <Column Name="d_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -100,6 +102,7 @@
       <Association Name="ndmh_department_listing_ndmh_donation" Member="ndmh_department_listing" ThisKey="d_id" OtherKey="dl_id" Type="ndmh_department_listing" IsForeignKey="true" />
     </Type>
   </Table>
+>>>>>>> 29d909502356c3b00377d756e8c34ddeaaad994e
   <Table Name="dbo.ndmh_events" Member="ndmh_events">
     <Type Name="ndmh_event">
       <Column Name="n_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -245,6 +248,35 @@
       <Column Name="sl_email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Association Name="ndmh_staff_listing_ndmh_event" Member="ndmh_events" ThisKey="sl_id" OtherKey="n_contact_id" Type="ndmh_event" />
       <Association Name="ndmh_staff_listing_ndmh_roomBooking" Member="ndmh_roomBookings" ThisKey="sl_id" OtherKey="rb_member" Type="ndmh_roomBooking" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ndmh_donations" Member="ndmh_donations">
+    <Type Name="ndmh_donation">
+      <Column Name="d_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="d_title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="d_fname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="d_lname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="d_in_memory_of" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="d_amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="d_credit_type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="d_credit_number" Type="System.String" DbType="Char(16)" CanBeNull="true" />
+      <Column Name="d_credit_expiry" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="d_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="d_comments" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="dl_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="d_email" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="d_name_billing" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="d_address_mailing" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="d_address_billing" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="d_city_mailing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_city_billing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_country_mailing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_country_billing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_provstate_mailing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_provstate_billing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_postzip_mailing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_postzip_billing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="ndmh_department_listing_ndmh_donation" Member="ndmh_department_listing" ThisKey="d_id" OtherKey="dl_id" Type="ndmh_department_listing" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

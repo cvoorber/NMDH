@@ -16,7 +16,7 @@
     <asp:Repeater ID="rpt_faqadm" runat="server" OnItemDataBound="keyListBind">
      <%--Include Header, Item, Insert, and Edit--%>
     <HeaderTemplate>
-    <asp:Button ID="Button1" runat="server" Text="Insert New Article" CommandName="Insert" 
+    <asp:Button ID="btn_mainins" runat="server" Text="Insert New Article" CommandName="Insert" 
                 OnCommand="subInsert" /> 
       <table >
         <tr>
@@ -66,7 +66,7 @@
                     </asp:Repeater>
                 </td>
                 <td>
-                    <asp:Button ID="btn_edit" runat="server" Text="Edit"  CommandName="Edit" OnCommand="subEdit"
+                    <asp:Button ID="btn_edit" runat="server" Text="Edit"  CommandName="Edit" OnCommand="subEditView"
                      CommandArgument='<%#Eval("ndmh_faq_id") %>' />
                     <asp:Button ID="btn_delete" runat="server" Text="Delete" CommandName="Delete" OnCommand="subDelete" 
                     OnClientClick="return confirm('Are you sure you want to delete this FAQ?');" CommandArgument='<%#Eval("ndmh_faq_id") %>'  />
@@ -91,6 +91,7 @@
                     <td><asp:Label ID="lbl_icontent" runat="server" Text="FAQ Content" /> </td>
                     <td><asp:TextBox ID="txt_icontent" runat="server"   /></td>
                 </tr>
+                
                 <tr>
                     <td>
                         <asp:Button ID="btn_isave" runat="server" Text="Create New FAQ" OnCommand="subInsPanel"
@@ -107,7 +108,7 @@
     <%--This panel is triggered when an edit is desired--%>
     <asp:Panel ID="pnl_edit" runat="server" Visible="false">
     Edit Your FAQ Record Below
-        <asp:Repeater ID="rpt_edit" runat="server" OnItemCommand="subEdit">
+        <asp:Repeater ID="rpt_edit" runat="server" OnItemCommand="subEdit" OnItemDataBound="subEditKeysChildBind">
         <HeaderTemplate>
         <table>
         </HeaderTemplate>
@@ -122,7 +123,43 @@
                     <td><asp:TextBox ID="txt_etitle" runat="server" Text='<%#Eval("ndmh_faq_title") %>'  /></td>
                 </tr>
                 <%--Remember to add in the Text editor AJAX extender--%>
-                <<tr>
+                <tr>
+                <%-- Put in a child repeater to list out textboxes for each keyword in DB and a update and delete button for each. 
+                Ouside of the child repeater (below), put in an option to insert a new keyword. When you click insert,
+                a new textbox will appear, and when you submit the new keyword, reload the whole edit view .... i.e.
+                so that you will now have a keyword textbox for the newly created keyword--%>
+                  
+                    <td><asp:Label ID="lbl_ekeys" runat="server" Text="FAQ Keywords" /> </td>
+                    <td>
+                    <ul>
+                    <asp:Repeater ID="rpt_edchildekeys" runat="server" OnItemCommand="subEditKeys" >
+                    <ItemTemplate>  
+                    <li><asp:TextBox ID="txt_ekeys" runat="server" Text='<%#Eval("faq_keyword") %>'  />
+                        <asp:HiddenField ID="hdf_ekeys" runat="server" Value='<%#Eval("fkword_id") %>' />
+                        <asp:Button ID="btn_ekeysup" runat="server" CommandName="UpdateKeys" Text="Update" />
+                        <asp:Button ID="btn_ekeysdel" runat="server" CommandName="DeleteKeys" Text="Delete" 
+                        OnClientClick="return confirm('Are you sure you want to delete this FAQ Keyword?');" />
+                    </li>
+                    </ItemTemplate> 
+                    <FooterTemplate>
+                    
+                    </FooterTemplate>
+                    </asp:Repeater>
+                    </ul>
+                    </td>
+                    <td>
+                    <%--Insert a new keyword option here with a textbox and an insert button - when you create it, it should update
+                    the list automatically, with ajax, and then this insert textbox should be cleared out--%>
+                    <td>Insert New Keyword here for this FAQ:
+                    <asp:TextBox ID="txt_ekeysnew" runat="server"   />
+                    <%--This hidden value will be value of id of faq this new keyword will be associated with--%>
+                    <asp:HiddenField ID="hdf_assocfaqid" runat="server" Value='<%#Eval("ndmh_faq_id") %>' />
+                    <%--Insert Keyword to faq by faq_id--%>
+                    <asp:Button ID="btn_ekeysnew" runat="server" CommandName="NewKey" Text="Create New Keyword" />
+                    </td>
+                </tr>
+                   
+               <tr>
                     <td><asp:Label ID="lbl_econtent" runat="server" Text="FAQ Content" /> </td>
                     <td><asp:TextBox ID="txt_econtent" runat="server" Text='<%#Eval("ndmh_content") %>'  /></td>
                 </tr>

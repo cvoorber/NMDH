@@ -181,7 +181,10 @@ h1, .h1
     margin-bottom:1px;
     width:210px;
     max-width:210px;
+<<<<<<< HEAD
     display:block;
+=======
+>>>>>>> temp
 }
 
 .side-menu:hover
