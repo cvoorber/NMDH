@@ -72,22 +72,10 @@ public partial class maintemplate : System.Web.UI.MasterPage
             }
         }
     }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    protected void fontInc(object sender, EventArgs e)
-=======
->>>>>>> temp
 
     public event EventHandler upFont; 
     public event EventHandler downFont;
     public void fontInc(object sender, EventArgs e)
-<<<<<<< HEAD
-=======
->>>>>>> gahhh side menu!
->>>>>>> temp
     {
         int newsizeMain = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2)) + 2;
         int paddingMain = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString()) -6;
@@ -96,7 +84,6 @@ public partial class maintemplate : System.Web.UI.MasterPage
         int paddingFeat = int.Parse(feature_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString()) - 5;
 
         if (newsizeMain > 20)
-<<<<<<< HEAD
         {
             newsizeMain = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2));
             paddingMain = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString());
@@ -112,7 +99,7 @@ public partial class maintemplate : System.Web.UI.MasterPage
         {
             this.upFont(this, e);
         }
-=======
+
         {
             newsizeMain = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2));
             paddingMain = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString());
@@ -125,7 +112,7 @@ public partial class maintemplate : System.Web.UI.MasterPage
         feature_menu.StaticMenuItemStyle.HorizontalPadding = paddingFeat;
 
         this.upFont(this, e);
->>>>>>> temp
+
     }
 
     public void fontDec(object sender, EventArgs e)
@@ -146,14 +133,13 @@ public partial class maintemplate : System.Web.UI.MasterPage
         feature_menu.Font.Size = FontUnit.Point(newsizeFeat);
         feature_menu.StaticMenuItemStyle.HorizontalPadding = paddingFeat;
 
-<<<<<<< HEAD
+
         if (content_area.Page.Master.Master == this)
         {
             this.downFont(this, e);
         }
-=======
+
         this.downFont(this, e);
->>>>>>> temp
+
     }
->>>>>>> 29d909502356c3b00377d756e8c34ddeaaad994e
 }
