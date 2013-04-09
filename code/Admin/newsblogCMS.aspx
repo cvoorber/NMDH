@@ -1,14 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="newsblogCMS.aspx.cs" Inherits="Admin_newsblogCMS" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="newsblogCMS.aspx.cs" Inherits="Admin_newsblogCMS" MasterPageFile="~/Admin/subAdmin.master" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
+<asp:Content runat="server" ContentPlaceHolderID="r_content">
         <asp:Label ID="lbl_message" runat="server" />
         <br />
         <br />
@@ -44,7 +36,7 @@
 
         <asp:ListView ID="lv_main" runat="server" OnItemCommand="subAdmin">
             <LayoutTemplate>
-                <table cellpadding="3" cellspacing="5">
+                <table cellpadding="2" cellspacing="2">
                     <thead>
                         <tr>
                             <th>Event/News Title</th>
@@ -89,7 +81,4 @@
             </ItemTemplate>
         </asp:ListView>
 
-    </div>
-    </form>
-</body>
-</html>
+</asp:Content>

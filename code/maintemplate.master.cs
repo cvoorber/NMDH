@@ -72,4 +72,74 @@ public partial class maintemplate : System.Web.UI.MasterPage
             }
         }
     }
+
+    public event EventHandler upFont; 
+    public event EventHandler downFont;
+    public void fontInc(object sender, EventArgs e)
+    {
+        int newsizeMain = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2)) + 2;
+        int paddingMain = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString()) -6;
+
+        int newsizeFeat = int.Parse(feature_menu.Font.Size.Unit.ToString().Substring(0, 2)) + 2;
+        int paddingFeat = int.Parse(feature_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString()) - 5;
+
+        if (newsizeMain > 20)
+        {
+            newsizeMain = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2));
+            paddingMain = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString());
+            newsizeFeat = int.Parse(feature_menu.Font.Size.Unit.ToString().Substring(0, 2));
+            paddingFeat = int.Parse(feature_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString());
+        }
+        primary_menu.Font.Size = FontUnit.Point(newsizeMain);
+        primary_menu.StaticMenuItemStyle.HorizontalPadding = paddingMain;
+        feature_menu.Font.Size = FontUnit.Point(newsizeFeat);
+        feature_menu.StaticMenuItemStyle.HorizontalPadding = paddingFeat;
+
+        if (content_area.Page.Master.Master == this)
+        {
+            this.upFont(this, e);
+        }
+
+        {
+            newsizeMain = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2));
+            paddingMain = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString());
+            newsizeFeat = int.Parse(feature_menu.Font.Size.Unit.ToString().Substring(0, 2));
+            paddingFeat = int.Parse(feature_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString());
+        }
+        primary_menu.Font.Size = FontUnit.Point(newsizeMain);
+        primary_menu.StaticMenuItemStyle.HorizontalPadding = paddingMain;
+        feature_menu.Font.Size = FontUnit.Point(newsizeFeat);
+        feature_menu.StaticMenuItemStyle.HorizontalPadding = paddingFeat;
+
+        this.upFont(this, e);
+
+    }
+
+    public void fontDec(object sender, EventArgs e)
+    {
+        int newsizeMain = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2)) - 2;
+        int paddingMain = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString()) + 6;
+        int newsizeFeat = int.Parse(feature_menu.Font.Size.Unit.ToString().Substring(0, 2)) - 2;
+        int paddingFeat = int.Parse(feature_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString()) + 5;
+        if (newsizeMain < 12)
+        {
+            newsizeMain = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2));
+            paddingMain = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString());
+            newsizeFeat = int.Parse(feature_menu.Font.Size.Unit.ToString().Substring(0, 2));
+            paddingFeat = int.Parse(feature_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString());
+        }
+        primary_menu.Font.Size = FontUnit.Point(newsizeMain);
+        primary_menu.StaticMenuItemStyle.HorizontalPadding = paddingMain;
+        feature_menu.Font.Size = FontUnit.Point(newsizeFeat);
+        feature_menu.StaticMenuItemStyle.HorizontalPadding = paddingFeat;
+
+
+        if (content_area.Page.Master.Master == this)
+        {
+            this.downFont(this, e);
+        }
+
+        this.downFont(this, e);
+
+    }
 }

@@ -1,16 +1,11 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/maintemplate.master" AutoEventWireup="true" CodeFile="SubMaster1.master.cs" Inherits="SubMaster1" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/maintemplate.master" AutoEventWireup="true" CodeFile="subAdmin.master.cs" Inherits="SubMaster1" %>
 <%@ Mastertype VirtualPath="~/maintemplate.master" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
     <!-- section -->
     <div id="left_sidebar">
-        <asp:Menu ID="side_menu" runat="server" StaticMenuItemStyle-CssClass="side-menu" OnMenuItemClick="sideMenu_Click" SkinID="skin_side_nav" >
-
-
-            <Items>
-                <asp:MenuItem Text="About Us" Target="~/index.aspx" />
-            </Items>
-        </asp:Menu>
+        <asp:SiteMapDataSource ID="smd_admin" runat="server" SiteMapProvider="AdminSiteMapProvider" ShowStartingNode="false" />
+        <asp:Menu ID="side_menu" runat="server" DataSourceID="smd_admin" StaticMenuItemStyle-CssClass="side-menu" SkinID="skin_side_nav" />
         <asp:ContentPlaceHolder ID="l_sidebar" runat="server">
         </asp:ContentPlaceHolder>
     </div>

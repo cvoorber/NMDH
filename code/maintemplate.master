@@ -22,10 +22,10 @@
     <asp:ImageButton ID="img_search" runat="server" ImageUrl="~/img/search.png" CssClass="searchbar" />
     <asp:TextBox ID="txt_search" runat="server" SkinID="searchbar" />
     
-    <asp:ImageButton ID="font_decrease" runat="server" ImageUrl="~/img/fontminus.png" CssClass="fontchange" />
-    <asp:ImageButton ID="font_increase" runat="server" ImageUrl="~/img/fontplus.png" CssClass="fontchange" />
+    <asp:ImageButton ID="font_decrease" runat="server" ImageUrl="~/img/fontminus.png" CssClass="fontchange" OnClick="fontDec" CausesValidation="false" />
+    <asp:ImageButton ID="font_increase" runat="server" ImageUrl="~/img/fontplus.png" CssClass="fontchange" OnClick="fontInc" CausesValidation="false" />
 
-    <asp:ImageButton ID="main_logo" runat="server" AlternateText="Nipigon District Memorial Hospital" CssClass="main-logo" ImageUrl="~/img/logo-new5.png" PostBackUrl="~/index.aspx" />
+    <asp:ImageButton ID="main_logo" runat="server" AlternateText="Nipigon District Memorial Hospital" CssClass="main-logo" ImageUrl="~/img/logo-new5.png" PostBackUrl="~/default.aspx" />
 
         <asp:Panel runat="server" CssClass="primary-nav-contain">
             <asp:Menu ID="primary_menu" runat="server" SkinID="skin_primary_nav">
@@ -44,6 +44,7 @@
         </asp:Panel>
     
     <asp:panel runat="server" SkinID="maincontent" >
+    <asp:Label ID="test" runat="server" />
         <asp:ContentPlaceHolder id="content_area" runat="server">
         
 

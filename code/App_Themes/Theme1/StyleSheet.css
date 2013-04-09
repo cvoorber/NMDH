@@ -175,12 +175,13 @@ h1, .h1
 
 .side-menu
 {
-    font-size:14pt;
     background-color:#11c1a2;
     color:#f2f9f8;
     padding:10px;
     margin-bottom:1px;
     width:210px;
+    max-width:210px;
+    display:block;
 }
 
 .side-menu:hover
@@ -314,10 +315,9 @@ width:220px;
 #editWait {
 border:2px solid #CCC;
 float:left;
-margin-left:170px;
-margin-bottom:100px;
 padding:10px 25px;
 width:500px;
+margin:0 auto;
 }
 
 /* Added by Chris for Giftshop -- March 25, 2013 */
@@ -453,4 +453,27 @@ float:left;
     background:#866041;
     color:white;
     z-index:50;
+}
+
+.editContent
+{
+    width:550px;
+    height:300px;
+    font-family:Arial;
+}
+
+.pagePanel
+{
+    margin:30px;
+}
+
+#pagesTable th
+{
+    text-decoration:underline;
+    text-align:left;
+}
+
+#pagesTable td
+{
+    padding:5px 10px;
 }
