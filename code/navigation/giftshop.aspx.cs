@@ -37,8 +37,15 @@ public partial class giftshop : System.Web.UI.Page
         }
     }
 
-    protected void subAddItem(object sender, EventArgs e)
+    protected void subAdmin(object sender, ListViewCommandEventArgs e)
     {
-
+        if (e.CommandName == "addItem")
+        {
+            HiddenField hdfProd = (HiddenField)e.Item.FindControl("hdf_prod");
+            int _id = int.Parse(hdfProd.Value.ToString());
+            cartClass cart = cartClass.GetShoppingCart();
+            cart.AddItem(_id);
+            Response.Redirect("ViewCart.aspx");
+        }
     }
 }

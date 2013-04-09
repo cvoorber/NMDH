@@ -5,98 +5,94 @@ using System.Web;
 
 public class cartClass
 {
-    #region Properties  
-      
-    public List<cartItemClass> Items { get; private set; }  
-     
-    #endregion  
- 
-    #region Singleton Implementation  
-    // Readonly properties can only be set in initialization or in a constructor  
-    public static readonly cartClass Instance;  
-  
-    // The static constructor is called as soon as the class is loaded into memory  
-    static cartClass() {  
-        // If the cart is not in the session, create one and put it there  
-        // Otherwise, get it from the session  
-        if (HttpContext.Current.Session["ShoppingCart"] == null) {  
-            Instance = new cartClass();  
-            Instance.Items = new List<cartItemClass>();
-            HttpContext.Current.Session["ShoppingCart"] = Instance;  
-        } else {
-            Instance = (cartClass)HttpContext.Current.Session["ShoppingCart"];  
-        }  
-    }  
-  
-    // A protected constructor ensures that an object can't be created from outside  
-    protected cartClass() { }  
- 
-    #endregion  
- 
-    #region Item Modification Methods  
-    /** 
-     * AddItem() - Adds an item to the shopping  
-     */  
-    public void AddItem(int productId) {  
-        // Create a new item to add to the cart  
-        cartItemClass newItem = new cartItemClass(productId);  
-  
-        // If this item already exists in our list of items, increase the quantity  
-        // Otherwise, add the new item to the list  
-        if (Items.Contains(newItem)) {  
-            foreach (cartItemClass item in Items) {  
-                if (item.Equals(newItem)) {  
-                    item.Quantity++;  
-                    return;  
-                }  
-            }  
-        } else {  
-            newItem.Quantity = 1;  
-            Items.Add(newItem);  
-        }  
-    }  
-  
-    /** 
-     * SetItemQuantity() - Changes the quantity of an item in the cart 
-     */  
-    public void SetItemQuantity(int productId, int quantity) {  
-        // If we are setting the quantity to 0, remove the item entirely  
-        if (quantity == 0) {  
-            RemoveItem(productId);  
-            return;  
-        }  
-  
-        // Find the item and update the quantity  
-        cartItemClass updatedItem = new cartItemClass(productId);  
-  
-        foreach (cartItemClass item in Items) {  
-            if (item.Equals(updatedItem)) {  
-                item.Quantity = quantity;  
-                return;  
-            }  
-        }  
-    }  
-  
-    /** 
-     * RemoveItem() - Removes an item from the shopping cart 
-     */  
-    public void RemoveItem(int productId) {  
-        cartItemClass removedItem = new cartItemClass(productId);  
-        Items.Remove(removedItem);  
-    }  
-    #endregion  
- 
-    #region Reporting Methods  
-    /** 
-     * GetSubTotal() - returns the total price of all of the items 
-     *                 before tax, shipping, etc. 
-     */  
-    public decimal GetSubTotal() {  
-        decimal subTotal = 0;  
-        foreach (cartItemClass item in Items)  
-            subTotal += item.TotalPrice;  
-  
-        return subTotal;  
-    }  
-    #endregion  
+    public List<cartItemClass> Items { get; private set; }
+
+    public static readonly cartClass Instance;
+
+    // The static constructor for the Cart
+    public static cartClass GetShoppingCart()
+    {
+        // If a cart doesn't exist in the Session, create one, otherwise return the current one
+        if (HttpContext.Current.Session["ShoppingCart"] == null)
+        {
+            cartClass cart = new cartClass();
+            cart.Items = new List<cartItemClass>();
+            HttpContext.Current.Session["ShoppingCart"] = cart;
+        }
+
+        return (cartClass)HttpContext.Current.Session["ShoppingCart"];
+    }
+
+    // Method for adding items to the cart
+    public void AddItem(int productId)
+    {
+        cartItemClass newItem = new cartItemClass(productId);
+
+        if (Items.Contains(newItem))
+        {
+            foreach (cartItemClass item in Items)
+            {
+                if (item.Equals(newItem))
+                {
+                    item.Quantity++;
+                    return;
+                }
+            }
+        }
+        else
+        {
+            newItem.Quantity = 1;
+            Items.Add(newItem);
+        }
+    }
+
+    // Method for updating item quantity
+    public void SetItemQuantity(int productId, int quantity)
+    {
+        if (quantity == 0)
+        {
+            RemoveItem(productId);
+            return;
+        }
+
+        cartItemClass updatedItem = new cartItemClass(productId);
+
+        foreach (cartItemClass item in Items)
+        {
+            if (item.Equals(updatedItem))
+            {
+                item.Quantity = quantity;
+                return;
+            }
+        }
+    }
+
+    // Method for removing all quantities of an item
+    public void RemoveItem(int productId)
+    {
+        cartItemClass removedItem = new cartItemClass(productId);
+        Items.Remove(removedItem);
+    }
+
+    // function to return details for Order Email
+    public string GetDetails()
+    {
+        string desc = "";
+        foreach (cartItemClass item in Items)
+        {
+            desc += item.Description + " x [" + item.Quantity + "] ~ ";
+        }
+        return desc;
+    }
+
+    // function to return the subTotal of items
+    public decimal GetSubTotal()
+    {
+        decimal subTotal = 0;
+        foreach (cartItemClass item in Items)
+        {
+            subTotal += item.TotalPrice;
+        }
+        return subTotal;
+    }
 }
