@@ -22,7 +22,8 @@ public class productsClass
         var allProducts = objProdDC.ndmh_products.Where(x => x.p_id == _id).Select(x => x);
         return allProducts;
     }
-    public bool commitInsert(int _id, string _name, string _desc, string _image, decimal _price)
+
+    public bool commitInsert(string _name, string _desc, string _image, decimal _price)
     {
         ndmhDCDataContext objProdDC = new ndmhDCDataContext();
         //to ensure all data will be disposed when finished
@@ -42,7 +43,7 @@ public class productsClass
             return true;
         }
     }
-    public bool commitUpdate(int _id, string _name, string _desc, string _image, decimal _price)
+    public bool commitUpdate(int _id, string _name, string _desc, decimal _price)
     {
         ndmhDCDataContext objProdDC = new ndmhDCDataContext();
         using (objProdDC)
@@ -50,7 +51,6 @@ public class productsClass
             var objUpProd = objProdDC.ndmh_products.Single(x => x.p_id == _id);
             objUpProd.p_name = _name;
             objUpProd.p_desc = _desc;
-            objUpProd.p_image = _image;
             objUpProd.p_price = _price;
             //commit update against DB
             objProdDC.SubmitChanges();
