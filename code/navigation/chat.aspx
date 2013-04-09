@@ -1,8 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubMaster1.master" AutoEventWireup="true" CodeFile="adminchat.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubMaster1.master" AutoEventWireup="true" CodeFile="chat.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
+
+    <asp:ScriptManager ID="scm_main" runat="server" EnablePartialRendering="true" />
+    
     <asp:Panel ID="pnl_status" runat="server">
         <asp:Label ID="lbl_status" runat="server" />
         <br /><br />
@@ -17,7 +20,7 @@
     <asp:Panel ID="pnl_chat" runat="server">
         <asp:Label ID="lbl_nicknameC" runat="server" />
         <br /><br />
-        <asp:ScriptManager ID="scm_main" runat="server" EnablePartialRendering="true" />
+        
 
         <asp:Label ID="lbl" runat="server" Text="Username: Quin" />
         <div id="chatbox" style="width:580px;border:1px solid black;height:300px;">

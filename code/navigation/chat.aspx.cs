@@ -13,15 +13,8 @@ public partial class _Default : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            List<ChatStream> chatStreams = Application["chatStreams"] as List<ChatStream>;
-            ChatStream newChat = new ChatStream()
-            {
-                adminID = 1,
-                userID = 0,
-                streamID = chatStreams.Count + 1
-            };
-
-            chatStreams.Add(newChat);
+            List<ChatStream> ass = Application["chatStreams"] as List<ChatStream>;
+            subEnableInput(ass.Count>0);
         }
     }
 
