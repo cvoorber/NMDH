@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 17, 16.625" name="ndmhDC">
+  <DataContextMoniker Name="/ndmhDCDataContext" />
+  <nestedChildShapes>
+    <classShape Id="dee9b9b0-8602-4494-a1f0-6084135b9f49" absoluteBounds="0.75, 11.875, 2, 1.7535424804687487">
+      <DataClassMoniker Name="/ndmhDCDataContext/base_country" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0f427ab7-184b-410e-a8ac-a2f235352f14" absoluteBounds="0.765, 12.335, 1.9700000000000002, 1.19354248046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="569f8ae1-0b5d-45e6-8ce1-e95caed2d3a9" absoluteBounds="3.5, 12.125, 2, 1.4248478190104166">
+      <DataClassMoniker Name="/ndmhDCDataContext/state_or_province" />
+      <nestedChildShapes>
+        <elementListCompartment Id="709c7bb8-d34d-4de5-aaba-fa1065e9b11e" absoluteBounds="3.515, 12.585, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="238b17da-8f8b-4b4c-a40f-57e42b57feda" absoluteBounds="14.25, 4, 2, 1.5891951497395827">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_comment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cbfe3ae7-22c2-4db4-971e-594a7b04ea70" absoluteBounds="14.265, 4.46, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e9190bcb-760a-4c8d-88dd-1ca91e1b8dad" absoluteBounds="6.25, 1.125, 2, 2.0822371419270826">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_contact" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1a7c8190-602f-4e68-b58c-c15ab3f7289f" absoluteBounds="6.265, 1.585, 1.9700000000000002, 1.5222371419270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dee071ca-cf1b-4db9-a181-7de69c62e8c8" absoluteBounds="8.75, 7.875, 2, 3.0683211263020818">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_department_listing" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9df9b099-d407-4495-a43c-502370d1bbd3" absoluteBounds="8.765, 8.335, 1.9700000000000002, 2.508321126302083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f3c070fd-84d1-4bda-98de-380102d9f26c" absoluteBounds="11.5, 7, 2, 4.7117944335937487">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_donation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f4df7a93-d3fb-42ba-b6d8-87ce26efcaa0" absoluteBounds="11.515, 7.46, 1.9700000000000002, 4.15179443359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f5dee7ca-df03-4783-b232-36e9f9c21f28" absoluteBounds="11.5, 3.75, 2, 2.0822371419270826">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_event" />
+      <nestedChildShapes>
+        <elementListCompartment Id="91b27106-8d21-45b8-b042-af7d741fe44b" absoluteBounds="11.515, 4.21, 1.9700000000000002, 1.5222371419270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="48d462a1-2ba3-430d-98d1-d0985b168aab" absoluteBounds="0.75, 0.75, 2, 1.5891951497395831">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_external_link" />
+      <nestedChildShapes>
+        <elementListCompartment Id="40aeea3b-af55-44dd-821a-30b6dc00cae4" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="59c44daf-f443-4a90-953a-24f9f7f2dd46" absoluteBounds="3.5, 8.875, 2, 1.4248478190104166">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_faq_keyword" />
+      <nestedChildShapes>
+        <elementListCompartment Id="782beb37-3d08-42be-ac95-f9fbee9ca168" absoluteBounds="3.515, 9.335, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6028e660-6007-4d40-917c-811d11da5cea" absoluteBounds="0.75, 9, 2, 1.2605004882812487">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_faq" />
+      <nestedChildShapes>
+        <elementListCompartment Id="65de5184-eb6c-4b48-b1e9-3f164e370703" absoluteBounds="0.765, 9.46, 1.9700000000000002, 0.70050048828125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="052f863e-274d-448f-8bb2-a6f5fa610008" absoluteBounds="6.75, 11.75, 2, 1.7535424804687487">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_general_page" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7b2b0631-58ba-4979-8cbb-cc1dc52a4c62" absoluteBounds="6.765, 12.21, 1.9700000000000002, 1.19354248046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1fef3238-dc61-4b71-a488-bcd691b5fc47" absoluteBounds="6.25, 4, 2, 3.5613631184895826">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_job_application" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8fcff27e-1657-4db1-82a2-ef3951fc478b" absoluteBounds="6.265, 4.46, 1.9700000000000002, 3.001363118489583" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bd80bcfd-0e83-4207-b564-79e980570e7d" absoluteBounds="0.75, 3.75, 2, 1.096153157552084">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_job_category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0b784d89-8c1c-49d5-a6fc-163cb3c074d5" absoluteBounds="0.765, 4.21, 1.9700000000000002, 0.53615315755208326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="feea88d8-96bc-4e70-ba22-251d9fdb93f5" absoluteBounds="3.5, 3.375, 2, 1.9178898111979166">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_job" />
+      <nestedChildShapes>
+        <elementListCompartment Id="69593ba5-080b-41af-96c7-b461b9bb52bf" absoluteBounds="3.515, 3.835, 1.9700000000000002, 1.3578898111979165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f8a54e68-6108-46bf-a59e-6551a99c67b3" absoluteBounds="9.75, 12.75, 2, 1.4248478190104166">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_keyword" />
+      <nestedChildShapes>
+        <elementListCompartment Id="18893d99-87fe-4a5e-bd86-077e1c000772" absoluteBounds="9.765, 13.21, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1fe0106c-9c56-4e3b-8b7b-dc9466778185" absoluteBounds="12.75, 12.75, 2, 1.5891951497395844">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_product" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f39379db-626a-420e-959a-9b977bb97dac" absoluteBounds="12.765, 13.21, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5dd12707-e1fd-48a4-bf9f-567e95306513" absoluteBounds="14.75, 0.75, 2, 1.7535424804687503">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_report" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1ae2b323-875e-43b6-a831-72fea35dabd6" absoluteBounds="14.765, 1.21, 1.9700000000000002, 1.19354248046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e7b14bb7-6620-43f7-bfb3-64d80210fef8" absoluteBounds="11.5, 1.125, 2, 1.9178898111979166">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_roomBooking" />
+      <nestedChildShapes>
+        <elementListCompartment Id="335c9957-5b77-4ab7-92c4-12f49ca06c8d" absoluteBounds="11.515, 1.585, 1.9700000000000002, 1.3578898111979165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="64432659-398b-4b4f-aed5-1d5abf300530" absoluteBounds="8.75, 2.375, 2, 2.2465844726562505">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_staff_listing" />
+      <nestedChildShapes>
+        <elementListCompartment Id="58c85f50-e630-4676-b0ae-cab7e51a7be0" absoluteBounds="8.765, 2.835, 1.9700000000000002, 1.68658447265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c2b24668-09fe-40de-a6a8-ea131d70adbb" absoluteBounds="0.75, 14.75, 2, 1.5891951497395844">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_wait" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a5ec116c-9502-4c9c-b87c-0d812db5fdc3" absoluteBounds="0.765, 15.21, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 12.8374239095052); (3.5 : 12.8374239095052)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ndmhDCDataContext/base_country/base_country_state_or_province" />
+      <nodes>
+        <classShapeMoniker Id="dee9b9b0-8602-4494-a1f0-6084135b9f49" />
+        <classShapeMoniker Id="569f8ae1-0b5d-45e6-8ce1-e95caed2d3a9" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.75 : 9.40916056315104); (11.5 : 9.40916056315104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ndmhDCDataContext/ndmh_department_listing/ndmh_department_listing_ndmh_donation" />
+      <nodes>
+        <classShapeMoniker Id="dee071ca-cf1b-4db9-a181-7de69c62e8c8" />
+        <classShapeMoniker Id="f3c070fd-84d1-4bda-98de-380102d9f26c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13.5 : 4.79459757486979); (14.25 : 4.79459757486979)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ndmhDCDataContext/ndmh_event/ndmh_event_ndmh_comment" />
+      <nodes>
+        <classShapeMoniker Id="f5dee7ca-df03-4783-b232-36e9f9c21f28" />
+        <classShapeMoniker Id="238b17da-8f8b-4b4c-a40f-57e42b57feda" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 9.63025024414062); (3.5 : 9.63025024414062)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ndmhDCDataContext/ndmh_faq/ndmh_faq_ndmh_faq_keyword" />
+      <nodes>
+        <classShapeMoniker Id="6028e660-6007-4d40-917c-811d11da5cea" />
+        <classShapeMoniker Id="59c44daf-f443-4a90-953a-24f9f7f2dd46" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 3.375); (4.5 : 2.16611857096354); (6.25 : 2.16611857096354)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ndmhDCDataContext/ndmh_job/ndmh_job_ndmh_contact" />
+      <nodes>
+        <classShapeMoniker Id="feea88d8-96bc-4e70-ba22-251d9fdb93f5" />
+        <classShapeMoniker Id="e9190bcb-760a-4c8d-88dd-1ca91e1b8dad" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 4.64644490559896); (6.25 : 4.64644490559896)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ndmhDCDataContext/ndmh_job/ndmh_job_ndmh_job_application" />
+      <nodes>
+        <classShapeMoniker Id="feea88d8-96bc-4e70-ba22-251d9fdb93f5" />
+        <classShapeMoniker Id="1fef3238-dc61-4b71-a488-bcd691b5fc47" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.29807657877604); (3.5 : 4.29807657877604)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ndmhDCDataContext/ndmh_job_category/ndmh_job_category_ndmh_job" />
+      <nodes>
+        <classShapeMoniker Id="bd80bcfd-0e83-4207-b564-79e980570e7d" />
+        <classShapeMoniker Id="feea88d8-96bc-4e70-ba22-251d9fdb93f5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.75 : 4.18579223632813); (11.5 : 4.18579223632813)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ndmhDCDataContext/ndmh_staff_listing/ndmh_staff_listing_ndmh_event" />
+      <nodes>
+        <classShapeMoniker Id="64432659-398b-4b4f-aed5-1d5abf300530" />
+        <classShapeMoniker Id="f5dee7ca-df03-4783-b232-36e9f9c21f28" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.75 : 2.70894490559896); (11.5 : 2.70894490559896)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ndmhDCDataContext/ndmh_staff_listing/ndmh_staff_listing_ndmh_roomBooking" />
+      <nodes>
+        <classShapeMoniker Id="64432659-398b-4b4f-aed5-1d5abf300530" />
+        <classShapeMoniker Id="e7b14bb7-6620-43f7-bfb3-64d80210fef8" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
