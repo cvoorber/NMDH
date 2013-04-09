@@ -1,6 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="newEvent.aspx.cs" Inherits="newEvent" MasterPageFile="~/SubMaster1.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="newEvent.aspx.cs" Inherits="newEvent" MasterPageFile="~/Admin/subAdmin.master" %>
 <%@ Register TagPrefix="Customized" Namespace="ilanaCustom" %>
-<%@ Mastertype VirtualPath="~/SubMaster1.master" %>
+<%@ Mastertype VirtualPath="~/Admin/subAdmin.master" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">

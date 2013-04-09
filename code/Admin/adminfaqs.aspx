@@ -1,17 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/maintemplate.master" AutoEventWireup="true" CodeFile="adminfaqs.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/subAdmin.master" AutoEventWireup="true" CodeFile="adminfaqs.aspx.cs" Inherits="_Default" %>
+<%@ Mastertype VirtualPath="~/Admin/subAdmin.master" %>
 
-<asp:Content ID="cnt_admfaqhead" ContentPlaceHolderID="head" Runat="Server">
-<style type="text/css">
-   table tr, table td, table th
-    {
-        border: 1px solid black;
-        padding: 15px;
-    }
-    
-    
-</style>
-</asp:Content>
-<asp:Content ID="cnt_admfaqmain" ContentPlaceHolderID="content_area" Runat="Server">
+<asp:Content ID="cnt_admfaqmain" ContentPlaceHolderID="r_content" Runat="Server">
     <asp:Panel ID="pnl_faqadm" runat="server">
     <asp:Repeater ID="rpt_faqadm" runat="server" OnItemDataBound="keyListBind">
      <%--Include Header, Item, Insert, and Edit--%>

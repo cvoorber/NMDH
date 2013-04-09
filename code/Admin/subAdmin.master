@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/maintemplate.master" AutoEventWireup="true" CodeFile="subAdmin.master.cs" Inherits="SubMaster1" %>
+<%@ Mastertype VirtualPath="~/maintemplate.master" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
+    <!-- section -->
+    <div id="left_sidebar">
+        <asp:SiteMapDataSource ID="smd_admin" runat="server" SiteMapProvider="AdminSiteMapProvider" ShowStartingNode="false" />
+        <asp:Menu ID="side_menu" runat="server" DataSourceID="smd_admin" StaticMenuItemStyle-CssClass="side-menu" SkinID="skin_side_nav" />
+        <asp:ContentPlaceHolder ID="l_sidebar" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+
+    <!-- aside -->
+    <div id="right_content">
+        <asp:Repeater ID="rpt_content" runat="server">
+            <ItemTemplate>
+                <asp:Label ID="lbltitle" runat="server" Text='<%#Eval("gp_title") %>' CssClass="h1" Font-Size="18pt" />
+                <asp:Label ID="lblcontent" runat="server" Text='<%#Eval("gp_content") %>' CssClass="pagecontent" Font-Size="12pt" />
+            </ItemTemplate>
+        </asp:Repeater>
+        <asp:ContentPlaceHolder ID="r_content" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+</asp:Content>
+

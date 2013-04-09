@@ -1,5 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="newPage.aspx.cs" MasterPageFile="~/SubMaster1.master" Inherits="newPage" ValidateRequest="false" %>
-<%@ Mastertype VirtualPath="~/SubMaster1.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="newPage.aspx.cs" MasterPageFile="~/Admin/subAdmin.master" Inherits="newPage" ValidateRequest="false" MasterPageFile="~/Admin/subAdmin.master" %>
+<%@ Mastertype VirtualPath="~/Admin/subAdmin.master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
 </asp:Content>

@@ -181,10 +181,7 @@ h1, .h1
     margin-bottom:1px;
     width:210px;
     max-width:210px;
-<<<<<<< HEAD
     display:block;
-=======
->>>>>>> temp
 }
 
 .side-menu:hover
@@ -318,10 +315,9 @@ width:220px;
 #editWait {
 border:2px solid #CCC;
 float:left;
-margin-left:170px;
-margin-bottom:100px;
 padding:10px 25px;
 width:500px;
+margin:0 auto;
 }
 
 /* Added by Chris for Giftshop -- March 25, 2013 */
