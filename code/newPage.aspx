@@ -5,9 +5,12 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
-    <asp:Label ID="lbl_head" runat="server" Text="Add a New Page" />
+<asp:Label ID="output" runat="server" />
+<br />
+<asp:LinkButton ID="lbn_new" runat="server" Text="New Page" OnClick="showNew" />
 
-
+<asp:Panel ID="pnl_new" runat="server" Visible="false" CssClass="pagePanel">
+    <asp:Label ID="lbl_head" runat="server" Text="Add a New Page" Font-Bold="true" Font-Size="Large" />
 <table>
     <tr>
         <td><asp:Label ID="lbl_type" runat="server" Text="Page Type: " /></td>
@@ -22,16 +25,15 @@
         <td><asp:TextBox ID="txt_content" runat="server" TextMode="MultiLine" /></td>
     </tr>
 </table>
-    <asp:CheckBox ID="chk_publish" runat="server" Text="Publish Immediately" Checked="true" />
+    <asp:CheckBox ID="chk_publish" runat="server" Text="Publish Immediately" Checked="true" /><br />
     <asp:Button ID="btn_submit" runat="server" Text="Submit" OnClick="subSubmit" />
+    <asp:Button ID="btn_cancel" runat="server" Text="Cancel" OnClick="subCancel" />
+</asp:Panel>
 
-    <br /><br />
-
-    <asp:Label ID="output" runat="server" />
-
+<asp:Panel ID="pnl_all" runat="server" CssClass="pagePanel">
     <asp:Repeater runat="server" ID="rpt_all" OnItemCommand="subEdit">
         <HeaderTemplate>
-            <table>
+            <table id="pagesTable" rules="rows">
                 <tr>
                     <th>Page Title</th>
                     <th>Section</th>
@@ -59,10 +61,10 @@
             </table>
         </FooterTemplate>
     </asp:Repeater>
+</asp:Panel>
 
-    <br /><br /><br />
-
-    <asp:DetailsView ID="dtv_edit" runat="server" AutoGenerateRows="false" DefaultMode="Edit" OnItemCommand="subChange">
+<asp:Panel ID="pnl_edit" runat="server" Visible="false" CssClass="pagePanel">
+    <asp:DetailsView ID="dtv_edit" runat="server" AutoGenerateRows="false" DefaultMode="Edit" OnItemCommand="subChange" OnModeChanging="modeChange">
         <Fields>
             <asp:TemplateField>
                 <EditItemTemplate>
@@ -84,10 +86,10 @@
                     <asp:TextBox runat="server" ID="txt_content" Text='<%# Bind("gp_content") %>' TextMode="MultiLine" CssClass="editContent" />
                 <asp:Button runat="server" ID="btn_save" Text="Save" CommandArgument='<%# Bind("gp_id") %>' CommandName="save" />
                 <asp:Button runat="server" ID="btn_cancel" Text="Cancel" CommandArgument='<%# Bind("gp_id") %>' CommandName="cancel" CausesValidation="false" />
-                <asp:Button runat="server" ID="btn_delete" Text="Delete" CommandArgument='<%# Bind("gp_id") %>' CommandName="delete" OnClientClick="confirm('Are you sure you want to delete this page? This action cannot be undone!');" />
+                <asp:Button runat="server" ID="btn_delete" Text="Delete" CommandArgument='<%# Bind("gp_id") %>' CommandName="delet" OnClientClick="confirm('Are you sure you want to delete this page? This action cannot be undone!');" />
                 </EditItemTemplate>
             </asp:TemplateField>
         </Fields>
     </asp:DetailsView>
-    
+</asp:Panel>
 </asp:Content>

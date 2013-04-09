@@ -450,3 +450,19 @@ clear:both;
     height:300px;
     font-family:Arial;
 }
+
+.pagePanel
+{
+    margin:30px;
+}
+
+#pagesTable th
+{
+    text-decoration:underline;
+    text-align:left;
+}
+
+#pagesTable td
+{
+    padding:5px 10px;
+}

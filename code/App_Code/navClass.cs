@@ -68,4 +68,19 @@ public class navClass
             return true;
         }
     }
+
+    public bool deletePage(int _id)
+    {
+        ndmhDCDataContext objPageDC = new ndmhDCDataContext();
+        //to ensure all data will be disposed when finished
+        using (objPageDC)
+        {
+            var objDelPage = objPageDC.ndmh_general_pages.Single(x => x.gp_id == _id);
+            //delete command
+            objPageDC.ndmh_general_pages.DeleteOnSubmit(objDelPage);
+            //commit delete against DB
+            objPageDC.SubmitChanges();
+            return true;
+        }
+    }
 }
