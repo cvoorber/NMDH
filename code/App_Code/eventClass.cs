@@ -19,7 +19,13 @@ namespace ilanaCustom
         //this will be the title of the control   
         private Label _lblheading;
 
-        //title of person booking the event
+        //id of the staff member booking the event
+        private Label _lblid;
+        private TextBox _id;
+        private RequiredFieldValidator _rfvid;
+        private CustomValidator _cvid;
+
+        //title of the event
         private Label _lbltitle;
         private TextBox _title;
         private RequiredFieldValidator _rfvtitle;
@@ -84,6 +90,36 @@ namespace ilanaCustom
             _lblheading.ID = "lbl_head";
             _lblheading.Text = "Book a Staff Event";
             this.Controls.Add(_lblheading);
+
+            // --------id input----------- //
+            //this is the label
+            _lblid = new Label();
+            _lblid.ID = "lbl_id";
+            _lblid.Text = "Employee ID:";
+            this.Controls.Add(_lblid);
+
+            //textbox
+            _id = new TextBox();
+            _id.ID = "txt_id";
+            this.Controls.Add(_id);
+
+            //id is required
+            _rfvid = new RequiredFieldValidator();
+            _rfvid.ID = "rfv_id";
+            _rfvid.ControlToValidate = _id.ID;
+            _rfvid.Text = "Please provide your employee id.";
+            _rfvid.Display = ValidatorDisplay.Dynamic;
+            this.Controls.Add(_rfvid);
+
+            //check that id exists
+            _cvid = new CustomValidator();
+            _cvid.ID = "cv_id";
+            _cvid.ControlToValidate = _id.ID;
+            _cvid.ServerValidate += new ServerValidateEventHandler(idValidate);
+            _cvid.Text = "This ID does not exist!";
+            _cvid.Display = ValidatorDisplay.Dynamic;
+            this.Controls.Add(_cvid);
+            
 
             // --------title input----------- //
             //this is the label
@@ -457,6 +493,18 @@ namespace ilanaCustom
             _lblheading.RenderControl(writer);
             writer.RenderEndTag(); //thead
 
+            //the id inputs
+            writer.RenderBeginTag(HtmlTextWriterTag.Tr);
+            writer.RenderBeginTag(HtmlTextWriterTag.Td);
+            _lblid.RenderControl(writer);
+            writer.RenderEndTag(); //td
+            writer.RenderBeginTag(HtmlTextWriterTag.Td);
+            _id.RenderControl(writer);
+            _rfvid.RenderControl(writer);
+            _cvid.RenderControl(writer);
+            writer.RenderEndTag(); //td
+            writer.RenderEndTag(); //tr
+
             //the title inputs
             writer.RenderBeginTag(HtmlTextWriterTag.Tr);
             writer.RenderBeginTag(HtmlTextWriterTag.Td);
@@ -577,6 +625,21 @@ namespace ilanaCustom
                 e.IsValid = true;
             }
             else e.IsValid = false;
+        }
+
+        protected void idValidate(object sender, ServerValidateEventArgs e)
+        {
+            e.IsValid = false;
+            staffClass objID = new staffClass();
+            var allID = objID.getList();
+            foreach (var staff in allID)
+            {
+                if (staff.sl_id.ToString() == _id.Text.ToString())
+                {
+                    e.IsValid = true;
+                    break;
+                }
+            }
         }
     }
 }
