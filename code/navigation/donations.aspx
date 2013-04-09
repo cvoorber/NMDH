@@ -71,18 +71,18 @@
        <asp:Label ID="lbl_provstate" runat="server" Text="Prov/State" Visible="false" /><!-- Dependent on country -->
        <asp:DropDownList ID="ddl_provstate" runat="server" Visible="false" /><br /><br />
         <!-- This one will be a bit trickier, as it will be based on the selection made for country -->
-        
+        <%--Hold off on validation here, because not everyone will have this--%>
 
         <!-- Postal Code/ZIP -->
             <asp:Label ID="lbl_postzip" runat="server" Text="PostalCode/ZIP" Visible="false" /><!-- dependent upon country -->
             <asp:TextBox ID="txt_postzip" runat="server" Visible="false" /><br /><br />
-            <asp:RequiredFieldValidator ID="rfv_postzip" runat="server" ErrorMessage="*Required" ControlToValidate="txt_postzip" />
+           <%--Hold off on validation here, because not everyone will have this--%>
 
         
             
  
 
-        <asp:Button ID="btn_uinext" runat="server" Text="Next" OnClick="subNextUiClick"    />
+        <asp:Button ID="btn_uinext" runat="server" Text="Next" OnClick="subNextUiClick" ValidationGroup="mailingView"    />
     </asp:Panel>
     <%--</ContentTemplate>
     <Triggers>
