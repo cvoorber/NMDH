@@ -175,12 +175,12 @@ h1, .h1
 
 .side-menu
 {
-    font-size:14pt;
     background-color:#11c1a2;
     color:#f2f9f8;
     padding:10px;
     margin-bottom:1px;
     width:210px;
+    max-width:210px;
 }
 
 .side-menu:hover
