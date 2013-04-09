@@ -27,7 +27,6 @@ public partial class Admin_homepageCMS : System.Web.UI.Page
 
     protected void subAdmin(object sender, ListViewCommandEventArgs e)
     {
-
         if (e.CommandName == "subUpdate")
         {
             string format = "dd/MM/yyyy hh:mm tt";
@@ -47,6 +46,7 @@ public partial class Admin_homepageCMS : System.Web.UI.Page
         }
     }
 
+    //success or failure message to display
     private void _strMessage(bool flag, string str)
     {
         if (flag)

@@ -359,6 +359,17 @@ margin-left:200px;
 clear:both;
 }
 
+/* - - Added by Chris for Giftshop CMS April 4/13 - - */
+
+.upImages {
+border:1px solid #CCC;
+padding:20px;
+margin:20px 10px 20px 0;
+float:left;
+}
+
+/* - - - - - - End Giftshop CMS April 4/13 - - - - - - */
+
 .calendarDay
 {
     border:1px black solid;
