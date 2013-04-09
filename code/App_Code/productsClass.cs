@@ -5,13 +5,14 @@ using System.Web;
 
 public class productsClass
 {
+
     public IQueryable<ndmh_product> getProducts()
     {
         //create an instance of the LINQ object
         ndmhDCDataContext objProdDC = new ndmhDCDataContext();
         //create an anonymous variable with its value being the instance of the LINQ object
         var allProducts = objProdDC.ndmh_products.Select(x => x);
-        //return IQueryable<news> for data bound control to bind to 
+        //return IQueryable<ndmh_product> for data bound control to bind to 
         return allProducts;
     }
 

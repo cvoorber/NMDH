@@ -72,4 +72,33 @@ public partial class maintemplate : System.Web.UI.MasterPage
             }
         }
     }
+<<<<<<< HEAD
+=======
+    protected void fontInc(object sender, EventArgs e)
+    {
+        int newsize = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2)) + 2;
+        int padding = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString()) -6;
+        if (newsize > 20)
+        {
+            newsize = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2));
+            padding = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString());
+        }
+        primary_menu.Font.Size = FontUnit.Point(newsize);
+        primary_menu.StaticMenuItemStyle.HorizontalPadding = padding;
+    }
+
+    protected void fontDec(object sender, EventArgs e)
+    {
+        int newsize = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2)) - 2;
+        int padding = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString()) + 6;
+        if (newsize < 12)
+        {
+            newsize = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2));
+            padding = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString());
+        }
+        primary_menu.Font.Size = FontUnit.Point(newsize);
+        primary_menu.StaticMenuItemStyle.HorizontalPadding = padding;
+
+    }
+>>>>>>> 29d909502356c3b00377d756e8c34ddeaaad994e
 }

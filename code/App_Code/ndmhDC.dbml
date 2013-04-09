@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="cvoorber" Class="ndmhDCDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=cvoorber.db.10296660.hostedresource.com;Initial Catalog=cvoorber;Persist Security Info=True;User ID=cvoorber" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="cvoorberConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=cvoorber.db.10296660.hostedresource.com;Initial Catalog=cvoorber;Persist Security Info=True;User ID=cvoorber" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="cvoorberConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.state_or_province" Member="state_or_provinces">
+    <Type Name="state_or_province">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="country_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="base_country_state_or_province" Member="base_country" ThisKey="country_id" OtherKey="country_id" Type="base_country" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.base_country" Member="base_countries">
     <Type Name="base_country">
       <Column Name="country_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -11,17 +20,13 @@
       <Association Name="base_country_state_or_province" Member="state_or_provinces" ThisKey="country_id" OtherKey="country_id" Type="state_or_province" />
     </Type>
   </Table>
-  <Table Name="dbo.ndmh_staff_listing" Member="ndmh_staff_listings">
-    <Type Name="ndmh_staff_listing">
-      <Column Name="sl_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="sl_title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="sl_fname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="sl_lname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="sl_position" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="dl_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="sl_phone" Type="System.String" DbType="NChar(14)" CanBeNull="true" />
-      <Column Name="sl_image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="ndmh_staff_listing_ndmh_event" Member="ndmh_events" ThisKey="sl_id" OtherKey="n_contact_id" Type="ndmh_event" />
+  <Table Name="dbo.ndmh_wait" Member="ndmh_waits">
+    <Type Name="ndmh_wait">
+      <Column Name="w_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="w_patients" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="w_onstaff" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="w_updated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="w_estimate" Type="System.Decimal" DbType="Decimal(18,1)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.ndmh_comments" Member="ndmh_comments">
@@ -66,6 +71,7 @@
       <Association Name="ndmh_department_listing_ndmh_donation" Member="ndmh_donation" ThisKey="dl_id" OtherKey="d_id" Type="ndmh_donation" Cardinality="One" />
     </Type>
   </Table>
+
   <Table Name="dbo.ndmh_donations" Member="ndmh_donations">
     <Type Name="ndmh_donation">
       <Column Name="d_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -80,9 +86,22 @@
       <Column Name="d_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="d_comments" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="dl_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="d_email" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="d_name_billing" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="d_address_mailing" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="d_address_billing" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="d_city_mailing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_city_billing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_country_mailing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_country_billing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_provstate_mailing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_provstate_billing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_postzip_mailing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_postzip_billing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Association Name="ndmh_department_listing_ndmh_donation" Member="ndmh_department_listing" ThisKey="d_id" OtherKey="dl_id" Type="ndmh_department_listing" IsForeignKey="true" />
     </Type>
   </Table>
+
   <Table Name="dbo.ndmh_events" Member="ndmh_events">
     <Type Name="ndmh_event">
       <Column Name="n_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -128,16 +147,54 @@
       <Column Name="gp_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="gp_title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="gp_content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="gp_image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="gp_image" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="gp_section" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="gp_active" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="gp_active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+
+  <Table Name="dbo.ndmh_job_applications" Member="ndmh_job_applications">
+    <Type Name="ndmh_job_application">
+      <Column Name="j_application_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="j_first_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="j_last_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="j_address" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="j_city" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="j_province" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="j_postal" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="j_phone" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="j_alt_phone" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="j_email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="j_was_employee" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="j_is_eligible" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="j_of_age" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="j_was_convicted" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="j_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="j_resume" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="j_date_applied" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="ndmh_job_ndmh_job_application" Member="ndmh_job" ThisKey="j_id" OtherKey="j_id" Type="ndmh_job" IsForeignKey="true" />
+    </Type>
+  </Table>
+
   <Table Name="dbo.ndmh_job_category" Member="ndmh_job_categories">
     <Type Name="ndmh_job_category">
       <Column Name="j_category_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="j_category_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="ndmh_job_category_ndmh_job" Member="ndmh_jobs" ThisKey="j_category_id" OtherKey="j_category_id" Type="ndmh_job" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ndmh_jobs" Member="ndmh_jobs">
+    <Type Name="ndmh_job">
+      <Column Name="j_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="j_title" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="j_description" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="j_requirements" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="j_posted_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="j_expires" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="j_category_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ndmh_job_ndmh_contact" Member="ndmh_contacts" ThisKey="j_id" OtherKey="j_id" Type="ndmh_contact" />
+      <Association Name="ndmh_job_ndmh_job_application" Member="ndmh_job_applications" ThisKey="j_id" OtherKey="j_id" Type="ndmh_job_application" />
+      <Association Name="ndmh_job_category_ndmh_job" Member="ndmh_job_category" ThisKey="j_category_id" OtherKey="j_category_id" Type="ndmh_job_category" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ndmh_keywords" Member="ndmh_keywords">
@@ -170,20 +227,57 @@
   <Table Name="dbo.ndmh_roomBooking" Member="ndmh_roomBookings">
     <Type Name="ndmh_roomBooking">
       <Column Name="rb_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="rb_title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="rb_start" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="rb_end" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="rb_people" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="rb_member" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="rb_description" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="ndmh_staff_listing_ndmh_roomBooking" Member="ndmh_staff_listing" ThisKey="rb_member" OtherKey="sl_id" Type="ndmh_staff_listing" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.state_or_province" Member="state_or_provinces">
-    <Type Name="state_or_province">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="code" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
-      <Column Name="country_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="base_country_state_or_province" Member="base_country" ThisKey="country_id" OtherKey="country_id" Type="base_country" IsForeignKey="true" />
+  <Table Name="dbo.ndmh_staff_listing" Member="ndmh_staff_listings">
+    <Type Name="ndmh_staff_listing">
+      <Column Name="sl_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sl_title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="sl_fname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="sl_lname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="sl_position" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="dl_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sl_phone" Type="System.String" DbType="NChar(14)" CanBeNull="true" />
+      <Column Name="sl_image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="sl_email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="ndmh_staff_listing_ndmh_event" Member="ndmh_events" ThisKey="sl_id" OtherKey="n_contact_id" Type="ndmh_event" />
+      <Association Name="ndmh_staff_listing_ndmh_roomBooking" Member="ndmh_roomBookings" ThisKey="sl_id" OtherKey="rb_member" Type="ndmh_roomBooking" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ndmh_donations" Member="ndmh_donations">
+    <Type Name="ndmh_donation">
+      <Column Name="d_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="d_title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="d_fname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="d_lname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="d_in_memory_of" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="d_amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="d_credit_type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="d_credit_number" Type="System.String" DbType="Char(16)" CanBeNull="true" />
+      <Column Name="d_credit_expiry" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="d_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="d_comments" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="dl_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="d_email" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="d_name_billing" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="d_address_mailing" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="d_address_billing" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="d_city_mailing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_city_billing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_country_mailing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_country_billing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_provstate_mailing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_provstate_billing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_postzip_mailing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="d_postzip_billing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="ndmh_department_listing_ndmh_donation" Member="ndmh_department_listing" ThisKey="d_id" OtherKey="dl_id" Type="ndmh_department_listing" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ndmh_jobs" Member="ndmh_jobs">

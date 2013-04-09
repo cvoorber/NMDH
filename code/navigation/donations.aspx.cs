@@ -35,15 +35,19 @@ public partial class donations : System.Web.UI.Page
             objDonate.uiCountry = ddl_country.SelectedItem.Text;
             objDonate.uiProvState = ddl_provstate.SelectedItem.Text;
             objDonate.uiPostZip = txt_postzip.Text.ToString();
-            objDonate.uiComments = txt_comments.Text.ToString();
+            
 
             // setting the values for the confirmation page
             lbl_confamount.Text = objDonate.uiDonate;
-            lbl_confaddress.Text = objDonate.uiAddress;
-            lbl_confcountry.Text = objDonate.uiCountry;
-            lbl_confprovstate.Text = objDonate.uiProvState;
+            lbl_maddress.Text = objDonate.uiAddress;
+            lbl_mcountry.Text = objDonate.uiCountry;
+            lbl_mprovstate.Text = objDonate.uiProvState;
             lbl_confemail.Text = objDonate.uiEmail;
-
+            lbl_mfname.Text = objDonate.uifirstName;
+            lbl_mlname.Text = objDonate.uilastName;
+            lbl_mmemory.Text = objDonate.uiMemory;
+            lbl_mcity.Text = objDonate.uiCity;
+            lbl_mpostzip.Text = objDonate.uiPostZip;
             // hdiding user info panel, revealing credit info panel (make into a function)
             pnl_uinfo.Visible = false;
             pnl_credit.Visible = true;
@@ -62,21 +66,67 @@ public partial class donations : System.Web.UI.Page
             objDonate.credProvState = ddl_credprovstate.SelectedItem.Value.ToString();
             //objDonate.credPostZip = txt_credpostzip.Text.ToString();
             objDonate.credNumber = txt_crednumber.Text.ToString();
-            objDonate.credCode = txt_credcode.Text.ToString();
+            
+            
             
             // hiding credit info panel, showing confirmation panel (make into a function)
             pnl_credit.Visible = false;
             pnl_confirm.Visible = true;
 
             // add code for taking information from both arrays to display on confirmation page
-            lbl_confname.Text = objDonate.credName;
+            lbl_billname.Text = objDonate.credName;
             lbl_confcnumber.Text = objDonate.credNumber;
+            lbl_baddress.Text = objDonate.credAddress;
+            lbl_bcity.Text = objDonate.credCity;
+            lbl_bcountry.Text = objDonate.credCountry;
+            lbl_bprovstate.Text = objDonate.credProvState;
 
 
             
     }
 
-    // gotta have a subRoutine that when you click on the button loads info from user Array into the credit form.
+    // routine for confirmation view actions - submit and cancel
+    protected void subConfPgAction(object sender, CommandEventArgs e)
+    {
+        switch (e.CommandName)
+        {
+            case "Submit":
+                // grabbing the values from the confirmation page labels to submit
+                string _d_fname = lbl_mfname.Text;
+                string _d_lname = lbl_mlname.Text;
+                string _d_in_memory_of = lbl_mmemory.Text;
+                decimal _d_amount = decimal.Parse(lbl_confamount.Text);
+                string _d_email = lbl_confemail.Text;
+                string _d_address_mailing = lbl_maddress.Text;
+                string _d_city_mailing = lbl_mcity.Text;
+                string _d_provstate_mailing = lbl_mprovstate.Text;
+                string _d_postalzip_mailing = lbl_mpostzip.Text;
+                string _d_name_billing = lbl_billname.Text;
+                string _d_credit_number = lbl_confcnumber.Text;
+                
+                string _d_address_billing = lbl_baddress.Text;
+                string _d_city_billing = lbl_bcity.Text;
+                string _d_provstate_billing = lbl_bprovstate.Text;
+                string _d_contry_billing = lbl_bcountry.Text;
+
+
+
+                _strMessage(objDonate.insertDonation(_d_fname, _d_lname, _d_in_memory_of, _d_amount, _d_email,
+        _d_address_mailing, _d_city_mailing, _d_provstate_mailing, _d_postalzip_mailing,
+        _d_name_billing, _d_credit_number, _d_address_billing, _d_city_billing,
+        _d_provstate_billing, _d_contry_billing), "Insert");
+                pnl_confirm.Visible = false;
+                pnl_uinfo.Visible = true;
+                break;
+
+            case "Cancel":
+                pnl_confirm.Visible = false;
+                pnl_uinfo.Visible = true;
+                break;
+        }
+    }
+
+    
 
     // This routine will transfer info over from mailing address form to credit card billing form
     protected void subTransferInfo(object sender, EventArgs e)
@@ -163,4 +213,12 @@ public partial class donations : System.Web.UI.Page
         ddl_credcountry.DataBind();
     }
 
+    // routine for submission message 
+    private void _strMessage(bool flag, string str)
+    {
+        if (flag)
+            lbl_execmess.Text = "Donation Record " + str + " was successfully executed.";
+        else
+            lbl_execmess.Text = "Sorry, the donation record " + str + " did not occur.";
+    }
 }

@@ -26,6 +26,8 @@
 *.sql
 *.sqlite
 *.config
+*.MDF
+App_Data/
 
 # OS generated files #
 ######################

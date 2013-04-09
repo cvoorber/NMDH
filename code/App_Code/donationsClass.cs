@@ -1,4 +1,8 @@
+
+
+
 using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -28,6 +32,40 @@ public class donationsClass
 
     // the rest here should be insert functions based on the submit from the last page.
 
+    // method to insert new donation record
+
+    public bool insertDonation(string _d_fname, string _d_lname, string _d_in_memory_of, decimal _d_amount, string _d_email,
+        string _d_address_mailing, string _d_city_mailing, string _d_provstate_mailing, string _d_postalzip_mailing,
+        string _d_name_billing, string _d_credit_number, string _d_address_billing, string _d_city_billing,
+        string _d_provstate_billing, string _d_country_billing)
+    {
+        using (objDonDC)
+        {
+            // create an instance of a table
+            ndmh_donation objNewDon = new ndmh_donation();
+            objNewDon.d_fname = _d_fname;
+            objNewDon.d_lname = _d_lname;
+            objNewDon.d_in_memory_of = _d_in_memory_of;
+            objNewDon.d_amount = _d_amount;
+            objNewDon.d_email = _d_email;
+            objNewDon.d_address_mailing = _d_address_mailing;
+            objNewDon.d_city_mailing = _d_city_mailing;
+            objNewDon.d_provstate_mailing = _d_provstate_mailing;
+            objNewDon.d_postzip_mailing = _d_postalzip_mailing;
+            objNewDon.d_name_billing = _d_name_billing;
+            objNewDon.d_credit_number = _d_credit_number;
+            //objNewDon.d_credit_expiry = _d_credit_expiry;
+            objNewDon.d_address_billing = _d_address_billing;
+            objNewDon.d_city_billing = _d_city_billing;
+            objNewDon.d_provstate_billing = _d_provstate_billing;
+            objNewDon.d_country_billing = _d_country_billing;
+            // insert command
+            objDonDC.ndmh_donations.InsertOnSubmit(objNewDon);
+            // commit insert against db
+            objDonDC.SubmitChanges();
+            return true;
+        }
+    }
     // properties for user info form
 
     private string _uifname;
@@ -100,12 +138,7 @@ public class donationsClass
         set { _uipostzip = value; }
     }
 
-    private string _uicomments;
-    public string uiComments
-    {
-        get { return _uicomments; }
-        set { _uicomments = value; }
-    }
+   
 
     // properties for Credit Info
 
@@ -163,6 +196,13 @@ public class donationsClass
     {
         get { return _credcode; }
         set { _credcode = value; }
+    }
+
+    private string _credexpiry;
+    public string credExpiry
+    {
+        get { return _credexpiry; }
+        set { _credexpiry = value; }
     }
 
 }
