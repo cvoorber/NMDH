@@ -90,7 +90,6 @@ public partial class SubMaster1 : System.Web.UI.MasterPage
 
     protected void fontInc(object sender, EventArgs e)
     {
-<<<<<<< HEAD
         Label title = new Label();
         Label content = new Label();
         foreach (RepeaterItem ri in rpt_content.Items)
@@ -111,20 +110,10 @@ public partial class SubMaster1 : System.Web.UI.MasterPage
         side_menu.Font.Size = FontUnit.Point(newsizeSide);
         title.Font.Size = FontUnit.Point(newsizeHead);
         content.Font.Size = FontUnit.Point(newsizeContent);
-=======
-        int newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2)) + 2;
-
-        if (newsizeSide > 20)
-        {
-            newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2));
-        }
-        side_menu.Font.Size = FontUnit.Point(newsizeSide);
->>>>>>> temp
     }
 
     protected void fontDec(object sender, EventArgs e)
     {
-<<<<<<< HEAD
         Label title = new Label();
         Label content = new Label();
         foreach (RepeaterItem ri in rpt_content.Items)
@@ -146,14 +135,5 @@ public partial class SubMaster1 : System.Web.UI.MasterPage
         side_menu.Font.Size = FontUnit.Point(newsizeSide);
         title.Font.Size = FontUnit.Point(newsizeHead);
         content.Font.Size = FontUnit.Point(newsizeContent);
-=======
-        int newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2)) - 2;
-
-        if (newsizeSide < 12)
-        {
-            newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2));
-        }
-        side_menu.Font.Size = FontUnit.Point(newsizeSide);
->>>>>>> temp
     }
 }
