@@ -18,20 +18,26 @@
         
         <!--First Name -->
         <asp:Label ID="lbl_fname" runat="server" Text="First Name" />
-        <asp:TextBox ID="txt_fname" runat="server" /><br /><br />
+        <asp:TextBox ID="txt_fname" runat="server" />
         <asp:RequiredFieldValidator ID="rfv_fname" runat="server" 
-        ErrorMessage="*Required" ControlToValidate="txt_fname" />
+        ErrorMessage="*Required" ControlToValidate="txt_fname" ValidationGroup="mailingView" Display="Dynamic" /><br /><br />
         
         <!--Last Name -->
         <asp:Label ID="lbl_lname" runat="server" Text="Last Name" />
-        <asp:TextBox ID="txt_lname" runat="server" /><br /><br />
+        <asp:TextBox ID="txt_lname" runat="server" />
         <asp:RequiredFieldValidator ID="rfv_lname" runat="server" 
-        ErrorMessage="*Required" ControlToValidate="txt_lname" />
+        ErrorMessage="*Required" ControlToValidate="txt_lname" ValidationGroup="mailingView" Display="Dynamic" /><br /><br />
         
         <!--Email Address -->
         <asp:Label ID="lbl_email" runat="server" Text="Email" />
-        <asp:TextBox ID="txt_email" runat="server" /><br /><br />
-        <asp:RequiredFieldValidator ID="rfv_email" runat="server" ErrorMessage="*Required" ControlToValidate="txt_email" />
+        <asp:TextBox ID="txt_email" runat="server" />
+        <asp:RequiredFieldValidator ID="rfv_email" runat="server" ErrorMessage="*Required" ControlToValidate="txt_email"
+        ValidationGroup="mailingView" Display="Dynamic" />
+       
+        
+        <asp:RegularExpressionValidator ID="rev_email" runat="server" ErrorMessage="*Please Enter Valid Email Address" 
+        ValidationGroup="mailingView" Display="Dynamic" ValidationExpression="^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$" ControlToValidate="txt_email"/>
+        <br /><br />
 
 
         
@@ -40,9 +46,12 @@
         <%--Not Required A Required Field
         
         <%--Donation Amount--%>
-        <asp:Label ID="lbl_donate" runat="server" Text="Donation Amount"  />
-        <asp:TextBox ID="txt_donate" runat="server"  /><br /><br />
-        <asp:RequiredFieldValidator ID="rfv_donate" runat="server" ErrorMessage="*Required" ControlToValidate="txt_donate" />
+        <asp:Label ID="lbl_donate" runat="server" Text="Donation Amount (Numeric value, in CDN Dollars)"  />
+        <asp:TextBox ID="txt_donate" runat="server"  />
+        <asp:RequiredFieldValidator ID="rfv_donate" runat="server" ErrorMessage="*Required" ControlToValidate="txt_donate"
+        ValidationGroup="mailingView" Display="Dynamic" />
+        <asp:CompareValidator ID="cmv_donate" runat="server"  ControlToValidate="txt_donate" Operator="DataTypeCheck"  Type="Double"
+        ErrorMessage="*Please enter Numeric value of donation (in CDN dollars)" ValidationGroup="mailingView" /><br /><br />
         <!-- Put in a validator for $ -->
 
        
@@ -50,13 +59,15 @@
         
         <!--Address -->
         <asp:Label ID="lbl_address" runat="server" Text="Address" />
-        <asp:TextBox ID="txt_address" runat="server" /><br /><br />
-        <asp:RequiredFieldValidator ID="rfv_address" runat="server" ErrorMessage="*Required" ControlToValidate="txt_address" />
+        <asp:TextBox ID="txt_address" runat="server" />
+        <asp:RequiredFieldValidator ID="rfv_address" runat="server" ErrorMessage="*Required" ControlToValidate="txt_address"
+        ValidationGroup="mailingView" Display="Dynamic" /><br /><br />
         
         <!--City -->
         <asp:Label ID="lbl_city" runat="server" Text="City" />
-        <asp:TextBox ID="txt_city" runat="server" /><br /><br />
-        <asp:RequiredFieldValidator ID="rfv_city" runat="server" ErrorMessage="*Required" ControlToValidate="txt_city" />
+        <asp:TextBox ID="txt_city" runat="server" />
+        <asp:RequiredFieldValidator ID="rfv_city" runat="server" ErrorMessage="*Required" ControlToValidate="txt_city"
+        ValidationGroup="mailingView" Display="Dynamic" /><br /><br />
         
         <!--Country-->
         <asp:Label ID="lbl_country" runat="server" Text="Country" />
@@ -75,7 +86,7 @@
 
         <!-- Postal Code/ZIP -->
             <asp:Label ID="lbl_postzip" runat="server" Text="PostalCode/ZIP" Visible="false" /><!-- dependent upon country -->
-            <asp:TextBox ID="txt_postzip" runat="server" Visible="false" /><br /><br />
+            <asp:TextBox ID="txt_postzip" runat="server" Visible="false"  /><br /><br />
            <%--Hold off on validation here, because not everyone will have this--%>
 
         
@@ -107,19 +118,21 @@
     <!-- Name - Text Box -->
     
     <asp:Label ID="lbl_credname" runat="server" Text="Billing Name" />
-        <asp:TextBox ID="txt_credname" runat="server" /><br /><br />
+        <asp:TextBox ID="txt_credname" runat="server" />
         <asp:RequiredFieldValidator ID="rfv_credname" runat="server" ErrorMessage="*Required" 
-        ControlToValidate="txt_credname" />
+        ControlToValidate="txt_credname" ValidationGroup="billingView" Display="Dynamic" /><br /><br />
 
     <!-- Billing Address - Text Box -->
     <asp:Label ID="lbl_credaddress" runat="server" Text="Billing Address" />
-        <asp:TextBox ID="txt_credaddress" runat="server" /><br /><br />
-        <asp:RequiredFieldValidator ID="rfv_credaddress" runat="server" ErrorMessage="*Required" ControlToValidate="txt_credaddress" />
+        <asp:TextBox ID="txt_credaddress" runat="server" />
+        <asp:RequiredFieldValidator ID="rfv_credaddress" runat="server" ErrorMessage="*Required" ControlToValidate="txt_credaddress"
+        ValidationGroup="billingView" Display="Dynamic" /><br /><br />
 
     <!-- Billing City - Text Box -->
     <asp:Label ID="lbl_credcity" runat="server" Text="City" />
-        <asp:TextBox ID="txt_credcity" runat="server" /><br /><br />
-        <asp:RequiredFieldValidator ID="rfv_credcity" runat="server" ErrorMessage="*Required" ControlToValidate="txt_credcity" />
+        <asp:TextBox ID="txt_credcity" runat="server" />
+        <asp:RequiredFieldValidator ID="rfv_credcity" runat="server" ErrorMessage="*Required" ControlToValidate="txt_credcity"
+        ValidationGroup="billingView" Display="Dynamic" /><br /><br />
 
     <!-- Billing Country - DDL -->
     <asp:Label ID="lbl_credcountry" runat="server" Text="Country" />
@@ -137,8 +150,13 @@
 
     <!-- Credit Card Number - Text Box *** Validation, Image Generation based on first few numbers, Encription -->
     <asp:Label ID="lbl_crednumber" runat="server" Text="Credit Card Number" /><!-- dependent upon country -->
-            <asp:TextBox ID="txt_crednumber" runat="server" /><br /><br />
-            <asp:RequiredFieldValidator ID="rfv_crednumber" runat="server" ErrorMessage="*Required" ControlToValidate="txt_crednumber" />
+            <asp:TextBox ID="txt_crednumber" runat="server" />
+            <asp:RequiredFieldValidator ID="rfv_crednumber" runat="server" ErrorMessage="*Required" ControlToValidate="txt_crednumber"
+            ValidationGroup="billingView" Display="Dynamic" />
+            <asp:RegularExpressionValidator ID="rev_crednumber" runat="server" ErrorMessage="*Please Enter Valid Credit Card Number" 
+        ValidationGroup="billingView" ControlToValidate="txt_crednumber" Display="Dynamic" 
+        ValidationExpression="^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$"/>
+            <br /><br />
     
     <!-- Image choice of mastercard, visa or Amex, based on first few digits .... if it isn't one of them, have a popup that
     says sorry that type of card isn't accepted.
@@ -148,7 +166,7 @@
     
    
     <!-- Next Button -->
-   <asp:Button ID="btn_creditnext" runat="server" Text="Next" OnCommand="subNextCredClick"   />
+   <asp:Button ID="btn_creditnext" runat="server" Text="Next" OnCommand="subNextCredClick" ValidationGroup="billingView"   />
 
     </asp:Panel>
     <%--</ContentTemplate>
