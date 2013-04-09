@@ -80,4 +80,33 @@ public partial class SubMaster1 : System.Web.UI.MasterPage
 
         }
     }
+
+    protected override void OnInit(EventArgs e)
+    {
+        base.OnInit(e);
+        ((maintemplate)this.Master).upFont += new EventHandler(fontInc);
+        ((maintemplate)this.Master).downFont += new EventHandler(fontDec);
+    }
+
+    protected void fontInc(object sender, EventArgs e)
+    {
+        int newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2)) + 2;
+
+        if (newsizeSide > 20)
+        {
+            newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2));
+        }
+        side_menu.Font.Size = FontUnit.Point(newsizeSide);
+    }
+
+    protected void fontDec(object sender, EventArgs e)
+    {
+        int newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2)) - 2;
+
+        if (newsizeSide < 12)
+        {
+            newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2));
+        }
+        side_menu.Font.Size = FontUnit.Point(newsizeSide);
+    }
 }

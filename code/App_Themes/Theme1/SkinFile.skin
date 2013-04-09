@@ -33,6 +33,10 @@
     StaticMenuItemStyle-VerticalPadding="20px"
     StaticMenuItemStyle-CssClass="feature-nav" />
 
+<asp:Menu runat="server" 
+    SkinID="skin_side_nav" 
+    Font-Size="14pt" />
+
 <asp:Panel runat="server" 
     SkinID="maincontent"
     BackColor="#f2f9f8" />
