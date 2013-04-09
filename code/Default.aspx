@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubMaster1.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubMaster1.master" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="_default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
 <div id="waitTime">
