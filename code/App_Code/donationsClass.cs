@@ -46,7 +46,7 @@ public class donationsClass
             objNewDon.d_fname = _d_fname;
             objNewDon.d_lname = _d_lname;
             objNewDon.d_in_memory_of = _d_in_memory_of;
-            objNewDon.d_amount = decimal.Parse(_d_amount.ToString()); // doing this because was having problems with data type decimal ... fix later 
+            objNewDon.d_amount = _d_amount; // doing this because was having problems with data type decimal ... fix later 
             objNewDon.d_email = _d_email;
             objNewDon.d_address_mailing = _d_address_mailing;
             objNewDon.d_city_mailing = _d_city_mailing;

@@ -262,9 +262,9 @@
                 <td><asp:Textbox ID="txt_eccnumber" runat="server" Text='<%#Eval("d_credit_number") %>' />
                 <asp:RequiredFieldValidator ID="rfv_eccnumber" runat="server" ErrorMessage="*Required" ControlToValidate="txt_eccnumber" 
                  ValidationGroup="editView" Display="Dynamic" />
-                 <asp:RegularExpressionValidator ID="rev_eccnumber" runat="server" ErrorMessage="*Please Enter Valid Credit Card Number" 
+                 <%--<asp:RegularExpressionValidator ID="rev_eccnumber" runat="server" ErrorMessage="*Please Enter Valid Credit Card Number" 
         ValidationGroup="editView" ControlToValidate="txt_eccnumber" Display="Dynamic" 
-        ValidationExpression="^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$"/>
+        ValidationExpression="^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$" />--%>
                 </td>
                 
         </tr>
