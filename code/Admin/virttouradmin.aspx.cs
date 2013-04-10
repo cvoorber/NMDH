@@ -96,7 +96,7 @@ public partial class AdminVirtTour : System.Web.UI.Page
             case "Update":
                 // create textbox objects to find controls within the formview
                 TextBox txtName = (TextBox)e.Item.FindControl("txt_ename");
-                TextBox txtID = (TextBox)e.Item.FindControl("txt_eid");
+                HiddenField hdfID = (HiddenField)e.Item.FindControl("hdf_eid");
                 TextBox txtExte = (TextBox)e.Item.FindControl("txt_eexten");
 
                 TextBox txtDaOpen = (TextBox)e.Item.FindControl("txt_edyopen");
@@ -111,7 +111,7 @@ public partial class AdminVirtTour : System.Web.UI.Page
 
                 // get values for each textbox object to do update from
                 string txtname = txtName.Text;
-                int txtid = int.Parse(txtID.Text.ToString());
+                int hdfid = int.Parse(hdfID.Value.ToString());
                 int txtexte = int.Parse(txtExte.Text.ToString());
 
                 string txtdaopen = txtDaOpen.Text;
@@ -123,7 +123,7 @@ public partial class AdminVirtTour : System.Web.UI.Page
                 string txtimgdesc = txtImgDesc.Text;
                 int txtimgwid = int.Parse(txtImgWid.Text.ToString());
                 int txtimgheig = int.Parse(txtImgHeig.Text.ToString());
-                _strMessage(objvirtAd.updateDepts(txtid, txtname, txtexte, txtdaopen, txtflnum, txtrmnum, 
+                _strMessage(objvirtAd.updateDepts(hdfid, txtname, txtexte, txtdaopen, txtflnum, txtrmnum, 
                 txtdepdesc, txtimgurl, txtimgalt, txtimgdesc, txtimgwid, txtimgheig), "Update");
                 pnl_edit.Visible = false;
                 pnl_main.Visible = true;

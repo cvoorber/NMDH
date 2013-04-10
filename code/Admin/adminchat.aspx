@@ -1,25 +1,31 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/SubMaster1.master" AutoEventWireup="true" CodeFile="adminchat.aspx.cs" Inherits="_Default" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="adminchat.aspx.cs" Inherits="Admin_adminchat" MasterPageFile="~/Admin/subAdmin.master" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
-
+<asp:Content ID="ct_main" ContentPlaceHolderID="r_content" runat="server" >
+    <asp:ScriptManager ID="scm_main" runat="server" />
+    <style>
+        #commonWindow 
+        {
+            width: 400px;
+            height: 300px;
+            border: 1px solid black;
+        }
+    </style>
+      
     <%-- script to make scrollbar on chatwindow scroll down to newest msg on rebind --%>
     <script type="text/javascript">
         function divScroll() {
             var targetDiv = document.getElementById("chatbox");
             targetDiv.scrollTop = targetDiv.scrollHeight;
-        }
     </script>
-
+    <asp:ScriptManager ID="scm_main" runat="server" />
+    
     <%-- main common chat window panel --%>
     <%-- messages are display via a repeater --%>
 
     <asp:Panel ID="pnl_chat" runat="server">
         <asp:Label ID="lbl_nicknameC" runat="server" />
         <br /><br />
-        <asp:ScriptManager ID="scm_main" runat="server" />
-
+        
         <asp:Label ID="lbl" runat="server" Text="Username: Quin" />
         <div id="chatbox" style="width:580px;border:1px solid black;height:300px; overflow-y:scroll;">
             <asp:UpdatePanel ID="upl_main" runat="server" UpdateMode="Conditional">
@@ -64,4 +70,3 @@
    <%-- i've yet to find a way to automate this upon admin closing page --%>
    <asp:Button ID="btn_removechat" runat="server" OnClick="clearChatInDB" Text="Remove Chat" />
 </asp:Content>
-

@@ -1,9 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/maintemplate.master" AutoEventWireup="true" CodeFile="homepageCMS.aspx.cs" Inherits="Admin_homepageCMS" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/subAdmin.master" AutoEventWireup="true" CodeFile="homepageCMS.aspx.cs" Inherits="Admin_homepageCMS" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
-    <br /><br />
+<asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
 <div id="editWait">
     <h1>Wait Time Estimation Update</h1>
     <p style="font-size:18px;">Update values based on real time information, and wait time will be calculated based on these numbers.</p>

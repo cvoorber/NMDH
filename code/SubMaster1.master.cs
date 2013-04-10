@@ -32,7 +32,7 @@ public partial class SubMaster1 : System.Web.UI.MasterPage
                 if(titleList[i].ChildNodes[0].FirstChild.Value == pp_Url)
                 {
                     pagename = titleList[i].ChildNodes[2].FirstChild.Value.ToString();
-                    i = 99999;
+                    break;
                 }
             }
             navClass menuObj = new navClass();
@@ -51,7 +51,7 @@ public partial class SubMaster1 : System.Web.UI.MasterPage
         }
     }
 
-    protected void _loadMenu()
+    public void _loadMenu()
     {
         side_menu.Items.Clear();
 
@@ -78,6 +78,68 @@ public partial class SubMaster1 : System.Web.UI.MasterPage
                 side_menu.Items.Add(output);
             }
 
+        }
+    }
+
+    protected override void OnInit(EventArgs e)
+    {
+        base.OnInit(e);
+        ((maintemplate)this.Master).upFont += new EventHandler(fontInc);
+        ((maintemplate)this.Master).downFont += new EventHandler(fontDec);
+    }
+
+    protected void fontInc(object sender, EventArgs e)
+    {
+        if (rpt_content.Items.Count > 0)
+        {
+            Label title = new Label();
+            Label content = new Label();
+            foreach (RepeaterItem ri in rpt_content.Items)
+            {
+                title = (Label)ri.FindControl("lbltitle");
+                content = (Label)ri.FindControl("lblcontent");
+            }
+            int newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2)) + 2;
+            int newsizeHead = int.Parse(title.Font.Size.Unit.ToString().Substring(0, 2)) + 2;
+            int newsizeContent = int.Parse(content.Font.Size.Unit.ToString().Substring(0, 2)) + 2;
+
+            if (newsizeSide > 16)
+            {
+                newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2));
+                newsizeHead = int.Parse(title.Font.Size.Unit.ToString().Substring(0, 2));
+                newsizeContent = int.Parse(content.Font.Size.Unit.ToString().Substring(0, 2));
+            }
+            side_menu.Font.Size = FontUnit.Point(newsizeSide);
+            title.Font.Size = FontUnit.Point(newsizeHead);
+            content.Font.Size = FontUnit.Point(newsizeContent);
+        }
+    }
+
+    protected void fontDec(object sender, EventArgs e)
+    {
+        if (rpt_content.Items.Count > 0)
+        {
+            Label title = new Label();
+            Label content = new Label();
+            foreach (RepeaterItem ri in rpt_content.Items)
+            {
+                title = (Label)ri.FindControl("lbltitle");
+                content = (Label)ri.FindControl("lblcontent");
+            }
+
+            int newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2)) - 2;
+            int newsizeHead = int.Parse(title.Font.Size.Unit.ToString().Substring(0, 2)) - 2;
+            int newsizeContent = int.Parse(content.Font.Size.Unit.ToString().Substring(0, 2)) - 2;
+
+            if (newsizeSide < 10)
+            {
+                newsizeSide = int.Parse(side_menu.Font.Size.Unit.ToString().Substring(0, 2));
+                newsizeHead = int.Parse(title.Font.Size.Unit.ToString().Substring(0, 2));
+                newsizeContent = int.Parse(content.Font.Size.Unit.ToString().Substring(0, 2));
+            }
+            side_menu.Font.Size = FontUnit.Point(newsizeSide);
+            title.Font.Size = FontUnit.Point(newsizeHead);
+            content.Font.Size = FontUnit.Point(newsizeContent);
         }
     }
 }

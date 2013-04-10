@@ -10,24 +10,26 @@ public partial class Admin_homepageCMS : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //binding data on initial page load
         if (!Page.IsPostBack)
         {
             _BindData();
         }
     }
 
-    //instantiating the class
+    //instantiating the wait class
     waitClass objWait = new waitClass();
 
+    //function to bind wait time to listview
     private void _BindData()
     {
         lv_main.DataSource = objWait.getWait();
         lv_main.DataBind();
     }
 
+    //controlling update command and executing on the DB using current system time
     protected void subAdmin(object sender, ListViewCommandEventArgs e)
     {
-
         if (e.CommandName == "subUpdate")
         {
             string format = "dd/MM/yyyy hh:mm tt";
@@ -47,6 +49,7 @@ public partial class Admin_homepageCMS : System.Web.UI.Page
         }
     }
 
+    //success or failure message to display
     private void _strMessage(bool flag, string str)
     {
         if (flag)

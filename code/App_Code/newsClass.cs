@@ -5,6 +5,7 @@ using System.Web;
 
 public class newsClass
 {
+    //get all news from the DB
 	public IQueryable<ndmh_event> getNews()
     {
         //create an instance of the LINQ object
@@ -15,6 +16,7 @@ public class newsClass
         return allNews;
     }
 
+    //gets news by ID from the DB
     public IQueryable<ndmh_event> getNewsByID(int _id)
     {
         ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
@@ -22,7 +24,16 @@ public class newsClass
         return allNews;
     }
 
-    public bool commitInsert(string _title, string _desc, string _image, DateTime _expires, DateTime _date, int _contact, string _link)
+    //gets the latest two records for the homepage from the DB
+    public IQueryable<ndmh_event> getLatestNews()
+    {
+        ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
+        var allNews = objNewsDC.ndmh_events.OrderByDescending(x => x.n_id).Select(x => x).Take(2);
+        return allNews;
+    }
+
+    //inserting new articles into the DB
+    public bool commitInsert(string _title, string _desc, string _image, DateTime _expires, DateTime _date, int _contact)
     {
         ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
         //to ensure all data will be disposed when finished
@@ -37,7 +48,6 @@ public class newsClass
             objFreshNews.n_expires = _expires;
             objFreshNews.n_event_date = _date;
             objFreshNews.n_contact_id = _contact;
-            objFreshNews.n_link = _link;
             //insert command
             objNewsDC.ndmh_events.InsertOnSubmit(objFreshNews);
             //commit insert against DB
@@ -46,7 +56,8 @@ public class newsClass
         }
     }
 
-    public bool commitUpdate(int _id, string _title, string _desc, string _image, int _contact, string _link)
+    //for updating news items currently stored in the database
+    public bool commitUpdate(int _id, string _title, string _desc, string _image, int _contact)
     {
         ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
         using (objNewsDC)
@@ -56,12 +67,13 @@ public class newsClass
             objUpNews.n_description = _desc;
             objUpNews.n_image = _image;
             objUpNews.n_contact_id = _contact;
-            objUpNews.n_link = _link;
             //commit update against DB
             objNewsDC.SubmitChanges();
             return true;
         }
     }
+
+    //for deleting news articles from the DB
     public bool commitDelete(int _id)
     {
         ndmhDCDataContext objNewsDC = new ndmhDCDataContext();

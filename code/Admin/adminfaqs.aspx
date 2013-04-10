@@ -1,17 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/maintemplate.master" AutoEventWireup="true" CodeFile="adminfaqs.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/subAdmin.master" AutoEventWireup="true" CodeFile="adminfaqs.aspx.cs" Inherits="_Default" %>
+<%@ Mastertype VirtualPath="~/Admin/subAdmin.master" %>
 
-<asp:Content ID="cnt_admfaqhead" ContentPlaceHolderID="head" Runat="Server">
-<style type="text/css">
-   table tr, table td, table th
-    {
-        border: 1px solid black;
-        padding: 15px;
-    }
-    
-    
-</style>
-</asp:Content>
-<asp:Content ID="cnt_admfaqmain" ContentPlaceHolderID="content_area" Runat="Server">
+<asp:Content ID="cnt_admfaqmain" ContentPlaceHolderID="r_content" Runat="Server">
     <asp:Panel ID="pnl_faqadm" runat="server">
     <asp:Repeater ID="rpt_faqadm" runat="server" OnItemDataBound="keyListBind">
      <%--Include Header, Item, Insert, and Edit--%>
@@ -84,18 +74,22 @@
          <table>
                 <tr>
                     <td><asp:Label ID="lbl_ititle" runat="server" Text="FAQ Title" /> </td>
-                    <td><asp:TextBox ID="txt_ititle" runat="server"   /></td>
+                    <td><asp:TextBox ID="txt_ititle" runat="server"   />
+                    <asp:RequiredFieldValidator ID="rfv_ititle" runat="server" ErrorMessage="*Required" ControlToValidate="txt_ititle" 
+                 ValidationGroup="insertView" Display="Dynamic" /></td>
                 </tr>
                 <!-- Remember to add in the Text editor AJAX extender-->
                 <tr>
                     <td><asp:Label ID="lbl_icontent" runat="server" Text="FAQ Content" /> </td>
-                    <td><asp:TextBox ID="txt_icontent" runat="server"   /></td>
+                    <td><asp:TextBox ID="txt_icontent" runat="server"   />
+                    <asp:RequiredFieldValidator ID="rfv_icontent" runat="server" ErrorMessage="*Required" ControlToValidate="txt_icontent" 
+                 ValidationGroup="insertView" Display="Dynamic" /></td>
                 </tr>
                 
                 <tr>
                     <td>
                         <asp:Button ID="btn_isave" runat="server" Text="Create New FAQ" OnCommand="subInsPanel"
-                        CommandName="Create" />  
+                        CommandName="Create" ValidationGroup="insertView" />  
                     </td>
                     <td>
                         <asp:Button ID="btn_icancel" runat="server" Text="Cancel" OnCommand="subInsPanel" CommandName="Cancel" /> 
@@ -120,7 +114,10 @@
                 </tr>
                 <tr>
                     <td><asp:Label ID="lbl_etitle" runat="server" Text="FAQ Title" /> </td>
-                    <td><asp:TextBox ID="txt_etitle" runat="server" Text='<%#Eval("ndmh_faq_title") %>'  /></td>
+                    <td><asp:TextBox ID="txt_etitle" runat="server" Text='<%#Eval("ndmh_faq_title") %>'  />
+                    <asp:RequiredFieldValidator ID="rfv_etitle" runat="server" ErrorMessage="*Required" ControlToValidate="txt_etitle" 
+                 ValidationGroup="editView" Display="Dynamic" />
+                    </td>
                 </tr>
                 <%--Remember to add in the Text editor AJAX extender--%>
                 <tr>
@@ -161,12 +158,14 @@
                    
                <tr>
                     <td><asp:Label ID="lbl_econtent" runat="server" Text="FAQ Content" /> </td>
-                    <td><asp:TextBox ID="txt_econtent" runat="server" Text='<%#Eval("ndmh_content") %>'  /></td>
+                    <td><asp:TextBox ID="txt_econtent" runat="server" Text='<%#Eval("ndmh_content") %>'  />
+                    <asp:RequiredFieldValidator ID="rfv_econtent" runat="server" ErrorMessage="*Required" ControlToValidate="txt_econtent" 
+                 ValidationGroup="editView" Display="Dynamic" /></td>
                 </tr>
                 <tr>
                     <td>
                         <asp:Button ID="btn_esave" runat="server" Text="Save Changes" 
-                        CommandName="SaveEdit" />  
+                        CommandName="SaveEdit" ValidationGroup="editView"   />  
                     </td>
                     <td>
                         <asp:Button ID="btn_ecancel" runat="server" Text="Cancel" CommandName="CancelEdit" /> 
@@ -178,6 +177,7 @@
     </asp:Panel>
 
     <asp:Label ID="lbl_execmess" runat="server"  />
+    
 
 
 </asp:Content>

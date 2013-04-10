@@ -38,8 +38,8 @@ public partial class _Default : System.Web.UI.Page
     // end condition: subroutine called that will display top matching faq articles
     protected void subSearchSubmit(object sender, EventArgs e)
     {
-        string words = txt_faqsearch.Text;
-        
+        string word = txt_faqsearch.Text;
+        string words = word.ToLower();
         // take string from search box and getting a list (Idictionary -> like associative array) 
         //of scores for the string againgst each faq.
         IDictionary<int, int> scorelist = objFaqs.compareToKeywords(words);
@@ -51,6 +51,13 @@ public partial class _Default : System.Web.UI.Page
           // my understanding of ordering an IDictionary array, and getting them to be listed out is not perfect.
             subResultPanelBind(item.Key);
         }
+    }
+
+    // binds list of all faqs to the more faqs repeater
+    protected void subMoreFaqs(object sender, EventArgs e)
+    {
+        rpt_morefaqs.DataSource = objFaqs.getAllFaqs();
+        rpt_morefaqs.DataBind();
     }
 
 

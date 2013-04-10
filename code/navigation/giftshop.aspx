@@ -3,12 +3,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
 <div id="giftshop">
     <div id="giftHeadings">
-        <asp:Label ID="lblProdHeading" runat="server" Text="Welcome to our Gift Shop!" Font-Bold="true" Font-Size="22" />
-        <br />
-        <asp:Label ID="Label1" runat="server" Text="*Select from the items below*" Font-Size="16" Font-Italic="true" />
+        <%-- heading for the giftshop and link to current session's cart --%>
+        <asp:Label ID="lblProdHeading" runat="server" Text="Welcome to our Gift Shop!" Font-Bold="true" Font-Size="22" style="float:left;" />
         <asp:HyperLink ID="hpl_cart" runat="server" NavigateUrl="~/navigation/viewcart.aspx" Text="View Shopping Cart" Font-Size="16" style="float:right;" />
     </div>
     <div id="giftContents">
+        <%-- displaying products available for purchase --%>
         <asp:ListView ID="listProducts" runat="server" OnItemCommand="subAdmin">
             <ItemTemplate>
                 <div class="item">
@@ -21,8 +21,8 @@
                     <br /><br />
                     <asp:Label ID="lblPriceTitle" runat="server" Text="Price: $" />
                     <asp:Label ID="lblPrice" runat="server" Text='<%#Eval("p_price") %>' />&nbsp;
-                    <asp:LinkButton ID="lnk_buy" runat="server" CommandName="addItem" Text="Add to Cart" />
-                </div>
+                    <asp:LinkButton ID="lnk_buy" runat="server" CommandName="addItem" Text="Add to Cart" Font-Size="12" />
+                </div><%-- end "item" div --%>
             </ItemTemplate>
         </asp:ListView>
     </div>

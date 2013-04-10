@@ -1,14 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="jobappsedit.aspx.cs" Inherits="Admin_jobappsedit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="jobappsedit.aspx.cs" Inherits="Admin_jobappsedit" MasterPageFile="~/Admin/subAdmin.master" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
+<asp:Content runat="server" ContentPlaceHolderID="r_content">
     <asp:Label ID="lbl_title" runat="server" Text="Careers" />
         <br /><br />
     <script type="text/javascript">
@@ -187,7 +179,5 @@
             </asp:DataList>
         </asp:Panel>
         <asp:Label ID="lbl_result" runat="server" />
-    </div>
-    </form>
-</body>
-</html>
+</asp:Content>
+

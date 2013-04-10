@@ -5,7 +5,7 @@ using System.Web;
 
 public class productsClass
 {
-
+    //get all products from the DB
     public IQueryable<ndmh_product> getProducts()
     {
         //create an instance of the LINQ object
@@ -16,13 +16,16 @@ public class productsClass
         return allProducts;
     }
 
+    //get products from the DB based on ID
     public IQueryable<ndmh_product> getProductsByID(int _id)
     {
         ndmhDCDataContext objProdDC = new ndmhDCDataContext();
         var allProducts = objProdDC.ndmh_products.Where(x => x.p_id == _id).Select(x => x);
         return allProducts;
     }
-    public bool commitInsert(int _id, string _name, string _desc, string _image, decimal _price)
+
+    //to insert a new product into the DB
+    public bool commitInsert(string _name, string _desc, string _image, decimal _price)
     {
         ndmhDCDataContext objProdDC = new ndmhDCDataContext();
         //to ensure all data will be disposed when finished
@@ -42,7 +45,9 @@ public class productsClass
             return true;
         }
     }
-    public bool commitUpdate(int _id, string _name, string _desc, string _image, decimal _price)
+
+    //for updating products in the DB
+    public bool commitUpdate(int _id, string _name, string _desc, decimal _price)
     {
         ndmhDCDataContext objProdDC = new ndmhDCDataContext();
         using (objProdDC)
@@ -50,13 +55,14 @@ public class productsClass
             var objUpProd = objProdDC.ndmh_products.Single(x => x.p_id == _id);
             objUpProd.p_name = _name;
             objUpProd.p_desc = _desc;
-            objUpProd.p_image = _image;
             objUpProd.p_price = _price;
             //commit update against DB
             objProdDC.SubmitChanges();
             return true;
         }
     }
+
+    //for deleting products from the DB
     public bool commitDelete(int _id)
     {
         ndmhDCDataContext objProdDC = new ndmhDCDataContext();

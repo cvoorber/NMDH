@@ -7,8 +7,10 @@ using System.Web.UI.WebControls;
 
 public partial class giftshop : System.Web.UI.Page
 {
+    //instantiating the products class
     productsClass objLinq = new productsClass();
 
+    //binding data on initial page load
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
@@ -17,32 +19,21 @@ public partial class giftshop : System.Web.UI.Page
         }
     }
 
+    //binding products to list
     private void _subRebind()
     {
         listProducts.DataSource = objLinq.getProducts();
         listProducts.DataBind();
     }
 
-    private int getOrder(int customerID)
-    {
-        if (Session["OrderID"] != null && Session["OrderID"].ToString().Length > 0)
-        {
-            //set session and insert order
-            return 1;
-        }
-        else
-        {
-            //use current session
-            return int.Parse(Session["OrderID"].ToString());
-        }
-    }
-
+    //subroutine carried out to add item to shopping cart based on id
     protected void subAdmin(object sender, ListViewCommandEventArgs e)
     {
         if (e.CommandName == "addItem")
         {
             HiddenField hdfProd = (HiddenField)e.Item.FindControl("hdf_prod");
             int _id = int.Parse(hdfProd.Value.ToString());
+            //this is finding or creating the session variable
             cartClass cart = cartClass.GetShoppingCart();
             cart.AddItem(_id);
             Response.Redirect("ViewCart.aspx");

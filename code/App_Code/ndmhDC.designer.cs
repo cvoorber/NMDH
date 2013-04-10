@@ -35,6 +35,9 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
   partial void Insertstate_or_province(state_or_province instance);
   partial void Updatestate_or_province(state_or_province instance);
   partial void Deletestate_or_province(state_or_province instance);
+  partial void Insertndmh_chat(ndmh_chat instance);
+  partial void Updatendmh_chat(ndmh_chat instance);
+  partial void Deletendmh_chat(ndmh_chat instance);
   partial void Insertndmh_comment(ndmh_comment instance);
   partial void Updatendmh_comment(ndmh_comment instance);
   partial void Deletendmh_comment(ndmh_comment instance);
@@ -71,6 +74,9 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
   partial void Insertndmh_job(ndmh_job instance);
   partial void Updatendmh_job(ndmh_job instance);
   partial void Deletendmh_job(ndmh_job instance);
+  partial void Insertndmh_keyword(ndmh_keyword instance);
+  partial void Updatendmh_keyword(ndmh_keyword instance);
+  partial void Deletendmh_keyword(ndmh_keyword instance);
   partial void Insertndmh_product(ndmh_product instance);
   partial void Updatendmh_product(ndmh_product instance);
   partial void Deletendmh_product(ndmh_product instance);
@@ -83,15 +89,12 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
   partial void Insertndmh_staff_listing(ndmh_staff_listing instance);
   partial void Updatendmh_staff_listing(ndmh_staff_listing instance);
   partial void Deletendmh_staff_listing(ndmh_staff_listing instance);
+  partial void Insertndmh_upload(ndmh_upload instance);
+  partial void Updatendmh_upload(ndmh_upload instance);
+  partial void Deletendmh_upload(ndmh_upload instance);
   partial void Insertndmh_wait(ndmh_wait instance);
   partial void Updatendmh_wait(ndmh_wait instance);
   partial void Deletendmh_wait(ndmh_wait instance);
-  partial void Insertndmh_keyword(ndmh_keyword instance);
-  partial void Updatendmh_keyword(ndmh_keyword instance);
-  partial void Deletendmh_keyword(ndmh_keyword instance);
-  partial void Insertndmh_chat(ndmh_chat instance);
-  partial void Updatendmh_chat(ndmh_chat instance);
-  partial void Deletendmh_chat(ndmh_chat instance);
   #endregion
 	
 	public ndmhDCDataContext() : 
@@ -137,6 +140,14 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<state_or_province>();
+		}
+	}
+	
+	public System.Data.Linq.Table<ndmh_chat> ndmh_chats
+	{
+		get
+		{
+			return this.GetTable<ndmh_chat>();
 		}
 	}
 	
@@ -236,6 +247,14 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
+	public System.Data.Linq.Table<ndmh_keyword> ndmh_keywords
+	{
+		get
+		{
+			return this.GetTable<ndmh_keyword>();
+		}
+	}
+	
 	public System.Data.Linq.Table<ndmh_product> ndmh_products
 	{
 		get
@@ -268,27 +287,19 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
+	public System.Data.Linq.Table<ndmh_upload> ndmh_uploads
+	{
+		get
+		{
+			return this.GetTable<ndmh_upload>();
+		}
+	}
+	
 	public System.Data.Linq.Table<ndmh_wait> ndmh_waits
 	{
 		get
 		{
 			return this.GetTable<ndmh_wait>();
-		}
-	}
-	
-	public System.Data.Linq.Table<ndmh_keyword> ndmh_keywords
-	{
-		get
-		{
-			return this.GetTable<ndmh_keyword>();
-		}
-	}
-	
-	public System.Data.Linq.Table<ndmh_chat> ndmh_chats
-	{
-		get
-		{
-			return this.GetTable<ndmh_chat>();
 		}
 	}
 }
@@ -653,6 +664,164 @@ public partial class state_or_province : INotifyPropertyChanging, INotifyPropert
 					this._country_id = default(int);
 				}
 				this.SendPropertyChanged("base_country");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_chat")]
+public partial class ndmh_chat : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _messageID;
+	
+	private int _chatroomID;
+	
+	private string _message;
+	
+	private System.DateTime _timestamp;
+	
+	private string _fromuser;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnmessageIDChanging(int value);
+    partial void OnmessageIDChanged();
+    partial void OnchatroomIDChanging(int value);
+    partial void OnchatroomIDChanged();
+    partial void OnmessageChanging(string value);
+    partial void OnmessageChanged();
+    partial void OntimestampChanging(System.DateTime value);
+    partial void OntimestampChanged();
+    partial void OnfromuserChanging(string value);
+    partial void OnfromuserChanged();
+    #endregion
+	
+	public ndmh_chat()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_messageID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int messageID
+	{
+		get
+		{
+			return this._messageID;
+		}
+		set
+		{
+			if ((this._messageID != value))
+			{
+				this.OnmessageIDChanging(value);
+				this.SendPropertyChanging();
+				this._messageID = value;
+				this.SendPropertyChanged("messageID");
+				this.OnmessageIDChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_chatroomID", DbType="Int NOT NULL")]
+	public int chatroomID
+	{
+		get
+		{
+			return this._chatroomID;
+		}
+		set
+		{
+			if ((this._chatroomID != value))
+			{
+				this.OnchatroomIDChanging(value);
+				this.SendPropertyChanging();
+				this._chatroomID = value;
+				this.SendPropertyChanged("chatroomID");
+				this.OnchatroomIDChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_message", DbType="NText NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+	public string message
+	{
+		get
+		{
+			return this._message;
+		}
+		set
+		{
+			if ((this._message != value))
+			{
+				this.OnmessageChanging(value);
+				this.SendPropertyChanging();
+				this._message = value;
+				this.SendPropertyChanged("message");
+				this.OnmessageChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_timestamp", DbType="DateTime NOT NULL")]
+	public System.DateTime timestamp
+	{
+		get
+		{
+			return this._timestamp;
+		}
+		set
+		{
+			if ((this._timestamp != value))
+			{
+				this.OntimestampChanging(value);
+				this.SendPropertyChanging();
+				this._timestamp = value;
+				this.SendPropertyChanged("timestamp");
+				this.OntimestampChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fromuser", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string fromuser
+	{
+		get
+		{
+			return this._fromuser;
+		}
+		set
+		{
+			if ((this._fromuser != value))
+			{
+				this.OnfromuserChanging(value);
+				this.SendPropertyChanging();
+				this._fromuser = value;
+				this.SendPropertyChanged("fromuser");
+				this.OnfromuserChanged();
 			}
 		}
 	}
@@ -2229,8 +2398,6 @@ public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChange
 	
 	private System.Nullable<int> _n_contact_id;
 	
-	private string _n_link;
-	
 	private EntitySet<ndmh_comment> _ndmh_comments;
 	
 	private EntityRef<ndmh_staff_listing> _ndmh_staff_listing;
@@ -2253,8 +2420,6 @@ public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChange
     partial void Onn_event_dateChanged();
     partial void Onn_contact_idChanging(System.Nullable<int> value);
     partial void Onn_contact_idChanged();
-    partial void Onn_linkChanging(string value);
-    partial void Onn_linkChanged();
     #endregion
 	
 	public ndmh_event()
@@ -2404,26 +2569,6 @@ public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChange
 				this._n_contact_id = value;
 				this.SendPropertyChanged("n_contact_id");
 				this.Onn_contact_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_link", DbType="VarChar(50)")]
-	public string n_link
-	{
-		get
-		{
-			return this._n_link;
-		}
-		set
-		{
-			if ((this._n_link != value))
-			{
-				this.Onn_linkChanging(value);
-				this.SendPropertyChanging();
-				this._n_link = value;
-				this.SendPropertyChanged("n_link");
-				this.Onn_linkChanged();
 			}
 		}
 	}
@@ -4065,6 +4210,164 @@ public partial class ndmh_job : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_keywords")]
+public partial class ndmh_keyword : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _keyword_id;
+	
+	private System.Nullable<int> _page_id;
+	
+	private string _page_title;
+	
+	private string _keywords;
+	
+	private string _url;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onkeyword_idChanging(int value);
+    partial void Onkeyword_idChanged();
+    partial void Onpage_idChanging(System.Nullable<int> value);
+    partial void Onpage_idChanged();
+    partial void Onpage_titleChanging(string value);
+    partial void Onpage_titleChanged();
+    partial void OnkeywordsChanging(string value);
+    partial void OnkeywordsChanged();
+    partial void OnurlChanging(string value);
+    partial void OnurlChanged();
+    #endregion
+	
+	public ndmh_keyword()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_keyword_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int keyword_id
+	{
+		get
+		{
+			return this._keyword_id;
+		}
+		set
+		{
+			if ((this._keyword_id != value))
+			{
+				this.Onkeyword_idChanging(value);
+				this.SendPropertyChanging();
+				this._keyword_id = value;
+				this.SendPropertyChanged("keyword_id");
+				this.Onkeyword_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_id", DbType="Int")]
+	public System.Nullable<int> page_id
+	{
+		get
+		{
+			return this._page_id;
+		}
+		set
+		{
+			if ((this._page_id != value))
+			{
+				this.Onpage_idChanging(value);
+				this.SendPropertyChanging();
+				this._page_id = value;
+				this.SendPropertyChanged("page_id");
+				this.Onpage_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_title", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string page_title
+	{
+		get
+		{
+			return this._page_title;
+		}
+		set
+		{
+			if ((this._page_title != value))
+			{
+				this.Onpage_titleChanging(value);
+				this.SendPropertyChanging();
+				this._page_title = value;
+				this.SendPropertyChanged("page_title");
+				this.Onpage_titleChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_keywords", DbType="VarChar(MAX)")]
+	public string keywords
+	{
+		get
+		{
+			return this._keywords;
+		}
+		set
+		{
+			if ((this._keywords != value))
+			{
+				this.OnkeywordsChanging(value);
+				this.SendPropertyChanging();
+				this._keywords = value;
+				this.SendPropertyChanged("keywords");
+				this.OnkeywordsChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_url", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string url
+	{
+		get
+		{
+			return this._url;
+		}
+		set
+		{
+			if ((this._url != value))
+			{
+				this.OnurlChanging(value);
+				this.SendPropertyChanging();
+				this._url = value;
+				this.SendPropertyChanged("url");
+				this.OnurlChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_products")]
 public partial class ndmh_product : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -4962,6 +5265,116 @@ public partial class ndmh_staff_listing : INotifyPropertyChanging, INotifyProper
 	}
 }
 
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_uploads")]
+public partial class ndmh_upload : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _i_id;
+	
+	private string _i_name;
+	
+	private string _i_url;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Oni_idChanging(int value);
+    partial void Oni_idChanged();
+    partial void Oni_nameChanging(string value);
+    partial void Oni_nameChanged();
+    partial void Oni_urlChanging(string value);
+    partial void Oni_urlChanged();
+    #endregion
+	
+	public ndmh_upload()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_i_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int i_id
+	{
+		get
+		{
+			return this._i_id;
+		}
+		set
+		{
+			if ((this._i_id != value))
+			{
+				this.Oni_idChanging(value);
+				this.SendPropertyChanging();
+				this._i_id = value;
+				this.SendPropertyChanged("i_id");
+				this.Oni_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_i_name", DbType="VarChar(50)")]
+	public string i_name
+	{
+		get
+		{
+			return this._i_name;
+		}
+		set
+		{
+			if ((this._i_name != value))
+			{
+				this.Oni_nameChanging(value);
+				this.SendPropertyChanging();
+				this._i_name = value;
+				this.SendPropertyChanged("i_name");
+				this.Oni_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_i_url", DbType="VarChar(MAX)")]
+	public string i_url
+	{
+		get
+		{
+			return this._i_url;
+		}
+		set
+		{
+			if ((this._i_url != value))
+			{
+				this.Oni_urlChanging(value);
+				this.SendPropertyChanging();
+				this._i_url = value;
+				this.SendPropertyChanged("i_url");
+				this.Oni_urlChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_wait")]
 public partial class ndmh_wait : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -5095,322 +5508,6 @@ public partial class ndmh_wait : INotifyPropertyChanging, INotifyPropertyChanged
 				this._w_estimate = value;
 				this.SendPropertyChanged("w_estimate");
 				this.Onw_estimateChanged();
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_keywords")]
-public partial class ndmh_keyword : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _keyword_id;
-	
-	private System.Nullable<int> _page_id;
-	
-	private string _page_title;
-	
-	private string _keywords;
-	
-	private string _url;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onkeyword_idChanging(int value);
-    partial void Onkeyword_idChanged();
-    partial void Onpage_idChanging(System.Nullable<int> value);
-    partial void Onpage_idChanged();
-    partial void Onpage_titleChanging(string value);
-    partial void Onpage_titleChanged();
-    partial void OnkeywordsChanging(string value);
-    partial void OnkeywordsChanged();
-    partial void OnurlChanging(string value);
-    partial void OnurlChanged();
-    #endregion
-	
-	public ndmh_keyword()
-	{
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_keyword_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int keyword_id
-	{
-		get
-		{
-			return this._keyword_id;
-		}
-		set
-		{
-			if ((this._keyword_id != value))
-			{
-				this.Onkeyword_idChanging(value);
-				this.SendPropertyChanging();
-				this._keyword_id = value;
-				this.SendPropertyChanged("keyword_id");
-				this.Onkeyword_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_id", DbType="Int")]
-	public System.Nullable<int> page_id
-	{
-		get
-		{
-			return this._page_id;
-		}
-		set
-		{
-			if ((this._page_id != value))
-			{
-				this.Onpage_idChanging(value);
-				this.SendPropertyChanging();
-				this._page_id = value;
-				this.SendPropertyChanged("page_id");
-				this.Onpage_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_title", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-	public string page_title
-	{
-		get
-		{
-			return this._page_title;
-		}
-		set
-		{
-			if ((this._page_title != value))
-			{
-				this.Onpage_titleChanging(value);
-				this.SendPropertyChanging();
-				this._page_title = value;
-				this.SendPropertyChanged("page_title");
-				this.Onpage_titleChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_keywords", DbType="VarChar(MAX)")]
-	public string keywords
-	{
-		get
-		{
-			return this._keywords;
-		}
-		set
-		{
-			if ((this._keywords != value))
-			{
-				this.OnkeywordsChanging(value);
-				this.SendPropertyChanging();
-				this._keywords = value;
-				this.SendPropertyChanged("keywords");
-				this.OnkeywordsChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_url", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-	public string url
-	{
-		get
-		{
-			return this._url;
-		}
-		set
-		{
-			if ((this._url != value))
-			{
-				this.OnurlChanging(value);
-				this.SendPropertyChanging();
-				this._url = value;
-				this.SendPropertyChanged("url");
-				this.OnurlChanged();
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_chat")]
-public partial class ndmh_chat : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _messageID;
-	
-	private int _chatroomID;
-	
-	private string _message;
-	
-	private System.DateTime _timestamp;
-	
-	private string _fromuser;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnmessageIDChanging(int value);
-    partial void OnmessageIDChanged();
-    partial void OnchatroomIDChanging(int value);
-    partial void OnchatroomIDChanged();
-    partial void OnmessageChanging(string value);
-    partial void OnmessageChanged();
-    partial void OntimestampChanging(System.DateTime value);
-    partial void OntimestampChanged();
-    partial void OnfromuserChanging(string value);
-    partial void OnfromuserChanged();
-    #endregion
-	
-	public ndmh_chat()
-	{
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_messageID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int messageID
-	{
-		get
-		{
-			return this._messageID;
-		}
-		set
-		{
-			if ((this._messageID != value))
-			{
-				this.OnmessageIDChanging(value);
-				this.SendPropertyChanging();
-				this._messageID = value;
-				this.SendPropertyChanged("messageID");
-				this.OnmessageIDChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_chatroomID", DbType="Int NOT NULL")]
-	public int chatroomID
-	{
-		get
-		{
-			return this._chatroomID;
-		}
-		set
-		{
-			if ((this._chatroomID != value))
-			{
-				this.OnchatroomIDChanging(value);
-				this.SendPropertyChanging();
-				this._chatroomID = value;
-				this.SendPropertyChanged("chatroomID");
-				this.OnchatroomIDChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_message", DbType="NText NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-	public string message
-	{
-		get
-		{
-			return this._message;
-		}
-		set
-		{
-			if ((this._message != value))
-			{
-				this.OnmessageChanging(value);
-				this.SendPropertyChanging();
-				this._message = value;
-				this.SendPropertyChanged("message");
-				this.OnmessageChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_timestamp", DbType="DateTime NOT NULL")]
-	public System.DateTime timestamp
-	{
-		get
-		{
-			return this._timestamp;
-		}
-		set
-		{
-			if ((this._timestamp != value))
-			{
-				this.OntimestampChanging(value);
-				this.SendPropertyChanging();
-				this._timestamp = value;
-				this.SendPropertyChanged("timestamp");
-				this.OntimestampChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fromuser", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-	public string fromuser
-	{
-		get
-		{
-			return this._fromuser;
-		}
-		set
-		{
-			if ((this._fromuser != value))
-			{
-				this.OnfromuserChanging(value);
-				this.SendPropertyChanging();
-				this._fromuser = value;
-				this.SendPropertyChanged("fromuser");
-				this.OnfromuserChanged();
 			}
 		}
 	}

@@ -5,6 +5,7 @@ using System.Web;
 
 public class commentClass
 {
+    //getting all comments from the database
     public IQueryable<ndmh_comment> getComments()
     {
         //create an instance of the LINQ object
@@ -15,6 +16,7 @@ public class commentClass
         return allComments;
     }
 
+    //getting comments based on specific id
     public IQueryable<ndmh_comment> getCommentsByID(int _id)
     {
         ndmhDCDataContext objCommDC = new ndmhDCDataContext();
@@ -22,6 +24,7 @@ public class commentClass
         return allComments;
     }
 
+    //inserting comments
     public bool commitInsert(string _name, string _email, string _text, int _nid)
     {
         ndmhDCDataContext objCommDC = new ndmhDCDataContext();
@@ -44,6 +47,7 @@ public class commentClass
         }
     }
 
+    //for updating comments
     public bool commitUpdate(int _id, string _name, string _email, string _text, int _id2)
     {
         ndmhDCDataContext objCommDC = new ndmhDCDataContext();
@@ -60,6 +64,7 @@ public class commentClass
         }
     }
 
+    //for deleting comments
     public bool commitDelete(int _id)
     {
         ndmhDCDataContext objCommDC = new ndmhDCDataContext();

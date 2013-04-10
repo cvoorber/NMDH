@@ -12,13 +12,18 @@ public partial class donations : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
-        {
+        {   
+            // binding the list of the country and provinces for the mailing view
             subCountryBind();
+            subProvStateBind();
+
+            // setting default values for hidden fields for mailing post/zip and mailng prov/state
+            txt_postzip.Text = "---";
+            ddl_provstate.SelectedItem.Text = "---";
         }
     }
 
-    // event caused by clicking on either of the two next buttons
-    // pass command name as parameter
+    // routine from clicking on mailing view (first view) next button
     protected void subNextUiClick(object sender, EventArgs e)
     {
        
@@ -62,8 +67,8 @@ public partial class donations : System.Web.UI.Page
             objDonate.credName = txt_credname.Text.ToString();
             objDonate.credAddress = txt_credaddress.Text.ToString();
             objDonate.credCity = txt_credcity.Text.ToString();
-            objDonate.credCountry = ddl_credcountry.SelectedItem.Value.ToString();
-            objDonate.credProvState = ddl_credprovstate.SelectedItem.Value.ToString();
+            objDonate.credCountry = ddl_credcountry.SelectedItem.Text.ToString();
+            objDonate.credProvState = ddl_credprovstate.SelectedItem.Text.ToString();
             //objDonate.credPostZip = txt_credpostzip.Text.ToString();
             objDonate.credNumber = txt_crednumber.Text.ToString();
             
@@ -95,7 +100,7 @@ public partial class donations : System.Web.UI.Page
                 string _d_fname = lbl_mfname.Text;
                 string _d_lname = lbl_mlname.Text;
                 string _d_in_memory_of = lbl_mmemory.Text;
-                decimal _d_amount = decimal.Parse(lbl_confamount.Text);
+                string _d_amount = lbl_confamount.Text;
                 string _d_email = lbl_confemail.Text;
                 string _d_address_mailing = lbl_maddress.Text;
                 string _d_city_mailing = lbl_mcity.Text;
@@ -131,7 +136,13 @@ public partial class donations : System.Web.UI.Page
     // This routine will transfer info over from mailing address form to credit card billing form
     protected void subTransferInfo(object sender, EventArgs e)
     {
+        
         // this should use some of the information from the user array and transfer it over to the credit info view
+        txt_credname.Text = lbl_mfname.Text + " " + lbl_mlname.Text;
+        txt_credaddress.Text = lbl_maddress.Text;
+        txt_credcity.Text = lbl_mcity.Text;
+        ddl_credcountry.SelectedItem.Text = lbl_mcountry.Text;
+        ddl_credprovstate.SelectedItem.Text = lbl_mprovstate.Text;
     }
 
 
@@ -158,31 +169,39 @@ public partial class donations : System.Web.UI.Page
         
         // I think this represents the country, rather than the country id - not sure what value is.
         var countryChoice = ddl_country.SelectedItem.Text;
-        
+       
         if (countryChoice == "Canada" || countryChoice == "United States")
         {
+            
             // Show provstate dropdown list - this should be by AJAX
             lbl_provstate.Visible = true;
             ddl_provstate.Visible = true;
             // call getAllStatesorProvinces
-            subProvStateBind();
+            
             // show label and text box for postal code/ZIP
             lbl_postzip.Visible = true;
             txt_postzip.Visible = true;
+
+            // enable required field validation for postzip
+            rfv_postzip.Enabled = true;
+            
             if (countryChoice == "Canada")
             {
-                //postal code validation - ajax
-                // set label text to say Postal code -ajax
+                // enable postal code regex validator control
+                rev_postzipcdn.Enabled = true;
+                rev_postzipus.Enabled = false;
             }
             else
             {
-                //zip code validation - ajax
-                // set label text to say ZIP code -ajax
+                // enable zip code regex validator control
+
+                rev_postzipus.Enabled = true;
+                rev_postzipcdn.Enabled = false;
             }
 
         }
         // might need an else here to do nothing to make this work, not sure
-
+        
     }
     // when called, will bind the ddl for prov and state do the relevant objDonate method
     private void subProvStateBind()
