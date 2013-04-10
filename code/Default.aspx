@@ -19,6 +19,11 @@
         </asp:DataList>
         <asp:Button ID="btn_show" runat="server" Text="Display/Refresh" OnClick="subUpdate" Font-Size="11" />
     </aside><%-- end "waitTime" aside --%>
+
+    <br />
+    <br />
+    <h1>Find Us!</h1>
+    <iframe width="210" height="210" style="margin:9px;border:1px solid black;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.ca/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Nipigon+District+Memorial+Hospital,+125+Hogan+Road,+Nipigon,+ON&amp;aq=0&amp;oq=nipigon&amp;sll=43.656877,-79.32085&amp;sspn=0.531548,1.352692&amp;ie=UTF8&amp;hq=Nipigon+District+Memorial+Hospital,&amp;hnear=Hogan+Rd,+Nipigon,+Thunder+Bay+District,+Ontario&amp;t=m&amp;ll=49.013217,-88.263474&amp;spn=0.028148,0.043087&amp;z=13&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.ca/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Nipigon+District+Memorial+Hospital,+125+Hogan+Road,+Nipigon,+ON&amp;aq=0&amp;oq=nipigon&amp;sll=43.656877,-79.32085&amp;sspn=0.531548,1.352692&amp;ie=UTF8&amp;hq=Nipigon+District+Memorial+Hospital,&amp;hnear=Hogan+Rd,+Nipigon,+Thunder+Bay+District,+Ontario&amp;t=m&amp;ll=49.013217,-88.263474&amp;spn=0.028148,0.043087&amp;z=13&amp;iwloc=A" style="color:#0000FF;text-align:right; font-size:10pt;">View Larger Map</a></small>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
