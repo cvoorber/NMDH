@@ -142,7 +142,6 @@
       <Column Name="gp_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="gp_title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="gp_content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="gp_image" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="gp_section" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="gp_active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>

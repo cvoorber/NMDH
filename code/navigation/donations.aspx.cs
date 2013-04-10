@@ -26,8 +26,8 @@ public partial class donations : System.Web.UI.Page
     // routine from clicking on mailing view (first view) next button
     protected void subNextUiClick(object sender, EventArgs e)
     {
-       
-       
+            // clear the message text upon form submission
+            lbl_execmess.Text = "";
             // Taking the input from the ui panel and temporarily storing it in properties (make into a fucntion)
             
             objDonate.uifirstName = txt_fname.Text.ToString();
@@ -120,8 +120,27 @@ public partial class donations : System.Web.UI.Page
         _d_address_mailing, _d_city_mailing, _d_provstate_mailing, _d_postalzip_mailing,
         _d_name_billing, _d_credit_number, _d_address_billing, _d_city_billing,
         _d_provstate_billing, _d_contry_billing), "Insert");
+
+                 //empty all the textbox fields and clear DDL's
+                txt_fname.Text = "";
+                txt_lname.Text = "";
+                txt_email.Text = "";
+                txt_mem.Text = "";
+                txt_donate.Text = "";
+                txt_address.Text = "";
+                txt_city.Text = "";
+                txt_postzip.Text = "";
+                txt_credname.Text = "";
+                txt_credaddress.Text = "";
+                txt_credcity.Text = "";
+                txt_crednumber.Text = "";
+                
+                
+             
+
                 pnl_confirm.Visible = false;
                 pnl_uinfo.Visible = true;
+                
                 break;
 
             case "Cancel":
@@ -149,6 +168,8 @@ public partial class donations : System.Web.UI.Page
     // this subroutine will bind the ddl to the list of countries and set the value field and text field
     private void subCountryBind()
     {
+        // empty all the textbox fields and clear DDL's
+        
         ddl_country.DataSource = objDonate.getAllCountries();
         ddl_country.DataValueField = "country_id";
         ddl_country.DataTextField = "name_en";

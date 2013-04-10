@@ -97,73 +97,84 @@ public partial class maintemplate : System.Web.UI.MasterPage
     }
 
     //this section deals with increasing and decreasing
+
+    //create a public eventhandler that can be used by the page and submaster
     public event EventHandler upFont; 
     public event EventHandler downFont;
+
+    //increase the font size by 2pts
     public void fontInc(object sender, EventArgs e)
     {
+        //the new main menu font size is the original plus 2
         int newsizeMain = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2)) + 2;
+
+        //the new padding is the original padding less 6 (to accomodate for the increasing font)
         int paddingMain = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString()) -6;
 
+        //the new feature menu font size is the original size plus 2
         int newsizeFeat = int.Parse(feature_menu.Font.Size.Unit.ToString().Substring(0, 2)) + 2;
+
+        //the new feature padding is the original padding less 5
         int paddingFeat = int.Parse(feature_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString()) - 5;
 
+        //20pts is the maximum font size
         if (newsizeMain > 20)
         {
+            //at this point, the font size and padding remain the same as they were
             newsizeMain = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2));
             paddingMain = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString());
             newsizeFeat = int.Parse(feature_menu.Font.Size.Unit.ToString().Substring(0, 2));
             paddingFeat = int.Parse(feature_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString());
         }
+        //set each menu to the new size and padding
         primary_menu.Font.Size = FontUnit.Point(newsizeMain);
         primary_menu.StaticMenuItemStyle.HorizontalPadding = paddingMain;
         feature_menu.Font.Size = FontUnit.Point(newsizeFeat);
         feature_menu.StaticMenuItemStyle.HorizontalPadding = paddingFeat;
 
+        //check if there is a submaster page and pass the eventhandler to it
         if (content_area.Page.Master.Master == this)
         {
             this.upFont(this, e);
         }
 
-        {
-            newsizeMain = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2));
-            paddingMain = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString());
-            newsizeFeat = int.Parse(feature_menu.Font.Size.Unit.ToString().Substring(0, 2));
-            paddingFeat = int.Parse(feature_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString());
-        }
-        primary_menu.Font.Size = FontUnit.Point(newsizeMain);
-        primary_menu.StaticMenuItemStyle.HorizontalPadding = paddingMain;
-        feature_menu.Font.Size = FontUnit.Point(newsizeFeat);
-        feature_menu.StaticMenuItemStyle.HorizontalPadding = paddingFeat;
-
-        this.upFont(this, e);
-
     }
 
+    //decrease the font size by 2pts
     public void fontDec(object sender, EventArgs e)
     {
+        //the new main menu font size is the original plus 2
         int newsizeMain = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2)) - 2;
+
+        //the new padding is the original padding less 6 (to accomodate for the increasing font)
         int paddingMain = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString()) + 6;
+
+        //the new feature menu font size is the original size plus 2
         int newsizeFeat = int.Parse(feature_menu.Font.Size.Unit.ToString().Substring(0, 2)) - 2;
+
+        //the new feature padding is the original padding less 5
         int paddingFeat = int.Parse(feature_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString()) + 5;
+
+        //12pt is the minimum font size for the main menu
         if (newsizeMain < 12)
         {
+            //at this point, the new size should remain the same as the existing size
             newsizeMain = int.Parse(primary_menu.Font.Size.Unit.ToString().Substring(0, 2));
             paddingMain = int.Parse(primary_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString());
             newsizeFeat = int.Parse(feature_menu.Font.Size.Unit.ToString().Substring(0, 2));
             paddingFeat = int.Parse(feature_menu.StaticMenuItemStyle.HorizontalPadding.Value.ToString());
         }
+        //set the menu fonts and padding to the new values
         primary_menu.Font.Size = FontUnit.Point(newsizeMain);
         primary_menu.StaticMenuItemStyle.HorizontalPadding = paddingMain;
         feature_menu.Font.Size = FontUnit.Point(newsizeFeat);
         feature_menu.StaticMenuItemStyle.HorizontalPadding = paddingFeat;
 
-
+        //check if the page is using a submaster and pass through the eventhandler if it is
         if (content_area.Page.Master.Master == this)
         {
             this.downFont(this, e);
         }
-
-        this.downFont(this, e);
 
     }
 

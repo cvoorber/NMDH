@@ -3063,8 +3063,6 @@ public partial class ndmh_general_page : INotifyPropertyChanging, INotifyPropert
 	
 	private string _gp_content;
 	
-	private string _gp_image;
-	
 	private string _gp_section;
 	
 	private bool _gp_active;
@@ -3079,8 +3077,6 @@ public partial class ndmh_general_page : INotifyPropertyChanging, INotifyPropert
     partial void Ongp_titleChanged();
     partial void Ongp_contentChanging(string value);
     partial void Ongp_contentChanged();
-    partial void Ongp_imageChanging(string value);
-    partial void Ongp_imageChanged();
     partial void Ongp_sectionChanging(string value);
     partial void Ongp_sectionChanged();
     partial void Ongp_activeChanging(bool value);
@@ -3148,26 +3144,6 @@ public partial class ndmh_general_page : INotifyPropertyChanging, INotifyPropert
 				this._gp_content = value;
 				this.SendPropertyChanged("gp_content");
 				this.Ongp_contentChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gp_image", DbType="VarChar(50)")]
-	public string gp_image
-	{
-		get
-		{
-			return this._gp_image;
-		}
-		set
-		{
-			if ((this._gp_image != value))
-			{
-				this.Ongp_imageChanging(value);
-				this.SendPropertyChanging();
-				this._gp_image = value;
-				this.SendPropertyChanged("gp_image");
-				this.Ongp_imageChanged();
 			}
 		}
 	}

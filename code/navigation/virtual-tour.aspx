@@ -1,10 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubMaster1.master" AutoEventWireup="true" CodeFile="virtual-tour.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/maintemplate.master" AutoEventWireup="true" CodeFile="virtual-tour.aspx.cs" Inherits="_Default"
+ %>
 
+<asp:Content ID="cnt_headvirt" ContentPlaceHolderID="head" Runat="Server">
+<%--Leave blank for now--%>
+</asp:Content>
 
-<asp:Content ID="cnt_mainvirt" ContentPlaceHolderID="r_content" Runat="Server">
+<asp:Content ID="cnt_mainvirt" ContentPlaceHolderID="content_area" Runat="Server">
 
-<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.ca/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Nipigon+District+Memorial+Hospital,+Hogan+Road,+Nipigon,+ON&amp;aq=0&amp;oq=nipigon+distri&amp;sll=49.303974,-84.738438&amp;sspn=15.343367,43.286133&amp;ie=UTF8&amp;hq=Nipigon+District+Memorial+Hospital,&amp;hnear=Hogan+Rd,+Nipigon,+Thunder+Bay+District,+Ontario&amp;t=m&amp;ll=49.025263,-88.262787&amp;spn=0.039397,0.072956&amp;z=13&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.ca/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Nipigon+District+Memorial+Hospital,+Hogan+Road,+Nipigon,+ON&amp;aq=0&amp;oq=nipigon+distri&amp;sll=49.303974,-84.738438&amp;sspn=15.343367,43.286133&amp;ie=UTF8&amp;hq=Nipigon+District+Memorial+Hospital,&amp;hnear=Hogan+Rd,+Nipigon,+Thunder+Bay+District,+Ontario&amp;t=m&amp;ll=49.025263,-88.262787&amp;spn=0.039397,0.072956&amp;z=13&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
-<br /><br />
 <asp:ScriptManager ID="scm_vtour" runat="server" />
     
     <%--This panel will have the view to choose which floor you want to look at

@@ -15,7 +15,8 @@
     <ContentTemplate>
     <asp:Panel runat="server" ID="pnl_uinfo" CssClass="donate-box">
         <!-- Will put main form here -->
-        
+        <asp:Label ID="lbl_maildontitle" runat="server" Font-Bold="true" Font-Size="Large" 
+        Text="Mailing/Donation Information:" Font-Underline="true" /><br /><br />
         <!--First Name -->
         <asp:Label ID="lbl_fname" runat="server" Text="First Name" />
         <asp:TextBox ID="txt_fname" runat="server" />
@@ -42,7 +43,11 @@
 
         
         <asp:Label ID="lbl_mem" runat="server" Text="In Memory of"  />
-        <asp:TextBox ID="txt_mem" runat="server" TextMode="MultiLine" /> <br /><br />  
+        <asp:TextBox ID="txt_mem" runat="server" />
+        <asp:RequiredFieldValidator ID="rfv_mem" runat="server" ErrorMessage="*Required" ControlToValidate="txt_mem"
+        ValidationGroup="mailingView" Display="Dynamic" />
+        
+         <br /><br />  
         <%--Not Required A Required Field
         
         <%--Donation Amount--%>
@@ -118,10 +123,12 @@
     <%--<asp:UpdatePanel ID="ajup_credit" runat="server" UpdateMode="Conditional">
     <ContentTemplate>--%>
     <asp:Panel runat="server" ID="pnl_credit" CssClass="donate-box" Visible="false">
- 
+    <asp:Label ID="lbl_billcredtitle" runat="server" Font-Bold="true" Font-Size="Large" 
+        Text="Billing/Credit Information:" Font-Underline="true" /><br /><br />
     <!-- Button to see if billing information is the same as mailing address -->
         <asp:Button ID="btn_cred" runat="server" Text="*"  OnClick="subTransferInfo" />
-    * Click here if billing information is the same as mailing info <br /><br />
+        <asp:Label ID="lbl_tranfinfo" runat="server" Text="Click here if billing information is the same as mailing info"
+         Font-Bold="true" />  <br /><br />
     <!-- Name - Text Box -->
     
     <asp:Label ID="lbl_credname" runat="server" Text="Billing Name" />
@@ -184,7 +191,8 @@
     <%--<asp:UpdatePanel ID="ajup_confirm" runat="server" UpdateMode="Conditional">
     <ContentTemplate>--%>
     <asp:Panel runat="server" ID="pnl_confirm" CssClass="donate-box" Visible="false">
-    
+    <asp:Label ID="Label1" runat="server" Font-Bold="true" Font-Size="Large" 
+        Text="Submission Confirmation:" Font-Underline="true" />
     <!-- Use a data bound control here in order to display the records from the fist page -->
         Donation/Mailing Info: <br /><br />
         First Name:&nbsp;
@@ -196,7 +204,7 @@
 
         Donation Amount:&nbsp;
         <!-- Donation Amount -->
-        <asp:Label ID="lbl_confamount" runat="server"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        $<asp:Label ID="lbl_confamount" runat="server"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
         Mailing Address:&nbsp;
         <!-- Mailing Address -->
@@ -257,7 +265,11 @@
 
     <%--Will Have the image at bottom of the screen, but worry about this later - it will become clearer as you proceed through the
     form stages--%>
+        
+        
     <asp:Label ID="lbl_execmess" runat="server"  />
+            
+     
      </ContentTemplate>
     <Triggers>
     <asp:AsyncPostBackTrigger ControlID="btn_uinext" EventName="Click" />
