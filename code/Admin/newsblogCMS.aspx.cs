@@ -18,6 +18,7 @@ public partial class Admin_newsblogCMS : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        //binding data on initial page load
         if (!Page.IsPostBack)
         {
             _subRebind();
@@ -32,11 +33,13 @@ public partial class Admin_newsblogCMS : System.Web.UI.Page
         txt_descI.Text = string.Empty;
         txt_contactidI.Text = string.Empty;
 
+        //news drop down
         ddl_main.DataSource = objLinq.getNews();
         ddl_main.DataTextField = "n_title";
         ddl_main.DataValueField = "n_id";
         ddl_main.DataBind();
 
+        //images drop down
         ddl_image.DataSource = objImg.getImages();
         ddl_image.DataTextField = "ImageName";
         ddl_image.DataValueField = "ImageURL";
@@ -55,6 +58,7 @@ public partial class Admin_newsblogCMS : System.Web.UI.Page
         dtl_main.DataBind();
     }
 
+    //returning selected item from drop down for editing in the ListView
     protected void subChange(object sender, EventArgs e)
     {
         int _id = int.Parse(ddl_main.SelectedValue.ToString());
@@ -62,6 +66,7 @@ public partial class Admin_newsblogCMS : System.Web.UI.Page
         lv_main.DataBind();
     }
 
+    //displays success or failure message of news IUD
     private void _strMessage(bool flag, string str)
     {
         if (flag)
@@ -74,6 +79,7 @@ public partial class Admin_newsblogCMS : System.Web.UI.Page
         }
     }
 
+    //news item insert subroutine using current system time
     protected void subInsert(object sender, EventArgs e)
     {
         string format = "dd/MM/yyyy hh:mm tt";
@@ -84,6 +90,7 @@ public partial class Admin_newsblogCMS : System.Web.UI.Page
         _subRebind();
     }
 
+    //subroutine to handle commands from listview for update and delete of articles
     protected void subAdmin(object sender, ListViewCommandEventArgs e)
     {
  
@@ -110,13 +117,16 @@ public partial class Admin_newsblogCMS : System.Web.UI.Page
         }
     }
 
-    //file upload
+    //file uploader
     protected void subImage(object sender, EventArgs e)
     {
+        //checking if post has occurred
         if (IsPostBack)
         {
             Boolean fileOK = false;
             String path = Server.MapPath("~/img/");
+            
+            //validating file extension
             if (FileUploader.HasFile)
             {
                 String fileExtension =
@@ -130,7 +140,7 @@ public partial class Admin_newsblogCMS : System.Web.UI.Page
                     }
                 }
             }
-
+            //if allowed, attempting upload with error handling
             if (fileOK)
             {
                 try
@@ -148,6 +158,7 @@ public partial class Admin_newsblogCMS : System.Web.UI.Page
                     lbl_msg.Text = "<span style='color:red;'>File could not be uploaded</span> -- " + ex.Message.ToString();
                 }
             }
+            //notifying user if they try to use a bad extension
             else
             {
                 lbl_msg.Text = "<span style='color:orange;'>Only .gif, .png, .jpg or .jpeg files can be uploaded</span>";

@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/subAdmin.master" AutoEventWireup="true" CodeFile="giftshopCMS.aspx.cs" Inherits="Admin_giftshopCMS" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
+
+    <%-- Area to insert new giftshop products --%>
     <div id="insertProd" style="width:40%;margin:0 5px 30px 30px;padding:0 20px;border:1px solid #CCC;">
             <br />
         <asp:Label ID="lbl_message" runat="server" />
@@ -32,9 +34,10 @@
             <br />
     </div><%-- end insertProd --%>
 
+    <%-- Area to view/edit the current giftshop products --%>
     <div id="editProd" style="width:70%;padding:20px;margin:0 5px 30px 10px;border:1px solid #CCC;">
         <asp:Label ID="lbl_editMsg" runat="server" />
-        <%-- the "all" panel --%>
+        <%-- the "view" panel --%>
         <asp:Panel ID="pnl_all" runat="server">
             <asp:Label ID="lbl_editTitle" runat="server" Text="List of Current Giftshop Items" Font-Bold="true" Font-Size="14" />
             <br /><br />
@@ -144,10 +147,11 @@
     </div><%-- end editProd --%>
 
     <div id="imageUpload" style="clear:both;margin:30px 0 40px 30px;">
+        
+        <%-- displays the success/failure message for the uploader --%>
         <asp:Label ID="lbl_msg" runat="server" />
 
-        <%-- This is a file uploader that puts images into the Images folder and stores the path in the ad_images table --%>
-
+        <%-- file uploader -puts images into the img folder -stores the path in the ndmh_uploads table --%>
         <asp:Label ID="lbl_heading" runat="server" Text="Use this form to upload images for use in the giftshop or newsblog." Font-Italic="true"  Font-Size="14" />
         <br />
         <asp:Label ID="Label1" runat="server" />

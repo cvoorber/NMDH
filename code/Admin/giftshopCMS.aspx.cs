@@ -8,9 +8,10 @@ using System.IO;
 
 public partial class Admin_giftshopCMS : System.Web.UI.Page
 {
-    //creating an instance of the LINQ class
+    //instantiating the products class
     productsClass objProd = new productsClass();
 
+    //executing the bind functions on initial page load
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
@@ -20,6 +21,7 @@ public partial class Admin_giftshopCMS : System.Web.UI.Page
         }
     }
 
+    //first bind function - clears inputs, binds products and images to respective dataview controls
     private void _subRebind()
     {
         imagesClass objImages = new imagesClass();
@@ -35,6 +37,7 @@ public partial class Admin_giftshopCMS : System.Web.UI.Page
         _panelControl(pnl_all);
     }
 
+    //controls the visibility of product IUD panels
     private void _panelControl(Panel pnl)
     {
         pnl_all.Visible = false;
@@ -43,7 +46,7 @@ public partial class Admin_giftshopCMS : System.Web.UI.Page
         pnl.Visible = true;
     }
 
-    //message for insert div
+    //message for product insert div
     private void _strMessage(bool flag, string str)
     {
         if (flag)
@@ -56,7 +59,7 @@ public partial class Admin_giftshopCMS : System.Web.UI.Page
         }
     }
 
-    //message for update/delete div
+    //message for product update/delete div
     private void _editMessage(bool flag, string str)
     {
         if (flag)
@@ -69,6 +72,7 @@ public partial class Admin_giftshopCMS : System.Web.UI.Page
         }
     }
 
+    //subroutine controlling commands for product insert/update/delete
     protected void subAdmin(object sender, CommandEventArgs e)
     {
         switch (e.CommandName)
@@ -86,6 +90,7 @@ public partial class Admin_giftshopCMS : System.Web.UI.Page
         }
     }
 
+    //displays product edit/update panel
     private void _showUpdate(int id)
     {
         _panelControl(pnl_update);
@@ -93,6 +98,7 @@ public partial class Admin_giftshopCMS : System.Web.UI.Page
         rpt_update.DataBind();
     }
 
+    //displays product delete panel
     private void _showDelete(int id)
     {
         _panelControl(pnl_delete);
@@ -100,6 +106,7 @@ public partial class Admin_giftshopCMS : System.Web.UI.Page
         rpt_delete.DataBind();
     }
 
+    //subroutine controlling update/delete events to carry out
     protected void subUpDel(object sender, RepeaterCommandEventArgs e)
     {
         switch (e.CommandName)
@@ -124,13 +131,16 @@ public partial class Admin_giftshopCMS : System.Web.UI.Page
         }
     }
 
-    //file upload
+    //file uploader
     protected void subImage(object sender, EventArgs e)
     {
+        //checking if post has occurred
         if (IsPostBack)
         {
             Boolean fileOK = false;
             String path = Server.MapPath("~/img/");
+
+            //validating file extension
             if (FileUploader.HasFile)
             {
                 String fileExtension =
@@ -145,6 +155,7 @@ public partial class Admin_giftshopCMS : System.Web.UI.Page
                 }
             }
 
+            //attempting upload with error handling
             if (fileOK)
             {
                 try
@@ -162,6 +173,7 @@ public partial class Admin_giftshopCMS : System.Web.UI.Page
                     lbl_msg.Text = "<span style='color:red;'>File could not be uploaded</span> -- " + ex.Message.ToString();
                 }
             }
+            //alerting user that only these extensions are allowed
             else
             {
                 lbl_msg.Text = "<span style='color:orange;'>Only .gif, .png, .jpg or .jpeg files can be uploaded</span>";
@@ -169,13 +181,7 @@ public partial class Admin_giftshopCMS : System.Web.UI.Page
         }
     }
 
-    private void _showEdit(string id)
-    {
-        imagesClass objImg = new imagesClass();
-        dtl_main.DataSource = objImg.getImagesByID(Int32.Parse(id));
-        dtl_main.DataBind();
-    }
-
+    //second bind function for images
     private void _Rebind()
     {
         imagesClass objImg = new imagesClass();
