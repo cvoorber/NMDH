@@ -15,15 +15,22 @@
 <table>
     <tr>
         <td><asp:Label ID="lbl_type" runat="server" Text="Page Type: " /></td>
-        <td><asp:DropDownList ID="ddl_type" runat="server" /></td>
+        <td>
+            <asp:DropDownList ID="ddl_type" runat="server" />
+            <asp:RequiredFieldValidator ID="rfv_typeI" runat="server" ControlToValidate="ddl_type" InitialValue="Select" ValidationGroup="insert" Text="*required" ForeColor="Red" Display="Dynamic" />
+        </td>
     </tr>
     <tr>
         <td><asp:Label ID="lbl_title" runat="server" Text="Page Title: " /></td>
-        <td><asp:TextBox ID="txt_title" runat="server" /></td>
+        <td>
+            <asp:TextBox ID="txt_title" runat="server" />
+            <asp:RequiredFieldValidator ID="rfv_titleI" runat="server" ControlToValidate="txt_title" ValidationGroup="insert" Text="*required" ForeColor="Red" Display="Dynamic" />
+            <asp:RegularExpressionValidator ID="rev_titleI" runat="server" ControlToValidate="txt_title" ValidationExpression="^[a-zA-Z '-]*$" ValidationGroup="insert" Text="*must contain letters only" ForeColor="Red" Display="Dynamic" />
+        </td>
     </tr>    
     <tr>
         <td><asp:Label ID="lbl_content" runat="server" Text="Page Content: " /></td>
-        <td></td>
+        <td><asp:RequiredFieldValidator ID="rfv_contentI" runat="server" ControlToValidate="txt_content" ValidationGroup="insert" Text="*required" ForeColor="Red" Display="Dynamic" /> </td>
     </tr>
     <tr>
         <td></td>
@@ -35,8 +42,8 @@
 </table>
     <asp:CheckBox ID="chk_publish" runat="server" Text="Publish Immediately" Checked="true" />
     <br />
-    <asp:Button ID="btn_submit" runat="server" Text="Submit" OnClick="subSubmit" />
-    <asp:Button ID="btn_cancel" runat="server" Text="Cancel" OnClick="subCancel" />
+    <asp:Button ID="btn_submit" runat="server" Text="Submit" OnClick="subSubmit" ValidationGroup="insert" />
+    <asp:Button ID="btn_cancel" runat="server" Text="Cancel" OnClick="subCancel" CausesValidation="false" />
 </asp:Panel>
 
 <asp:Panel ID="pnl_all" runat="server" CssClass="pagePanel">
@@ -84,20 +91,28 @@
                     </tr>
                     <tr>
                         <td>Title:</td>
-                        <td><asp:TextBox runat="server" ID="txt_title" Text='<%# Bind("gp_title") %>' /></td>
+                        <td>
+                            <asp:TextBox runat="server" ID="txt_title" Text='<%# Bind("gp_title") %>' />
+                            <asp:RequiredFieldValidator ID="rfv_titleE" runat="server" ControlToValidate="txt_title" ValidationGroup="edit" Text="*required" ForeColor="Red" Display="Dynamic" />
+                            <asp:RegularExpressionValidator ID="rev_titleE" runat="server" ControlToValidate="txt_title" ValidationExpression="^[a-zA-Z '-]*$" ValidationGroup="edit" Text="*must contain letters only" ForeColor="Red" Display="Dynamic" />
+                        </td>
                     </tr>
                     <tr>
                         <td>Section:</td>
-                        <td><asp:DropDownList runat="server" ID="ddl_section" /></td>
+                        <td>
+                            <asp:DropDownList runat="server" ID="ddl_section" />
+                            <asp:RequiredFieldValidator ID="rfv_typeE" runat="server" ControlToValidate="ddl_section" InitialValue="Select" ValidationGroup="edit" Text="*required" ForeColor="Red" Display="Dynamic" />
+                        </td>
                     </tr>
                     <tr><td>Content:</td></tr>
                 </table>
-                
+                    
                     <AJAX:HtmlEditorExtender ID="HtmlEditorExtender1" runat="server" TargetControlID="txt_content" EnableSanitization="false" />
                     <asp:TextBox runat="server" ID="txt_content" Text='<%# Bind("gp_content") %>' TextMode="MultiLine" CssClass="editContent" />
-                <asp:Button runat="server" ID="btn_save" Text="Save" CommandArgument='<%# Bind("gp_id") %>' CommandName="save" />
+                    <asp:RequiredFieldValidator ID="rfv_contentE" runat="server" ControlToValidate="txt_content" ValidationGroup="edit" Text="*required" ForeColor="Red" Display="Dynamic" />
+                <asp:Button runat="server" ID="btn_save" Text="Save" CommandArgument='<%# Bind("gp_id") %>' CommandName="save" ValidationGroup="edit" />
                 <asp:Button runat="server" ID="btn_cancel" Text="Cancel" CommandArgument='<%# Bind("gp_id") %>' CommandName="cancel" CausesValidation="false" />
-                <asp:Button runat="server" ID="btn_delete" Text="Delete" CommandArgument='<%# Bind("gp_id") %>' CommandName="delet" OnClientClick="confirm('Are you sure you want to delete this page? This action cannot be undone!');" />
+                <asp:Button runat="server" ID="btn_delete" Text="Delete" CommandArgument='<%# Bind("gp_id") %>' CommandName="delet" OnClientClick="confirm('Are you sure you want to delete this page? This action cannot be undone!');" CausesValidation="false" />
                 </EditItemTemplate>
             </asp:TemplateField>
         </Fields>
