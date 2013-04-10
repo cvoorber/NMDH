@@ -29,9 +29,9 @@
                 <asp:TemplateField>
                     <ItemTemplate>
                         <article class="blog">
-                            <asp:Label ID="lbl_title" runat="server" Text='<%#Eval("n_title") %>' Font-Bold="true" Font-Size="16" />
-                            <br />
+                            <asp:Label ID="lbl_title" runat="server" Text='<%#Eval("n_title") %>' Font-Bold="true" Font-Size="16" />&nbsp;&nbsp;Date Posted:
                             <asp:Label ID="lbl_date" runat="server" Text='<%#Eval("n_event_date", "{0:d}") %>' Font-Italic="true" />
+                            <asp:Image ID="img_article" runat="server" ImageUrl='<%#Eval("n_image") %>' Style="margin-top:10px;" Width="550" />
                             <br />
                             <asp:Label ID="lbl_desc" runat="server" Text='<%#Eval("n_description") %>' Font-Size="13" />
                         </article>

@@ -15,13 +15,18 @@ public partial class _default : System.Web.UI.Page
         }
     }
 
-    //instantiating the class
+    //instantiating the wait class
     waitClass objWait = new waitClass();
+
+    //instantiating the news class
+    newsClass objNews = new newsClass();
 
     private void _BindData()
     {
         dtl_main.DataSource = objWait.getWait();
         dtl_main.DataBind();
+        rpt_news.DataSource = objNews.getLatestNews();
+        rpt_news.DataBind();
     }
 
     protected void subUpdate(object sender, EventArgs e)
