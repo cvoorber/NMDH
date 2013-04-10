@@ -47,12 +47,11 @@ public partial class newPage : System.Web.UI.Page
         string _title = txt_title.Text.ToString();
         string _content = txt_content.Text.ToString();
         string _type = ddl_type.SelectedValue.ToString();
-        string _image = "testimg";
         bool _pub = chk_publish.Checked;
 
         //send the values to the insert function in the class file, 
         //through a message method that returns a message based on the success of the insert
-        output.Text = _message(objPage.newPage(_title, _type, _content, _image, _pub), "add");
+        output.Text = _message(objPage.newPage(_title, _type, _content, _pub), "add");
 
         //add a new element to the XML file if the page is to be published
         if (_pub)
