@@ -22,52 +22,40 @@
     <asp:ImageButton ID="img_search" runat="server" ImageUrl="~/img/search.png" CssClass="searchbar" />
     <asp:TextBox ID="txt_search" runat="server" SkinID="searchbar" />
     
+    <!-- These buttons trigger a font increase/decrease on the page -->
     <asp:ImageButton ID="font_decrease" runat="server" ImageUrl="~/img/fontminus.png" CssClass="fontchange" OnClick="fontDec" CausesValidation="false" />
     <asp:ImageButton ID="font_increase" runat="server" ImageUrl="~/img/fontplus.png" CssClass="fontchange" OnClick="fontInc" CausesValidation="false" />
 
+    <!-- Main logo links back to home page -->
     <asp:ImageButton ID="main_logo" runat="server" AlternateText="Nipigon District Memorial Hospital" CssClass="main-logo" ImageUrl="~/img/logo-new5.png" PostBackUrl="~/default.aspx" />
 
+        <!-- the main navigation menu - bound in the code behind -->
         <asp:Panel runat="server" CssClass="primary-nav-contain">
             <asp:Menu ID="primary_menu" runat="server" SkinID="skin_primary_nav">
-                <Items>
-                    <asp:MenuItem Text="About Us" Target="~/index.aspx" />
-                </Items>
             </asp:Menu>
         </asp:Panel>
 
+        <!-- the featured menu - bound in the code behind -->
         <asp:Panel runat="server" CssClass="feature-nav-contain">
             <asp:Menu ID="feature_menu" runat="server" SkinID="skin_feature_nav">
-                <Items>
-                    <asp:MenuItem Text="About Us" Target="~/index.aspx" />
-                </Items>
             </asp:Menu>
         </asp:Panel>
     
     <asp:panel runat="server" SkinID="maincontent" >
-    <asp:Label ID="test" runat="server" />
         <asp:ContentPlaceHolder id="content_area" runat="server">
-        
-
-
-
         </asp:ContentPlaceHolder>
     </asp:panel>
     
-
+    <!-- footer menu is bound in code behind -->
     <asp:Panel ID="upper_foot" runat="server" CssClass="upper-foot">
         <asp:Menu ID="bottom_menu" runat="server" SkinID="skin_bottom_nav">
-            <Items>
-                <asp:MenuItem Text="About Us" Target="~/index.aspx" />
-            </Items>
         </asp:Menu>
     </asp:Panel>  	
 
+    <!-- terms and copyright menu -->
     <asp:Panel ID="lower_foot" runat="server" CssClass="lower-foot">
         <asp:Panel ID="lower_foot_menu" runat="server" CssClass="foot-menu-left" >
             <asp:Menu ID="bottom_menu2" runat="server" SkinID="skin_bottom2_nav">
-                <Items>
-                    <asp:MenuItem Text="About Us" Target="~/index.aspx" />
-                </Items>
             </asp:Menu>
         </asp:Panel>
         <asp:Panel ID="copyright" runat="server" CssClass="copyright">
