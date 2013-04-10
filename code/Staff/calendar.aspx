@@ -1,6 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="calendar.aspx.cs" Inherits="calendar" MasterPageFile="~/Admin/subAdmin.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="calendar.aspx.cs" Inherits="calendar" MasterPageFile="~/subMaster1.master" %>
 <%@ Register TagPrefix="Customized" Namespace="ilanaCustom" %>
 <%@ Mastertype VirtualPath="~/Admin/subAdmin.master" %>
+
+<asp:Content runat="server" ContentPlaceHolderID="l_sidebar">
+    <asp:LoginStatus ID="lgs_admin" runat="server" CssClass="loginStatus" Font-Size="12pt" Height="30"  />
+</asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="r_content" Runat="Server">
 

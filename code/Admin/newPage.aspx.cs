@@ -47,12 +47,11 @@ public partial class newPage : System.Web.UI.Page
         string _title = txt_title.Text.ToString();
         string _content = txt_content.Text.ToString();
         string _type = ddl_type.SelectedValue.ToString();
-        string _image = "testimg";
         bool _pub = chk_publish.Checked;
 
         //send the values to the insert function in the class file, 
         //through a message method that returns a message based on the success of the insert
-        output.Text = _message(objPage.newPage(_title, _type, _content, _image, _pub), "add");
+        output.Text = _message(objPage.newPage(_title, _type, _content, _pub), "add");
 
         //add a new element to the XML file if the page is to be published
         if (_pub)
@@ -298,23 +297,35 @@ public partial class newPage : System.Web.UI.Page
                         if (el.InnerText == _id.ToString())
                         {
                             match = true;
-                            //now we want to figure out what we need to do with the existing xml sitemap. There are a few different scenarios:
-                            //1. The record in the table matches a url element in the sitemap and the user inputs that the page is published AND is in the same section as before.
-                            //      -in this instance we simply update the content of the element by replacing it with a new one
-                            //2. The record in the table matches a url element in the sitemap and the user inputs that the page is published AND is NOT in the same section as before
-                            //      -in this instance we remove the element from where it is and add a new one to the new section
-                            //3. The record in the table DOES NOT match a url element in the sitemap and the user inputs that the page is published
-                            //      -in this instance the url element must simply be added
+
+                            /*
+                             * Now we want to figure out what we need to do with the existing xml sitemap. There are a few different scenarios:
+                            1. The record in the table matches a url element in the sitemap and the user inputs that the page is published AND is in the same section as before.
+                                  -in this instance we simply update the content of the element by replacing it with a new one
+                            2. The record in the table matches a url element in the sitemap and the user inputs that the page is published AND is NOT in the same section as before
+                                  -in this instance we remove the element from where it is and add a new one to the new section
+                            3. The record in the table DOES NOT match a url element in the sitemap and the user inputs that the page is published
+                                  -in this instance the url element must simply be added to the appropriate section
+                            4. The user input determines that the page should not be published and the record in the table matches a url element in the sitemap
+                                  -here we simply remove the element from the sitemap
+                            5. The user input determines that the page should not be published and the record in the table DOES NOT match a url element in the sitemap
+                                  -do nothing
+                             * */
+
+                            
                             if (el.ParentNode.ChildNodes[0].InnerText == path && active)
                             {
+                                //scenario 1
                                 el.ParentNode.ParentNode.ReplaceChild(updElem, el.ParentNode);
                                 break;
                             }
                             else
                             {
+                                //scenario 2 and 4
                                 el.ParentNode.ParentNode.RemoveChild(el.ParentNode);
                                 if (active)
                                 {
+                                    //scenario 2
                                     doc.DocumentElement.SelectNodes("/urlset/url[loc='" + path + "']")[0].AppendChild(updElem);
                                     break;
                                 }
@@ -323,6 +334,7 @@ public partial class newPage : System.Web.UI.Page
                     }
                     if (!match && active)
                     {
+                        //scenario 3
                         doc.DocumentElement.SelectNodes("/urlset/url[loc='" + path + "']")[0].AppendChild(updElem);
                     }
 
@@ -337,7 +349,10 @@ public partial class newPage : System.Web.UI.Page
             case "cancel":
                 break;
             case "delet":
+                //execute a delete against the database and display an output message
                 output.Text = _message(objNav.deletePage(int.Parse(e.CommandArgument.ToString())), "delet");
+
+                //find the matching url element in the sitemap and remove it
                 var elementsD = doc.GetElementsByTagName("sourceid");
                 foreach (XmlNode el in elementsD)
                 {
@@ -354,13 +369,17 @@ public partial class newPage : System.Web.UI.Page
                 wrtrD.Close();
                 break;
         }
+        //hide and show the appropriate panels
         pnl_edit.Visible = false;
         pnl_all.Visible = true;
+
+        //rebind the page list to show changes
         _rebind();
     }
 
     protected void showNew(object sender, EventArgs e)
     {
+        //clear the output label and display the new page panel
         output.Text = string.Empty;
         pnl_new.Visible = true;
     }

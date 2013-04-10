@@ -1,12 +1,22 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/maintemplate.master" AutoEventWireup="true" CodeFile="virtual-tour.aspx.cs" Inherits="_Default" %>
 
+<<<<<<< HEAD
 <asp:Content ID="cnt_headvirt" ContentPlaceHolderID="head" Runat="Server">
 <%--Leave blank for now--%>
 </asp:Content>
 <asp:Content ID="cnt_mainvirt" ContentPlaceHolderID="content_area" Runat="Server">
+=======
+<asp:Content ID="c_side" runat="server" ContentPlaceHolderID="l_sidebar">
+    <h1>Explore NDMH</h1>
+    <p>Browse our hospital by selecting a floor and then the department you want to learn about</p>
+</asp:Content>
+>>>>>>> 9ffdd16899858517f77821282f6d1c19c6a1f9c7
 
 
+<<<<<<< HEAD
 <br /><br />
+=======
+>>>>>>> 9ffdd16899858517f77821282f6d1c19c6a1f9c7
 <asp:ScriptManager ID="scm_vtour" runat="server" />
     
     <%--This panel will have the view to choose which floor you want to look at

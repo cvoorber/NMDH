@@ -31,7 +31,7 @@
             <!-- text title, required -->
             <asp:TextBox ID="txt_title" runat="server" />
             <asp:RequiredFieldValidator ID="rfv_titleI" runat="server" ControlToValidate="txt_title" ValidationGroup="insert" Text="*required" ForeColor="Red" Display="Dynamic" />
-            <asp:RegularExpressionValidator ID="rev_titleI" runat="server" ControlToValidate="txt_title" ValidationExpression="^[a-zA-Z '-]*$" ValidationGroup="insert" Text="*must contain letters only" ForeColor="Red" Display="Dynamic" />
+            <asp:RegularExpressionValidator ID="rev_titleI" runat="server" ControlToValidate="txt_title" ValidationExpression="^[a-zA-Z '-]{1,23}$" ValidationGroup="insert" Text="*must contain letters only and be less than 23 characters" ForeColor="Red" Display="Dynamic" />
         </td>
     </tr>    
     <tr>
@@ -112,7 +112,7 @@
                             <!-- title is required and must contain only strings -->
                             <asp:TextBox runat="server" ID="txt_title" Text='<%# Bind("gp_title") %>' />
                             <asp:RequiredFieldValidator ID="rfv_titleE" runat="server" ControlToValidate="txt_title" ValidationGroup="edit" Text="*required" ForeColor="Red" Display="Dynamic" />
-                            <asp:RegularExpressionValidator ID="rev_titleE" runat="server" ControlToValidate="txt_title" ValidationExpression="^[a-zA-Z '-]*$" ValidationGroup="edit" Text="*must contain letters only" ForeColor="Red" Display="Dynamic" />
+                            <asp:RegularExpressionValidator ID="rev_titleE" runat="server" ControlToValidate="txt_title" ValidationExpression="^[a-zA-Z '-]{1,23}$" ValidationGroup="edit" Text="*must contain letters only and be less than 23 characters" ForeColor="Red" Display="Dynamic" />
                         </td>
                     </tr>
                     <tr>
