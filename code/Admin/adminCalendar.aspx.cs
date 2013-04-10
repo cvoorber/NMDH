@@ -11,30 +11,24 @@ public partial class calendar : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        cld_main.Caption = "Staff Room Events";
-        cld_main.FirstDayOfWeek = FirstDayOfWeek.Sunday;
-        cld_main.NextPrevFormat = NextPrevFormat.ShortMonth;
-        cld_main.TitleFormat = TitleFormat.Month;
-        cld_main.ShowGridLines = true;
-        cld_main.OtherMonthDayStyle.BackColor = System.Drawing.Color.AliceBlue;
-        cld_main.SelectedDayStyle.CssClass = "selectedday";
-        cld_main.SelectedDayStyle.ForeColor = System.Drawing.Color.Black;
-
         if (!Page.IsPostBack)
         {
-            cld_main.SelectedDate = DateTime.Now.Date;
+            _rebind();
         }
     }
 
-    protected void cld_main_SelectionChanged(object sender, EventArgs e)
+    protected void subAction(object sender, DataGridCommandEventArgs  e)
     {
-        pnl_day.Visible = true;
-        pnl_dayitems.Visible = true;
-        staffroomClass calDay = new staffroomClass();
-        DateTime day = DateTime.Parse(cld_main.SelectedDate.ToShortDateString());
-        DateTime nextday = DateTime.Parse(cld_main.SelectedDate.AddDays(1).ToShortDateString());
-        dtv_events.DataSource = calDay.getEventsbyDay(day, nextday);
-        dtv_events.DataBind();
+        staffroomClass objCal = new staffroomClass();
+        switch (e.CommandName)
+        {
+            case "subEdit":
+                dtv_events.DataSource = objCal.getEventbyID(int.Parse(e.CommandArgument.ToString()));
+                dtv_events.DataBind();
+                pnl_day.Visible = true;
+                pnl_dayitems.Visible = true;
+                break;
+        }
     }
 
     protected void hideDay(object sender, EventArgs e)
@@ -43,45 +37,57 @@ public partial class calendar : System.Web.UI.Page
         pnl_dayitems.Visible = false;
     }
 
-    protected void cld_main_VisibleMonthChanged(object sender, MonthChangedEventArgs e)
+    protected void subRepAction(object sender, RepeaterCommandEventArgs e)
     {
+        staffroomClass objEvent = new staffroomClass();
+        objEvent.deletePage(int.Parse(e.CommandArgument.ToString()));
+        pnl_day.Visible = false;
+        pnl_dayitems.Visible = false;
+        _rebind();
     }
 
-    protected void subRender(object sender, DayRenderEventArgs e)
+    public List<ListItem> getsort()
     {
-        staffroomClass objBook = new staffroomClass();
-        foreach (var day in objBook.getCalendar())
-        {
-            if (day.rb_start.Date.ToShortDateString() == e.Day.Date.ToShortDateString())
-            {
-                Literal literal1 = new Literal();
-                e.Cell.Controls.Add(literal1);
-                Label label1 = new Label();
-                label1.Text = day.rb_title.ToString() + "<br />";
-                label1.Text += day.rb_start.ToShortTimeString() + "-" + day.rb_end.ToShortTimeString();
-                label1.Font.Size = new FontUnit(FontSize.Smaller);
-                label1.CssClass = "calendarItem";
-                e.Cell.Controls.Add(label1);
-            }
-        }
+        List<ListItem> sort = new List<ListItem>();
+        sort.Add(new ListItem("Show All"));
+        sort.Add(new ListItem("Past"));
+        sort.Add(new ListItem("Future"));
+        return sort;
     }
 
     protected void subSubmit(object sender, EventArgs e)
     {
-        this.Page.Response.Redirect(this.Page.Request.RawUrl);
+        _rebind();
     }
 
-    protected void pnlShow(object sender, EventArgs e)
+    protected void _rebind()
     {
-        if (pnl_new.Visible == false)
+        staffroomClass objCal = new staffroomClass();
+        dg_all.DataSource = objCal.getCalendar();
+        dg_all.DataBind();
+
+        ddl_view.DataSource = getsort();
+        ddl_view.DataBind();
+    }
+
+    protected void subSort(object sender, EventArgs e)
+    {
+        staffroomClass objCal = new staffroomClass();
+        string sort = ddl_view.SelectedValue.ToString();
+
+        switch (sort)
         {
-            pnl_new.Visible = true;
-            btn_new.Text = "Cancel";
-        }
-        else
-        {
-            pnl_new.Visible = false;
-            btn_new.Text = "New Event";
+            case "Show All":
+                _rebind();
+                break;
+            case "Past":
+                dg_all.DataSource = objCal.getPast();
+                dg_all.DataBind();
+                break;
+            case "Future":
+                dg_all.DataSource = objCal.getFuture();
+                dg_all.DataBind();
+                break;
         }
     }
 }
