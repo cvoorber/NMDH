@@ -2,8 +2,10 @@
 <%@ Mastertype VirtualPath="~/maintemplate.master" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
+    
     <!-- section -->
     <div id="left_sidebar">
+        <asp:LoginStatus ID="lgs_admin" runat="server" CssClass="loginStatus" Font-Size="12pt" Height="30"  />
         <asp:SiteMapDataSource ID="smd_admin" runat="server" SiteMapProvider="AdminSiteMapProvider" ShowStartingNode="false" />
         <asp:Menu ID="side_menu" runat="server" DataSourceID="smd_admin" StaticMenuItemStyle-CssClass="side-menu" SkinID="skin_side_nav" />
         <asp:ContentPlaceHolder ID="l_sidebar" runat="server">

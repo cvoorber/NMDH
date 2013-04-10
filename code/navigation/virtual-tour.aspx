@@ -1,5 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubMaster1.master" AutoEventWireup="true" CodeFile="virtual-tour.aspx.cs" Inherits="_Default" %>
 
+<asp:Content ID="c_side" runat="server" ContentPlaceHolderID="l_sidebar">
+    <h1>Explore NDMH</h1>
+    <p>Browse our hospital by selecting a floor and then the department you want to learn about</p>
+</asp:Content>
 
 <asp:Content ID="cnt_mainvirt" ContentPlaceHolderID="r_content" Runat="Server">
 
