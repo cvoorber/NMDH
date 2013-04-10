@@ -43,7 +43,7 @@ public partial class _Default : System.Web.UI.Page
                 }
             }
 
-            rebind();
+            _rebind();
         }
    
     }
@@ -64,19 +64,21 @@ public partial class _Default : System.Web.UI.Page
                 fromuser = adminName
             };
 
+            //insert the message object to the database
             chatDBObj.Insert(newChatObj);
-            rebind();
+            _rebind();
         }
         txt_msg.Text = "";
     }
 
     protected void subRefresh(object sender, EventArgs e)
     {
-        rebind();
+        _rebind();
     }
 
-    private void rebind()
+    private void _rebind()
     {
+        //rebind common chat messages, ordered based on timestamp
         rpt_chat.DataSource = chatDBObj.getResultByColumn(m=>m.chatroomID==Int32.Parse(Session["chatroom"].ToString()))
             .OrderBy(m => m.timestamp);
         rpt_chat.DataBind();
@@ -86,18 +88,21 @@ public partial class _Default : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this.Page, typeof(Page), "scrolltobottom", ";divScroll();", true);
     }
     
-
+    //delete current chat entries based on chatID
     protected void clearChatInDB(object sender, EventArgs e)
     {
         using (ndmhDCDataContext dc = new ndmhDCDataContext())
         {
+            
             int chID = Int32.Parse(Session["chatroom"].ToString());
+
+            //grabs all items with chatID
             var currChatItems = dc.ndmh_chats.Where(x => x.chatroomID == chID).Select(x=>x);
             if (currChatItems != null)
             {
                 dc.ndmh_chats.DeleteAllOnSubmit(currChatItems);
                 dc.SubmitChanges();
-                rebind();
+                _rebind();
             }
         }
     }

@@ -35,12 +35,14 @@
                     </tr>
             </HeaderTemplate>
             <ItemTemplate>
+                    <tr>
                         <td><%#Eval("keyword_id") %></td>
                         <td><%#Eval("page_title") %></td>
                         <td><%#Eval("keywords") %></td>
                         <td><%#Eval("url") %></td>
-                        <td>Edit</td>
-                        <td>Delete</td>
+                        <td><asp:Button ID="btn_edit" runat="server" Text="Edit" OnClick="subEdit" CommandArgument='<%#Eval("keyword_id") %>' /></td>
+                        <td><asp:Button ID="btn_delete" runat="server" Text="Edit" OnClick="subDelete"  OnClientClick="return confirm('Are you sure?');" CommandArgument='<%#Eval("keyword_id") %>' /></td>
+                    </tr>
             </ItemTemplate>
             <FooterTemplate>
                 </table>
@@ -48,6 +50,9 @@
         </asp:Repeater>
     </asp:Panel>
 
+    <asp:Panel ID="pnl_update" runat="server">
+    
+    </asp:Panel>
 
 </asp:Content>
 

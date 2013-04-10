@@ -13,6 +13,8 @@
         Does not make sense to allow inserting of a job application 
     --%>
     
+
+    <%-- panel to hold list of application entries --%>
     <asp:Panel ID="pnl_apps" runat="server">
            <asp:DataList ID="dtl_apps" runat="server" GridLines="Both">
                 <HeaderTemplate>
@@ -68,6 +70,7 @@
             </asp:DataList>
         </asp:Panel>
         
+        <%-- panel that shows up to edit entries when Edit button is clicked --%>
         <asp:Panel ID="pnl_update" runat="server">
             <asp:DataList ID="dtl_update" runat="server" OnItemCommand="subUpdate">
                 <ItemTemplate>
@@ -164,6 +167,7 @@
                     <asp:RequiredFieldValidator ID="rfv_dateU" runat="server" ControlToValidate="txt_dateU" ErrorMessage="*required" />
                     <br />
 
+                    <%-- hiddenfield to keep track of j_application_id --%>
                     <asp:HiddenField ID="hdf_jappID" runat="server" Value='<%#Eval("j_application_id") %>' />
                     <asp:Button ID="btn_update" runat="server" CommandName="update" Text="Update" />
                     <asp:Button ID="btn_clear" runat="server" CommandName="cancel" Text="Cancel" CausesValidation="false" />
