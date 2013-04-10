@@ -10,6 +10,7 @@ public partial class newPage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //display the list of pages and bind the drop down list content
         if (!Page.IsPostBack)
         {
             _bindDDL();
@@ -17,6 +18,7 @@ public partial class newPage : System.Web.UI.Page
         }
     }
 
+    //create a list of types of pages
     public List<ListItem> getTypes()
     {
         List<ListItem> type = new List<ListItem>();
@@ -28,38 +30,41 @@ public partial class newPage : System.Web.UI.Page
         return type;
     }
 
+    //bind the dropdownlist to the section list
     private void _bindDDL()
     {
         ddl_type.DataSource = getTypes();
         ddl_type.DataBind();
     }
 
-    protected void setType(object sender, EventArgs e)
-    {
-    }
-
+    //add a new page
     protected void subSubmit(object sender, EventArgs e)
     {
+        //create a new instance of the class
         navClass objPage = new navClass();
+
+        //get the values inserted in the form
         string _title = txt_title.Text.ToString();
         string _content = txt_content.Text.ToString();
         string _type = ddl_type.SelectedValue.ToString();
         string _image = "testimg";
         bool _pub = chk_publish.Checked;
+
+        //send the values to the insert function in the class file, 
+        //through a message method that returns a message based on the success of the insert
         output.Text = _message(objPage.newPage(_title, _type, _content, _image, _pub), "add");
 
+        //add a new element to the XML file if the page is to be published
         if (_pub)
         {
-
+            //find the xml document
             string xmlpath = Request.PhysicalApplicationPath + "XMLSitemap.xml";
+            //initiate a new XML document
             XmlDocument doc = new XmlDocument();
-            doc.Load(xmlpath);                      // This code assumes that the XML file is in the same folder.
+            //load the xml document into the XmlDocument object
+            doc.Load(xmlpath);
 
-
-            //http://support.microsoft.com/kb/317664
-            //http://support.microsoft.com/kb/317666
-            // A. Addition
-            // 1. Create a new item element.
+            //create a new XML Element "url" in the XML document
             XmlElement newElem = doc.CreateElement("url");
 
             string pagesource = "";
