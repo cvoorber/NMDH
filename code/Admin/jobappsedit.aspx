@@ -98,4 +98,5 @@
                 </FooterTemplate>
             </asp:DataList>
         </asp:Panel>
+        <asp:Label ID="lbl_result" runat="server" />
 </asp:Content>
