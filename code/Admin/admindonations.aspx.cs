@@ -57,7 +57,7 @@ public partial class Admindonations : System.Web.UI.Page
                 string _d_fname = txt_imfname.Text;
                 string _d_lname = txt_imlname.Text;
                 string _d_in_memory_of = txt_imemory.Text;
-                decimal _d_amount = decimal.Parse(txt_idonamnt.Text.ToString());
+                string _d_amount = txt_idonamnt.Text;
                 string _d_email = txt_iemail.Text;
                 string _d_address_mailing = txt_imaddress.Text;
                 string _d_city_mailing = txt_imcity.Text;
@@ -117,7 +117,7 @@ public partial class Admindonations : System.Web.UI.Page
                 string _d_fname = txtEFname.Text;
                 string _d_lname = txtELname.Text;
                 string _d_in_memory_of = txtEMem.Text;
-                decimal _d_amount = decimal.Parse(txtEAmount.Text.ToString());
+                string _d_amount = txtEAmount.Text;
                 string _d_email = txtEEmail.Text;
                 string _d_address_mailing = txtEMaddress.Text;
                 string _d_city_mailing = txtEMcity.Text;
