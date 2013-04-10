@@ -2,15 +2,6 @@
 
 <asp:Content runat="server" ContentPlaceHolderID="r_content" >
         <h1><asp:Label ID="lbl_title" runat="server" Text="Careers" /></h1>
-        <br /><br />
-
-        <asp:Menu ID="mnu_career" runat="server" Orientation="Vertical">
-            <Items>
-                <asp:MenuItem Value="1" Text="Categories" />
-                <asp:MenuItem Value="2" Text="Job Postings" />
-                <asp:MenuItem Value="3" Text="Job Applications" />
-            </Items>
-        </asp:Menu>
         
         <asp:Panel ID="pnl_insert" runat="server">
             <asp:Label Text="Category Name: " runat="server" />

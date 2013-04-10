@@ -1,16 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="jobpostsedit.aspx.cs" Inherits="Admin_jobpostsedit" MasterPageFile="~/Admin/subAdmin.master" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="r_content">
-        <asp:Label ID="lbl_title" runat="server" Text="Careers" />
-        <br /><br />
-
-        <asp:Menu ID="mnu_career" runat="server" Orientation="Vertical">
-            <Items>
-                <asp:MenuItem Value="1" Text="Categories" />
-                <asp:MenuItem Value="2" Text="Job Postings" />
-                <asp:MenuItem Value="3" Text="Job Applications" />
-            </Items>
-        </asp:Menu>
+        <h1><asp:Label ID="lbl_title" runat="server" Text="Careers" /></h1>
+        
 
         <asp:Panel ID="pnl_insert" runat="server">
                     <asp:Label ID="Label1" runat="server" Text="Job Title: " />

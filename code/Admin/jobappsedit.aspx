@@ -1,21 +1,13 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="jobappsedit.aspx.cs" Inherits="Admin_jobappsedit" MasterPageFile="~/Admin/subAdmin.master" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="r_content">
-    <asp:Label ID="lbl_title" runat="server" Text="Careers" />
-        <br /><br />
     <script type="text/javascript">
         function confirmMessage() {
             return confirm("Are you sure? The associated resume file will be deleted as well.");
         }
     </script>
 
-    <asp:Menu ID="mnu_career" runat="server" Orientation="Vertical">
-        <Items>
-            <asp:MenuItem Value="1" Text="Categories" />
-            <asp:MenuItem Value="2" Text="Job Postings" />
-            <asp:MenuItem Value="3" Text="Job Applications" />
-        </Items>
-    </asp:Menu>
+    <h1><asp:Label ID="lbl_title" runat="server" Text="Careers" /></h1>
 
     <%-- Insert form was consciously taken out. 
         Does not make sense to allow inserting of a job application 

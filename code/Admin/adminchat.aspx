@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="adminchat.aspx.cs" Inherits="Admin_adminchat" MasterPageFile="~/Admin/subAdmin.master" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="adminchat.aspx.cs" Inherits="_Default" MasterPageFile="~/Admin/subAdmin.master" %>
 
 <asp:Content ID="ct_main" ContentPlaceHolderID="r_content" runat="server" >
     <asp:ScriptManager ID="scm_main" runat="server" />
@@ -10,14 +10,13 @@
             border: 1px solid black;
         }
     </style>
-      
     <%-- script to make scrollbar on chatwindow scroll down to newest msg on rebind --%>
     <script type="text/javascript">
         function divScroll() {
             var targetDiv = document.getElementById("chatbox");
             targetDiv.scrollTop = targetDiv.scrollHeight;
     </script>
-    <asp:ScriptManager ID="scm_main" runat="server" />
+    
     
     <%-- main common chat window panel --%>
     <%-- messages are display via a repeater --%>
