@@ -8,14 +8,33 @@ using System.Web.UI.WebControls;
 
 public partial class _Default : System.Web.UI.Page
 {
-    LinqClass<ndmh_chat> chatDBObj = new LinqClass<ndmh_chat>();
-    int chatID = 1;
-    int myID = 11;
+
+    LinqClass<ndmh_chat> chatDBObj = new LinqClass<ndmh_chat>(); 
+    string adminName = "quin";
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
         if (!Page.IsPostBack)
+        {
+            if (Session["chatroom"] == null)
+            {
+                int count = ChatClass.chatrooms.Count;
+                if (count == 0)
+                {
+                    Session["chatroom"] = 1;
+                    ChatClass.chatrooms.Add(new ChatClass(1, "", adminName));
+                }
+                else
+                {
+                    Session["chatroom"] = count + 1;
+                    ChatClass.chatrooms.Add(new ChatClass(count + 1, "", adminName));
+                }
+            }
+
             rebind();
+        }
+   
     }
 
     protected void subSend(object sender, EventArgs e)
@@ -25,10 +44,9 @@ public partial class _Default : System.Web.UI.Page
             ndmh_chat newChatObj = new ndmh_chat()
             {
                 message = txt_msg.Text.Replace("\n","<br />"),
-                chatroomID = chatID,
+                chatroomID = Int32.Parse(Session["chatroom"].ToString()),
                 timestamp = DateTime.Now,
-                fromuser = myID,
-                touser = 1
+                fromuser = adminName
             };
 
             chatDBObj.Insert(newChatObj);
@@ -44,7 +62,8 @@ public partial class _Default : System.Web.UI.Page
 
     private void rebind()
     {
-        rpt_chat.DataSource = chatDBObj.getItems().OrderBy(m => m.timestamp);
+        rpt_chat.DataSource = chatDBObj.getResultByColumn(m=>m.chatroomID==Int32.Parse(Session["chatroom"].ToString()))
+            .OrderBy(m => m.timestamp);
         rpt_chat.DataBind();
 
         //calling javascript function to make div scroll to latest message
@@ -53,16 +72,19 @@ public partial class _Default : System.Web.UI.Page
     }
     
 
-    public void clearChatInDB(int id)
+    protected void clearChatInDB(object sender, EventArgs e)
     {
         using (ndmhDCDataContext dc = new ndmhDCDataContext())
         {
-            var currChatItems = dc.ndmh_chats.Where(x => x.chatroomID == id).Select(x=>x);
+            int chID = Int32.Parse(Session["chatroom"].ToString());
+            var currChatItems = dc.ndmh_chats.Where(x => x.chatroomID == chID).Select(x=>x);
             if (currChatItems != null)
             {
                 dc.ndmh_chats.DeleteAllOnSubmit(currChatItems);
                 dc.SubmitChanges();
+                rebind();
             }
         }
     }
+
 }

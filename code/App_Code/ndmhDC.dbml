@@ -184,14 +184,6 @@
       <Association Name="ndmh_job_category_ndmh_job" Member="ndmh_job_category" ThisKey="j_category_id" OtherKey="j_category_id" Type="ndmh_job_category" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ndmh_keywords" Member="ndmh_keywords">
-    <Type Name="ndmh_keyword">
-      <Column Name="keyword_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="page_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="page_title" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="keywords" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.ndmh_products" Member="ndmh_products">
     <Type Name="ndmh_product">
       <Column Name="p_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -247,14 +239,22 @@
       <Column Name="w_estimate" Type="System.Decimal" DbType="Decimal(18,1)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.ndmh_keywords" Member="ndmh_keywords">
+    <Type Name="ndmh_keyword">
+      <Column Name="keyword_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="page_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="page_title" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="keywords" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="url" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.ndmh_chat" Member="ndmh_chats">
     <Type Name="ndmh_chat">
       <Column Name="messageID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="chatroomID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="message" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="touser" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="fromuser" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fromuser" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

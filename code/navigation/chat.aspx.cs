@@ -9,15 +9,28 @@ public partial class _Default : System.Web.UI.Page
 {
 
     LinqClass<ndmh_chat> chatDBObj = new LinqClass<ndmh_chat>();
-    int chatID = 1;
-    int myID = 1;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        
+
         if (!Page.IsPostBack)
         {
-            showPanel(pnl_chat);
-            rebind();
+            if (Request.QueryString["nickname"] != null)
+            {
+                Session["nickname"] = Request.QueryString["nickname"].ToString();
+
+                if(Session["chatroom"] == null)
+                    Session["chatroom"] = getChatRoom(); 
+                
+                showPanel(pnl_chat);
+                rebind();
+            }
+            else
+            {
+                showPanel(pnl_status);
+            }
+           ;
         }
     }
 
@@ -28,12 +41,11 @@ public partial class _Default : System.Web.UI.Page
             ndmh_chat newChatObj = new ndmh_chat()
             {
                 message = txt_msg.Text.Replace("\n", "<br />"),
-                chatroomID = chatID,
+                chatroomID = Int32.Parse(Session["chatroom"].ToString()),
                 timestamp = DateTime.Now,
-                fromuser = myID,
-                touser = 1
+                fromuser = Session["nickname"].ToString()
             };
-
+            
             chatDBObj.Insert(newChatObj);
             rebind();
         }
@@ -47,7 +59,8 @@ public partial class _Default : System.Web.UI.Page
 
     private void rebind()
     {
-        rpt_chat.DataSource = chatDBObj.getItems().OrderBy(m => m.timestamp);
+        rpt_chat.DataSource = chatDBObj.getResultByColumn(m => m.chatroomID == Int32.Parse(Session["chatroom"].ToString()))
+            .OrderBy(m => m.timestamp);
         rpt_chat.DataBind();
 
         //calling javascript function to make div scroll to latest message
@@ -62,7 +75,40 @@ public partial class _Default : System.Web.UI.Page
         p.Visible = true;
     }
 
+
+    private int getChatRoom()
+    {
+        int chID = 0;
+        if (ChatClass.chatrooms.Count == 0)
+        {
+            disableChat();
+            lbl_status.Text = "Chat is Offline.";
+        }
+        else
+        {
+            for (int i = 0; i < ChatClass.chatrooms.Count; i++)
+            {
+                if (ChatClass.chatrooms[i].userName == "" && ChatClass.chatrooms[i].adminName != "")
+                {
+                    ChatClass.chatrooms[i].userName = Session["nickname"].ToString();
+                    chID = i + 1;
+                }
+                else
+                {
+                    lbl_status.Text = "Currently no chats are available.";
+                }
+            }
+          
+        }
+        return chID;
+    }
+
+    private void disableChat()
+    {
+    }
+
     protected void subSubmit(object sender, EventArgs e)
     {
+        Response.Redirect("chat.aspx?nickname="+txt_nickname.Text);
     }
 }

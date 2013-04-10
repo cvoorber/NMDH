@@ -47,6 +47,7 @@
          </asp:UpdatePanel>
         <asp:Button ID="btn_send" runat="server" OnClick="subSend" Text="Send" style="width:75px;height:80px;float:left;" />
     </asp:Panel>
-   
+   <br />
+   <asp:Button ID="btn_removechat" runat="server" OnClick="clearChatInDB" Text="Remove Chat" />
 </asp:Content>
 

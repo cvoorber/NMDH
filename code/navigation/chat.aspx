@@ -12,10 +12,9 @@
     </script>
     
     <asp:ScriptManager ID="scm_main" runat="server" />
-    
+    <asp:Label ID="lbl_status" runat="server" />
+    <br /><br />
     <asp:Panel ID="pnl_status" runat="server">
-        <asp:Label ID="lbl_status" runat="server" />
-        <br /><br />
 
         <asp:Label ID="lbl_nickname" runat="server" Text="Enter a nickname:" />
         <br />
