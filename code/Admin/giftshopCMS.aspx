@@ -1,9 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/maintemplate.master" AutoEventWireup="true" CodeFile="giftshopCMS.aspx.cs" Inherits="Admin_giftshopCMS" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/subAdmin.master" AutoEventWireup="true" CodeFile="giftshopCMS.aspx.cs" Inherits="Admin_giftshopCMS" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
-    <div id="insertProd" style="float:left;width:20%;margin:0 5px 30px 30px;padding:0 20px;border:1px solid #CCC;">
+<asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
+    <div id="insertProd" style="width:40%;margin:0 5px 30px 30px;padding:0 20px;border:1px solid #CCC;">
             <br />
         <asp:Label ID="lbl_message" runat="server" />
             <br />
@@ -20,7 +18,7 @@
         <asp:TextBox ID="txt_descI" runat="server" />
         <asp:RequiredFieldValidator ID="rfv_descI" runat="server" Text="*required" ControlToValidate="txt_descI" ValidationGroup="insert" />
             <br />
-        <asp:DropDownList ID="ddl_imageI" runat="server" />
+        <asp:DropDownList ID="ddl_imageI" runat="server" />&nbsp;**Images can be uploaded below
         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Text="*required" ControlToValidate="txt_descI" ValidationGroup="insert" />
             <br />
         <asp:Label ID="lbl_priceI" runat="server" Text="Price" AssociatedControlID="txt_priceI" />
@@ -34,7 +32,7 @@
             <br />
     </div><%-- end insertProd --%>
 
-    <div id="editProd" style="float:left;width:60%;padding:20px;margin:0 5px 30px 10px;border:1px solid #CCC;">
+    <div id="editProd" style="width:70%;padding:20px;margin:0 5px 30px 10px;border:1px solid #CCC;">
         <asp:Label ID="lbl_editMsg" runat="server" />
         <%-- the "all" panel --%>
         <asp:Panel ID="pnl_all" runat="server">
@@ -178,7 +176,7 @@
                     <asp:Label ID="lbl_name" runat="server" Text="Image Name:" Font-Bold="true" />&nbsp;
                     <asp:Label ID="lbl_name2" runat="server" Text='<%#Eval("ImageName")%>' Font-Italic="true" Font-Size="15" />
                     <br /><br />
-                    <asp:Image ID="img_ad" runat="server" ImageUrl='<%#Eval("ImageURL")%>' Width="360" Height="400" />
+                    <asp:Image ID="img_ad" runat="server" ImageUrl='<%#Eval("ImageURL")%>' Width="400" Height="400" />
                     <br />
                 </div><%-- end upImages --%>
             </ItemTemplate>

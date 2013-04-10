@@ -641,6 +641,7 @@ namespace ilanaCustom
             writer.RenderEndTag();//div
         }
 
+        //this is a custom validation method to check that the start time is before the end time
         protected void timeValidate(object sender, ServerValidateEventArgs e)
         {
             DateTime start = DateTime.Parse(_start.Text.ToString());
@@ -653,13 +654,20 @@ namespace ilanaCustom
             else e.IsValid = false;
         }
 
+        //this is a custom validation method that checks the employee id provided against the database to ensure that it exists
         protected void idValidate(object sender, ServerValidateEventArgs e)
         {
+            //we initially assume that the page is invalid
             e.IsValid = false;
+
+            //create a new instance of the class
             staffClass objID = new staffClass();
+
+            //get a list of all employees
             var allID = objID.getList();
             foreach (var staff in allID)
             {
+                //if the id matches an existing employee, the page is valid
                 if (staff.sl_id.ToString() == _id.Text.ToString())
                 {
                     e.IsValid = true;

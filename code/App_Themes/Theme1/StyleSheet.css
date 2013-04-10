@@ -314,7 +314,6 @@ width:220px;
 
 #editWait {
 border:2px solid #CCC;
-float:left;
 padding:10px 25px;
 width:500px;
 margin:0 auto;
@@ -364,8 +363,7 @@ clear:both;
 .upImages {
 border:1px solid #CCC;
 padding:20px;
-margin:20px 10px 20px 0;
-float:left;
+margin:20px 40px;
 }
 
 /* - - - - - - End Giftshop CMS April 4/13 - - - - - - */
