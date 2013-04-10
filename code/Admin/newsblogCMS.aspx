@@ -1,6 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="newsblogCMS.aspx.cs" Inherits="Admin_newsblogCMS" MasterPageFile="~/Admin/subAdmin.master" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="r_content">
+    
+        <%-- Script Manager for the AJAX Toolkit --%>
+        <AJAX:ToolkitScriptManager ID="tsm_main" runat="server" />
+
+        <%-- Form to insert new articles --%>
         <asp:Label ID="lbl_message" runat="server" />
         <br />
         <br />
@@ -22,6 +27,7 @@
         <br />
         <asp:Label ID="lbl_descI" runat="server" Text="Description" AssociatedControlID="txt_descI" />
         <br />
+        <AJAX:HtmlEditorExtender ID="editor_descI" runat="server" TargetControlID="txt_descI" EnableSanitization="false" />
         <asp:TextBox ID="txt_descI" runat="server" TextMode="MultiLine" Columns="70" Rows="8" />
         <asp:RequiredFieldValidator ID="rfv_descI" runat="server" Text="*Required" Display="Dynamic" ForeColor="Red" Style="clear:both;" ControlToValidate="txt_descI" ValidationGroup="subNews" />
         <br />
@@ -53,6 +59,7 @@
                 <br />
                 <asp:Label ID="lbl_descE" runat="server" Text="Description/Body" />
                 <br />
+                <AJAX:HtmlEditorExtender ID="editor_descE" runat="server" TargetControlID="txt_descE" EnableSanitization="false" />
                 <asp:TextBox ID="txt_descE" runat="server" Text='<%#Bind("n_description") %>' TextMode="MultiLine" Columns="70" Rows="8" />
                 <asp:RequiredFieldValidator ID="rfv_descE" runat="server" Text="*Required" Display="Dynamic" ForeColor="Red" Style="clear:both;" ControlToValidate="txt_descE" ValidationGroup="upNews" />
                 <br /><br />
