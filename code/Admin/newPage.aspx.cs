@@ -57,6 +57,8 @@ public partial class newPage : System.Web.UI.Page
         //add a new element to the XML file if the page is to be published
         if (_pub)
         {
+            //NOTE: THE FOLLOWING CODE WAS CREATED WITH THE HELP OF http://forums.asp.net/t/1062335.aspx/1.
+
             //find the xml document
             string xmlpath = Request.PhysicalApplicationPath + "XMLSitemap.xml";
             //initiate a new XML document
@@ -67,15 +69,24 @@ public partial class newPage : System.Web.UI.Page
             //create a new XML Element "url" in the XML document
             XmlElement newElem = doc.CreateElement("url");
 
+            //declare a string to contain the source id for the element
             string pagesource = "";
+
+            //get a "list" (just one item is returned) of pages in the database with the title just entered
             var source = objPage.getPageByName(txt_title.Text.ToString());
+
+            //access the page record
             foreach (var s in source)
             {
+                //set the pagesource element in the xml document to the id that was given to the page just inserted
                 pagesource = s.gp_id.ToString();
             }
 
+            //initialize the values for the other elements in "url"
             string parent = "";
             string path = "";
+
+            //based on the page section selected, set the value of the parent and path elements
             switch (ddl_type.SelectedValue.ToString())
             {
                 case "About":
@@ -97,7 +108,7 @@ public partial class newPage : System.Web.UI.Page
             }
 
 
-            // Create the child nodes. This code demonstrates various ways to add them.
+            //Create the child nodes
             newElem.InnerXml = "<loc></loc><lastmod></lastmod><title></title><parent></parent><sourceid></sourceid>";
             newElem["loc"].InnerText = path;
             newElem["lastmod"].InnerText = DateTime.Now.ToString("yyyy-MM-dd");
@@ -106,22 +117,25 @@ public partial class newPage : System.Web.UI.Page
             newElem["sourceid"].InnerText = pagesource;
 
 
-            // 2.  Add the new element to the end of the item list.
+            //Add the new element to the end of the item list.
             doc.DocumentElement.SelectNodes("/urlset/url[loc='" + path + "']")[0].AppendChild(newElem);
 
 
-            // 3. Save the modified XML to a file in Unicode format.
+            //Save the modified XML to a file in Unicode format.
             doc.PreserveWhitespace = true;
             XmlTextWriter wrtr = new XmlTextWriter(xmlpath, System.Text.Encoding.Unicode);
             doc.WriteTo(wrtr);
             wrtr.Close();
         }
 
+        //clear the insert form
         txt_title.Text = string.Empty;
         txt_content.Text = string.Empty;
         ddl_type.SelectedIndex = 0;
 
+        //rebind the list of pages to show the new one
         _rebind();
+        //hide the new page panel
         pnl_new.Visible = false;
 
     }
