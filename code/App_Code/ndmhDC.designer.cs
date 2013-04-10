@@ -89,6 +89,9 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
   partial void Insertndmh_wait(ndmh_wait instance);
   partial void Updatendmh_wait(ndmh_wait instance);
   partial void Deletendmh_wait(ndmh_wait instance);
+  partial void Insertndmh_chat(ndmh_chat instance);
+  partial void Updatendmh_chat(ndmh_chat instance);
+  partial void Deletendmh_chat(ndmh_chat instance);
   #endregion
 	
 	public ndmhDCDataContext() : 
@@ -278,6 +281,14 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<ndmh_wait>();
+		}
+	}
+	
+	public System.Data.Linq.Table<ndmh_chat> ndmh_chats
+	{
+		get
+		{
+			return this.GetTable<ndmh_chat>();
 		}
 	}
 }
@@ -5218,6 +5229,188 @@ public partial class ndmh_wait : INotifyPropertyChanging, INotifyPropertyChanged
 				this._w_estimate = value;
 				this.SendPropertyChanged("w_estimate");
 				this.Onw_estimateChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_chat")]
+public partial class ndmh_chat : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _messageID;
+	
+	private int _chatroomID;
+	
+	private string _message;
+	
+	private System.DateTime _timestamp;
+	
+	private int _touser;
+	
+	private int _fromuser;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnmessageIDChanging(int value);
+    partial void OnmessageIDChanged();
+    partial void OnchatroomIDChanging(int value);
+    partial void OnchatroomIDChanged();
+    partial void OnmessageChanging(string value);
+    partial void OnmessageChanged();
+    partial void OntimestampChanging(System.DateTime value);
+    partial void OntimestampChanged();
+    partial void OntouserChanging(int value);
+    partial void OntouserChanged();
+    partial void OnfromuserChanging(int value);
+    partial void OnfromuserChanged();
+    #endregion
+	
+	public ndmh_chat()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_messageID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int messageID
+	{
+		get
+		{
+			return this._messageID;
+		}
+		set
+		{
+			if ((this._messageID != value))
+			{
+				this.OnmessageIDChanging(value);
+				this.SendPropertyChanging();
+				this._messageID = value;
+				this.SendPropertyChanged("messageID");
+				this.OnmessageIDChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_chatroomID", DbType="Int NOT NULL")]
+	public int chatroomID
+	{
+		get
+		{
+			return this._chatroomID;
+		}
+		set
+		{
+			if ((this._chatroomID != value))
+			{
+				this.OnchatroomIDChanging(value);
+				this.SendPropertyChanging();
+				this._chatroomID = value;
+				this.SendPropertyChanged("chatroomID");
+				this.OnchatroomIDChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_message", DbType="NText NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+	public string message
+	{
+		get
+		{
+			return this._message;
+		}
+		set
+		{
+			if ((this._message != value))
+			{
+				this.OnmessageChanging(value);
+				this.SendPropertyChanging();
+				this._message = value;
+				this.SendPropertyChanged("message");
+				this.OnmessageChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_timestamp", DbType="DateTime NOT NULL")]
+	public System.DateTime timestamp
+	{
+		get
+		{
+			return this._timestamp;
+		}
+		set
+		{
+			if ((this._timestamp != value))
+			{
+				this.OntimestampChanging(value);
+				this.SendPropertyChanging();
+				this._timestamp = value;
+				this.SendPropertyChanged("timestamp");
+				this.OntimestampChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_touser", DbType="Int NOT NULL")]
+	public int touser
+	{
+		get
+		{
+			return this._touser;
+		}
+		set
+		{
+			if ((this._touser != value))
+			{
+				this.OntouserChanging(value);
+				this.SendPropertyChanging();
+				this._touser = value;
+				this.SendPropertyChanged("touser");
+				this.OntouserChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fromuser", DbType="Int NOT NULL")]
+	public int fromuser
+	{
+		get
+		{
+			return this._fromuser;
+		}
+		set
+		{
+			if ((this._fromuser != value))
+			{
+				this.OnfromuserChanging(value);
+				this.SendPropertyChanging();
+				this._fromuser = value;
+				this.SendPropertyChanged("fromuser");
+				this.OnfromuserChanged();
 			}
 		}
 	}

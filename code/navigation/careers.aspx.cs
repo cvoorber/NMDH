@@ -133,8 +133,17 @@ public partial class careers : System.Web.UI.Page
     //only kicks in when something is field is filled in
     protected void subValidPhone(object sender, ServerValidateEventArgs e)
     {
-        if(!Regex.IsMatch(txt_altphone.Text,"^[2-9]\\d{2}(\\s|-)?\\d{3}(\\s|-)?\\d{4}$"))
-            e.IsValid = false;
+        if (txt_altphone.Text != "")
+        {
+            if (!Regex.IsMatch(txt_altphone.Text, "^[2-9]\\d{2}(\\s|-)?\\d{3}(\\s|-)?\\d{4}$"))
+                e.IsValid = false;
+            else
+                e.IsValid = true;
+        }
+        else
+        {
+            e.IsValid = true;
+        }
     }
 
     //handers form submission
@@ -170,7 +179,8 @@ public partial class careers : System.Web.UI.Page
         jobObj.j_id = Int32.Parse(lbl_jID.Text);
 
         //rename the uploaded resume based on firstname, lastname and jobID
-        string newfile = jobObj.j_first_name + "_" + jobObj.j_last_name + "_" + jobObj.j_id.ToString() + Path.GetExtension(lbl_status.Text).ToLower();
+        string newfile = jobObj.j_first_name + "_" + jobObj.j_last_name + "_" + jobObj.j_id.ToString() + "_" + jobObj.j_phone 
+                    + Path.GetExtension(lbl_status.Text).ToLower();
         jobObj.j_resume = newfile;
 
         //renaming file

@@ -112,7 +112,7 @@
 
         <asp:Label ID="lbl_altphone" runat="server" Text="Alternate Phone:" />
         <asp:TextBox ID="txt_altphone" runat="server" />
-        <asp:CustomValidator ID="ctv_phone" runat="server" ErrorMessage="*valid phone number required eg 416-000-0000" ValidateEmptyText="false" OnServerValidate="subValidPhone"  />
+        <asp:CustomValidator ID="ctv_phone" runat="server" ErrorMessage="*valid phone number required eg 416-000-0000" OnServerValidate="subValidPhone"  />
         <br />
 
         <asp:Label ID="lbl_email" runat="server" Text="Email:" />
@@ -156,7 +156,7 @@
         <br /><br />
 
         <%-- file upload using ajax --%>
-        <asp:ScriptManager ID="scm_main" runat="server" />
+        <asp:ScriptManager ID="scm_main" runat="server" EnablePartialRendering="true" />
         <asp:Label ID="lbl_file" runat="server" Text="Upload resume and cover letter (doc/docx/pdf):"  />
         <asp:UpdatePanel ID="udp_main" runat="server">
             <ContentTemplate>

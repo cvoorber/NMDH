@@ -4,8 +4,8 @@
 
     void Application_Start(object sender, EventArgs e) 
     {
-        List<ChatStream> chatStreams = new List<ChatStream>();
-        Application["chatStreams"] = chatStreams;
+        // Code that runs on application startup
+
     }
     
     void Application_End(object sender, EventArgs e) 

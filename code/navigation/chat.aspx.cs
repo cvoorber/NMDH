@@ -7,45 +7,52 @@ using System.Web.UI.WebControls;
 
 public partial class _Default : System.Web.UI.Page
 {
-    bool loggedIn = false;
+
+    LinqClass<ndmh_chat> chatDBObj = new LinqClass<ndmh_chat>();
+    int chatID = 1;
+    int myID = 1;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
         {
-            List<ChatStream> ass = Application["chatStreams"] as List<ChatStream>;
-            subEnableInput(ass.Count>0);
-        }
-    }
-
-    private void subEnableInput(bool yn)
-    {
-        btn_submit.Enabled = yn;
-        txt_nickname.Enabled = yn;
-
-        if (yn == true)
-            lbl_status.Text = "Chat Status: Live";
-        else
-            lbl_status.Text = "Chat Status: Offline.";
-
-        if (loggedIn)
             showPanel(pnl_chat);
-        else
-            showPanel(pnl_status);
+            rebind();
+        }
     }
 
     protected void subSend(object sender, EventArgs e)
     {
-    }
+        if (txt_msg.Text != "")
+        {
+            ndmh_chat newChatObj = new ndmh_chat()
+            {
+                message = txt_msg.Text.Replace("\n", "<br />"),
+                chatroomID = chatID,
+                timestamp = DateTime.Now,
+                fromuser = myID,
+                touser = 1
+            };
 
-    protected void subSubmit(object sender, EventArgs e)
-    {
-        loggedIn = true;
+            chatDBObj.Insert(newChatObj);
+            rebind();
+        }
+        txt_msg.Text = "";
     }
 
     protected void subRefresh(object sender, EventArgs e)
     {
+        rebind();
+    }
 
+    private void rebind()
+    {
+        rpt_chat.DataSource = chatDBObj.getItems().OrderBy(m => m.timestamp);
+        rpt_chat.DataBind();
+
+        //calling javascript function to make div scroll to latest message
+        //source: http://forums.asp.net/t/1415969.aspx/1
+        ScriptManager.RegisterStartupScript(this.Page, typeof(Page), "scrolltobottom", ";divScroll();", true);
     }
 
     private void showPanel(Panel p)
@@ -53,5 +60,9 @@ public partial class _Default : System.Web.UI.Page
         pnl_chat.Visible = false;
         pnl_status.Visible = false;
         p.Visible = true;
+    }
+
+    protected void subSubmit(object sender, EventArgs e)
+    {
     }
 }
