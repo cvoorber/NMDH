@@ -4,6 +4,7 @@
     <siteMapNode url="Admin/homepageCMS.aspx" title="Admin Home"  description=""/>
     <siteMapNode url="Admin/adminchat.aspx" title="Chat"  description=""/>
     <siteMapNode url="Admin/adminfaqs.aspx" title="FAQ"  description="" />
+    <siteMapNode url="Admin/giftshopCMS.aspx" title="Giftshop" description="" />
     <siteMapNode url="Admin/jobappsedit.aspx" title="Job Applications"  description="" />
     <siteMapNode url="Admin/jobcatsedit.aspx" title="Job Categories"  description="" />
     <siteMapNode url="Admin/jobpostsedit.aspx" title="Job Posts"  description="" />
