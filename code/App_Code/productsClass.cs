@@ -5,7 +5,7 @@ using System.Web;
 
 public class productsClass
 {
-
+    //get all products from the DB
     public IQueryable<ndmh_product> getProducts()
     {
         //create an instance of the LINQ object
@@ -16,6 +16,7 @@ public class productsClass
         return allProducts;
     }
 
+    //get products from the DB based on ID
     public IQueryable<ndmh_product> getProductsByID(int _id)
     {
         ndmhDCDataContext objProdDC = new ndmhDCDataContext();
@@ -23,6 +24,7 @@ public class productsClass
         return allProducts;
     }
 
+    //to insert a new product into the DB
     public bool commitInsert(string _name, string _desc, string _image, decimal _price)
     {
         ndmhDCDataContext objProdDC = new ndmhDCDataContext();
@@ -43,6 +45,8 @@ public class productsClass
             return true;
         }
     }
+
+    //for updating products in the DB
     public bool commitUpdate(int _id, string _name, string _desc, decimal _price)
     {
         ndmhDCDataContext objProdDC = new ndmhDCDataContext();
@@ -57,6 +61,8 @@ public class productsClass
             return true;
         }
     }
+
+    //for deleting products from the DB
     public bool commitDelete(int _id)
     {
         ndmhDCDataContext objProdDC = new ndmhDCDataContext();

@@ -5,6 +5,7 @@ using System.Web;
 
 public class newsClass
 {
+    //get all news from the DB
 	public IQueryable<ndmh_event> getNews()
     {
         //create an instance of the LINQ object
@@ -15,6 +16,7 @@ public class newsClass
         return allNews;
     }
 
+    //gets news by ID from the DB
     public IQueryable<ndmh_event> getNewsByID(int _id)
     {
         ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
@@ -22,6 +24,7 @@ public class newsClass
         return allNews;
     }
 
+    //gets the latest two records for the homepage from the DB
     public IQueryable<ndmh_event> getLatestNews()
     {
         ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
@@ -29,6 +32,7 @@ public class newsClass
         return allNews;
     }
 
+    //inserting new articles into the DB
     public bool commitInsert(string _title, string _desc, string _image, DateTime _expires, DateTime _date, int _contact)
     {
         ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
@@ -52,6 +56,7 @@ public class newsClass
         }
     }
 
+    //for updating news items currently stored in the database
     public bool commitUpdate(int _id, string _title, string _desc, string _image, int _contact)
     {
         ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
@@ -67,6 +72,8 @@ public class newsClass
             return true;
         }
     }
+
+    //for deleting news articles from the DB
     public bool commitDelete(int _id)
     {
         ndmhDCDataContext objNewsDC = new ndmhDCDataContext();

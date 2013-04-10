@@ -7,6 +7,9 @@ using System.Data.SqlClient;
 
 public class imagesClass
 {
+    //This File Used by Chris (Built For Last Semester's Final Project)
+
+    //public properties for the images class
     private static readonly string connectionString;
     static imagesClass()
     {
@@ -34,6 +37,7 @@ public class imagesClass
         set { _imgURL = value; }
     }
 
+    //get all Images from ndmh_uploads table
     public List<imagesClass> getImages()
     {
         List<imagesClass> allImages = new List<imagesClass>();
@@ -67,6 +71,7 @@ public class imagesClass
         }
     }
 
+    //get images by ID from ndmh_uploads table
     public List<imagesClass> getImagesByID(int id)
     {
         List<imagesClass> allImages = new List<imagesClass>();
@@ -99,6 +104,7 @@ public class imagesClass
         }
     }
 
+    //insert images into the ndmh_uploads table
     public string insertImage()
     {
         SqlConnection conn = new SqlConnection(connectionString);

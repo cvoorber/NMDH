@@ -9,6 +9,7 @@
         <asp:Label ID="lbl_titleI" runat="server" Text="Title" AssociatedControlID="txt_titleI" />
         <br />
         <asp:TextBox ID="txt_titleI" runat="server" />
+        <asp:RequiredFieldValidator ID="rfv_titleI" runat="server" Text="*Required" Display="Dynamic" ForeColor="Red" Style="clear:both;" ControlToValidate="txt_titleI" ValidationGroup="subNews" />
         <br />
         <asp:Label ID="lbl_imageI" runat="server" Text="Image" AssociatedControlID="ddl_image" />
         <br />
@@ -17,12 +18,14 @@
         <asp:Label ID="lbl_contactidI" runat="server" Text="Contact ID" AssociatedControlID="txt_contactidI" />
         <br />
         <asp:TextBox ID="txt_contactidI" runat="server" />
+        <asp:RequiredFieldValidator ID="rfv_contactidI" runat="server" Text="*Required" Display="Dynamic" ForeColor="Red" Style="clear:both;" ControlToValidate="txt_contactidI" ValidationGroup="subNews" />
         <br />
         <asp:Label ID="lbl_descI" runat="server" Text="Description" AssociatedControlID="txt_descI" />
         <br />
         <asp:TextBox ID="txt_descI" runat="server" TextMode="MultiLine" Columns="70" Rows="8" />
+        <asp:RequiredFieldValidator ID="rfv_descI" runat="server" Text="*Required" Display="Dynamic" ForeColor="Red" Style="clear:both;" ControlToValidate="txt_descI" ValidationGroup="subNews" />
         <br />
-        <asp:Button ID="btn_insert" runat="server" Text="Insert" OnClick="subInsert" />
+        <asp:Button ID="btn_insert" runat="server" Text="Insert" OnClick="subInsert" ValidationGroup="subNews" />
         <br />
         <br />
         <hr />
@@ -37,6 +40,7 @@
                 <asp:Label ID="lbl_titleE" runat="server" Text="News Article Title" />
                 <br />
                 <asp:TextBox ID="txt_titleE" runat="server" Text='<%#Bind("n_title") %>' />
+                <asp:RequiredFieldValidator ID="rfv_titleE" runat="server" Text="*Required" Display="Dynamic" ForeColor="Red" Style="clear:both;" ControlToValidate="txt_titleE" ValidationGroup="upNews" />
                 <br />
                 <asp:Label ID="lbl_imageE" runat="server" Text="Image" />
                 <br />
@@ -45,12 +49,14 @@
                 <asp:Label ID="lbl_contactidE" runat="server" Text="Contact ID" />
                 <br />
                 <asp:TextBox ID="txt_contactidE" runat="server" Text='<%#Bind("n_contact_id") %>' />
+                <asp:RequiredFieldValidator ID="rfv_contactidE" runat="server" Text="*Required" Display="Dynamic" ForeColor="Red" Style="clear:both;" ControlToValidate="txt_contactidE" ValidationGroup="upNews" />
                 <br />
                 <asp:Label ID="lbl_descE" runat="server" Text="Description/Body" />
                 <br />
                 <asp:TextBox ID="txt_descE" runat="server" Text='<%#Bind("n_description") %>' TextMode="MultiLine" Columns="70" Rows="8" />
+                <asp:RequiredFieldValidator ID="rfv_descE" runat="server" Text="*Required" Display="Dynamic" ForeColor="Red" Style="clear:both;" ControlToValidate="txt_descE" ValidationGroup="upNews" />
                 <br /><br />
-                <asp:LinkButton ID="lb_update" runat="server" Text="Update" CommandName="subUpdate" BackColor="LightGray" Font-Size="12" Style="border-radius:6px;padding:5px;margin-top:10px;" BorderWidth="1" BorderColor="Black" />
+                <asp:LinkButton ID="lb_update" runat="server" Text="Update" CommandName="subUpdate" BackColor="LightGray" Font-Size="12" Style="border-radius:6px;padding:5px;margin-top:10px;" BorderWidth="1" BorderColor="Black" ValidationGroup="upNews" />
                 &nbsp;&nbsp;
                 <asp:LinkButton ID="lb_delete" runat="server" Text="Delete" CommandName="subDelete" OnClientClick="return confirm('Are you sure you want to delete this record?');" BackColor="LightGray" Font-Size="12" Style="border-radius:6px;padding:5px;margin-top:10px;" BorderWidth="1" BorderColor="Black" />
             </ItemTemplate>
