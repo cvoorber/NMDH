@@ -29,7 +29,7 @@
     Orientation="Horizontal" 
     Font-Size="18pt"
     ForeColor="#002b23"
-    StaticMenuItemStyle-HorizontalPadding="45px"  
+    StaticMenuItemStyle-HorizontalPadding="43px"  
     StaticMenuItemStyle-VerticalPadding="20px"
     StaticMenuItemStyle-CssClass="feature-nav" />
 
