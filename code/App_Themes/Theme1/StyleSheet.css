@@ -228,7 +228,6 @@ h1, .h1
 #left_sidebar, #right_content
 {
     position:relative;
-    border:2px solid #11c1a2;
     margin:10px;
     float:left;
     top:-100px;

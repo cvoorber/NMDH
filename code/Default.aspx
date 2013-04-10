@@ -17,7 +17,7 @@
                 <br /><br />
             </ItemTemplate>
         </asp:DataList>
-        <asp:Button ID="btn_show" runat="server" Text="Display/Refresh" OnClick="subUpdate" Font-Size="11" />
+        <asp:Button ID="btn_show" runat="server" Text="Refresh" OnClick="subUpdate" Font-Size="11" />
     </aside><%-- end "waitTime" aside --%>
 
     <br />
