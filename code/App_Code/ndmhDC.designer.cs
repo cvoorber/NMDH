@@ -50,9 +50,6 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
   partial void Insertndmh_donation(ndmh_donation instance);
   partial void Updatendmh_donation(ndmh_donation instance);
   partial void Deletendmh_donation(ndmh_donation instance);
-  partial void Insertndmh_event(ndmh_event instance);
-  partial void Updatendmh_event(ndmh_event instance);
-  partial void Deletendmh_event(ndmh_event instance);
   partial void Insertndmh_external_link(ndmh_external_link instance);
   partial void Updatendmh_external_link(ndmh_external_link instance);
   partial void Deletendmh_external_link(ndmh_external_link instance);
@@ -89,6 +86,9 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
   partial void Insertndmh_staff_listing(ndmh_staff_listing instance);
   partial void Updatendmh_staff_listing(ndmh_staff_listing instance);
   partial void Deletendmh_staff_listing(ndmh_staff_listing instance);
+  partial void Insertndmh_event(ndmh_event instance);
+  partial void Updatendmh_event(ndmh_event instance);
+  partial void Deletendmh_event(ndmh_event instance);
   #endregion
 	
 	public ndmhDCDataContext() : 
@@ -174,14 +174,6 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<ndmh_donation>();
-		}
-	}
-	
-	public System.Data.Linq.Table<ndmh_event> ndmh_events
-	{
-		get
-		{
-			return this.GetTable<ndmh_event>();
 		}
 	}
 	
@@ -278,6 +270,14 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<ndmh_staff_listing>();
+		}
+	}
+	
+	public System.Data.Linq.Table<ndmh_event> ndmh_events
+	{
+		get
+		{
+			return this.GetTable<ndmh_event>();
 		}
 	}
 }
@@ -2356,305 +2356,6 @@ public partial class ndmh_donation : INotifyPropertyChanging, INotifyPropertyCha
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_events")]
-public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _n_id;
-	
-	private string _n_title;
-	
-	private string _n_description;
-	
-	private string _n_image;
-	
-	private System.Nullable<System.DateTime> _n_expires;
-	
-	private System.Nullable<System.DateTime> _n_event_date;
-	
-	private System.Nullable<int> _n_contact_id;
-	
-	private string _n_link;
-	
-	private EntitySet<ndmh_comment> _ndmh_comments;
-	
-	private EntityRef<ndmh_staff_listing> _ndmh_staff_listing;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onn_idChanging(int value);
-    partial void Onn_idChanged();
-    partial void Onn_titleChanging(string value);
-    partial void Onn_titleChanged();
-    partial void Onn_descriptionChanging(string value);
-    partial void Onn_descriptionChanged();
-    partial void Onn_imageChanging(string value);
-    partial void Onn_imageChanged();
-    partial void Onn_expiresChanging(System.Nullable<System.DateTime> value);
-    partial void Onn_expiresChanged();
-    partial void Onn_event_dateChanging(System.Nullable<System.DateTime> value);
-    partial void Onn_event_dateChanged();
-    partial void Onn_contact_idChanging(System.Nullable<int> value);
-    partial void Onn_contact_idChanged();
-    partial void Onn_linkChanging(string value);
-    partial void Onn_linkChanged();
-    #endregion
-	
-	public ndmh_event()
-	{
-		this._ndmh_comments = new EntitySet<ndmh_comment>(new Action<ndmh_comment>(this.attach_ndmh_comments), new Action<ndmh_comment>(this.detach_ndmh_comments));
-		this._ndmh_staff_listing = default(EntityRef<ndmh_staff_listing>);
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int n_id
-	{
-		get
-		{
-			return this._n_id;
-		}
-		set
-		{
-			if ((this._n_id != value))
-			{
-				this.Onn_idChanging(value);
-				this.SendPropertyChanging();
-				this._n_id = value;
-				this.SendPropertyChanged("n_id");
-				this.Onn_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_title", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-	public string n_title
-	{
-		get
-		{
-			return this._n_title;
-		}
-		set
-		{
-			if ((this._n_title != value))
-			{
-				this.Onn_titleChanging(value);
-				this.SendPropertyChanging();
-				this._n_title = value;
-				this.SendPropertyChanged("n_title");
-				this.Onn_titleChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_description", DbType="VarChar(MAX)")]
-	public string n_description
-	{
-		get
-		{
-			return this._n_description;
-		}
-		set
-		{
-			if ((this._n_description != value))
-			{
-				this.Onn_descriptionChanging(value);
-				this.SendPropertyChanging();
-				this._n_description = value;
-				this.SendPropertyChanged("n_description");
-				this.Onn_descriptionChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_image", DbType="VarChar(MAX)")]
-	public string n_image
-	{
-		get
-		{
-			return this._n_image;
-		}
-		set
-		{
-			if ((this._n_image != value))
-			{
-				this.Onn_imageChanging(value);
-				this.SendPropertyChanging();
-				this._n_image = value;
-				this.SendPropertyChanged("n_image");
-				this.Onn_imageChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_expires", DbType="DateTime")]
-	public System.Nullable<System.DateTime> n_expires
-	{
-		get
-		{
-			return this._n_expires;
-		}
-		set
-		{
-			if ((this._n_expires != value))
-			{
-				this.Onn_expiresChanging(value);
-				this.SendPropertyChanging();
-				this._n_expires = value;
-				this.SendPropertyChanged("n_expires");
-				this.Onn_expiresChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_event_date", DbType="DateTime")]
-	public System.Nullable<System.DateTime> n_event_date
-	{
-		get
-		{
-			return this._n_event_date;
-		}
-		set
-		{
-			if ((this._n_event_date != value))
-			{
-				this.Onn_event_dateChanging(value);
-				this.SendPropertyChanging();
-				this._n_event_date = value;
-				this.SendPropertyChanged("n_event_date");
-				this.Onn_event_dateChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_contact_id", DbType="Int")]
-	public System.Nullable<int> n_contact_id
-	{
-		get
-		{
-			return this._n_contact_id;
-		}
-		set
-		{
-			if ((this._n_contact_id != value))
-			{
-				if (this._ndmh_staff_listing.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Onn_contact_idChanging(value);
-				this.SendPropertyChanging();
-				this._n_contact_id = value;
-				this.SendPropertyChanged("n_contact_id");
-				this.Onn_contact_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_link", DbType="VarChar(50)")]
-	public string n_link
-	{
-		get
-		{
-			return this._n_link;
-		}
-		set
-		{
-			if ((this._n_link != value))
-			{
-				this.Onn_linkChanging(value);
-				this.SendPropertyChanging();
-				this._n_link = value;
-				this.SendPropertyChanged("n_link");
-				this.Onn_linkChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_event_ndmh_comment", Storage="_ndmh_comments", ThisKey="n_id", OtherKey="n_id")]
-	public EntitySet<ndmh_comment> ndmh_comments
-	{
-		get
-		{
-			return this._ndmh_comments;
-		}
-		set
-		{
-			this._ndmh_comments.Assign(value);
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_staff_listing_ndmh_event", Storage="_ndmh_staff_listing", ThisKey="n_contact_id", OtherKey="sl_id", IsForeignKey=true)]
-	public ndmh_staff_listing ndmh_staff_listing
-	{
-		get
-		{
-			return this._ndmh_staff_listing.Entity;
-		}
-		set
-		{
-			ndmh_staff_listing previousValue = this._ndmh_staff_listing.Entity;
-			if (((previousValue != value) 
-						|| (this._ndmh_staff_listing.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._ndmh_staff_listing.Entity = null;
-					previousValue.ndmh_events.Remove(this);
-				}
-				this._ndmh_staff_listing.Entity = value;
-				if ((value != null))
-				{
-					value.ndmh_events.Add(this);
-					this._n_contact_id = value.sl_id;
-				}
-				else
-				{
-					this._n_contact_id = default(Nullable<int>);
-				}
-				this.SendPropertyChanged("ndmh_staff_listing");
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-	
-	private void attach_ndmh_comments(ndmh_comment entity)
-	{
-		this.SendPropertyChanging();
-		entity.ndmh_event = this;
-	}
-	
-	private void detach_ndmh_comments(ndmh_comment entity)
-	{
-		this.SendPropertyChanging();
-		entity.ndmh_event = null;
-	}
-}
-
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_external_links")]
 public partial class ndmh_external_link : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -4645,7 +4346,7 @@ public partial class ndmh_report : INotifyPropertyChanging, INotifyPropertyChang
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_r_image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_r_image", DbType="Image", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 	public System.Data.Linq.Binary r_image
 	{
 		get
@@ -4957,9 +4658,9 @@ public partial class ndmh_staff_listing : INotifyPropertyChanging, INotifyProper
 	
 	private string _sl_email;
 	
-	private EntitySet<ndmh_event> _ndmh_events;
-	
 	private EntitySet<ndmh_roomBooking> _ndmh_roomBookings;
+	
+	private EntitySet<ndmh_event> _ndmh_events;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -4987,8 +4688,8 @@ public partial class ndmh_staff_listing : INotifyPropertyChanging, INotifyProper
 	
 	public ndmh_staff_listing()
 	{
-		this._ndmh_events = new EntitySet<ndmh_event>(new Action<ndmh_event>(this.attach_ndmh_events), new Action<ndmh_event>(this.detach_ndmh_events));
 		this._ndmh_roomBookings = new EntitySet<ndmh_roomBooking>(new Action<ndmh_roomBooking>(this.attach_ndmh_roomBookings), new Action<ndmh_roomBooking>(this.detach_ndmh_roomBookings));
+		this._ndmh_events = new EntitySet<ndmh_event>(new Action<ndmh_event>(this.attach_ndmh_events), new Action<ndmh_event>(this.detach_ndmh_events));
 		OnCreated();
 	}
 	
@@ -5132,7 +4833,7 @@ public partial class ndmh_staff_listing : INotifyPropertyChanging, INotifyProper
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sl_image", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sl_image", DbType="Image", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 	public System.Data.Linq.Binary sl_image
 	{
 		get
@@ -5172,19 +4873,6 @@ public partial class ndmh_staff_listing : INotifyPropertyChanging, INotifyProper
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_staff_listing_ndmh_event", Storage="_ndmh_events", ThisKey="sl_id", OtherKey="n_contact_id")]
-	public EntitySet<ndmh_event> ndmh_events
-	{
-		get
-		{
-			return this._ndmh_events;
-		}
-		set
-		{
-			this._ndmh_events.Assign(value);
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_staff_listing_ndmh_roomBooking", Storage="_ndmh_roomBookings", ThisKey="sl_id", OtherKey="rb_member")]
 	public EntitySet<ndmh_roomBooking> ndmh_roomBookings
 	{
@@ -5195,6 +4883,19 @@ public partial class ndmh_staff_listing : INotifyPropertyChanging, INotifyProper
 		set
 		{
 			this._ndmh_roomBookings.Assign(value);
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_staff_listing_ndmh_event", Storage="_ndmh_events", ThisKey="sl_id", OtherKey="n_contact_id")]
+	public EntitySet<ndmh_event> ndmh_events
+	{
+		get
+		{
+			return this._ndmh_events;
+		}
+		set
+		{
+			this._ndmh_events.Assign(value);
 		}
 	}
 	
@@ -5218,6 +4919,18 @@ public partial class ndmh_staff_listing : INotifyPropertyChanging, INotifyProper
 		}
 	}
 	
+	private void attach_ndmh_roomBookings(ndmh_roomBooking entity)
+	{
+		this.SendPropertyChanging();
+		entity.ndmh_staff_listing = this;
+	}
+	
+	private void detach_ndmh_roomBookings(ndmh_roomBooking entity)
+	{
+		this.SendPropertyChanging();
+		entity.ndmh_staff_listing = null;
+	}
+	
 	private void attach_ndmh_events(ndmh_event entity)
 	{
 		this.SendPropertyChanging();
@@ -5229,17 +4942,280 @@ public partial class ndmh_staff_listing : INotifyPropertyChanging, INotifyProper
 		this.SendPropertyChanging();
 		entity.ndmh_staff_listing = null;
 	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_events")]
+public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChanged
+{
 	
-	private void attach_ndmh_roomBookings(ndmh_roomBooking entity)
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _n_id;
+	
+	private string _n_title;
+	
+	private string _n_description;
+	
+	private string _n_image;
+	
+	private System.Nullable<System.DateTime> _n_expires;
+	
+	private System.Nullable<System.DateTime> _n_event_date;
+	
+	private System.Nullable<int> _n_contact_id;
+	
+	private EntitySet<ndmh_comment> _ndmh_comments;
+	
+	private EntityRef<ndmh_staff_listing> _ndmh_staff_listing;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onn_idChanging(int value);
+    partial void Onn_idChanged();
+    partial void Onn_titleChanging(string value);
+    partial void Onn_titleChanged();
+    partial void Onn_descriptionChanging(string value);
+    partial void Onn_descriptionChanged();
+    partial void Onn_imageChanging(string value);
+    partial void Onn_imageChanged();
+    partial void Onn_expiresChanging(System.Nullable<System.DateTime> value);
+    partial void Onn_expiresChanged();
+    partial void Onn_event_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Onn_event_dateChanged();
+    partial void Onn_contact_idChanging(System.Nullable<int> value);
+    partial void Onn_contact_idChanged();
+    #endregion
+	
+	public ndmh_event()
 	{
-		this.SendPropertyChanging();
-		entity.ndmh_staff_listing = this;
+		this._ndmh_comments = new EntitySet<ndmh_comment>(new Action<ndmh_comment>(this.attach_ndmh_comments), new Action<ndmh_comment>(this.detach_ndmh_comments));
+		this._ndmh_staff_listing = default(EntityRef<ndmh_staff_listing>);
+		OnCreated();
 	}
 	
-	private void detach_ndmh_roomBookings(ndmh_roomBooking entity)
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int n_id
+	{
+		get
+		{
+			return this._n_id;
+		}
+		set
+		{
+			if ((this._n_id != value))
+			{
+				this.Onn_idChanging(value);
+				this.SendPropertyChanging();
+				this._n_id = value;
+				this.SendPropertyChanged("n_id");
+				this.Onn_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_title", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string n_title
+	{
+		get
+		{
+			return this._n_title;
+		}
+		set
+		{
+			if ((this._n_title != value))
+			{
+				this.Onn_titleChanging(value);
+				this.SendPropertyChanging();
+				this._n_title = value;
+				this.SendPropertyChanged("n_title");
+				this.Onn_titleChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_description", DbType="VarChar(MAX)")]
+	public string n_description
+	{
+		get
+		{
+			return this._n_description;
+		}
+		set
+		{
+			if ((this._n_description != value))
+			{
+				this.Onn_descriptionChanging(value);
+				this.SendPropertyChanging();
+				this._n_description = value;
+				this.SendPropertyChanged("n_description");
+				this.Onn_descriptionChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_image", DbType="VarChar(MAX)")]
+	public string n_image
+	{
+		get
+		{
+			return this._n_image;
+		}
+		set
+		{
+			if ((this._n_image != value))
+			{
+				this.Onn_imageChanging(value);
+				this.SendPropertyChanging();
+				this._n_image = value;
+				this.SendPropertyChanged("n_image");
+				this.Onn_imageChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_expires", DbType="DateTime")]
+	public System.Nullable<System.DateTime> n_expires
+	{
+		get
+		{
+			return this._n_expires;
+		}
+		set
+		{
+			if ((this._n_expires != value))
+			{
+				this.Onn_expiresChanging(value);
+				this.SendPropertyChanging();
+				this._n_expires = value;
+				this.SendPropertyChanged("n_expires");
+				this.Onn_expiresChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_event_date", DbType="DateTime")]
+	public System.Nullable<System.DateTime> n_event_date
+	{
+		get
+		{
+			return this._n_event_date;
+		}
+		set
+		{
+			if ((this._n_event_date != value))
+			{
+				this.Onn_event_dateChanging(value);
+				this.SendPropertyChanging();
+				this._n_event_date = value;
+				this.SendPropertyChanged("n_event_date");
+				this.Onn_event_dateChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_n_contact_id", DbType="Int")]
+	public System.Nullable<int> n_contact_id
+	{
+		get
+		{
+			return this._n_contact_id;
+		}
+		set
+		{
+			if ((this._n_contact_id != value))
+			{
+				if (this._ndmh_staff_listing.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onn_contact_idChanging(value);
+				this.SendPropertyChanging();
+				this._n_contact_id = value;
+				this.SendPropertyChanged("n_contact_id");
+				this.Onn_contact_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_event_ndmh_comment", Storage="_ndmh_comments", ThisKey="n_id", OtherKey="n_id")]
+	public EntitySet<ndmh_comment> ndmh_comments
+	{
+		get
+		{
+			return this._ndmh_comments;
+		}
+		set
+		{
+			this._ndmh_comments.Assign(value);
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_staff_listing_ndmh_event", Storage="_ndmh_staff_listing", ThisKey="n_contact_id", OtherKey="sl_id", IsForeignKey=true)]
+	public ndmh_staff_listing ndmh_staff_listing
+	{
+		get
+		{
+			return this._ndmh_staff_listing.Entity;
+		}
+		set
+		{
+			ndmh_staff_listing previousValue = this._ndmh_staff_listing.Entity;
+			if (((previousValue != value) 
+						|| (this._ndmh_staff_listing.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._ndmh_staff_listing.Entity = null;
+					previousValue.ndmh_events.Remove(this);
+				}
+				this._ndmh_staff_listing.Entity = value;
+				if ((value != null))
+				{
+					value.ndmh_events.Add(this);
+					this._n_contact_id = value.sl_id;
+				}
+				else
+				{
+					this._n_contact_id = default(Nullable<int>);
+				}
+				this.SendPropertyChanged("ndmh_staff_listing");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_ndmh_comments(ndmh_comment entity)
 	{
 		this.SendPropertyChanging();
-		entity.ndmh_staff_listing = null;
+		entity.ndmh_event = this;
+	}
+	
+	private void detach_ndmh_comments(ndmh_comment entity)
+	{
+		this.SendPropertyChanging();
+		entity.ndmh_event = null;
 	}
 }
 #pragma warning restore 1591

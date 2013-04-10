@@ -44,12 +44,6 @@
         <elementListCompartment Id="783ee088-fdc2-4e08-9b2d-2e6deedfa555" absoluteBounds="11.515, 11.585, 1.9700000000000002, 4.8646240234375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="ee3e6964-ea72-4e9a-b3de-05730165eaf8" absoluteBounds="11.5, 4, 2, 2.347801106770834">
-      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_event" />
-      <nestedChildShapes>
-        <elementListCompartment Id="88c6a7c6-aa02-4f2b-b32e-9a6fa7429618" absoluteBounds="11.515, 4.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="41063dec-06d1-4b5d-83f6-5d0718795d7d" absoluteBounds="0.75, 11.75, 2, 1.7708968098958344">
       <DataClassMoniker Name="/ndmhDCDataContext/ndmh_external_link" />
       <nestedChildShapes>
@@ -122,67 +116,73 @@
         <elementListCompartment Id="5a76acb6-d0f7-442e-9c49-c12aafc7d259" absoluteBounds="8.765, 2.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4 : 3.91429768880208); (4.375 : 3.91429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4 : 3.91429768880208); (4.375 : 3.91429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ndmhDCDataContext/base_country/base_country_state_or_province" />
       <nodes>
         <classShapeMoniker Id="12a79d95-642f-47e4-b641-4a77cc8d32c8" />
         <classShapeMoniker Id="62a90ea2-1764-4d72-93ac-625953c15ed3" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.75 : 13.7508048502604); (11.5 : 13.7508048502604)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(10.75 : 13.7508048502604); (11.5 : 13.7508048502604)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ndmhDCDataContext/ndmh_department_listing/ndmh_department_listing_ndmh_donation" />
       <nodes>
         <classShapeMoniker Id="e485ea6c-a35a-49ac-9f89-c19dd4fc3b68" />
         <classShapeMoniker Id="955ae746-ac62-4552-b9fb-59f78a74612a" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(13.5 : 5.13544840494792); (14.25 : 5.13544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/ndmhDCDataContext/ndmh_event/ndmh_event_ndmh_comment" />
-      <nodes>
-        <classShapeMoniker Id="ee3e6964-ea72-4e9a-b3de-05730165eaf8" />
-        <classShapeMoniker Id="11d7024c-7015-45fe-b697-f6fad9dcb31d" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(10.75 : 8.69314697265625); (11.5 : 8.69314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(10.75 : 8.69314697265625); (11.5 : 8.69314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ndmhDCDataContext/ndmh_faq/ndmh_faq_ndmh_faq_keyword" />
       <nodes>
         <classShapeMoniker Id="ad94420d-7eae-4d7d-89f5-f4d25b6078ab" />
         <classShapeMoniker Id="015f13b6-c0ce-4580-abe7-537ed6fddd5a" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.5 : 8.75); (4.5 : 7.29890055338542); (6.25 : 7.29890055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.5 : 8.75); (4.5 : 7.29890055338542); (6.25 : 7.29890055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ndmhDCDataContext/ndmh_job/ndmh_job_ndmh_contact" />
       <nodes>
         <classShapeMoniker Id="3f8d8602-9fac-4621-8a81-e07e57593604" />
         <classShapeMoniker Id="b8fb5f0c-533b-4f40-bd8f-3c646c27eb4d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 10.0777498372396); (6.25 : 10.0777498372396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 10.0777498372396); (6.25 : 10.0777498372396)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ndmhDCDataContext/ndmh_job/ndmh_job_ndmh_job_application" />
       <nodes>
         <classShapeMoniker Id="3f8d8602-9fac-4621-8a81-e07e57593604" />
         <classShapeMoniker Id="f506b4ab-adc9-4282-81d7-56453ac1f80a" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 9.72199625651042); (3.5 : 9.72199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 9.72199625651042); (3.5 : 9.72199625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ndmhDCDataContext/ndmh_job_category/ndmh_job_category_ndmh_job" />
       <nodes>
         <classShapeMoniker Id="ecc1758d-a85c-4259-b63d-c1194744421c" />
         <classShapeMoniker Id="3f8d8602-9fac-4621-8a81-e07e57593604" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.75 : 4.52005126953125); (11.5 : 4.52005126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/ndmhDCDataContext/ndmh_staff_listing/ndmh_staff_listing_ndmh_event" />
-      <nodes>
-        <classShapeMoniker Id="3d3880a9-c2b3-43a6-a727-01e37af7ea35" />
-        <classShapeMoniker Id="ee3e6964-ea72-4e9a-b3de-05730165eaf8" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(10.75 : 2.89024983723958); (11.5 : 2.89024983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(10.75 : 2.89024983723958); (11.5 : 2.89024983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/ndmhDCDataContext/ndmh_staff_listing/ndmh_staff_listing_ndmh_roomBooking" />
       <nodes>
         <classShapeMoniker Id="3d3880a9-c2b3-43a6-a727-01e37af7ea35" />
         <classShapeMoniker Id="fa2e14d0-096b-4afa-85ed-0e4ce35d4941" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d6fa89f2-fe25-40ad-91f7-7b2d914615a0" absoluteBounds="11.75, 4.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/ndmhDCDataContext/ndmh_event" />
+      <nestedChildShapes>
+        <elementListCompartment Id="453c7253-d95f-4f22-9602-a55e5db6a515" absoluteBounds="11.765, 5.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(13.75 : 5.38544840494792); (14.25 : 5.38544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ndmhDCDataContext/ndmh_event/ndmh_event_ndmh_comment" />
+      <nodes>
+        <classShapeMoniker Id="d6fa89f2-fe25-40ad-91f7-7b2d914615a0" />
+        <classShapeMoniker Id="11d7024c-7015-45fe-b697-f6fad9dcb31d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.75 : 4.04649933723958); (13.65625 : 4.04649933723958); (13.65625 : 4.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ndmhDCDataContext/ndmh_staff_listing/ndmh_staff_listing_ndmh_event" />
+      <nodes>
+        <classShapeMoniker Id="3d3880a9-c2b3-43a6-a727-01e37af7ea35" />
+        <classShapeMoniker Id="d6fa89f2-fe25-40ad-91f7-7b2d914615a0" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

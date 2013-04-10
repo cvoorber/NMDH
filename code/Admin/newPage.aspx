@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="newPage.aspx.cs" MasterPageFile="~/Admin/subAdmin.master" Inherits="newPage" ValidateRequest="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="newPage.aspx.cs" MasterPageFile="~/Admin/subAdmin.master" Inherits="newPage" %>
 <%@ Mastertype VirtualPath="~/Admin/subAdmin.master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
@@ -110,6 +110,7 @@
                     <AJAX:HtmlEditorExtender ID="HtmlEditorExtender1" runat="server" TargetControlID="txt_content" EnableSanitization="false" />
                     <asp:TextBox runat="server" ID="txt_content" Text='<%# Bind("gp_content") %>' TextMode="MultiLine" CssClass="editContent" />
                     <asp:RequiredFieldValidator ID="rfv_contentE" runat="server" ControlToValidate="txt_content" ValidationGroup="edit" Text="*required" ForeColor="Red" Display="Dynamic" />
+                    <br /><br />
                 <asp:Button runat="server" ID="btn_save" Text="Save" CommandArgument='<%# Bind("gp_id") %>' CommandName="save" ValidationGroup="edit" />
                 <asp:Button runat="server" ID="btn_cancel" Text="Cancel" CommandArgument='<%# Bind("gp_id") %>' CommandName="cancel" CausesValidation="false" />
                 <asp:Button runat="server" ID="btn_delete" Text="Delete" CommandArgument='<%# Bind("gp_id") %>' CommandName="delet" OnClientClick="confirm('Are you sure you want to delete this page? This action cannot be undone!');" CausesValidation="false" />

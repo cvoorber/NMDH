@@ -19,6 +19,7 @@
 </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
+<h1>Latest News</h1>
     <asp:Repeater ID="rpt_news" runat="server">
         <ItemTemplate>
             <article class="blog" style="border:1px solid #CCC;padding:20px;margin-bottom:10px;">

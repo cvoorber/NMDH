@@ -29,7 +29,7 @@ public class newsClass
         return allNews;
     }
 
-    public bool commitInsert(string _title, string _desc, string _image, DateTime _expires, DateTime _date, int _contact, string _link)
+    public bool commitInsert(string _title, string _desc, string _image, DateTime _expires, DateTime _date, int _contact)
     {
         ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
         //to ensure all data will be disposed when finished
@@ -44,7 +44,6 @@ public class newsClass
             objFreshNews.n_expires = _expires;
             objFreshNews.n_event_date = _date;
             objFreshNews.n_contact_id = _contact;
-            objFreshNews.n_link = _link;
             //insert command
             objNewsDC.ndmh_events.InsertOnSubmit(objFreshNews);
             //commit insert against DB
@@ -53,7 +52,7 @@ public class newsClass
         }
     }
 
-    public bool commitUpdate(int _id, string _title, string _desc, string _image, int _contact, string _link)
+    public bool commitUpdate(int _id, string _title, string _desc, string _image, int _contact)
     {
         ndmhDCDataContext objNewsDC = new ndmhDCDataContext();
         using (objNewsDC)
@@ -63,7 +62,6 @@ public class newsClass
             objUpNews.n_description = _desc;
             objUpNews.n_image = _image;
             objUpNews.n_contact_id = _contact;
-            objUpNews.n_link = _link;
             //commit update against DB
             objNewsDC.SubmitChanges();
             return true;
