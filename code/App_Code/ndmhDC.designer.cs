@@ -98,7 +98,7 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
   #endregion
 	
 	public ndmhDCDataContext() : 
-			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["cvoorberConnectionString"].ConnectionString, mappingSource)
+			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["cvoorberConnectionString1"].ConnectionString, mappingSource)
 	{
 		OnCreated();
 	}
@@ -1351,8 +1351,6 @@ public partial class ndmh_department_listing : INotifyPropertyChanging, INotifyP
 	
 	private System.Nullable<int> _dl_img_height;
 	
-	private EntityRef<ndmh_donation> _ndmh_donation;
-	
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1389,7 +1387,6 @@ public partial class ndmh_department_listing : INotifyPropertyChanging, INotifyP
 	
 	public ndmh_department_listing()
 	{
-		this._ndmh_donation = default(EntityRef<ndmh_donation>);
 		OnCreated();
 	}
 	
@@ -1673,35 +1670,6 @@ public partial class ndmh_department_listing : INotifyPropertyChanging, INotifyP
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_department_listing_ndmh_donation", Storage="_ndmh_donation", ThisKey="dl_id", OtherKey="d_id", IsUnique=true, IsForeignKey=false)]
-	public ndmh_donation ndmh_donation
-	{
-		get
-		{
-			return this._ndmh_donation.Entity;
-		}
-		set
-		{
-			ndmh_donation previousValue = this._ndmh_donation.Entity;
-			if (((previousValue != value) 
-						|| (this._ndmh_donation.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._ndmh_donation.Entity = null;
-					previousValue.ndmh_department_listing = null;
-				}
-				this._ndmh_donation.Entity = value;
-				if ((value != null))
-				{
-					value.ndmh_department_listing = this;
-				}
-				this.SendPropertyChanged("ndmh_donation");
-			}
-		}
-	}
-	
 	public event PropertyChangingEventHandler PropertyChanging;
 	
 	public event PropertyChangedEventHandler PropertyChanged;
@@ -1739,7 +1707,7 @@ public partial class ndmh_donation : INotifyPropertyChanging, INotifyPropertyCha
 	
 	private string _d_in_memory_of;
 	
-	private decimal _d_amount;
+	private string _d_amount;
 	
 	private string _d_credit_type;
 	
@@ -1777,8 +1745,6 @@ public partial class ndmh_donation : INotifyPropertyChanging, INotifyPropertyCha
 	
 	private string _d_postzip_billing;
 	
-	private EntityRef<ndmh_department_listing> _ndmh_department_listing;
-	
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1793,7 +1759,7 @@ public partial class ndmh_donation : INotifyPropertyChanging, INotifyPropertyCha
     partial void Ond_lnameChanged();
     partial void Ond_in_memory_ofChanging(string value);
     partial void Ond_in_memory_ofChanged();
-    partial void Ond_amountChanging(decimal value);
+    partial void Ond_amountChanging(string value);
     partial void Ond_amountChanged();
     partial void Ond_credit_typeChanging(string value);
     partial void Ond_credit_typeChanged();
@@ -1835,7 +1801,6 @@ public partial class ndmh_donation : INotifyPropertyChanging, INotifyPropertyCha
 	
 	public ndmh_donation()
 	{
-		this._ndmh_department_listing = default(EntityRef<ndmh_department_listing>);
 		OnCreated();
 	}
 	
@@ -1850,10 +1815,6 @@ public partial class ndmh_donation : INotifyPropertyChanging, INotifyPropertyCha
 		{
 			if ((this._d_id != value))
 			{
-				if (this._ndmh_department_listing.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
 				this.Ond_idChanging(value);
 				this.SendPropertyChanging();
 				this._d_id = value;
@@ -1903,7 +1864,7 @@ public partial class ndmh_donation : INotifyPropertyChanging, INotifyPropertyCha
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_lname", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_lname", DbType="VarChar(50)")]
 	public string d_lname
 	{
 		get
@@ -1943,8 +1904,8 @@ public partial class ndmh_donation : INotifyPropertyChanging, INotifyPropertyCha
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_amount", DbType="Decimal(18,2) NOT NULL")]
-	public decimal d_amount
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_amount", DbType="VarChar(MAX)")]
+	public string d_amount
 	{
 		get
 		{
@@ -1983,7 +1944,7 @@ public partial class ndmh_donation : INotifyPropertyChanging, INotifyPropertyCha
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_credit_number", DbType="Char(16)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_d_credit_number", DbType="VarChar(50)")]
 	public string d_credit_number
 	{
 		get
@@ -2319,40 +2280,6 @@ public partial class ndmh_donation : INotifyPropertyChanging, INotifyPropertyCha
 				this._d_postzip_billing = value;
 				this.SendPropertyChanged("d_postzip_billing");
 				this.Ond_postzip_billingChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_department_listing_ndmh_donation", Storage="_ndmh_department_listing", ThisKey="d_id", OtherKey="dl_id", IsForeignKey=true)]
-	public ndmh_department_listing ndmh_department_listing
-	{
-		get
-		{
-			return this._ndmh_department_listing.Entity;
-		}
-		set
-		{
-			ndmh_department_listing previousValue = this._ndmh_department_listing.Entity;
-			if (((previousValue != value) 
-						|| (this._ndmh_department_listing.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._ndmh_department_listing.Entity = null;
-					previousValue.ndmh_donation = null;
-				}
-				this._ndmh_department_listing.Entity = value;
-				if ((value != null))
-				{
-					value.ndmh_donation = this;
-					this._d_id = value.dl_id;
-				}
-				else
-				{
-					this._d_id = default(int);
-				}
-				this.SendPropertyChanged("ndmh_department_listing");
 			}
 		}
 	}
@@ -4218,8 +4145,6 @@ public partial class ndmh_keyword : INotifyPropertyChanging, INotifyPropertyChan
 	
 	private int _keyword_id;
 	
-	private System.Nullable<int> _page_id;
-	
 	private string _page_title;
 	
 	private string _keywords;
@@ -4232,8 +4157,6 @@ public partial class ndmh_keyword : INotifyPropertyChanging, INotifyPropertyChan
     partial void OnCreated();
     partial void Onkeyword_idChanging(int value);
     partial void Onkeyword_idChanged();
-    partial void Onpage_idChanging(System.Nullable<int> value);
-    partial void Onpage_idChanged();
     partial void Onpage_titleChanging(string value);
     partial void Onpage_titleChanged();
     partial void OnkeywordsChanging(string value);
@@ -4263,26 +4186,6 @@ public partial class ndmh_keyword : INotifyPropertyChanging, INotifyPropertyChan
 				this._keyword_id = value;
 				this.SendPropertyChanged("keyword_id");
 				this.Onkeyword_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_id", DbType="Int")]
-	public System.Nullable<int> page_id
-	{
-		get
-		{
-			return this._page_id;
-		}
-		set
-		{
-			if ((this._page_id != value))
-			{
-				this.Onpage_idChanging(value);
-				this.SendPropertyChanging();
-				this._page_id = value;
-				this.SendPropertyChanged("page_id");
-				this.Onpage_idChanged();
 			}
 		}
 	}

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="cvoorber" Class="ndmhDCDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=cvoorber.db.10296660.hostedresource.com;Initial Catalog=cvoorber;Persist Security Info=True;User ID=cvoorber" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="cvoorberConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=cvoorber.db.10296660.hostedresource.com;Initial Catalog=cvoorber;Persist Security Info=True;User ID=cvoorber" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="cvoorberConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.base_country" Member="base_countries">
     <Type Name="base_country">
       <Column Name="country_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -68,7 +68,6 @@
       <Column Name="dl_img_desc" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
       <Column Name="dl_img_width" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="dl_img_height" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="ndmh_department_listing_ndmh_donation" Member="ndmh_donation" ThisKey="dl_id" OtherKey="d_id" Type="ndmh_donation" Cardinality="One" />
     </Type>
   </Table>
   <Table Name="dbo.ndmh_donations" Member="ndmh_donations">
@@ -76,11 +75,11 @@
       <Column Name="d_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="d_title" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="d_fname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="d_lname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="d_lname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="d_in_memory_of" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="d_amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="d_amount" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="d_credit_type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="d_credit_number" Type="System.String" DbType="Char(16)" CanBeNull="true" />
+      <Column Name="d_credit_number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="d_credit_expiry" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="d_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="d_comments" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
@@ -97,7 +96,6 @@
       <Column Name="d_provstate_billing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="d_postzip_mailing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="d_postzip_billing" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Association Name="ndmh_department_listing_ndmh_donation" Member="ndmh_department_listing" ThisKey="d_id" OtherKey="dl_id" Type="ndmh_department_listing" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ndmh_events" Member="ndmh_events">
@@ -195,7 +193,6 @@
   <Table Name="dbo.ndmh_keywords" Member="ndmh_keywords">
     <Type Name="ndmh_keyword">
       <Column Name="keyword_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="page_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="page_title" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="keywords" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="url" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
