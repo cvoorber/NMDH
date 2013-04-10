@@ -19,9 +19,28 @@
     <asp:Label ID="lbl_test" runat="server" />
     <asp:Repeater ID="rpt_searchresults" runat="server">
     <ItemTemplate>
-        <asp:Label ID="lbl_seresult" runat="server" Text='<%#Eval("ndmh_faq_title") %>' />
+        <asp:Label ID="lbl_seresult" runat="server" Text='<%#Eval("ndmh_faq_title") %>' Font-Bold="true" />
+        <br /><br />
+        <asp:Label ID="lbl_secontent" runat="server" Text='<%#Eval("ndmh_content") %>' />
+        <br /><br />
+        <asp:Button ID="btn_morefaq" runat="server" Text="Other Faqs" OnClick="subMoreFaqs" /><br />
     </ItemTemplate>
+        
 
+    </asp:Repeater>
+
+    <asp:Repeater ID="rpt_morefaqs" runat="server">
+    <HeaderTemplate>
+    <asp:Label runat="server" ID="lbl_mrtitle" Font-Size="Large" Text="More FAQs" /> <br /> <br />
+    </HeaderTemplate>
+    <ItemTemplate>
+    
+        <asp:Label ID="lbl_morefaqtitle" runat="server" Text='<%#Eval("ndmh_faq_title") %>' Font-Bold="true" /><br />
+        <asp:Label ID="lbl_morefaqcontent" runat="server" Text='<%#Eval("ndmh_content") %>' /><br /><br />
+
+
+
+    </ItemTemplate>
     </asp:Repeater>
 
 

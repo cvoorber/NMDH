@@ -42,6 +42,13 @@ public class faqsClass
         return allFaqs;
     }
 
+    // returns all faqs
+    public IQueryable<ndmh_faq> getAllFaqs()
+    {
+        var allFaqs = objFaqs.ndmh_faqs.Select(x => x);
+        return allFaqs;
+    }
+
 
     // this method accepts the keyword string array for a particular faq and the search string from the search box
     // matches the keyword string with the split string from the search box, and returns an int value that indicates the number

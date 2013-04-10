@@ -37,7 +37,7 @@
         <ItemTemplate>
         <li> 
             <asp:LinkButton OnCommand="subChooseCommand" CommandName="PickDept" ID="lkb_deptname" Text='<%#Eval("dl_name") %>' 
-            CommandArgument='<%#Eval("dl_id") %>' runat="server" /></li>
+            CommandArgument='<%#Eval("dl_id") %>' runat="server" Font-Size="Large" /></li>
         </ItemTemplate>
         <FooterTemplate></ul></FooterTemplate>
         </asp:Repeater>

@@ -37,10 +37,13 @@ public partial class _Default : System.Web.UI.Page
         txt_ititle.Text = "";
     }
 
-    // brings about delete actions *** Remember to put in a pop-up
+    // brings about delete actions 
     protected void subDelete(object sender, CommandEventArgs e)
     {
         int _ndmh_faq_id = int.Parse(e.CommandArgument.ToString());
+
+        
+
         _strMessage(objFaqsAd.deleteFaqs(_ndmh_faq_id), "Delete");
     }
 
@@ -190,6 +193,8 @@ public partial class _Default : System.Web.UI.Page
         else
             lbl_execmess.Text = "Sorry, the article " + str + " did not occur.";
     }
+
+
 
     
 

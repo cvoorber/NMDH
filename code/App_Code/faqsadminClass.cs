@@ -122,4 +122,6 @@ public class faqsadminClass
             return true;
         }
     }
+
+    
 }

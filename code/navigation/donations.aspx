@@ -49,7 +49,7 @@
         <asp:Label ID="lbl_donate" runat="server" Text="Donation Amount (Numeric value, in CDN Dollars)"  />
         <asp:TextBox ID="txt_donate" runat="server"  />
         <asp:RequiredFieldValidator ID="rfv_donate" runat="server" ErrorMessage="*Required" ControlToValidate="txt_donate"
-        ValidationGroup="mailingView" Display="Dynamic" />
+        ValidationGroup="mailingView" Display="Dynamic"   />
         <asp:CompareValidator ID="cmv_donate" runat="server"  ControlToValidate="txt_donate" Operator="DataTypeCheck"  Type="Double"
         ErrorMessage="*Please enter Numeric value of donation (in CDN dollars)" ValidationGroup="mailingView" /><br /><br />
         <!-- Put in a validator for $ -->
@@ -72,7 +72,9 @@
         <!--Country-->
         <asp:Label ID="lbl_country" runat="server" Text="Country" />
             <asp:DropDownList ID="ddl_country" runat="server" OnSelectedIndexChanged="subCountryDisplayProvPost" AutoPostBack="true"  
-             /><br /><br />
+             />
+        
+             <br /><br />
             <!-- Have to put data source into the ddl later, once I get the table set up -->
             <!-- Also will have to add in some events on select Including one to enable the province/state list and ZIP vs
             postal code -->
@@ -80,17 +82,22 @@
 
         <!--Province/ State -->
        <asp:Label ID="lbl_provstate" runat="server" Text="Prov/State" Visible="false" /><!-- Dependent on country -->
-       <asp:DropDownList ID="ddl_provstate" runat="server" Visible="false" /><br /><br />
+       <asp:DropDownList ID="ddl_provstate" runat="server" Visible="false"   /><br /><br />
         <!-- This one will be a bit trickier, as it will be based on the selection made for country -->
         <%--Hold off on validation here, because not everyone will have this--%>
 
         <!-- Postal Code/ZIP -->
             <asp:Label ID="lbl_postzip" runat="server" Text="PostalCode/ZIP" Visible="false" /><!-- dependent upon country -->
-            <asp:TextBox ID="txt_postzip" runat="server" Visible="false"  /><br /><br />
-           <%--Hold off on validation here, because not everyone will have this--%>
-
-        
-            
+            <asp:TextBox ID="txt_postzip" runat="server" Visible="false"  />
+           <%--Required Field validation if the country is either US or Canada--%>
+        <asp:RequiredFieldValidator ID="rfv_postzip" Display="Dynamic" ValidationGroup="mailingView" runat="server" ErrorMessage="*Required" 
+        Enabled="false" ControlToValidate="txt_postzip" />
+        <%--Zip Code Regex validation if the country is US--%>
+        <asp:RegularExpressionValidator ID="rev_postzipus" runat="server" Display="Dynamic" ErrorMessage="*Please enter a valid ZIP Code" ValidationGroup="mailingView"
+        ControlToValidate="txt_postzip" Enabled="false" ValidationExpression="^\d{5}$" />
+        <%--Postal Code Regex validation if the country is Canada--%>
+        <asp:RegularExpressionValidator ID="rev_postzipcdn" runat="server" Display="Dynamic" ErrorMessage="*Please enter a valid Postal Code" ValidationGroup="mailingView"
+        ControlToValidate="txt_postzip" Enabled="false" ValidationExpression="^([A-Za-z]\d[A-Za-z][-]?\d[A-Za-z]\d)" /><br /><br />
  
 
         <asp:Button ID="btn_uinext" runat="server" Text="Next" OnClick="subNextUiClick" ValidationGroup="mailingView"    />
@@ -112,9 +119,9 @@
     <ContentTemplate>--%>
     <asp:Panel runat="server" ID="pnl_credit" CssClass="donate-box" Visible="false">
  
-    <!-- Radio Button to see if billing information is the same as mailing address -->
-        <asp:RadioButton ID="rbt_cred" runat="server" Checked="false" OnCheckedChanged="subTransferInfo" />
-    
+    <!-- Button to see if billing information is the same as mailing address -->
+        <asp:Button ID="btn_cred" runat="server" Text="*"  OnClick="subTransferInfo" />
+    * Click here if billing information is the same as mailing info <br /><br />
     <!-- Name - Text Box -->
     
     <asp:Label ID="lbl_credname" runat="server" Text="Billing Name" />
@@ -155,13 +162,10 @@
             ValidationGroup="billingView" Display="Dynamic" />
             <asp:RegularExpressionValidator ID="rev_crednumber" runat="server" ErrorMessage="*Please Enter Valid Credit Card Number" 
         ValidationGroup="billingView" ControlToValidate="txt_crednumber" Display="Dynamic" 
-        ValidationExpression="^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$"/>
+        ValidationExpression="^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$" />
             <br /><br />
     
-    <!-- Image choice of mastercard, visa or Amex, based on first few digits .... if it isn't one of them, have a popup that
-    says sorry that type of card isn't accepted.
-    will have to insert url based on type of card. -->
-        <asp:Image ID="img_cred" runat="server" />
+    
     
     
    
@@ -261,6 +265,7 @@
     <asp:AsyncPostBackTrigger ControlID="btn_creditnext" EventName="Click" />
     <asp:asyncpostbacktrigger controlid="btn_submit" eventname="command" />
     <asp:asyncpostbacktrigger controlid="btn_cancel" eventname="command" />
+    <asp:AsyncPostBackTrigger ControlID="btn_cred" EventName="Click" />
     </Triggers>
     </asp:UpdatePanel>
 

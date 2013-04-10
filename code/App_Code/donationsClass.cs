@@ -34,7 +34,7 @@ public class donationsClass
 
     // method to insert new donation record
 
-    public bool insertDonation(string _d_fname, string _d_lname, string _d_in_memory_of, decimal _d_amount, string _d_email,
+    public bool insertDonation(string _d_fname, string _d_lname, string _d_in_memory_of, string _d_amount, string _d_email,
         string _d_address_mailing, string _d_city_mailing, string _d_provstate_mailing, string _d_postalzip_mailing,
         string _d_name_billing, string _d_credit_number, string _d_address_billing, string _d_city_billing,
         string _d_provstate_billing, string _d_country_billing)
@@ -46,7 +46,7 @@ public class donationsClass
             objNewDon.d_fname = _d_fname;
             objNewDon.d_lname = _d_lname;
             objNewDon.d_in_memory_of = _d_in_memory_of;
-            objNewDon.d_amount = _d_amount;
+            objNewDon.d_amount = decimal.Parse(_d_amount.ToString()); // doing this because was having problems with data type decimal ... fix later 
             objNewDon.d_email = _d_email;
             objNewDon.d_address_mailing = _d_address_mailing;
             objNewDon.d_city_mailing = _d_city_mailing;

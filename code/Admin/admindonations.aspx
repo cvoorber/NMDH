@@ -114,10 +114,15 @@
                 <td><asp:Textbox ID="txt_idonamnt" runat="server"  />
                 <asp:RequiredFieldValidator ID="rfv_idonamnt" runat="server" ErrorMessage="*Required" ControlToValidate="txt_idonamnt" 
                  ValidationGroup="insertView" Display="Dynamic" />
+                  <asp:CompareValidator ID="cmv_idonamnt" runat="server"  ControlToValidate="txt_idonamnt" Operator="DataTypeCheck"  Type="Double"
+        ErrorMessage="*Please enter Numeric value of donation (in CDN dollars)" ValidationGroup="insertView" />
                 </td>
                 <td><asp:Textbox ID="txt_iemail" runat="server"  />
                 <asp:RequiredFieldValidator ID="rfv_iemail" runat="server" ErrorMessage="*Required" ControlToValidate="txt_iemail" 
                  ValidationGroup="insertView" Display="Dynamic" />
+                 <asp:RegularExpressionValidator ID="rev_iemail" runat="server" ErrorMessage="*Please Enter Valid Email Address" 
+                  ValidationGroup="insertView" Display="Dynamic" ValidationExpression="^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$" 
+               ControlToValidate="txt_iemail"/>
                 </td>
                 
         </tr>
@@ -151,6 +156,9 @@
                 <td><asp:Textbox ID="txt_iccnumber" runat="server"  />
                 <asp:RequiredFieldValidator ID="rfv_iccnumber" runat="server" ErrorMessage="*Required" ControlToValidate="txt_iccnumber" 
                  ValidationGroup="insertView" Display="Dynamic" />
+                 <asp:RegularExpressionValidator ID="rev_iccnumber" runat="server" ErrorMessage="*Please Enter Valid Credit Card Number" 
+        ValidationGroup="insertView" ControlToValidate="txt_iccnumber" Display="Dynamic" 
+        ValidationExpression="^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$"/>
                 </td>
                 
         </tr>
@@ -213,10 +221,14 @@
                 <td><asp:Textbox ID="txt_edonamnt" runat="server" Text='<%#Eval("d_amount") %>' />
                 <asp:RequiredFieldValidator ID="rfv_edonamnt" runat="server" ErrorMessage="*Required" ControlToValidate="txt_edonamnt" 
                  ValidationGroup="editView" Display="Dynamic" />
+                  <asp:CompareValidator ID="cmv_edonamnt" runat="server"  ControlToValidate="txt_edonamnt" Operator="DataTypeCheck"  Type="Double"
+        ErrorMessage="*Please enter Numeric value of donation (in CDN dollars)" ValidationGroup="editView" />
                 </td>
                 <td><asp:Textbox ID="txt_eemail" runat="server" Text='<%#Eval("d_email") %>' />
                 <asp:RequiredFieldValidator ID="rfv_eemail" runat="server" ErrorMessage="*Required" ControlToValidate="txt_eemail" 
                  ValidationGroup="editView" Display="Dynamic" />
+                 <asp:RegularExpressionValidator ID="rev_eemail" runat="server" ErrorMessage="*Please Enter Valid Email Address" 
+        ValidationGroup="editView" Display="Dynamic" ValidationExpression="^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$" ControlToValidate="txt_eemail"/>
                 </td>
                 
         </tr>
@@ -250,6 +262,9 @@
                 <td><asp:Textbox ID="txt_eccnumber" runat="server" Text='<%#Eval("d_credit_number") %>' />
                 <asp:RequiredFieldValidator ID="rfv_eccnumber" runat="server" ErrorMessage="*Required" ControlToValidate="txt_eccnumber" 
                  ValidationGroup="editView" Display="Dynamic" />
+                 <asp:RegularExpressionValidator ID="rev_eccnumber" runat="server" ErrorMessage="*Please Enter Valid Credit Card Number" 
+        ValidationGroup="editView" ControlToValidate="txt_eccnumber" Display="Dynamic" 
+        ValidationExpression="^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$"/>
                 </td>
                 
         </tr>
