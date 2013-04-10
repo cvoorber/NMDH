@@ -40,7 +40,7 @@ public class donationsAdminClass
             objNewDon.d_fname = _d_fname;
             objNewDon.d_lname = _d_lname;
             objNewDon.d_in_memory_of = _d_in_memory_of;
-            objNewDon.d_amount = _d_amount;
+            objNewDon.d_amount = _d_amount.ToString();
             objNewDon.d_email = _d_email;
             objNewDon.d_address_mailing = _d_address_mailing;
             objNewDon.d_city_mailing = _d_city_mailing;
@@ -76,7 +76,7 @@ public class donationsAdminClass
             objUpDon.d_fname = _d_fname;
             objUpDon.d_lname = _d_lname;
             objUpDon.d_in_memory_of = _d_in_memory_of;
-            objUpDon.d_amount = _d_amount;
+            objUpDon.d_amount = _d_amount.ToString();
             objUpDon.d_email = _d_email;
             objUpDon.d_address_mailing = _d_address_mailing;
             objUpDon.d_city_mailing = _d_city_mailing;
