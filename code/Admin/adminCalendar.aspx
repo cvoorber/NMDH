@@ -11,7 +11,7 @@
 <asp:DropDownList ID="ddl_view" runat="server" AutoPostBack="true" OnSelectedIndexChanged="subSort" />
 
 <!-- display a list of the events with a button to view and/or delete each one -->
-<asp:DataGrid ID="dg_all" runat="server" AutoGenerateColumns="false" OnItemCommand="subAction" HeaderStyle-Font-Bold="true">
+<asp:DataGrid ID="dg_all" runat="server" AutoGenerateColumns="false" OnItemCommand="subView" HeaderStyle-Font-Bold="true">
     <Columns>
         <asp:TemplateColumn HeaderText="Title" >
             <ItemTemplate>
@@ -39,7 +39,7 @@
        
         <asp:TemplateColumn>
             <ItemTemplate>
-                <asp:LinkButton ID="lb_edit" runat="server" CommandArgument='<%#Eval("rb_id") %>' CommandName="subEdit" Text="View" CausesValidation="false" />                
+                <asp:LinkButton ID="lb_view" runat="server" CommandArgument='<%#Eval("rb_id") %>' Text="View" CausesValidation="false" />                
             </ItemTemplate>
         </asp:TemplateColumn>
     </Columns>
@@ -55,7 +55,7 @@
     <asp:Button ID="btn_close" runat="server" CssClass="btn_close" Text="Close" OnClick="hideDay" CausesValidation="false" />
 
     <!-- display the event -->
-    <asp:Repeater ID="dtv_events" runat="server" OnItemCommand="subRepAction">
+    <asp:Repeater ID="dtv_events" runat="server" OnItemCommand="subDelete">
         <ItemTemplate>
             <asp:Label ID="lbl_title" runat="server" Text='<%#Eval("rb_title") %>' Font-Size="Larger" Font-Bold="true" CssClass="eventTable" />
         <table class="eventTable">

@@ -19,6 +19,9 @@ public partial class SubMaster1 : System.Web.UI.MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        //fill the side menu
+        _loadMenu();
+
         //create an event for when a menu item is clicked
         side_menu.MenuItemClick += sideMenu_Click;
 
@@ -54,9 +57,6 @@ public partial class SubMaster1 : System.Web.UI.MasterPage
             rpt_content.DataSource = menuObj.getPageByName(pagename);
             rpt_content.DataBind();
         }
-
-        //fill the side menu
-        _loadMenu();
     }
 
     //method to handle the change of content on the page (when the sidemenu is clicked)
