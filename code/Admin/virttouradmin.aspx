@@ -30,7 +30,7 @@
        <td>ID: &nbsp;<asp:Label ID="Label2" runat="server" Text='<%#Eval("dl_id") %>' /></td>
        <td><asp:Button ID="btn_edit" runat="server" Text="Edit" CommandName="Edit" OnCommand="subEditView" 
         CommandArgument='<%#Eval("dl_id") %>' /></td>
-       <td><asp:Button ID="btn_del" runat="server" Text="Delete" OnClientClick="return confirm('Are you sure you want to delete this FAQ?');"
+       <td><asp:Button ID="btn_del" runat="server" Text="Delete" OnClientClick="return confirm('Are you sure you want to delete this Department Record?');"
         CommandName="Delete" OnCommand="subDelete" CommandArgument='<%#Eval("dl_id") %>' /></td>
        </tr>
 
@@ -94,10 +94,14 @@
     <ItemTemplate>
     <div>
        Name:&nbsp;
-       <asp:Textbox ID="txt_ename" runat="server" Text='<%#Eval("dl_name") %>' /><br />
+       <asp:Textbox ID="txt_ename" runat="server" Text='<%#Eval("dl_name") %>' />
+       
+        <asp:RequiredFieldValidator ID="rfv_ename" runat="server" ErrorMessage="*Required" ControlToValidate="txt_ename" 
+                 ValidationGroup="editView" Display="Dynamic" /><br />
        ID: &nbsp;
-       <asp:Textbox ID="txt_eid" runat="server" Text='<%#Eval("dl_id") %>' />
-           <asp:Button ID="btn_update" runat="server" Text="Update" CommandName="Update" />
+       <asp:Label ID="lbl_eid" runat="server" Text='<%#Eval("dl_id") %>' />
+        <asp:HiddenField ID="hdf_eid" runat="server" Value='<%#Eval("dl_id") %>' />
+           <asp:Button ID="btn_update" runat="server" Text="Update" CommandName="Update" ValidationGroup="editView" />
            <asp:Button ID="btn_cancel" runat="server" Text="Cancel" CommandName="Cancel" />
        </div>
         <table >
@@ -110,11 +114,26 @@
        <td>Room Number</td>
        </tr>
        <tr>
-       <td><asp:Textbox ID="txt_eexten" runat="server" Text='<%#Eval("dl_extention") %>' /></td>
+       <td><asp:Textbox ID="txt_eexten" runat="server" Text='<%#Eval("dl_extention") %>' />
+       <asp:RequiredFieldValidator ID="rfv_eexten" runat="server" ErrorMessage="*Required" ControlToValidate="txt_eexten" 
+                 ValidationGroup="editView" Display="Dynamic" />
+                 <asp:RangeValidator ID="rgv_eexten" runat="server" ErrorMessage="*Please enter a 4 digit number"
+           MinimumValue="1000"  MaximumValue="9999" Type="Integer" ValidationGroup="editView" ControlToValidate="txt_eexten" /></td>
        
-       <td><asp:Textbox ID="txt_edyopen" runat="server" Text='<%#Eval("dl_days_open") %>' /></td>
-       <td><asp:Textbox ID="txt_eflnum" runat="server" Text='<%#Eval("dl_floor_no") %>' /></td>
-       <td><asp:Textbox ID="txt_ermnum" runat="server" Text='<%#Eval("dl_room_no") %>' /></td>
+       <td><asp:Textbox ID="txt_edyopen" runat="server" Text='<%#Eval("dl_days_open") %>' />
+       <asp:RequiredFieldValidator ID="rfv_edyopen" runat="server" ErrorMessage="*Required" ControlToValidate="txt_edyopen" 
+                 ValidationGroup="editView" Display="Dynamic" /></td>
+       <td><asp:Textbox ID="txt_eflnum" runat="server" Text='<%#Eval("dl_floor_no") %>' />
+       <asp:RequiredFieldValidator ID="rfv_eflnum" runat="server" ErrorMessage="*Required" ControlToValidate="txt_eflnum" 
+                 ValidationGroup="editView" Display="Dynamic" />
+                 <asp:RangeValidator ID="rgv_eflnum" runat="server" ErrorMessage="*Please enter a number between 1 and 3" ControlToValidate="txt_eflnum"
+           MinimumValue="1"  MaximumValue="3" Type="Integer" ValidationGroup="editView" /></td>
+       <td><asp:Textbox ID="txt_ermnum" runat="server" Text='<%#Eval("dl_room_no") %>' />
+       <asp:RequiredFieldValidator ID="rfv_ermnum" runat="server" ErrorMessage="*Required" ControlToValidate="txt_ermnum" 
+                 ValidationGroup="editView" Display="Dynamic" />
+        <asp:RangeValidator ID="rgv_ermnum" runat="server" ErrorMessage="*Please enter a valid room number" ControlToValidate="txt_ermnum"
+           MinimumValue="100"  MaximumValue="399" Type="Integer" ValidationGroup="editView" />
+       </td>
        </tr>
 
        <%--Two rows for first half of other records--%>
@@ -128,12 +147,34 @@
        
        </tr>
        <tr>
-       <td><asp:Textbox ID="txt_edepdesc" runat="server" Text='<%#Eval("dl_description") %>' /></td>
-       <td><asp:Textbox ID="txt_eimgurl" runat="server" Text='<%#Eval("dl_img_url") %>' /></td>
-       <td><asp:Textbox ID="txt_eimgalt" runat="server" Text='<%#Eval("dl_img_alt") %>' /></td>
-       <td><asp:Textbox ID="txt_eimgdesc" runat="server" Text='<%#Eval("dl_img_desc") %>' /></td>
-       <td><asp:Textbox ID="txt_eimgwid" runat="server" Text='<%#Eval("dl_img_width") %>' /></td>
-       <td><asp:Textbox ID="txt_eimgheig" runat="server" Text='<%#Eval("dl_img_height") %>' /></td>
+       <td><asp:Textbox ID="txt_edepdesc" runat="server" Text='<%#Eval("dl_description") %>' />
+       <asp:RequiredFieldValidator ID="rfv_edepdesc" runat="server" ErrorMessage="*Required" ControlToValidate="txt_edepdesc" 
+                 ValidationGroup="editView" Display="Dynamic" />
+       </td>
+       <td><asp:Textbox ID="txt_eimgurl" runat="server" Text='<%#Eval("dl_img_url") %>' />
+       <asp:RequiredFieldValidator ID="rfv_eimgurl" runat="server" ErrorMessage="*Required" ControlToValidate="txt_eimgurl" 
+                 ValidationGroup="editView" Display="Dynamic" />
+       </td>
+       <td><asp:Textbox ID="txt_eimgalt" runat="server" Text='<%#Eval("dl_img_alt") %>' />
+       <asp:RequiredFieldValidator ID="rfv_eimgalt" runat="server" ErrorMessage="*Required" ControlToValidate="txt_eimgalt" 
+                 ValidationGroup="editView" Display="Dynamic" />
+       </td>
+       <td><asp:Textbox ID="txt_eimgdesc" runat="server" Text='<%#Eval("dl_img_desc") %>' />
+       <asp:RequiredFieldValidator ID="rfv_eimgdesc" runat="server" ErrorMessage="*Required" ControlToValidate="txt_eimgdesc" 
+                 ValidationGroup="editView" Display="Dynamic" />
+       </td>
+       <td><asp:Textbox ID="txt_eimgwid" runat="server" Text='<%#Eval("dl_img_width") %>' />
+       <asp:RequiredFieldValidator ID="rfv_eimgwid" runat="server" ErrorMessage="*Required" ControlToValidate="txt_eimgwid" 
+                 ValidationGroup="editView" Display="Dynamic" />
+         <asp:CompareValidator ID="cmv_eimgwid" runat="server"  ControlToValidate="txt_eimgwid" Operator="DataTypeCheck"  Type="Integer"
+        ErrorMessage="*Please enter an integer" ValidationGroup="editView" />
+       </td>
+       <td><asp:Textbox ID="txt_eimgheig" runat="server" Text='<%#Eval("dl_img_height") %>' />
+       <asp:RequiredFieldValidator ID="rfv_eimgheig" runat="server" ErrorMessage="*Required" ControlToValidate="txt_eimgheig" 
+                 ValidationGroup="editView" Display="Dynamic" />
+        <asp:CompareValidator ID="cmv_eimgheig" runat="server"  ControlToValidate="txt_eimgheig" Operator="DataTypeCheck"  Type="Integer"
+        ErrorMessage="*Please enter an integer" ValidationGroup="editView" />
+       </td>
        </tr>
        
        </table>
@@ -158,10 +199,13 @@
        <%--Two rows for first half of other records--%>
        <tr>
        <td>
-           <asp:Button ID="btn_isave" runat="server" Text="Save" CommandName="Save" OnCommand="subInsertAction" /></td>
+           <asp:Button ID="btn_isave" runat="server" Text="Save" CommandName="Save" OnCommand="subInsertAction" ValidationGroup="insertView" /></td>
            <td><asp:Button ID="btn_icancel" runat="server" Text="Cancel" CommandName="Cancel" OnCommand="subInsertAction" /></td>
        </tr>
-       <tr><td>Name: <asp:Textbox ID="txt_iname" runat="server" /> </td></tr>
+       <tr><td>Name: <asp:Textbox ID="txt_iname" runat="server" /> 
+       <asp:RequiredFieldValidator ID="rfv_iname" runat="server" ErrorMessage="*Required" ControlToValidate="txt_iname" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+       </td></tr>
        <tr>
        <td>Phone Extension</td>
        
@@ -170,11 +214,28 @@
        <td>Room Number</td>
        </tr>
        <tr>
-       <td><asp:Textbox ID="txt_iexten" runat="server"  /></td>
+       <td><asp:Textbox ID="txt_iexten" runat="server"  />
+       <asp:RequiredFieldValidator ID="rfv_iexten" runat="server" ErrorMessage="*Required" ControlToValidate="txt_iexten" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+           <asp:RangeValidator ID="rgv_iexten" runat="server" ErrorMessage="*Please enter a 4 digit number" ControlToValidate="txt_iexten"
+           MinimumValue="1000"  MaximumValue="9999" Type="Integer" ValidationGroup="insertView" /></td>
        
-       <td><asp:Textbox ID="txt_idyopen" runat="server"  /></td>
-       <td><asp:Textbox ID="txt_iflnum" runat="server"  /></td>
-       <td><asp:Textbox ID="txt_irmnum" runat="server"  /></td>
+       <td><asp:Textbox ID="txt_idyopen" runat="server"  />
+       <asp:RequiredFieldValidator ID="rfv_idyopen" runat="server" ErrorMessage="*Required" ControlToValidate="txt_idyopen" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+       </td>
+       <td><asp:Textbox ID="txt_iflnum" runat="server"  />
+       <asp:RequiredFieldValidator ID="rfv_iflnum" runat="server" ErrorMessage="*Required" ControlToValidate="txt_iflnum" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+        <asp:RangeValidator ID="rgv_iflnum" runat="server" ErrorMessage="*Please enter a number between 1 and 3" ControlToValidate="txt_iflnum"
+           MinimumValue="1"  MaximumValue="3" Type="Integer" ValidationGroup="insertView" />
+       </td>
+       <td><asp:Textbox ID="txt_irmnum" runat="server"  />
+       <asp:RequiredFieldValidator ID="rfv_irmnum" runat="server" ErrorMessage="*Required" ControlToValidate="txt_irmnum" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+                 <asp:RangeValidator ID="rgv_irmnum" runat="server" ErrorMessage="*Please enter a valid room number" ControlToValidate="txt_irmnum"
+           MinimumValue="100"  MaximumValue="399" Type="Integer" ValidationGroup="insertView" />
+       </td>
        </tr>
 
        <%--Two rows for first half of other records--%>
@@ -188,12 +249,34 @@
        
        </tr>
        <tr>
-       <td><asp:Textbox ID="txt_idepdesc" runat="server"  /></td>
-       <td><asp:Textbox ID="txt_iimgurl" runat="server"  /></td>
-       <td><asp:Textbox ID="txt_iimgalt" runat="server"  /></td>
-       <td><asp:Textbox ID="txt_iimgdesc" runat="server"  /></td>
-       <td><asp:Textbox ID="txt_iimgwid" runat="server"  /></td>
-       <td><asp:Textbox ID="txt_iimgheig" runat="server"  /></td>
+       <td><asp:Textbox ID="txt_idepdesc" runat="server"  />
+       <asp:RequiredFieldValidator ID="rfv_idepdesc" runat="server" ErrorMessage="*Required" ControlToValidate="txt_idepdesc" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+       </td>
+       <td><asp:Textbox ID="txt_iimgurl" runat="server"  />
+       <asp:RequiredFieldValidator ID="rfv_iimgurl" runat="server" ErrorMessage="*Required" ControlToValidate="txt_iimgurl" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+       </td>
+       <td><asp:Textbox ID="txt_iimgalt" runat="server"  />
+       <asp:RequiredFieldValidator ID="rfv_iimgalt" runat="server" ErrorMessage="*Required" ControlToValidate="txt_iimgalt" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+       </td>
+       <td><asp:Textbox ID="txt_iimgdesc" runat="server"  />
+       <asp:RequiredFieldValidator ID="rfv_iimgdesc" runat="server" ErrorMessage="*Required" ControlToValidate="txt_iimgdesc" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+       </td>
+       <td><asp:Textbox ID="txt_iimgwid" runat="server"  />
+       <asp:RequiredFieldValidator ID="rfv_iimgwid" runat="server" ErrorMessage="*Required" ControlToValidate="txt_iimgwid" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+        <asp:CompareValidator ID="cmv_iimgwid" runat="server"  ControlToValidate="txt_iimgwid" Operator="DataTypeCheck"  Type="Integer"
+        ErrorMessage="*Please enter an integer" ValidationGroup="insertView" />
+       </td>
+       <td><asp:Textbox ID="txt_iimgheig" runat="server"  />
+       <asp:RequiredFieldValidator ID="rfv_iimgheig" runat="server" ErrorMessage="*Required" ControlToValidate="txt_iimgheig" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+        <asp:CompareValidator ID="cmv_iimgheig" runat="server"  ControlToValidate="txt_iimgheig" Operator="DataTypeCheck"  Type="Integer"
+        ErrorMessage="*Please enter an integer" ValidationGroup="insertView" />
+       </td>
        </tr>
        
        </table>

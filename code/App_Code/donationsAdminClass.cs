@@ -30,7 +30,7 @@ public class donationsAdminClass
 
     public bool insertDonation(string _d_fname, string _d_lname, string _d_in_memory_of, decimal _d_amount, string _d_email,
         string _d_address_mailing, string _d_city_mailing, string _d_provstate_mailing, string _d_postalzip_mailing,
-        string _d_name_billing, string _d_credit_number, string _d_credit_expiry, string _d_address_billing, string _d_city_billing, 
+        string _d_name_billing, string _d_credit_number, string _d_credit_expiry, string _d_address_billing, string _d_city_billing,
         string _d_provstate_billing, string _d_country_billing)
     {
         using (objPageDC)

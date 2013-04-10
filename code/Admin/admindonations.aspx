@@ -90,7 +90,7 @@
         
         <tr>
         <td>
-            <asp:Button ID="lbl_icreate" runat="server" OnCommand="subInsertAction" CommandName="Create" Text="Create New Record" /></td>
+            <asp:Button ID="lbl_icreate" runat="server" OnCommand="subInsertAction" CommandName="Create" Text="Create New Record" ValidationGroup="insertView" /></td>
             <td>
                 <asp:Button ID="lbl_cancel" runat="server" Text="Cancel" CommandName="Cancel" OnCommand="subInsertAction" /></td>
         </tr>
@@ -102,11 +102,28 @@
         <tr>
             
                 
-                <td><asp:Textbox ID="txt_imfname" runat="server"  /></td>
-                <td><asp:Textbox ID="txt_imlname" runat="server"  /></td>
-                <td><asp:Textbox ID="txt_imemory" runat="server"  /></td>
-                <td><asp:Textbox ID="txt_idonamnt" runat="server"  /></td>
-                <td><asp:Textbox ID="txt_iemail" runat="server"  /></td>
+                <td><asp:Textbox ID="txt_imfname" runat="server"  />
+                 <asp:RequiredFieldValidator ID="rfv_imfname" runat="server" ErrorMessage="*Required" ControlToValidate="txt_imfname" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+                </td>
+                <td><asp:Textbox ID="txt_imlname" runat="server"  />
+                <asp:RequiredFieldValidator ID="rfv_imlname" runat="server" ErrorMessage="*Required" ControlToValidate="txt_imlname" 
+                 ValidationGroup="insertView" Display="Dynamic" /></td>
+                <td><asp:Textbox ID="txt_imemory" runat="server"  />
+                </td>
+                <td><asp:Textbox ID="txt_idonamnt" runat="server"  />
+                <asp:RequiredFieldValidator ID="rfv_idonamnt" runat="server" ErrorMessage="*Required" ControlToValidate="txt_idonamnt" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+                  <asp:CompareValidator ID="cmv_idonamnt" runat="server"  ControlToValidate="txt_idonamnt" Operator="DataTypeCheck"  Type="Double"
+        ErrorMessage="*Please enter Numeric value of donation (in CDN dollars)" ValidationGroup="insertView" />
+                </td>
+                <td><asp:Textbox ID="txt_iemail" runat="server"  />
+                <asp:RequiredFieldValidator ID="rfv_iemail" runat="server" ErrorMessage="*Required" ControlToValidate="txt_iemail" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+                 <asp:RegularExpressionValidator ID="rev_iemail" runat="server" ErrorMessage="*Please Enter Valid Email Address" 
+                  ValidationGroup="insertView" Display="Dynamic" ValidationExpression="^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$" 
+               ControlToValidate="txt_iemail"/>
+                </td>
                 
         </tr>
 
@@ -116,12 +133,33 @@
             <td>Billing Name</td><td>Credit Card Number</td>
         </tr>
         <tr>
-            <td><asp:Textbox ID="txt_imaddress" runat="server"  /></td>
-                <td><asp:Textbox ID="txt_imcity" runat="server"  /></td>
-                <td><asp:Textbox ID="txt_improvst" runat="server"  /></td>
-                <td><asp:Textbox ID="txt_impostzip" runat="server"  /></td>
-                <td><asp:Textbox ID="txt_ibname" runat="server"  /></td>
-                <td><asp:Textbox ID="txt_iccnumber" runat="server"  /></td>
+            <td><asp:Textbox ID="txt_imaddress" runat="server"  />
+            <asp:RequiredFieldValidator ID="rfv_imaddress" runat="server" ErrorMessage="*Required" ControlToValidate="txt_imaddress" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+            </td>
+                <td><asp:Textbox ID="txt_imcity" runat="server"  />
+                <asp:RequiredFieldValidator ID="rfv_imcity" runat="server" ErrorMessage="*Required" ControlToValidate="txt_imcity" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+                </td>
+                <td><asp:Textbox ID="txt_improvst" runat="server"  />
+                <asp:RequiredFieldValidator ID="rfv_improvst" runat="server" ErrorMessage="*Required" ControlToValidate="txt_improvst" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+                </td>
+                <td><asp:Textbox ID="txt_impostzip" runat="server"  />
+                <asp:RequiredFieldValidator ID="rfv_impostzip" runat="server" ErrorMessage="*Required" ControlToValidate="txt_impostzip" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+                </td>
+                <td><asp:Textbox ID="txt_ibname" runat="server"  />
+                <asp:RequiredFieldValidator ID="rfv_ibname" runat="server" ErrorMessage="*Required" ControlToValidate="txt_ibname" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+                </td>
+                <td><asp:Textbox ID="txt_iccnumber" runat="server"  />
+                <asp:RequiredFieldValidator ID="rfv_iccnumber" runat="server" ErrorMessage="*Required" ControlToValidate="txt_iccnumber" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+                 <asp:RegularExpressionValidator ID="rev_iccnumber" runat="server" ErrorMessage="*Please Enter Valid Credit Card Number" 
+        ValidationGroup="insertView" ControlToValidate="txt_iccnumber" Display="Dynamic" 
+        ValidationExpression="^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$"/>
+                </td>
                 
         </tr>
         <%--Third two rows of data--%>
@@ -130,11 +168,25 @@
             <td>Billing Country</td>
         </tr>
         <tr>
-            <td><asp:Textbox ID="txt_iccedpiry" runat="server"  /></td>
-            <td><asp:Textbox ID="txt_ibaddress" runat="server"  /></td>
-            <td><asp:Textbox ID="txt_ibcity" runat="server"  /></td>
-            <td><asp:Textbox ID="txt_ibprovstate" runat="server"  /></td>
-            <td><asp:Textbox ID="txt_ibcountry" runat="server"  /></td>
+            <td><asp:Textbox ID="txt_iccedpiry" runat="server"  />
+            
+            </td>
+            <td><asp:Textbox ID="txt_ibaddress" runat="server"  />
+            <asp:RequiredFieldValidator ID="rfv_ibaddress" runat="server" ErrorMessage="*Required" ControlToValidate="txt_ibaddress" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+            </td>
+            <td><asp:Textbox ID="txt_ibcity" runat="server"  />
+            <asp:RequiredFieldValidator ID="rfv_ibcity" runat="server" ErrorMessage="*Required" ControlToValidate="txt_ibcity" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+            </td>
+            <td><asp:Textbox ID="txt_ibprovstate" runat="server"  />
+            <asp:RequiredFieldValidator ID="rfv_ibprovstate" runat="server" ErrorMessage="*Required" ControlToValidate="txt_ibprovstate" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+            </td>
+            <td><asp:Textbox ID="txt_ibcountry" runat="server"  />
+            <asp:RequiredFieldValidator ID="rfv_ibcountry" runat="server" ErrorMessage="*Required" ControlToValidate="txt_ibcountry" 
+                 ValidationGroup="insertView" Display="Dynamic" />
+            </td>
         </tr>
     </table>
     </asp:Panel>
@@ -145,8 +197,8 @@
            <table>
             <tr>
             <td><asp:LinkButton ID="lkb_getedit" runat="server"  Text="Update" CommandArgument='<%#Eval("d_id") %>' 
-            CommandName="Update" /></td>
-             <td><asp:LinkButton ID="lkb_delete" runat="server" Text="Cancel" CommandName="Cancel" /></td>
+            CommandName="Update" ValidationGroup="editView" /></td>
+             <td><asp:LinkButton ID="lkb_cancel" runat="server" Text="Cancel" CommandName="Cancel" /></td>
         </tr>
         <%--First Two rows for first half of info--%>
         <tr>
@@ -156,11 +208,28 @@
         <tr>
             
                 
-                <td><asp:Textbox ID="txt_emfname" runat="server" Text='<%#Eval("d_fname") %>' /></td>
-                <td><asp:Textbox ID="txt_emlname" runat="server" Text='<%#Eval("d_lname") %>' /></td>
-                <td><asp:Textbox ID="txt_ememory" runat="server" Text='<%#Eval("d_in_memory_of") %>' /></td>
-                <td><asp:Textbox ID="txt_edonamnt" runat="server" Text='<%#Eval("d_amount") %>' /></td>
-                <td><asp:Textbox ID="txt_eemail" runat="server" Text='<%#Eval("d_email") %>' /></td>
+                <td><asp:Textbox ID="txt_emfname" runat="server" Text='<%#Eval("d_fname") %>' />
+                <asp:RequiredFieldValidator ID="rfv_emfname" runat="server" ErrorMessage="*Required" ControlToValidate="txt_emfname" 
+                 ValidationGroup="editView" Display="Dynamic" />
+                </td>
+                <td><asp:Textbox ID="txt_emlname" runat="server" Text='<%#Eval("d_lname") %>' />
+                <asp:RequiredFieldValidator ID="rfv_emlname" runat="server" ErrorMessage="*Required" ControlToValidate="txt_emlname" 
+                 ValidationGroup="editView" Display="Dynamic" />
+                </td>
+                <td><asp:Textbox ID="txt_ememory" runat="server" Text='<%#Eval("d_in_memory_of") %>' />
+                </td>
+                <td><asp:Textbox ID="txt_edonamnt" runat="server" Text='<%#Eval("d_amount") %>' />
+                <asp:RequiredFieldValidator ID="rfv_edonamnt" runat="server" ErrorMessage="*Required" ControlToValidate="txt_edonamnt" 
+                 ValidationGroup="editView" Display="Dynamic" />
+                  <asp:CompareValidator ID="cmv_edonamnt" runat="server"  ControlToValidate="txt_edonamnt" Operator="DataTypeCheck"  Type="Double"
+        ErrorMessage="*Please enter Numeric value of donation (in CDN dollars)" ValidationGroup="editView" />
+                </td>
+                <td><asp:Textbox ID="txt_eemail" runat="server" Text='<%#Eval("d_email") %>' />
+                <asp:RequiredFieldValidator ID="rfv_eemail" runat="server" ErrorMessage="*Required" ControlToValidate="txt_eemail" 
+                 ValidationGroup="editView" Display="Dynamic" />
+                 <asp:RegularExpressionValidator ID="rev_eemail" runat="server" ErrorMessage="*Please Enter Valid Email Address" 
+        ValidationGroup="editView" Display="Dynamic" ValidationExpression="^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$" ControlToValidate="txt_eemail"/>
+                </td>
                 
         </tr>
 
@@ -170,12 +239,33 @@
             <td>Billing Name</td><td>Credit Card Number</td>
         </tr>
         <tr>
-            <td><asp:Textbox ID="txt_emaddress" runat="server" Text='<%#Eval("d_address_mailing") %>' /></td>
-                <td><asp:Textbox ID="txt_emcity" runat="server" Text='<%#Eval("d_city_mailing") %>' /></td>
-                <td><asp:Textbox ID="txt_emprovst" runat="server" Text='<%#Eval("d_provstate_mailing") %>' /></td>
-                <td><asp:Textbox ID="txt_empostzip" runat="server" Text='<%#Eval("d_postzip_mailing") %>' /></td>
-                <td><asp:Textbox ID="txt_ebname" runat="server" Text='<%#Eval("d_name_billing") %>' /></td>
-                <td><asp:Textbox ID="txt_eccnumber" runat="server" Text='<%#Eval("d_credit_number") %>' /></td>
+            <td><asp:Textbox ID="txt_emaddress" runat="server" Text='<%#Eval("d_address_mailing") %>' />
+            <asp:RequiredFieldValidator ID="rfv_emaddress" runat="server" ErrorMessage="*Required" ControlToValidate="txt_emaddress" 
+                 ValidationGroup="editView" Display="Dynamic" />
+            </td>
+                <td><asp:Textbox ID="txt_emcity" runat="server" Text='<%#Eval("d_city_mailing") %>' />
+                <asp:RequiredFieldValidator ID="rfv_emcity" runat="server" ErrorMessage="*Required" ControlToValidate="txt_emcity" 
+                 ValidationGroup="editView" Display="Dynamic" />
+                </td>
+                <td><asp:Textbox ID="txt_emprovst" runat="server" Text='<%#Eval("d_provstate_mailing") %>' />
+                <asp:RequiredFieldValidator ID="rfv_emprovst" runat="server" ErrorMessage="*Required" ControlToValidate="txt_emprovst" 
+                 ValidationGroup="editView" Display="Dynamic" />
+                </td>
+                <td><asp:Textbox ID="txt_empostzip" runat="server" Text='<%#Eval("d_postzip_mailing") %>' />
+                <asp:RequiredFieldValidator ID="rfv_empostzip" runat="server" ErrorMessage="*Required" ControlToValidate="txt_empostzip" 
+                 ValidationGroup="editView" Display="Dynamic" />
+                </td>
+                <td><asp:Textbox ID="txt_ebname" runat="server" Text='<%#Eval("d_name_billing") %>' />
+                <asp:RequiredFieldValidator ID="rfv_ebname" runat="server" ErrorMessage="*Required" ControlToValidate="txt_ebname" 
+                 ValidationGroup="editView" Display="Dynamic" />
+                </td>
+                <td><asp:Textbox ID="txt_eccnumber" runat="server" Text='<%#Eval("d_credit_number") %>' />
+                <asp:RequiredFieldValidator ID="rfv_eccnumber" runat="server" ErrorMessage="*Required" ControlToValidate="txt_eccnumber" 
+                 ValidationGroup="editView" Display="Dynamic" />
+                 <asp:RegularExpressionValidator ID="rev_eccnumber" runat="server" ErrorMessage="*Please Enter Valid Credit Card Number" 
+        ValidationGroup="editView" ControlToValidate="txt_eccnumber" Display="Dynamic" 
+        ValidationExpression="^((4\d{3})|(5[1-5]\d{2})|(6011))-?\d{4}-?\d{4}-?\d{4}|3[4,7]\d{13}$"/>
+                </td>
                 
         </tr>
         <%--Third two rows of data--%>
@@ -185,10 +275,22 @@
         </tr>
         <tr>
             <td><asp:Textbox ID="txt_eccedpiry" runat="server" Text='<%#Eval("d_credit_expiry") %>' /></td>
-            <td><asp:Textbox ID="txt_ebaddress" runat="server" Text='<%#Eval("d_address_billing") %>' /></td>
-            <td><asp:Textbox ID="txt_ebcity" runat="server" Text='<%#Eval("d_city_billing") %>' /></td>
-            <td><asp:Textbox ID="txt_ebprovstate" runat="server" Text='<%#Eval("d_provstate_billing") %>' /></td>
-            <td><asp:Textbox ID="txt_ebcountry" runat="server" Text='<%#Eval("d_country_billing") %>' /></td>
+            <td><asp:Textbox ID="txt_ebaddress" runat="server" Text='<%#Eval("d_address_billing") %>' />
+            <asp:RequiredFieldValidator ID="rfv_ebaddress" runat="server" ErrorMessage="*Required" ControlToValidate="txt_ebaddress" 
+                 ValidationGroup="editView" Display="Dynamic" />
+            </td>
+            <td><asp:Textbox ID="txt_ebcity" runat="server" Text='<%#Eval("d_city_billing") %>' />
+            <asp:RequiredFieldValidator ID="rfv_ebcity" runat="server" ErrorMessage="*Required" ControlToValidate="txt_ebcity" 
+                 ValidationGroup="editView" Display="Dynamic" />
+            </td>
+            <td><asp:Textbox ID="txt_ebprovstate" runat="server" Text='<%#Eval("d_provstate_billing") %>' />
+            <asp:RequiredFieldValidator ID="rfv_ebprovstate" runat="server" ErrorMessage="*Required" ControlToValidate="txt_ebprovstate" 
+                 ValidationGroup="editView" Display="Dynamic" />
+            </td>
+            <td><asp:Textbox ID="txt_ebcountry" runat="server" Text='<%#Eval("d_country_billing") %>' />
+            <asp:RequiredFieldValidator ID="rfv_ebcountry" runat="server" ErrorMessage="*Required" ControlToValidate="txt_ebcountry" 
+                 ValidationGroup="editView" Display="Dynamic" />
+            </td>
         </tr>
         </table>
         </ItemTemplate>
