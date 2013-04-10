@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="newEvent.aspx.cs" Inherits="newEvent" MasterPageFile="~/Admin/subAdmin.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="calendar.aspx.cs" Inherits="calendar" MasterPageFile="~/Admin/subAdmin.master" %>
 <%@ Register TagPrefix="Customized" Namespace="ilanaCustom" %>
 <%@ Mastertype VirtualPath="~/Admin/subAdmin.master" %>
 

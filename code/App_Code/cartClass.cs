@@ -5,8 +5,10 @@ using System.Web;
 
 public class cartClass
 {
+    //creating a list of items
     public List<cartItemClass> Items { get; private set; }
 
+    //instantiating the cartClass
     public static readonly cartClass Instance;
 
     // The static constructor for the Cart
@@ -19,7 +21,6 @@ public class cartClass
             cart.Items = new List<cartItemClass>();
             HttpContext.Current.Session["ShoppingCart"] = cart;
         }
-
         return (cartClass)HttpContext.Current.Session["ShoppingCart"];
     }
 

@@ -4,81 +4,102 @@
         <asp:Label ID="lbl_message" runat="server" />
         <br />
         <br />
-        <asp:Label ID="lbl_insert" runat="server" Text="Insert an Article" Font-Bold="true" />
-        <br />
+        <asp:Label ID="lbl_insert" runat="server" Text="Insert an Article" Font-Bold="true" Font-Size="16" />
+        <br /><br />
         <asp:Label ID="lbl_titleI" runat="server" Text="Title" AssociatedControlID="txt_titleI" />
         <br />
         <asp:TextBox ID="txt_titleI" runat="server" />
+        <asp:RequiredFieldValidator ID="rfv_titleI" runat="server" Text="*Required" Display="Dynamic" ForeColor="Red" Style="clear:both;" ControlToValidate="txt_titleI" ValidationGroup="subNews" />
         <br />
-        <asp:Label ID="lbl_descI" runat="server" Text="Description" AssociatedControlID="txt_descI" />
+        <asp:Label ID="lbl_imageI" runat="server" Text="Image" AssociatedControlID="ddl_image" />
         <br />
-        <asp:TextBox ID="txt_descI" runat="server" />
-        <br />
-        <asp:Label ID="lbl_imageI" runat="server" Text="Image" AssociatedControlID="txt_imageI" />
-        <br />
-        <asp:TextBox ID="txt_imageI" runat="server" />
+        <asp:DropDownList ID="ddl_image" runat="server" />&nbsp;**Images can be uploaded below
         <br />
         <asp:Label ID="lbl_contactidI" runat="server" Text="Contact ID" AssociatedControlID="txt_contactidI" />
         <br />
         <asp:TextBox ID="txt_contactidI" runat="server" />
+        <asp:RequiredFieldValidator ID="rfv_contactidI" runat="server" Text="*Required" Display="Dynamic" ForeColor="Red" Style="clear:both;" ControlToValidate="txt_contactidI" ValidationGroup="subNews" />
         <br />
-        <asp:Label ID="lbl_linkI" runat="server" Text="Link" AssociatedControlID="txt_linkI" />
+        <asp:Label ID="lbl_descI" runat="server" Text="Description" AssociatedControlID="txt_descI" />
         <br />
-        <asp:TextBox ID="txt_linkI" runat="server" />
+        <asp:TextBox ID="txt_descI" runat="server" TextMode="MultiLine" Columns="70" Rows="8" />
+        <asp:RequiredFieldValidator ID="rfv_descI" runat="server" Text="*Required" Display="Dynamic" ForeColor="Red" Style="clear:both;" ControlToValidate="txt_descI" ValidationGroup="subNews" />
         <br />
-        <asp:Button ID="btn_insert" runat="server" Text="Insert" OnClick="subInsert" />
+        <asp:Button ID="btn_insert" runat="server" Text="Insert" OnClick="subInsert" ValidationGroup="subNews" />
+        <br />
         <br />
         <hr />
+        <asp:Label ID="lbl_editHeading" runat="server" Text="Choose an item from the drop down list to edit/delete." Font-Bold="true" Font-Size="16" />
         <br />
         <asp:DropDownList ID="ddl_main" runat="server" AutoPostBack="true" OnSelectedIndexChanged="subChange" />
-        <br />
-        <br />
+        <br /><br />
 
         <asp:ListView ID="lv_main" runat="server" OnItemCommand="subAdmin">
-            <LayoutTemplate>
-                <table cellpadding="2" cellspacing="2">
-                    <thead>
-                        <tr>
-                            <th>Event/News Title</th>
-                            <th>Image</th>
-                            <th>Contact ID</th>
-                            <th>Link</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
-                    </tbody>
-                </table>
-            </LayoutTemplate>
             <ItemTemplate>
-                <tr>
-                    <td>
-                        <asp:HiddenField ID="hdf_idE" runat="server" Value='<%#Eval("n_id") %>' />
-                        <asp:TextBox ID="txt_titleE" runat="server" Text='<%#Bind("n_title") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txt_imageE" runat="server" Text='<%#Bind("n_image") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txt_contactidE" runat="server" Text='<%#Bind("n_contact_id") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txt_linkE" runat="server" Text='<%#Bind("n_link") %>' />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txt_descE" runat="server" Text='<%#Bind("n_description") %>' TextMode="MultiLine" Columns="40" Rows="4" />
-                    </td>
-                    <tr>
-                    <td>
-                    </td>
-                        <td>
-                        <asp:LinkButton ID="lb_update" runat="server" Text="Update" CommandName="subUpdate" BackColor="LightGray" Font-Size="14" Style="padding:5px;" BorderWidth="1" BorderColor="Black" />
-                    
-                        <asp:LinkButton ID="lb_delete" runat="server" Text="Delete" CommandName="subDelete" OnClientClick="return confirm('Are you sure you want to delete this record?');" BackColor="LightGray" Font-Size="14" Style="padding:5px;" BorderWidth="1" BorderColor="Black" />
-                    </td>
-                    </tr>
+                <asp:HiddenField ID="hdf_idE" runat="server" Value='<%#Eval("n_id") %>' />
+                <asp:Label ID="lbl_titleE" runat="server" Text="News Article Title" />
+                <br />
+                <asp:TextBox ID="txt_titleE" runat="server" Text='<%#Bind("n_title") %>' />
+                <asp:RequiredFieldValidator ID="rfv_titleE" runat="server" Text="*Required" Display="Dynamic" ForeColor="Red" Style="clear:both;" ControlToValidate="txt_titleE" ValidationGroup="upNews" />
+                <br />
+                <asp:Label ID="lbl_imageE" runat="server" Text="Image" />
+                <br />
+                <asp:TextBox ID="txt_imageE" runat="server" Text='<%#Bind("n_image") %>' />
+                <br />
+                <asp:Label ID="lbl_contactidE" runat="server" Text="Contact ID" />
+                <br />
+                <asp:TextBox ID="txt_contactidE" runat="server" Text='<%#Bind("n_contact_id") %>' />
+                <asp:RequiredFieldValidator ID="rfv_contactidE" runat="server" Text="*Required" Display="Dynamic" ForeColor="Red" Style="clear:both;" ControlToValidate="txt_contactidE" ValidationGroup="upNews" />
+                <br />
+                <asp:Label ID="lbl_descE" runat="server" Text="Description/Body" />
+                <br />
+                <asp:TextBox ID="txt_descE" runat="server" Text='<%#Bind("n_description") %>' TextMode="MultiLine" Columns="70" Rows="8" />
+                <asp:RequiredFieldValidator ID="rfv_descE" runat="server" Text="*Required" Display="Dynamic" ForeColor="Red" Style="clear:both;" ControlToValidate="txt_descE" ValidationGroup="upNews" />
+                <br /><br />
+                <asp:LinkButton ID="lb_update" runat="server" Text="Update" CommandName="subUpdate" BackColor="LightGray" Font-Size="12" Style="border-radius:6px;padding:5px;margin-top:10px;" BorderWidth="1" BorderColor="Black" ValidationGroup="upNews" />
+                &nbsp;&nbsp;
+                <asp:LinkButton ID="lb_delete" runat="server" Text="Delete" CommandName="subDelete" OnClientClick="return confirm('Are you sure you want to delete this record?');" BackColor="LightGray" Font-Size="12" Style="border-radius:6px;padding:5px;margin-top:10px;" BorderWidth="1" BorderColor="Black" />
             </ItemTemplate>
         </asp:ListView>
 
+        <div id="imageUpload" style="clear:both;margin:30px 0 40px 30px;">
+        <asp:Label ID="lbl_msg" runat="server" />
+
+        <%-- This is a file uploader that puts images into the Images folder and stores the path in the ad_images table --%>
+
+        <asp:Label ID="lbl_heading" runat="server" Text="Use this form to upload images for use in the giftshop or newsblog." Font-Italic="true"  Font-Size="14" />
+        <br />
+        <asp:Label ID="Label1" runat="server" />
+        <br /><br />
+        <asp:Label ID="lbl_imagefile" runat="server" Text="Image File:" AssociatedControlID="FileUploader" />
+        <asp:FileUpload ID="FileUploader" runat="server" />
+        <asp:RequiredFieldValidator ID="rfv_fileupload" runat="server" Text="*Required" ControlToValidate="FileUploader" ValidationGroup="insertImg" />
+        <br />
+        <asp:Label ID="lbl_imagename" runat="server" Text="Image Name:" AssociatedControlID="txt_imagename" />
+        <asp:TextBox ID="txt_imagename" runat="server" />
+        <asp:RequiredFieldValidator ID="rfv_imagename" runat="server" Text="*Required" ControlToValidate="txt_imagename" ValidationGroup="insertImg" />
+        <br /><br />
+        <asp:Button ID="btnAdd" runat="server" Text="Upload Image" OnClick="subImage" ValidationGroup="insertImg" />
+        <br /><br />
+        <hr />
+        <br />
+
+        <%-- This allows the user to see what images are in the system --%>
+        <asp:DataList ID="dtl_main" runat="server" RepeatLayout="Flow">
+            <HeaderTemplate>
+                <asp:Label ID="lbl_header" runat="server" Text="Below are the images which have been uploaded **They may appear distorted here**" Font-Italic="true"  Font-Size="14" />
+                <br /><br />
+            </HeaderTemplate>
+            <ItemTemplate>
+                <div class="upImages">
+                    <asp:Label ID="lbl_name" runat="server" Text="Image Name:" Font-Bold="true" />&nbsp;
+                    <asp:Label ID="lbl_name2" runat="server" Text='<%#Eval("ImageName")%>' Font-Italic="true" Font-Size="15" />
+                    <br /><br />
+                    <asp:Image ID="img_ad" runat="server" ImageUrl='<%#Eval("ImageURL")%>' Width="400" Height="400" />
+                    <br />
+                </div><%-- end upImages --%>
+            </ItemTemplate>
+        </asp:DataList>
+
+    </div><%-- end imageUpload --%>
 </asp:Content>

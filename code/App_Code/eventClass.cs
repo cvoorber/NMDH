@@ -6,9 +6,8 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.Expressions;
 using System.Web.UI;
 
-/* This file is my beautiful creation of a custom control that allows awesome staff members to book a room and 
- * throw a party... WOOOOO! Eventually these events will show up on a calendar and stuff but for the purposes 
- * of this assignment I'll just be boring and spit the values back out.
+/* This custom control allows staff members to book the staff room at an available time using their employee id 
+ * (there is no use in giving each employee a login JUST so that they can book the room once every few years).
  */
 
 namespace ilanaCustom
@@ -74,7 +73,7 @@ namespace ilanaCustom
 
         //submit
         private Button _submit;
-        public event EventHandler CustomEvent;
+        public event EventHandler CustomEvent; //this creates an event handler that is available on the page itself (to hide and show the panels)
 
         //output the values
         private Label _lbloutput;
@@ -344,6 +343,7 @@ namespace ilanaCustom
             _desc = new TextBox();
             _desc.ID = "txt_desc";
             _desc.TextMode = TextBoxMode.MultiLine; //longer length is accepted
+            _desc.Width = 145;
             this.Controls.Add(_desc);
             _lbldesc.AssociatedControlID = _desc.ID;
 
@@ -368,44 +368,62 @@ namespace ilanaCustom
             this.Controls.Add(_lbloutput);
         }
 
-        //this just spits all the data entered into the inputs back out
+        //this method adds the record into the database
         protected void subSubmit(object sender, EventArgs e)
         {
+            //check that the page is valid before proceeding
             if (!Page.IsValid)
                 return;
 
+            //clear any previous messages
             _lbloutput.Text = string.Empty;
+
+            //form a proper datetime using the day, month, year, and time provided
             DateTime start = DateTime.Parse(_month.Text.ToString() + "/" + _day.Text.ToString() + "/" + _year.Text.ToString() + " " + _start.Text.ToString());
             DateTime end = DateTime.Parse(_month.Text.ToString() + "/" + _day.Text.ToString() + "/" + _year.Text.ToString() + " " + _end.Text.ToString());
-            int staffID = 2;
+            
+            //get the other values from the inputs and convert them to the proper datatype
+            int staffID = int.Parse(_id.Text);
             int people = int.Parse(_attendees.Text);
             string desc = _desc.Text.ToString();
             string title = _title.Text.ToString();
 
+            //create a new instance of the class
             staffroomClass objtest = new staffroomClass();
+
+            //in validating the provided times, initially we assume that there is no time conflict
             bool conflict = false;
+
+            //compare the inputs to each booked time in the database
             foreach (var test in objtest.getEventsbyDay(start.Date, start.Date.AddDays(1)))
             {
+                //there are three scenarios here that indicate a conflict.
+                //1. The start time of the new booking is between the start and end of an existing booking
+                //2. The end time of the new booking is between the start and end of an existing booking
+                //3. The start time of the new booking is before that of an existing booking WHILE the end time of the new 
+                //      booking is after the end of the existing one. In this case, the new event is encompassing one that exists.    
                 if (start < test.rb_start && end > test.rb_end
                     || start > test.rb_start && start < test.rb_end
                     || end > test.rb_start && end < test.rb_end)
                 {
-                    conflict = true;
+                    conflict = true; //if the if statement ever rings true, the new booking is conflicting with an existing one
                     _lbloutput.Text = "<span style='color:red;font-style:italic;'>The event you are trying to add conflicts with " + test.rb_title.ToString() + " on that day which begins at " + test.rb_start.ToShortTimeString() + " and ends at " + test.rb_end.ToShortTimeString() + ".</span>";
+                    break; //stop the foreach
                 }
             }
 
-            if (!conflict)
+            if (!conflict) //insert the event if there is no conflict
             {
 
                 //creating an instance of our LINQ object
                 ndmhDCDataContext objDatabaseDC = new ndmhDCDataContext();
-                //to ensure all data will ve disposed when finished
+                //to ensure all data will be disposed when finished
                 using (objDatabaseDC)
                 {
                     //create an instance of our table object
                     ndmh_roomBooking objNewBook = new ndmh_roomBooking();
 
+                    //set the value of each variable in the object
                     objNewBook.rb_member = staffID;
                     objNewBook.rb_title = title;
                     objNewBook.rb_start = start;
@@ -418,6 +436,8 @@ namespace ilanaCustom
 
                     //commit insert against database
                     objDatabaseDC.SubmitChanges();
+
+                    //empty the input controls and hide the new event panel
                     _title.Text = string.Empty;
                     _month.SelectedValue = "";
                     _day.SelectedValue = "";
@@ -427,6 +447,8 @@ namespace ilanaCustom
                     _attendees.Text = string.Empty;
                     _desc.Text = string.Empty;
                 }
+
+                //fire the public EventHandler
                 CustomEvent(this, EventArgs.Empty);
             }
         }
@@ -456,12 +478,12 @@ namespace ilanaCustom
             return months;
         }
 
-        //populate the next 50 years
+        //populate the next 20 years
         public List<ListItem> getyears()
         {
             List<ListItem> years = new List<ListItem>();
             years.Add(new ListItem(""));
-            for (var i = 2013; i < 2063; i++)
+            for (var i = int.Parse(DateTime.Now.Year.ToString()); i < (int.Parse(DateTime.Now.Year.ToString()) + 20); i++)
             {
                 years.Add(new ListItem(i.ToString()));
             }
@@ -476,11 +498,15 @@ namespace ilanaCustom
             //this div contains the table and the submit button together
             writer.RenderBeginTag(HtmlTextWriterTag.Div);
 
+            
             writer.AddStyleAttribute(HtmlTextWriterStyle.BorderStyle, "Solid");
             writer.AddStyleAttribute(HtmlTextWriterStyle.BorderColor, "Gray");
             writer.AddStyleAttribute(HtmlTextWriterStyle.BorderWidth, "1px");
             writer.AddStyleAttribute(HtmlTextWriterStyle.BackgroundColor, "#e2f6f3");
             writer.AddStyleAttribute(HtmlTextWriterStyle.TextAlign, "Left");
+
+            writer.AddAttribute(HtmlTextWriterAttribute.Cellpadding, "10px");
+            writer.AddAttribute(HtmlTextWriterAttribute.Class, "customControl");
             writer.RenderBeginTag(HtmlTextWriterTag.Table);
 
             //header section of the table displays the title
@@ -615,6 +641,7 @@ namespace ilanaCustom
             writer.RenderEndTag();//div
         }
 
+        //this is a custom validation method to check that the start time is before the end time
         protected void timeValidate(object sender, ServerValidateEventArgs e)
         {
             DateTime start = DateTime.Parse(_start.Text.ToString());
@@ -627,13 +654,20 @@ namespace ilanaCustom
             else e.IsValid = false;
         }
 
+        //this is a custom validation method that checks the employee id provided against the database to ensure that it exists
         protected void idValidate(object sender, ServerValidateEventArgs e)
         {
+            //we initially assume that the page is invalid
             e.IsValid = false;
+
+            //create a new instance of the class
             staffClass objID = new staffClass();
+
+            //get a list of all employees
             var allID = objID.getList();
             foreach (var staff in allID)
             {
+                //if the id matches an existing employee, the page is valid
                 if (staff.sl_id.ToString() == _id.Text.ToString())
                 {
                     e.IsValid = true;

@@ -14,6 +14,7 @@ public class cartItemClass : IEquatable<cartItemClass>
         set { _product = null; _productId = value; }
     }
 
+    //creating products instances
     private giftshopClass _product = null;
     public giftshopClass Prod
     {
@@ -37,6 +38,7 @@ public class cartItemClass : IEquatable<cartItemClass>
         get { return Prod.Price; }
     }
 
+    //calculating the subtotal
     public decimal TotalPrice
     {
         get { return UnitPrice * Quantity; }

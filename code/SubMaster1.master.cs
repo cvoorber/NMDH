@@ -32,7 +32,7 @@ public partial class SubMaster1 : System.Web.UI.MasterPage
                 if(titleList[i].ChildNodes[0].FirstChild.Value == pp_Url)
                 {
                     pagename = titleList[i].ChildNodes[2].FirstChild.Value.ToString();
-                    i = 99999;
+                    break;
                 }
             }
             navClass menuObj = new navClass();
@@ -51,7 +51,7 @@ public partial class SubMaster1 : System.Web.UI.MasterPage
         }
     }
 
-    protected void _loadMenu()
+    public void _loadMenu()
     {
         side_menu.Items.Clear();
 

@@ -1,7 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/subAdmin.master" AutoEventWireup="true" CodeFile="homepageCMS.aspx.cs" Inherits="Admin_homepageCMS" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
 <div id="editWait">
     <h1>Wait Time Estimation Update</h1>
