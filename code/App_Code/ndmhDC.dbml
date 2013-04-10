@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="cvoorber" Class="ndmhDCDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=cvoorber.db.10296660.hostedresource.com,1433;Initial Catalog=cvoorber;Persist Security Info=True;User ID=cvoorber" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="cvoorberConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=cvoorber.db.10296660.hostedresource.com;Initial Catalog=cvoorber;Persist Security Info=True;User ID=cvoorber" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="cvoorberConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.state_or_province" Member="state_or_provinces">
     <Type Name="state_or_province">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -110,8 +110,6 @@
       <Association Name="ndmh_department_listing_ndmh_donation" Member="ndmh_department_listing" ThisKey="d_id" OtherKey="dl_id" Type="ndmh_department_listing" IsForeignKey="true" />
     </Type>
   </Table>
-<<<<<<< HEAD
-=======
   <Table Name="dbo.ndmh_events" Member="ndmh_events">
     <Type Name="ndmh_event">
       <Column Name="n_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -125,7 +123,6 @@
       <Association Name="ndmh_staff_listing_ndmh_event" Member="ndmh_staff_listing" ThisKey="n_contact_id" OtherKey="sl_id" Type="ndmh_staff_listing" IsForeignKey="true" />
     </Type>
   </Table>
->>>>>>> 63833e59ae40cc21eb216a36e35bf7d0ff19ab0b
   <Table Name="dbo.ndmh_external_links" Member="ndmh_external_links">
     <Type Name="ndmh_external_link">
       <Column Name="el_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -255,35 +252,8 @@
       <Column Name="sl_phone" Type="System.String" DbType="NChar(14)" CanBeNull="true" />
       <Column Name="sl_image" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="sl_email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Association Name="ndmh_staff_listing_ndmh_roomBooking" Member="ndmh_roomBookings" ThisKey="sl_id" OtherKey="rb_member" Type="ndmh_roomBooking" />
       <Association Name="ndmh_staff_listing_ndmh_event" Member="ndmh_events" ThisKey="sl_id" OtherKey="n_contact_id" Type="ndmh_event" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ndmh_events" Member="ndmh_events">
-    <Type Name="ndmh_event">
-      <Column Name="n_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="n_title" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="n_description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="n_image" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="n_expires" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="n_event_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="n_contact_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="ndmh_event_ndmh_comment" Member="ndmh_comments" ThisKey="n_id" OtherKey="n_id" Type="ndmh_comment" />
-      <Association Name="ndmh_staff_listing_ndmh_event" Member="ndmh_staff_listing" ThisKey="n_contact_id" OtherKey="sl_id" Type="ndmh_staff_listing" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ndmh_uploads" Member="ndmh_uploads">
-    <Type Name="ndmh_upload">
-      <Column Name="i_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="i_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="i_url" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ndmh_uploads" Member="ndmh_uploads">
-    <Type Name="ndmh_upload">
-      <Column Name="i_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="i_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="i_url" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="ndmh_staff_listing_ndmh_roomBooking" Member="ndmh_roomBookings" ThisKey="sl_id" OtherKey="rb_member" Type="ndmh_roomBooking" />
     </Type>
   </Table>
   <Table Name="dbo.ndmh_uploads" Member="ndmh_uploads">
