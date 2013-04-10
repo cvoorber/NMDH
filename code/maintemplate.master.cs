@@ -182,12 +182,12 @@ public partial class maintemplate : System.Web.UI.MasterPage
     {
         if (txt_search.Text == "")
         {
-            Response.Redirect("search.aspx");
+            Response.Redirect("~/search.aspx");
         }
         else
         {
             string newQuery = txt_search.Text.Replace(" ","+");
-            Response.Redirect("search.aspx?query=" + newQuery);
+            Response.Redirect("~/search.aspx?query=" + newQuery);
         }
     }
 }
