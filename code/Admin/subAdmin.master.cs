@@ -13,6 +13,7 @@ public partial class SubMaster1 : System.Web.UI.MasterPage
     {
     }
 
+    // initiate the eventhandler passed down from the masterpage
     protected override void OnInit(EventArgs e)
     {
         base.OnInit(e);
