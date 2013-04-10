@@ -27,7 +27,10 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
-
+    <div style="background:#feff9c;Padding:25px;"><h1>Welcome to Nipigon District Memorial Hospital</h1>
+        <img src="img/frontbaby.jpg" width="200px" style="float:left;margin:20px;" />
+        <p style="margin-top:20px;">Here at NDMH, our goal is to make your experience with us as beneficial and comfortable as possible. For over 30 years, we've been servicing the Nipigon District and feel privilaged to be a part of such a heartfelt community. Our hospital offers a wide variety of health services</p>
+    </div>
     <%-- 2 latest entries from the events(news) table --%> 
     <h1>Latest News</h1>
     <asp:Repeater ID="rpt_news" runat="server">
