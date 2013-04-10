@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="cvoorber" Class="ndmhDCDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=cvoorber.db.10296660.hostedresource.com;Initial Catalog=cvoorber;Persist Security Info=True;User ID=cvoorber" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="cvoorberConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=cvoorber.db.10296660.hostedresource.com,1433;Initial Catalog=cvoorber;Persist Security Info=True;User ID=cvoorber" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="cvoorberConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.state_or_province" Member="state_or_provinces">
     <Type Name="state_or_province">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -27,6 +27,16 @@
       <Column Name="w_onstaff" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="w_updated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="w_estimate" Type="System.Decimal" DbType="Decimal(18,1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ndmh_chat" Member="ndmh_chats">
+    <Type Name="ndmh_chat">
+      <Column Name="messageID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="chatroomID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="message" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="touser" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fromuser" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.ndmh_comments" Member="ndmh_comments">
@@ -109,7 +119,6 @@
       <Column Name="n_expires" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="n_event_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="n_contact_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="n_link" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="ndmh_event_ndmh_comment" Member="ndmh_comments" ThisKey="n_id" OtherKey="n_id" Type="ndmh_comment" />
       <Association Name="ndmh_staff_listing_ndmh_event" Member="ndmh_staff_listing" ThisKey="n_contact_id" OtherKey="sl_id" Type="ndmh_staff_listing" IsForeignKey="true" />
     </Type>
@@ -245,6 +254,13 @@
       <Column Name="sl_email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Association Name="ndmh_staff_listing_ndmh_event" Member="ndmh_events" ThisKey="sl_id" OtherKey="n_contact_id" Type="ndmh_event" />
       <Association Name="ndmh_staff_listing_ndmh_roomBooking" Member="ndmh_roomBookings" ThisKey="sl_id" OtherKey="rb_member" Type="ndmh_roomBooking" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ndmh_uploads" Member="ndmh_uploads">
+    <Type Name="ndmh_upload">
+      <Column Name="i_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="i_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="i_url" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
