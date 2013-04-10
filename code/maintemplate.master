@@ -19,7 +19,7 @@
     <form id="form1" runat="server">
     <asp:Panel ID="container" runat="server" SkinID="container">
   	
-    <asp:ImageButton ID="img_search" runat="server" ImageUrl="~/img/search.png" CssClass="searchbar" />
+    <asp:ImageButton ID="img_search" runat="server" ImageUrl="~/img/search.png" CssClass="searchbar" OnClick="subSearch" />
     <asp:TextBox ID="txt_search" runat="server" SkinID="searchbar" />
     
     <asp:ImageButton ID="font_decrease" runat="server" ImageUrl="~/img/fontminus.png" CssClass="fontchange" OnClick="fontDec" CausesValidation="false" />

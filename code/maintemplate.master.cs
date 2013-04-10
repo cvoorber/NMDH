@@ -166,4 +166,17 @@ public partial class maintemplate : System.Web.UI.MasterPage
         this.downFont(this, e);
 
     }
+
+    protected void subSearch(Object sender, EventArgs e)
+    {
+        if (txt_search.Text == "")
+        {
+            Response.Redirect("search.aspx");
+        }
+        else
+        {
+            string newQuery = txt_search.Text.Replace(" ","+");
+            Response.Redirect("search.aspx?query=" + newQuery);
+        }
+    }
 }
