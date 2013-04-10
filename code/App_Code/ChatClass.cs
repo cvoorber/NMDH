@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,15 +11,20 @@ public class ChatClass
     private int _chatID;
     private string _userName;
     private string _adminName;
-
+    
+    //static list to keep track of 'chatrooms'
+    //ChatClass object = chatroom
+    //dynamically created by adminchat and inserted into this list
+    
     public static List<ChatClass> chatrooms = new List<ChatClass>(); 
-
-	public ChatClass(int chatID=0,string userName="",string adminName="")
-	{
-        _userName = userName;
+    
+    
+    public ChatClass(int chatID=0,string userName="",string adminName="")
+    {
+    	_userName = userName;
         _adminName = adminName;
         _chatID = chatID;
-	}
+    }
 
     public int chatID
     {

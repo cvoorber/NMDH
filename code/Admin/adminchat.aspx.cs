@@ -6,27 +6,38 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 
+//at the time of this feature completion, admin roles have not been established yet
+
 public partial class _Default : System.Web.UI.Page
 {
 
     LinqClass<ndmh_chat> chatDBObj = new LinqClass<ndmh_chat>(); 
-    string adminName = "quin";
+    string adminName = "quin";  //hardcoded name for admin chatter
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
 
         if (!Page.IsPostBack)
         {
+            //checks to see if admin already in a chatroom via chatid in the session var.
             if (Session["chatroom"] == null)
             {
+                //count the chat queue
                 int count = ChatClass.chatrooms.Count;
+                
+                //if none, freely add a new one
                 if (count == 0)
                 {
                     Session["chatroom"] = 1;
+
+                    //create the chat obj for the static chat list
                     ChatClass.chatrooms.Add(new ChatClass(1, "", adminName));
                 }
                 else
                 {
+                    //if there are some, get last index and increment one
+                    //that will be the chatID
                     Session["chatroom"] = count + 1;
                     ChatClass.chatrooms.Add(new ChatClass(count + 1, "", adminName));
                 }
@@ -37,12 +48,16 @@ public partial class _Default : System.Web.UI.Page
    
     }
 
+    //button to handle the send button being pushed
     protected void subSend(object sender, EventArgs e)
     {
+        //only do so when textbox is not empty
         if (txt_msg.Text != "")
         {
+            
             ndmh_chat newChatObj = new ndmh_chat()
             {
+                //replace linebreaks with br tags to ensure line breaks are preserved on display
                 message = txt_msg.Text.Replace("\n","<br />"),
                 chatroomID = Int32.Parse(Session["chatroom"].ToString()),
                 timestamp = DateTime.Now,
