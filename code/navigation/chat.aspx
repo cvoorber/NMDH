@@ -1,7 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubMaster1.master" AutoEventWireup="true" CodeFile="chat.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
+    <h1>Why Chat?</h1>
+    <p>We know you have a lot of questions about your health, and we want to help! That's why we have nurses on duty 24/7 to answer your most pressing questions from the comfort of your own home</p>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
 
     <%-- script to make scrollbar on chatwindow scroll down to newest msg on rebind --%>
