@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Collections;
 
-public partial class newEvent : System.Web.UI.Page
+public partial class calendar : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
