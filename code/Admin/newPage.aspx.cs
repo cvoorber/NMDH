@@ -140,6 +140,7 @@ public partial class newPage : System.Web.UI.Page
 
     }
 
+    //hide the new page panel and clear its contents
     protected void subCancel(object sender, EventArgs e)
     {
         output.Text = string.Empty;
@@ -149,6 +150,7 @@ public partial class newPage : System.Web.UI.Page
         pnl_new.Visible = false;
     }
 
+    //return a message based on the success of an operation
     private string _message(bool success, string action)
     {
         if (success == true)
@@ -157,10 +159,11 @@ public partial class newPage : System.Web.UI.Page
         }
         else
         {
-            return "Epic fail.";
+            return "There has been an error on " + action + "ing the page. Please try again or contact a network administrator.";
         }
     }
 
+    //bind the list of pages
     private void _rebind()
     {
         navClass objPages = new navClass();
@@ -168,15 +171,25 @@ public partial class newPage : System.Web.UI.Page
         rpt_all.DataBind();
     }
 
+    //show the edit panel for an existing page
     protected void subEdit(object sender, RepeaterCommandEventArgs e)
     {
+        //clear the output label
         output.Text = string.Empty;
+
+        //create a new instance of the class
         navClass objDetails = new navClass();
+
+        //bind the detailsview to the event aquired from the class file
         dtv_edit.DataSource = objDetails.getPageByID(int.Parse(e.CommandArgument.ToString()));
         dtv_edit.DataBind();
+
+        //fill the dropdownlist in the detailsview with the types list
         DropDownList sections = (DropDownList)dtv_edit.FindControl("ddl_section");
         sections.DataSource = getTypes();
         sections.DataBind();
+
+        //set the selected type to that matching the record
         var selected = objDetails.getPageByID(int.Parse(e.CommandArgument.ToString()));
         string sel = "";
         foreach (var s in selected)
@@ -184,41 +197,66 @@ public partial class newPage : System.Web.UI.Page
             sel = s.gp_section.ToString();
         }
         sections.SelectedValue = sel;
+
+        //change the mode of the detailsview to edit and make the panel visible
         dtv_edit.ChangeMode(DetailsViewMode.Edit);
-        pnl_all.Visible = false;
         pnl_edit.Visible = true;
+
+        //hide the panel that shows all pages
+        pnl_all.Visible = false;
     }
 
+    //execute an update of a page
     protected void subChange(object sender, DetailsViewCommandEventArgs e)
     {
+        //create a new instance of the navigation class
         navClass objNav = new navClass();
+
+        //NOTE: THE FOLLOWING CODE WAS CREATED WITH THE HELP OF http://forums.asp.net/t/1062335.aspx/1.
+
+        //locate the xml file containing the sitemap
         string xmlpath = Request.PhysicalApplicationPath + "XMLSitemap.xml";
+
+        //create a new XmlDocument object to store the sitemap
         XmlDocument doc = new XmlDocument();
+
+        //load the sitemap into the new XmlDocument
         doc.Load(xmlpath);
 
+        //create variables to store the parent and path element values for the new xml "url" element
         string parent = "";
         string path = "";
 
+        //do something based on the command name provided
         switch (e.CommandName)
         {
             case "save":
+                //get the id value sent from the sender
                 int _id = int.Parse(e.CommandArgument.ToString());
+
+                //go into the edit mode of the detailsview to access its controls
                 if (dtv_edit.CurrentMode == DetailsViewMode.Edit)
                 {
+                    //set the title textbox input to the title
                     TextBox txt_title = (TextBox)dtv_edit.FindControl("txt_title");
                     string title = txt_title.Text;
 
+                    //set the content textbox input to the content
                     TextBox txt_content = (TextBox)dtv_edit.FindControl("txt_content");
                     string content = txt_content.Text;
 
+                    //set active to true or false based on the status of the check box
                     CheckBox chk_active = (CheckBox)dtv_edit.FindControl("chk_activeE");
                     bool active = chk_active.Checked;
 
+                    //find the section the page belongs in based on the section selected in the drop down list
                     DropDownList ddl_section = (DropDownList)dtv_edit.FindControl("ddl_section");
                     string section = ddl_section.SelectedValue.ToString();
 
+                    //run the update against the database and display a message in the output label based on its success
                     output.Text = _message(objNav.updatePage(_id, title, section, content, active), "edit");
 
+                    //set the parent and path based on the section provided to be inserted into the url element
                     switch (section)
                     {
                         case "About":
@@ -239,7 +277,10 @@ public partial class newPage : System.Web.UI.Page
                             break;
                     }
 
+                    //create the url element in the XmlDocument
                     XmlElement updElem = doc.CreateElement("url");
+
+                    //create the child nodes
                     updElem.InnerXml = "<loc></loc><lastmod></lastmod><title></title><parent></parent><sourceid></sourceid>";
                     updElem["loc"].InnerText = path;
                     updElem["lastmod"].InnerText = DateTime.Now.ToString("yyyy-MM-dd");
@@ -247,13 +288,23 @@ public partial class newPage : System.Web.UI.Page
                     updElem["parent"].InnerText = parent;
                     updElem["sourceid"].InnerText = _id.ToString();
 
+                    //find the element that matches this page in the xml document
                     var elements = doc.GetElementsByTagName("sourceid");
                     var match = false;
+
+                    //loop through the elements in the xml document looking for the element with the source id that matches this record id
                     foreach (XmlNode el in elements)
                     {
                         if (el.InnerText == _id.ToString())
                         {
                             match = true;
+                            //now we want to figure out what we need to do with the existing xml sitemap. There are a few different scenarios:
+                            //1. The record in the table matches a url element in the sitemap and the user inputs that the page is published AND is in the same section as before.
+                            //      -in this instance we simply update the content of the element by replacing it with a new one
+                            //2. The record in the table matches a url element in the sitemap and the user inputs that the page is published AND is NOT in the same section as before
+                            //      -in this instance we remove the element from where it is and add a new one to the new section
+                            //3. The record in the table DOES NOT match a url element in the sitemap and the user inputs that the page is published
+                            //      -in this instance the url element must simply be added
                             if (el.ParentNode.ChildNodes[0].InnerText == path && active)
                             {
                                 el.ParentNode.ParentNode.ReplaceChild(updElem, el.ParentNode);
