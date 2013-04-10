@@ -17,10 +17,12 @@ public partial class Admin_jobappsedit : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            rebind();
+            _rebind();
         }
     }
 
+    //delete function
+    //deletes data as well as the actual physical resume file
     protected void subDelete(object sender, EventArgs e)
     {
         int appID = Int32.Parse((((Button)sender).CommandArgument));
@@ -28,20 +30,24 @@ public partial class Admin_jobappsedit : System.Web.UI.Page
         File.Delete(Server.MapPath("~/resumes/" + currJobApp.j_resume));
         if (appsObj.Delete(m => m.j_application_id == appID))
         {
-            rebind();
+            _rebind();
         }
         else
             lbl_result.Text = "Update was not successful.";
     } 
 
+
+    //update command that handles datalist itemcommand
     protected void subUpdate(object sender, DataListCommandEventArgs e)
     {
+        //if cancel button, go back to main page
         if (e.CommandName == "cancel")
         {
-            rebind();
+            _rebind();
         }
         else
         {
+            //else update record via textbox input and hidden field with j_application_id
             int appID = Int32.Parse(((HiddenField)e.Item.FindControl("hdf_jappID")).Value);
 
             ndmh_job_application newJobApp = new ndmh_job_application()
@@ -72,43 +78,36 @@ public partial class Admin_jobappsedit : System.Web.UI.Page
         }
     }
 
-
+    //show updatepanel, datalist bound to that single item
     protected void subEdit(object sender, EventArgs e)
     {
         int appID = Int32.Parse((((Button)sender).CommandArgument));
        
         dtl_update.DataSource = appsObj.getResultByColumn(m => m.j_application_id == appID);
         dtl_update.DataBind();
-        showPanel(pnl_update);
+        _showPanel(pnl_update);
         
     }
 
-    private void rebind()
+    //rebinds the job application list
+    private void _rebind()
     {
         LinqClass<ndmh_job_application> appsOjb = new LinqClass<ndmh_job_application>();
         dtl_apps.DataSource = appsObj.getItems();
         dtl_apps.DataBind();
         lbl_result.Text = "";
-        showPanel(pnl_apps);
+        _showPanel(pnl_apps);
     }
 
-    private void showPanel(Panel p)
+    private void _showPanel(Panel p)
     {
         pnl_apps.Visible = false;
         pnl_update.Visible = false;
         p.Visible = true;
     }
 
-    //referenced from http://stackoverflow.com/questions/3829701/how-to-bind-javascript-function-with-onclientclick-event-with-eval
-    
-    protected void subSetConfirm(object sender, DataListItemEventArgs e)
-    {
-        ndmh_job_application currJobObj = (ndmh_job_application)e.Item.DataItem;
-        Button delButton = (Button)e.Item.FindControl("btn_delete");
-        //delButton.OnClientClick = string.Format("confirmMessage('{0}')", currJobObj.j_resume);
-        lbl_result.Text = currJobObj.j_resume;
-    }
-
+    //custom validator handler that handles empty or non-empty phone numbers
+    //for non-required alt phone number
     protected void subValidPhone(object sender, ServerValidateEventArgs e)
     {
         TextBox txt = (TextBox)this.Page.FindControl("txt_altphoneU");
