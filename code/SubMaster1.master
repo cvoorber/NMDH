@@ -2,21 +2,16 @@
 <%@ Mastertype VirtualPath="~/maintemplate.master" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
-    <!-- section -->
     <div id="left_sidebar">
+        <!-- this contains the side menu used to navigate deeper into the menu -->
         <asp:Menu ID="side_menu" runat="server" StaticMenuItemStyle-CssClass="side-menu" OnMenuItemClick="sideMenu_Click" SkinID="skin_side_nav" >
-
-
-            <Items>
-                <asp:MenuItem Text="About Us" Target="~/index.aspx" />
-            </Items>
         </asp:Menu>
         <asp:ContentPlaceHolder ID="l_sidebar" runat="server">
         </asp:ContentPlaceHolder>
     </div>
 
-    <!-- aside -->
     <div id="right_content">
+        <!-- show the content for that page in a repeater -->
         <asp:Repeater ID="rpt_content" runat="server">
             <ItemTemplate>
                 <asp:Label ID="lbltitle" runat="server" Text='<%#Eval("gp_title") %>' CssClass="h1" Font-Size="18pt" />
