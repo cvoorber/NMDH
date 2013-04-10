@@ -279,4 +279,11 @@
       <Column Name="i_url" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.ndmh_uploads" Member="ndmh_uploads">
+    <Type Name="ndmh_upload">
+      <Column Name="i_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="i_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="i_url" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

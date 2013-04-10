@@ -90,9 +90,15 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
   partial void Updatendmh_staff_listing(ndmh_staff_listing instance);
   partial void Deletendmh_staff_listing(ndmh_staff_listing instance);
 <<<<<<< HEAD
+<<<<<<< HEAD
   partial void Insertndmh_event(ndmh_event instance);
   partial void Updatendmh_event(ndmh_event instance);
   partial void Deletendmh_event(ndmh_event instance);
+=======
+  partial void Insertndmh_upload(ndmh_upload instance);
+  partial void Updatendmh_upload(ndmh_upload instance);
+  partial void Deletendmh_upload(ndmh_upload instance);
+>>>>>>> 63833e59ae40cc21eb216a36e35bf7d0ff19ab0b
 =======
   partial void Insertndmh_upload(ndmh_upload instance);
   partial void Updatendmh_upload(ndmh_upload instance);
@@ -291,17 +297,23 @@ public partial class ndmhDCDataContext : System.Data.Linq.DataContext
 	}
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public System.Data.Linq.Table<ndmh_event> ndmh_events
 	{
 		get
 		{
 			return this.GetTable<ndmh_event>();
 =======
+=======
+>>>>>>> 63833e59ae40cc21eb216a36e35bf7d0ff19ab0b
 	public System.Data.Linq.Table<ndmh_upload> ndmh_uploads
 	{
 		get
 		{
 			return this.GetTable<ndmh_upload>();
+<<<<<<< HEAD
+>>>>>>> 63833e59ae40cc21eb216a36e35bf7d0ff19ab0b
+=======
 >>>>>>> 63833e59ae40cc21eb216a36e35bf7d0ff19ab0b
 		}
 	}
@@ -2574,10 +2586,13 @@ public partial class ndmh_external_link : INotifyPropertyChanging, INotifyProper
 	private string _el_name;
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	private string _el_description;
 	
 	private string _el_link;
 =======
+=======
+>>>>>>> 63833e59ae40cc21eb216a36e35bf7d0ff19ab0b
 	private EntitySet<ndmh_comment> _ndmh_comments;
 >>>>>>> 63833e59ae40cc21eb216a36e35bf7d0ff19ab0b
 	
@@ -2613,6 +2628,9 @@ public partial class ndmh_external_link : INotifyPropertyChanging, INotifyProper
     partial void Onn_event_dateChanged();
     partial void Onn_contact_idChanging(System.Nullable<int> value);
     partial void Onn_contact_idChanged();
+<<<<<<< HEAD
+>>>>>>> 63833e59ae40cc21eb216a36e35bf7d0ff19ab0b
+=======
 >>>>>>> 63833e59ae40cc21eb216a36e35bf7d0ff19ab0b
     #endregion
 	
@@ -2819,6 +2837,7 @@ public partial class ndmh_faq_keyword : INotifyPropertyChanging, INotifyProperty
 		}
 	}
 	
+<<<<<<< HEAD
 	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ndmh_faq_id", DbType="Int NOT NULL")]
 	public int ndmh_faq_id
 =======
@@ -2849,6 +2868,10 @@ public partial class ndmh_faq_keyword : INotifyPropertyChanging, INotifyProperty
 	
 	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_associated_faq_name", DbType="VarChar(1000)")]
 	public string associated_faq_name
+=======
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_event_ndmh_comment", Storage="_ndmh_comments", ThisKey="n_id", OtherKey="n_id")]
+	public EntitySet<ndmh_comment> ndmh_comments
+>>>>>>> 63833e59ae40cc21eb216a36e35bf7d0ff19ab0b
 	{
 		get
 		{
@@ -4768,8 +4791,13 @@ public partial class ndmh_roomBooking : INotifyPropertyChanging, INotifyProperty
 		}
 	}
 	
+<<<<<<< HEAD
 	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rb_member", DbType="Int NOT NULL")]
 	public int rb_member
+=======
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_r_image", DbType="Image", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
+	public System.Data.Linq.Binary r_image
+>>>>>>> 63833e59ae40cc21eb216a36e35bf7d0ff19ab0b
 	{
 		get
 		{
@@ -5373,9 +5401,12 @@ public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChange
 	}
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ndmh_event_ndmh_comment", Storage="_ndmh_comments", ThisKey="n_id", OtherKey="n_id")]
 	public EntitySet<ndmh_comment> ndmh_comments
 =======
+=======
+>>>>>>> 63833e59ae40cc21eb216a36e35bf7d0ff19ab0b
 	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sl_image", DbType="Image", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 	public System.Data.Linq.Binary sl_image
 >>>>>>> 63833e59ae40cc21eb216a36e35bf7d0ff19ab0b
@@ -5454,6 +5485,116 @@ public partial class ndmh_event : INotifyPropertyChanging, INotifyPropertyChange
 	{
 		this.SendPropertyChanging();
 		entity.ndmh_event = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ndmh_uploads")]
+public partial class ndmh_upload : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _i_id;
+	
+	private string _i_name;
+	
+	private string _i_url;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Oni_idChanging(int value);
+    partial void Oni_idChanged();
+    partial void Oni_nameChanging(string value);
+    partial void Oni_nameChanged();
+    partial void Oni_urlChanging(string value);
+    partial void Oni_urlChanged();
+    #endregion
+	
+	public ndmh_upload()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_i_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int i_id
+	{
+		get
+		{
+			return this._i_id;
+		}
+		set
+		{
+			if ((this._i_id != value))
+			{
+				this.Oni_idChanging(value);
+				this.SendPropertyChanging();
+				this._i_id = value;
+				this.SendPropertyChanged("i_id");
+				this.Oni_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_i_name", DbType="VarChar(50)")]
+	public string i_name
+	{
+		get
+		{
+			return this._i_name;
+		}
+		set
+		{
+			if ((this._i_name != value))
+			{
+				this.Oni_nameChanging(value);
+				this.SendPropertyChanging();
+				this._i_name = value;
+				this.SendPropertyChanged("i_name");
+				this.Oni_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_i_url", DbType="VarChar(MAX)")]
+	public string i_url
+	{
+		get
+		{
+			return this._i_url;
+		}
+		set
+		{
+			if ((this._i_url != value))
+			{
+				this.Oni_urlChanging(value);
+				this.SendPropertyChanging();
+				this._i_url = value;
+				this.SendPropertyChanged("i_url");
+				this.Oni_urlChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
 	}
 }
 
