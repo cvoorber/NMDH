@@ -72,7 +72,7 @@
                 <asp:RequiredFieldValidator ID="rfv_urlU" runat="server" ControlToValidate="txt_urlU" ErrorMessage="*required" />
                 <br />
                 <asp:Button ID="btn_update" runat="server" CommandName="update" Text="Update" />
-                <asp:Button ID="btn_cancel" runat="server" CommandName="cancel" Text="Cancel" />
+                <asp:Button ID="btn_cancel" runat="server" CommandName="cancel" Text="Cancel" CausesValidation="false" />
             </ItemTemplate>
         </asp:Repeater>
     </asp:Panel>

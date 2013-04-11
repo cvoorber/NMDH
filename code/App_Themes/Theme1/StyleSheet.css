@@ -485,3 +485,21 @@ margin:20px 40px;
 {
     margin:10px;
 }
+
+
+.searchbox
+{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.searchPageBox
+{
+    width: 600px;
+}
+
+.largerButton
+{
+    width: 250px;
+}
