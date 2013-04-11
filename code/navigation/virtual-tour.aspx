@@ -1,11 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/maintemplate.master" AutoEventWireup="true" CodeFile="virtual-tour.aspx.cs" Inherits="_Default"
- %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SubMaster1.master" AutoEventWireup="true" CodeFile="virtual-tour.aspx.cs" Inherits="_Default" %>
 
-<asp:Content ID="cnt_headvirt" ContentPlaceHolderID="head" Runat="Server">
-<%--Leave blank for now--%>
+<asp:Content runat="server" ContentPlaceHolderID="l_sidebar">
+<h1>Explore NDMH</h1>
+<p>Browse our hospital by selecting a floor and then the department you want to learn about</p>
 </asp:Content>
 
-<asp:Content ID="cnt_mainvirt" ContentPlaceHolderID="content_area" Runat="Server">
+
+<asp:Content ID="cnt_mainvirt" ContentPlaceHolderID="r_content" Runat="Server">
 
 <asp:ScriptManager ID="scm_vtour" runat="server" />
     

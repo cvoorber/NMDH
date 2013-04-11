@@ -43,9 +43,6 @@ public class navClass
             objNewPage.gp_title = _title;
             objNewPage.gp_section = _type;
             objNewPage.gp_content = _content;
-
-            //objNewPage.gp_image = _image;
-
             objNewPage.gp_active = _publish;
             //insert command
             objPageDC.ndmh_general_pages.InsertOnSubmit(objNewPage);
@@ -69,9 +66,6 @@ public class navClass
             objEdit.gp_title = _title;
             objEdit.gp_section = _type;
             objEdit.gp_content = _content;
-
-            //objEdit.gp_image = "image";
-
             objEdit.gp_active = _publish;
             objPageDC.SubmitChanges();
             return true;
