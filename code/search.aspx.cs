@@ -13,13 +13,57 @@ public partial class Default2 : System.Web.UI.Page
     {
         if (Request.QueryString["query"] != null)
         {
-            
+            List<ndmh_keyword> matchKeys = new List<ndmh_keyword>();
+            var strArray = Request.QueryString["query"].Split('+');
+            var keyObjects = kwObj.getItems();
+
+            foreach (ndmh_keyword kw in keyObjects)
+            {
+                for (int i = 0; i < strArray.Length; i++)
+                {
+                        string tmpStr = strArray[i].Trim().ToLower();
+                        if(kw.page_title.Contains(tmpStr)||kw.keywords.Contains(tmpStr))
+                        {
+                            matchKeys.Add(kw);
+                            break;
+                        }
+                }
+            }
+
+            if (matchKeys.Count > 0)
+            {
+                rpt_result.DataSource = matchKeys;
+                rpt_result.DataBind();
+                pnl_result.Visible = true;
+            }
         }
     }
 
+    
     protected void subSearch(object sender, EventArgs e)
     {
-        
-    }
+            List<ndmh_keyword> matchKeys = new List<ndmh_keyword>();
+            var keyObjects = kwObj.getItems();
+            var strArray = (txt_search.Text).Split(' ');
 
-}
+            foreach (ndmh_keyword kw in keyObjects)
+            {
+                for (int i = 0; i < strArray.Length; i++)
+                {
+                        string tmpStr = strArray[i].Trim().ToLower();
+                        if(kw.page_title.Contains(tmpStr)||kw.keywords.Contains(tmpStr))
+                        {
+                            matchKeys.Add(kw);
+                            break;
+                        }
+                }
+            }
+
+            if (matchKeys.Count > 0)
+            {
+                rpt_result.DataSource = matchKeys;
+                rpt_result.DataBind();
+                pnl_result.Visible = true;
+            }
+        }
+    }

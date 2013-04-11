@@ -2,15 +2,16 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="content_area" Runat="Server">
     <div class="searchbox">
-    <asp:Label ID="Label1" runat="server" Text="Enter search:" />
+    <asp:Label ID="lbl_slabel" runat="server" Text="Enter search:" />
     <br />
-    <asp:TextBox ID="TextBox1" runat="server" CssClass="searchPageBox" />
+    <asp:TextBox ID="txt_search" runat="server" CssClass="searchPageBox" />
     <br />
-    <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="subSearch" CssClass="largerButton" />
+    <asp:Button ID="btn_search" runat="server" Text="Submit" OnClick="subSearch" CssClass="largerButton" />
 
-    <asp:Panel ID="Panel1" runat="server">
-        <asp:Repeater ID="Repeater1" runat="server">
+    <asp:Panel ID="pnl_result" runat="server">
+        <asp:Repeater ID="rpt_result" runat="server">
             <HeaderTemplate>
+                <asp:Label ID="lbl" runat="server" Text="Results: " />
                 <ol>
             </HeaderTemplate>
             <ItemTemplate>
@@ -23,4 +24,3 @@
     </asp:Panel>
     </div>
 </asp:Content>
-
