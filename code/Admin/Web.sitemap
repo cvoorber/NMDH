@@ -8,7 +8,7 @@
     <siteMapNode url="Admin/jobappsedit.aspx" title="Job Applications"  description="" />
     <siteMapNode url="Admin/jobcatsedit.aspx" title="Job Categories"  description="" />
     <siteMapNode url="Admin/jobpostsedit.aspx" title="Job Posts"  description="" />
-    <siteMapNode url="Admin/newEvent.aspx" title="Staff Room"  description="" />
+    <siteMapNode url="Admin/adminCalendar.aspx" title="Staff Room"  description="" />
     <siteMapNode url="Admin/newPage.aspx" title="Pages"  description="" />
     <siteMapNode url="Admin/newsblogCMS.aspx" title="News"  description="" />
     <siteMapNode url="Admin/virttouradmin.aspx" title="Virtual Tour"  description="" />

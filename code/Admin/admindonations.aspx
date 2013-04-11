@@ -13,6 +13,15 @@
 </style>
 </asp:Content>
 <asp:Content ID="cnt_addonmain" ContentPlaceHolderID="content_area" Runat="Server">
+
+<!-- Ilana added this in to maintain a menu structure for admin -->
+<asp:LoginStatus ID="lgs_admin" runat="server" CssClass="loginStatus" Font-Size="12pt" Height="30"  />
+        <asp:SiteMapDataSource ID="smd_admin" runat="server" SiteMapProvider="AdminSiteMapProvider" ShowStartingNode="false" />
+        <asp:Menu ID="side_menu" runat="server" DataSourceID="smd_admin" StaticMenuItemStyle-CssClass="side-menu" Orientation="Horizontal" DynamicMenuStyle-Font-Size="10pt"  />
+        <br />
+        <br />
+<!-- end of what Ilana added -->
+
     
     <asp:Panel ID="pnl_main" runat="server">
     <asp:ListView ID="lsv_main" runat="server" ItemPlaceholderID="plh_main" >
