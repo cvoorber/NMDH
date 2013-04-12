@@ -60,6 +60,19 @@ table {
 
 @import url(http://fonts.googleapis.com/css?family=Rufina);
 
+/* - - - - Do not remove persist (added by Chris) - - - - */
+#persist {
+background-color:Red;
+position:fixed;
+top:0px;
+padding-top:20px;
+text-align:center;
+font-size:22px;
+width:100%;
+height:40px;
+z-index:99;
+}
+
 body {
 	background-color: #11c1a2;
 	font-family: 'Rufina', serif;
