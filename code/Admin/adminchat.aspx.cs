@@ -39,10 +39,13 @@ public partial class _Default : System.Web.UI.Page
                     //if there are some, get last index and increment one
                     //that will be the chatID
                     Session["chatroom"] = count + 1;
+                    Session["userName"] = adminName;
+                    Session["admin"] = true;
                     ChatClass.chatrooms.Add(new ChatClass(count + 1, "", adminName));
                 }
             }
-
+            lbl_nicknameC.Text = "Chatroom: " + Session["chatroom"].ToString();
+            lbl.Text = "Admin: " + adminName;
             _rebind();
         }
    

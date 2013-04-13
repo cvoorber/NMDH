@@ -22,7 +22,7 @@ public partial class Default2 : System.Web.UI.Page
                 for (int i = 0; i < strArray.Length; i++)
                 {
                         string tmpStr = strArray[i].Trim().ToLower();
-                        if(kw.page_title.Contains(tmpStr)||kw.keywords.Contains(tmpStr))
+                        if (kw.page_title.Replace(",", "").Contains(tmpStr) || kw.keywords.Replace(",", "").Contains(tmpStr))
                         {
                             matchKeys.Add(kw);
                             break;
@@ -51,7 +51,8 @@ public partial class Default2 : System.Web.UI.Page
                 for (int i = 0; i < strArray.Length; i++)
                 {
                         string tmpStr = strArray[i].Trim().ToLower();
-                        if(kw.page_title.Contains(tmpStr)||kw.keywords.Contains(tmpStr))
+                        if(kw.page_title.Replace(",","").Contains(tmpStr)
+                            ||kw.keywords.Replace(",","").Contains(tmpStr))
                         {
                             matchKeys.Add(kw);
                             break;
