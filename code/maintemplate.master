@@ -15,7 +15,9 @@
     <script type="text/javascript" language="javascript" src="scripts/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
 </head>
 <body>
-    
+    <%--- - - - Do not remove persist (added by Chris) - - - ---%>
+    <div id="persist">This is a student site (NOT A REAL HOSPITAL)</div>
+
     <form id="form1" runat="server">
     <asp:Panel ID="container" runat="server" SkinID="container">
   	

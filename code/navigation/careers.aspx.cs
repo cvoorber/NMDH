@@ -18,7 +18,11 @@ public partial class careers : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
+            _showPanel(pnl_careers);
+            lbl_result.Text = "";
+
             //populates the category repeater with linq datasource
+            
             rpt_careers.DataSource = catObj.getItems();
             rpt_careers.DataBind();
 
@@ -28,57 +32,66 @@ public partial class careers : System.Web.UI.Page
                 //if set populate the job postings repeater based on catID
                 int catVal = Int32.Parse(Request.QueryString["catID"]);
                 lbl_jCat.Text = (catObj.getResultByColumn(m => m.j_category_id == catVal).Single()).j_category_name.ToString() + " Job Posts";
-                rpt_joblist.DataSource = jobObj.getResultByColumn(m => m.j_category_id == catVal);
+
+                var catJobs = jobObj.getResultByColumn(m => m.j_category_id == catVal);
+
+                rpt_joblist.DataSource = catJobs;
                 rpt_joblist.DataBind();
 
+
+                if (!catJobs.Any())
+                    lbl_result.Text = "Sorry.  Currently there are not postings.";
                 //show the job postings panel
-                showPanel(pnl_jobs);
+                _showPanel(pnl_jobs);
             }
 
             //check querystring to see if jobID is set but apply is not
             //this refers to the condition where the user is looking at a job post
             if (Request.QueryString["jobID"] != null && Request.QueryString["apply"]==null)
             {
-                showPost(Int32.Parse(Request.QueryString["jobID"]));
+                _showPost(Int32.Parse(Request.QueryString["jobID"]));
             }
 
             //check querystring to see if jobID is set and apply=y
             //the user is accessing the job application based on jobID
             if (Request.QueryString["jobID"] != null && Request.QueryString["apply"]=="y")
             {
-                showApplication(Int32.Parse(Request.QueryString["jobID"]));
+                _showApplication(Int32.Parse(Request.QueryString["jobID"]));
             }
         }
     }
 
 
     //show individual jobposts
-    private void showPost(int jobID)
+    private void _showPost(int jobID)
     {
         rpt_post.DataSource = jobObj.getResultByColumn(m => m.j_id == jobID);
         rpt_post.DataBind();
 
-        showPanel(pnl_viewpost);
+        _showPanel(pnl_viewpost);
     }
 
     //switch between active panels
-    public void showPanel(Panel p)
+    private void _showPanel(Panel p)
     {
         pnl_viewpost.Visible = false;
         pnl_form.Visible = false;
         pnl_jobs.Visible = false;
         pnl_thankyou.Visible = false;
+        pnl_careers.Visible = false;
         p.Visible = true;
     }
 
     //show the application form based on jobID
-    private void showApplication(int jobID)
+    private void _showApplication(int jobID)
     {
-        //just sets the jobID on the application form form
-        lbl_jID.Text = jobID.ToString();
+        var currJob = jobObj.getResultByColumn(x => x.j_id == jobID).Single();
+
+        //just sets the jobID on the application form
+        lbl_jID.Text = jobID.ToString() + " (" +currJob.j_title + ")";
         
         //make application form panel active
-        showPanel(pnl_form);
+        _showPanel(pnl_form);
         
     }
 
@@ -88,45 +101,6 @@ public partial class careers : System.Web.UI.Page
         //jobID was sent through commandargument of the button
         string url = "~/navigation/careers.aspx?apply=y&jobID=" + ((Button)sender).CommandArgument;
         Response.Redirect(url);
-    }
-
-    //file upload handler
-    protected void subUpload(object sender, EventArgs e)
-    {
-        //if user selected a file
-        if (fu_main.HasFile)
-        {
-            //get the extension of the file in lowercase
-            string fExt = Path.GetExtension(fu_main.FileName).ToLower();
-            
-            //check if it is doc/docx/pdf
-            if (fExt == ".doc" || fExt == ".docx" || fExt == ".pdf")
-            {
-                //attach a folder path to the uploaded file name
-                string filename = Path.Combine(Server.MapPath("~/resumes/"), fu_main.FileName);
-                
-                //save the file on the server
-                fu_main.SaveAs(filename);
-
-                //show uploaded filename
-                lbl_status.Text = fu_main.FileName;
-            }
-            else
-                //print error message for required file types
-                lbl_status.Text = "Requires filetype: doc/docx/pdf";
-        }
-        else
-        {
-            lbl_status.Text = "error.";
-        }
-    }
-
-    //custom validator for all dropdownlists
-    protected void subDDLValidate(object sender, ServerValidateEventArgs e)
-    {
-        //checks to see if the first element (instructional) was selected
-        if (ddl_prov.SelectedValue == "")
-            e.IsValid = false;
     }
 
     //custom validation for optional alternate phone number
@@ -176,28 +150,14 @@ public partial class careers : System.Web.UI.Page
         jobObj.j_was_convicted = char.Parse(rbl_convict.SelectedValue);
         
         //set jobID for the object to tell which job they're applying to
-        jobObj.j_id = Int32.Parse(lbl_jID.Text);
+        jobObj.j_id = Int32.Parse(Request.QueryString["jobID"].ToString());
 
         //rename the uploaded resume based on firstname, lastname and jobID
         string newfile = jobObj.j_first_name + "_" + jobObj.j_last_name + "_" + jobObj.j_id.ToString() + "_" + jobObj.j_phone 
-                    + Path.GetExtension(lbl_status.Text).ToLower();
+                    + Path.GetExtension(fu_main.PostedFile.FileName).ToLower();
         jobObj.j_resume = newfile;
 
-        //renaming file
-        if (File.Exists(Server.MapPath("~/resumes/" + newfile)))
-        {
-            //must check if a file was chosen
-            //delete if exist
-            File.Delete(Server.MapPath("~/resumes/" + newfile));
-           
-        }
-        
-        //akin to linux command line renaming e.g., mv ass.txt abs.txt
-        File.Move(
-        Path.Combine(Server.MapPath("~/resumes/"), lbl_status.Text),
-        Path.Combine(Server.MapPath("~/resumes/"), newfile)
-                    );
-  
+        fu_main.SaveAs(Path.Combine(Server.MapPath("~/resumes"),newfile));
 
         //insert the job application record object to the database
         if (!jobDB.Insert(jobObj))
@@ -205,13 +165,13 @@ public partial class careers : System.Web.UI.Page
         else
         {
             //show thank you message upon success
-            showPanel(pnl_thankyou);
+            _showPanel(pnl_thankyou);
         }
 
     }
 
     //email function soon to come
-    private bool sendEmail(string name, string email)
+    private bool _sendEmail(string name, string email)
     {
         return true;
     }
