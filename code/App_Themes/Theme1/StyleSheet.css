@@ -516,3 +516,15 @@ margin:20px 40px;
 {
     width: 250px;
 }
+
+.table-grid tr, td
+{
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.table-grid th
+{
+    background: #999;
+    color: #fff;
+}

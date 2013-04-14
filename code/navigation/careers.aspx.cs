@@ -18,7 +18,11 @@ public partial class careers : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
+            _showPanel(pnl_careers);
+            lbl_result.Text = "";
+
             //populates the category repeater with linq datasource
+            
             rpt_careers.DataSource = catObj.getItems();
             rpt_careers.DataBind();
 
@@ -28,57 +32,64 @@ public partial class careers : System.Web.UI.Page
                 //if set populate the job postings repeater based on catID
                 int catVal = Int32.Parse(Request.QueryString["catID"]);
                 lbl_jCat.Text = (catObj.getResultByColumn(m => m.j_category_id == catVal).Single()).j_category_name.ToString() + " Job Posts";
-                rpt_joblist.DataSource = jobObj.getResultByColumn(m => m.j_category_id == catVal);
+
+                var catJobs = jobObj.getResultByColumn(m => m.j_category_id == catVal);
+
+                rpt_joblist.DataSource = catJobs;
                 rpt_joblist.DataBind();
 
+
+                if (!catJobs.Any())
+                    lbl_result.Text = "Sorry.  Currently there are not postings.";
                 //show the job postings panel
-                showPanel(pnl_jobs);
+                _showPanel(pnl_jobs);
             }
 
             //check querystring to see if jobID is set but apply is not
             //this refers to the condition where the user is looking at a job post
             if (Request.QueryString["jobID"] != null && Request.QueryString["apply"]==null)
             {
-                showPost(Int32.Parse(Request.QueryString["jobID"]));
+                _showPost(Int32.Parse(Request.QueryString["jobID"]));
             }
 
             //check querystring to see if jobID is set and apply=y
             //the user is accessing the job application based on jobID
             if (Request.QueryString["jobID"] != null && Request.QueryString["apply"]=="y")
             {
-                showApplication(Int32.Parse(Request.QueryString["jobID"]));
+                _showApplication(Int32.Parse(Request.QueryString["jobID"]));
             }
         }
     }
 
 
     //show individual jobposts
-    private void showPost(int jobID)
+    private void _showPost(int jobID)
     {
         rpt_post.DataSource = jobObj.getResultByColumn(m => m.j_id == jobID);
         rpt_post.DataBind();
 
-        showPanel(pnl_viewpost);
+        _showPanel(pnl_viewpost);
     }
 
     //switch between active panels
-    public void showPanel(Panel p)
+    private void _showPanel(Panel p)
     {
         pnl_viewpost.Visible = false;
         pnl_form.Visible = false;
         pnl_jobs.Visible = false;
         pnl_thankyou.Visible = false;
+        pnl_careers.Visible = false;
         p.Visible = true;
     }
 
     //show the application form based on jobID
-    private void showApplication(int jobID)
+    private void _showApplication(int jobID)
     {
         //just sets the jobID on the application form form
         lbl_jID.Text = jobID.ToString();
         
         //make application form panel active
-        showPanel(pnl_form);
+        _showPanel(pnl_form);
         
     }
 
@@ -160,13 +171,13 @@ public partial class careers : System.Web.UI.Page
         else
         {
             //show thank you message upon success
-            showPanel(pnl_thankyou);
+            _showPanel(pnl_thankyou);
         }
 
     }
 
     //email function soon to come
-    private bool sendEmail(string name, string email)
+    private bool _sendEmail(string name, string email)
     {
         return true;
     }

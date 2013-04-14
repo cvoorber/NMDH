@@ -5,7 +5,7 @@
     <%-- repeater to populate the job categories --%>
     <asp:Repeater ID="rpt_careers" runat="server">
         <HeaderTemplate>
-            <h3>Job Categories</h3>
+            <h1>Job Categories</h1>
         </HeaderTemplate>
         <ItemTemplate>
             <%-- each category will be link that postback to the page with a category id for bookmarking --%>
@@ -18,14 +18,23 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
 
+    <asp:Panel ID="pnl_careers" runat="server">
+        <h1><asp:Label runat="server" Text="Careers at NDMH" /></h1>
+        <br />
+        <p>
+            <asp:Label runat="server"
+                    Text="Come join our team!  Help us provide the best services to our beautiful community." /> 
+        </p>
+    </asp:Panel>
+
     <%-- panel that shows up upon selecting a category --%>
     <asp:Panel ID="pnl_jobs" runat="server">
-        <asp:Label ID="lbl_jCat" runat="server" />
+        <h1><asp:Label ID="lbl_jCat" runat="server" /></h1>
 
         <%-- repeater that shows all job postings based on a category id --%>
         <asp:Repeater ID="rpt_joblist" runat="server">
             <HeaderTemplate>
-               <table>
+               <table class="table-grid">
                     <tr>
                         <th>Job ID</th>
                         <th>Job Title</th>
@@ -176,5 +185,7 @@
         <br /><br />
         <asp:HyperLink ID="hl_career" runat="server" NavigateUrl="~/navigation/careers.aspx" Text="Back to Careers page." />
     </asp:Panel>
+    <br />
+    <asp:Label ID="lbl_result" runat="server" />
 </asp:Content>
 
