@@ -528,3 +528,8 @@ margin:20px 40px;
     background: #999;
     color: #fff;
 }
+
+.no-border tr, td
+{
+    border: 0;
+}

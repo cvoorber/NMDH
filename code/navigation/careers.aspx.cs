@@ -85,8 +85,10 @@ public partial class careers : System.Web.UI.Page
     //show the application form based on jobID
     private void _showApplication(int jobID)
     {
-        //just sets the jobID on the application form form
-        lbl_jID.Text = jobID.ToString();
+        var currJob = jobObj.getResultByColumn(x => x.j_id == jobID).Single();
+
+        //just sets the jobID on the application form
+        lbl_jID.Text = jobID.ToString() + " (" +currJob.j_title + ")";
         
         //make application form panel active
         _showPanel(pnl_form);
@@ -99,14 +101,6 @@ public partial class careers : System.Web.UI.Page
         //jobID was sent through commandargument of the button
         string url = "~/navigation/careers.aspx?apply=y&jobID=" + ((Button)sender).CommandArgument;
         Response.Redirect(url);
-    }
-
-    //custom validator for all dropdownlists
-    protected void subDDLValidate(object sender, ServerValidateEventArgs e)
-    {
-        //checks to see if the first element (instructional) was selected
-        if (ddl_prov.SelectedValue == "")
-            e.IsValid = false;
     }
 
     //custom validation for optional alternate phone number
@@ -156,7 +150,7 @@ public partial class careers : System.Web.UI.Page
         jobObj.j_was_convicted = char.Parse(rbl_convict.SelectedValue);
         
         //set jobID for the object to tell which job they're applying to
-        jobObj.j_id = Int32.Parse(lbl_jID.Text);
+        jobObj.j_id = Int32.Parse(Request.QueryString["jobID"].ToString());
 
         //rename the uploaded resume based on firstname, lastname and jobID
         string newfile = jobObj.j_first_name + "_" + jobObj.j_last_name + "_" + jobObj.j_id.ToString() + "_" + jobObj.j_phone 
