@@ -90,37 +90,6 @@ public partial class careers : System.Web.UI.Page
         Response.Redirect(url);
     }
 
-    //file upload handler
-    protected void subUpload(object sender, EventArgs e)
-    {
-        //if user selected a file
-        if (fu_main.HasFile)
-        {
-            //get the extension of the file in lowercase
-            string fExt = Path.GetExtension(fu_main.FileName).ToLower();
-            
-            //check if it is doc/docx/pdf
-            if (fExt == ".doc" || fExt == ".docx" || fExt == ".pdf")
-            {
-                //attach a folder path to the uploaded file name
-                string filename = Path.Combine(Server.MapPath("~/resumes/"), fu_main.FileName);
-                
-                //save the file on the server
-                fu_main.SaveAs(filename);
-
-                //show uploaded filename
-                lbl_status.Text = fu_main.FileName;
-            }
-            else
-                //print error message for required file types
-                lbl_status.Text = "Requires filetype: doc/docx/pdf";
-        }
-        else
-        {
-            lbl_status.Text = "error.";
-        }
-    }
-
     //custom validator for all dropdownlists
     protected void subDDLValidate(object sender, ServerValidateEventArgs e)
     {
@@ -180,24 +149,10 @@ public partial class careers : System.Web.UI.Page
 
         //rename the uploaded resume based on firstname, lastname and jobID
         string newfile = jobObj.j_first_name + "_" + jobObj.j_last_name + "_" + jobObj.j_id.ToString() + "_" + jobObj.j_phone 
-                    + Path.GetExtension(lbl_status.Text).ToLower();
+                    + Path.GetExtension(fu_main.PostedFile.FileName).ToLower();
         jobObj.j_resume = newfile;
 
-        //renaming file
-        if (File.Exists(Server.MapPath("~/resumes/" + newfile)))
-        {
-            //must check if a file was chosen
-            //delete if exist
-            File.Delete(Server.MapPath("~/resumes/" + newfile));
-           
-        }
-        
-        //akin to linux command line renaming e.g., mv ass.txt abs.txt
-        File.Move(
-        Path.Combine(Server.MapPath("~/resumes/"), lbl_status.Text),
-        Path.Combine(Server.MapPath("~/resumes/"), newfile)
-                    );
-  
+        fu_main.SaveAs(Path.Combine(Server.MapPath("~/resumes"),newfile));
 
         //insert the job application record object to the database
         if (!jobDB.Insert(jobObj))

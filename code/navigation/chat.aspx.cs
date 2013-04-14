@@ -27,7 +27,7 @@ public partial class _Default : System.Web.UI.Page
                 {
                     Session["chatroom"] = _getChatRoom();
                     lbl_nicknameC.Text = "Chatroom: " + Session["chatroom"].ToString();
-                    lbl.Text = "Nickname: " + Session["nickame"].ToString();
+                    lbl.Text = "Nickname: " + Session["nickname"].ToString();
                 }
 
                 _showPanel(pnl_chat);

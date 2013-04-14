@@ -158,16 +158,10 @@
         <%-- file upload using ajax --%>
         <asp:ScriptManager ID="scm_main" runat="server" EnablePartialRendering="true" />
         <asp:Label ID="lbl_file" runat="server" Text="Upload resume and cover letter (doc/docx/pdf):"  />
-        <asp:UpdatePanel ID="udp_main" runat="server">
-            <ContentTemplate>
-                <asp:FileUpload ID="fu_main" runat="server"  />
-            </ContentTemplate>
-            <Triggers>
-                <asp:PostBackTrigger ControlID="btn_upload" />
-            </Triggers>
-        </asp:UpdatePanel>
+        <br />
+        <asp:FileUpload ID="fu_main" runat="server"  />
+        <asp:RequiredFieldValidator ID="rfv_resume" runat="server" ControlToValidate="fu_main" ErrorMessage="*required" />
        
-        <asp:Button ID="btn_upload" runat="server" Text="Upload" OnClick="subUpload" />
         <asp:Label ID="lbl_status" runat="server" />
         
         
