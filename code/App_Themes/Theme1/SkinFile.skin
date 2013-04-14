@@ -13,7 +13,6 @@
     BorderWidth="1px" 
     ForeColor="#002b23" 
     Font-Size="15pt"
-    Text="Search" 
     CssClass="searchbar" />
 
 <asp:Menu runat="server" 

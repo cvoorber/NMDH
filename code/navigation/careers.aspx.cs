@@ -40,7 +40,7 @@ public partial class careers : System.Web.UI.Page
 
 
                 if (!catJobs.Any())
-                    lbl_result.Text = "Sorry.  Currently there are not postings.";
+                    lbl_result.Text = "Sorry.  Currently there are no postings.";
                 //show the job postings panel
                 _showPanel(pnl_jobs);
             }

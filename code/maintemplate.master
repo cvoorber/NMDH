@@ -16,13 +16,14 @@
 </head>
 <body>
     <%--- - - - Do not remove persist (added by Chris) - - - ---%>
+    <%-- 
     <div id="persist">This is a student site (NOT A REAL HOSPITAL)</div>
-
+    --%>
     <form id="form1" runat="server">
     <asp:Panel ID="container" runat="server" SkinID="container">
   	
     <asp:ImageButton ID="img_search" runat="server" ImageUrl="~/img/search.png" CssClass="searchbar" OnClick="subSearch" />
-    <asp:TextBox ID="txt_search" runat="server" SkinID="searchbar" />
+    <asp:TextBox ID="txt_search" runat="server" SkinID="searchbar" placeholder="Search Words" />
     
     <!-- These buttons trigger a font increase/decrease on the page -->
     <asp:ImageButton ID="font_decrease" runat="server" ImageUrl="~/img/fontminus.png" CssClass="fontchange" OnClick="fontDec" CausesValidation="false" />
