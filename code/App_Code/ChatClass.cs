@@ -16,8 +16,8 @@ public class ChatClass
     //ChatClass object = chatroom
     //dynamically created by adminchat and inserted into this list
     
-    public static List<ChatClass> chatrooms = new List<ChatClass>(); 
-    
+    public static List<ChatClass> chatrooms = new List<ChatClass>();
+
     
     public ChatClass(int chatID=0,string userName="",string adminName="")
     {

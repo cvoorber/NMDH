@@ -45,7 +45,7 @@
                      <asp:Repeater ID="rpt_chat" runat="server">
                         <ItemTemplate>
                             <asp:Label ID="lbl_from" runat="server" Text='<%#Eval("fromuser") + ":" %>' />
-                            <asp:Label ID="lbl_time" runat="server" Text='<%# "<" + Eval("timestamp").ToString() + ">:" %>' />
+                            <asp:Label ID="lbl_time" runat="server" Text='<%# "<" + Eval("timestamp", "{0:hh:mm:ss}") + ">:" %>' />
                             <asp:Label ID="lbl_msg" runat="server" Text='<%#Eval("message") %>' />
                             <br />
                         </ItemTemplate>

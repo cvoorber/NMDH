@@ -61,17 +61,22 @@ table {
 @import url(http://fonts.googleapis.com/css?family=Rufina);
 
 /* - - - - Do not remove persist (added by Chris) - - - - */
+
 #persist {
 background-color:Red;
 position:fixed;
 top:0px;
-padding-top:20px;
+padding:20px;
 text-align:center;
-font-size:22px;
-width:100%;
+font-size:20px;
+width:20%;
 height:40px;
+color: #ffffff;
 z-index:99;
+border: 1px solid #ffffff;
 }
+
+
 
 body {
 	background-color: #11c1a2;

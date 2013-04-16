@@ -16,9 +16,9 @@
 </head>
 <body>
     <%--- - - - Do not remove persist (added by Chris) - - - ---%>
-    <%-- 
-    <div id="persist">This is a student site (NOT A REAL HOSPITAL)</div>
-    --%>
+
+    <div id="persist">This is a student site<br />(NOT A REAL HOSPITAL)</div>
+
     <form id="form1" runat="server">
     <asp:Panel ID="container" runat="server" SkinID="container">
   	

@@ -21,6 +21,7 @@ public partial class _Default : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
             //checks to see if admin already in a chatroom via chatid in the session var.
+
             if (Session["chatroom"] == null)
             {
                 //count the chat queue
@@ -44,6 +45,7 @@ public partial class _Default : System.Web.UI.Page
                     ChatClass.chatrooms.Add(new ChatClass(count + 1, "", adminName));
                 }
             }
+
             lbl_nicknameC.Text = "Chatroom: " + Session["chatroom"].ToString();
             lbl.Text = "Admin: " + adminName;
             _rebind();

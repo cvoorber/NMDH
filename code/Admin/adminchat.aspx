@@ -1,5 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="adminchat.aspx.cs" Inherits="_Default" MasterPageFile="~/Admin/subAdmin.master" %>
 
+
 <asp:Content ID="ct_main" ContentPlaceHolderID="r_content" runat="server" >
     <asp:ScriptManager ID="scm_main" runat="server" />
     <style>

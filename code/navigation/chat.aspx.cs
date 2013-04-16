@@ -19,7 +19,6 @@ public partial class _Default : System.Web.UI.Page
             {
                 //put nickname in session variable
                 Session["nickname"] = Request.QueryString["nickname"].ToString();
-                Session["admin"] = false;
 
                 //if no chatroom/chatID assigned to session
                 //get next available
@@ -27,11 +26,8 @@ public partial class _Default : System.Web.UI.Page
                 {
                     Session["chatroom"] = _getChatRoom();
                     lbl_nicknameC.Text = "Chatroom: " + Session["chatroom"].ToString();
-<<<<<<< HEAD
-                    lbl.Text = "Nickname: " + Session["nickame"].ToString();
-=======
+
                     lbl.Text = "Nickname: " + Session["nickname"].ToString();
->>>>>>> 5a295b3b0a7726623a80d5aaf6c3dcb3bb358518
                 }
 
                 _showPanel(pnl_chat);
