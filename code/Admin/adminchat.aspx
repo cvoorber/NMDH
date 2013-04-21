@@ -1,10 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="adminchat.aspx.cs" Inherits="adminchat" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="adminchat.aspx.cs" Inherits="adminchat" MasterPageFile="~/Admin/subAdmin.master" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
+<asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js" ></script>
     <script type="text/javascript" >
         function divScroll() {
@@ -29,9 +25,7 @@
 
         );
     </script>
-</head>
-<body>
-    <form id="form1" runat="server">
+
     <div>
         <asp:ScriptManager ID="scm_main" runat="server" EnablePageMethods="true" />
          <asp:Panel ID="pnl_chat" runat="server">
@@ -76,6 +70,4 @@
         </asp:Panel>
     </div>
     <asp:Button runat="server" OnClick="subKill" Text="Kill Chat" />
-    </form>
-</body>
-</html>
+</asp:Content>

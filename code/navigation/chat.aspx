@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="chat.aspx.cs" Inherits="chat" MasterPageFile="~/SubMaster1.master" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<asp:Content ID="Content1" ContentPlaceHolderID="l_sidebar" Runat="Server">
+</asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
+<asp:Content ID="Content2" ContentPlaceHolderID="r_content" Runat="Server">
+
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js" ></script>
     <script type="text/javascript" >
         function divScroll() {
@@ -22,9 +22,6 @@
             display: block;
         }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
     <div>
         <asp:ScriptManager ID="scm_main" runat="server" />
         <asp:UpdatePanel ID="upl_form" runat="server" UpdateMode="Conditional">
@@ -100,6 +97,11 @@
         </asp:Panel>
         
     </div>
-    </form>
-</body>
-</html>
+
+
+
+
+
+
+    
+</asp:Content>

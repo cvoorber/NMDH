@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class _Default : System.Web.UI.Page
+public partial class chat : System.Web.UI.Page
 {
     LinqClass<ndmh_chat> chatDBObj = new LinqClass<ndmh_chat>();
 
@@ -58,7 +58,7 @@ public partial class _Default : System.Web.UI.Page
             Session["user"] = txt_nickname.Text;
             pnl_form.Enabled = false;
             //_showPanel(pnl_chat);
-            Response.Redirect("~/Default.aspx");
+            Response.Redirect("~/navigation/chat.aspx");
         }
     }
 
