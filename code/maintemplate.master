@@ -64,7 +64,10 @@
         <asp:Panel ID="copyright" runat="server" CssClass="copyright">
             Copyright 2012 Group of Six Designs. All Rights Reserved.
         </asp:Panel>
+    <asp:LinkButton ID="lb_staff" runat="server" PostBackUrl="~/staff/calendar.aspx" Text="Staff" Font-Size="X-Small" Font-Underline="false" ForeColor="Black" /> /
+    <asp:LinkButton ID="lb_admin" runat="server" PostBackUrl="~/Admin/homepageCMS.aspx" Text="Admin" Font-Size="X-Small" Font-Underline="false" ForeColor="Black" />
     </asp:Panel> 
+
 
 </asp:Panel><!--end container -->
 </form>

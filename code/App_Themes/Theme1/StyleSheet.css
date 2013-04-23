@@ -218,7 +218,7 @@ h1, .h1
 
 .lower-foot
 {
-    width:610px;
+    width:710px;
     margin:10px auto;
 }
 
@@ -238,7 +238,9 @@ h1, .h1
     position:relative;
     float:left;
     border-left:3px solid #11c1a2;
-    padding-left:10px;
+    border-right:3px solid #11c1a2;
+    padding:0 10px;
+    margin-right:10px;
 }
 
 /* Added by Chris for SubMaster1 -- February 19, 2013 */
