@@ -3,7 +3,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="content_area" Runat="Server">
 
 <%-- Panel showing current order's cart --%>
-<asp:Panel ID="pnl_order" runat="server">
+<asp:Panel ID="pnl_order" runat="server" style="margin-bottom:80px;">
     <h1>NDMH Giftshop - Your Current Shopping Cart</h1>
     <asp:HyperLink ID="hyp_return" runat="server" Text="Continue Shopping" NavigateUrl="giftshop.aspx" Font-Size="14" Style="margin-left:10px;" />
     <br />
@@ -18,7 +18,7 @@
             <asp:TemplateField HeaderText="Quantity">  
                 <ItemTemplate>  
                     <asp:TextBox runat="server" ID="txt_quantity" Columns="5" Text='<%# Eval("Quantity") %>'></asp:TextBox>&nbsp;&nbsp;
-                    <asp:LinkButton runat="server" ID="btnRemove" Text="Remove Product" CommandName="Remove" CommandArgument='<%# Eval("ProductId") %>' style="font-size:14px;"></asp:LinkButton>
+                    <asp:LinkButton runat="server" ID="btnRemove" Text="Remove Product" CommandName="Remove" CommandArgument='<%# Eval("ProductId") %>' ForeColor="Red" Font-Bold="true" Font-Size="12"></asp:LinkButton>
                 </ItemTemplate>  
             </asp:TemplateField>  
             <asp:BoundField DataField="UnitPrice" HeaderText="Price" ItemStyle-HorizontalAlign="Right" HeaderStyle-HorizontalAlign="Right" DataFormatString="{0:C}" />  
@@ -27,10 +27,10 @@
     </asp:GridView>
     <br />
     <%-- Updates the quantity if altered --%>
-    <asp:Button runat="server" ID="btnUpdateCart" Text="Update Cart" Style="float:right;" OnClick="btnSubUpdate" />  
+    <asp:Button runat="server" ID="btnUpdateCart" Text="Update Cart" Style="float:right;padding:5px 25px;margin-right:10px;border-radius:6px;" BackColor="#DEB887" Font-Size="13" OnClick="btnSubUpdate" />  
     <br /><br />
     <%-- Displays the checkout panel below --%>
-    <asp:Button runat="server" ID="btnCheckout" Text="Checkout" Style="float:right;" OnClick="btnSubCheckout" />
+    <asp:Button runat="server" ID="btnCheckout" Text="Checkout" Style="clear:both;float:right;padding:5px 34px;margin-right:10px;margin-top:5px;margin-bottom:20px;border-radius:6px;" BackColor="Lime" Font-Size="13" OnClick="btnSubCheckout" />
 </asp:Panel>
 
 <%-- Panel displaying a form to fill in contact details for order --%>

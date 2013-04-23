@@ -21,7 +21,7 @@
                     <br /><br />
                     <asp:Label ID="lblPriceTitle" runat="server" Text="Price: $" />
                     <asp:Label ID="lblPrice" runat="server" Text='<%#Eval("p_price") %>' />&nbsp;
-                    <asp:LinkButton ID="lnk_buy" runat="server" CommandName="addItem" Text="Add to Cart" Font-Size="12" />
+                    <asp:LinkButton ID="lnk_buy" runat="server" CommandName="addItem" Text="Add to Cart" style="float:right;" Font-Size="12" />
                 </div><%-- end "item" div --%>
             </ItemTemplate>
         </asp:ListView>
