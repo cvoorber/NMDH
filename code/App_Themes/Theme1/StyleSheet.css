@@ -320,7 +320,7 @@ padding:10px;
 #waitTime {
 background-color:#FFF;
 border:2px solid #CCC;
-border-radius:6px;
+border-radius:8px;
 margin:3px;
 padding:15px 0;
 text-align:center;
@@ -344,6 +344,7 @@ width:200px;
 height:320px;
 font-size:15px;
 border:1px solid gray;
+border-radius:5px;
 padding:20px 26px;
 margin:15px 15px;
 background:#FFF;

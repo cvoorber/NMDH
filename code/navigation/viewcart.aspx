@@ -10,11 +10,11 @@
     <br />
     <%-- Shopping cart details and subtotal with updatable quantity --%>
     <asp:GridView runat="server" ID="gridCart" AutoGenerateColumns="false" EmptyDataText="Your Shopping Cart is empty." GridLines="None" Width="100%" CellPadding="5" CellSpacing="5" ShowFooter="true" DataKeyNames="ProductId" OnRowDataBound="gridCart_RowDataBound" OnRowCommand="gridCart_RowCommand" Font-Size="12" CssClass="cartStyle" RowStyle-Height="60" BackColor="White">  
-        <HeaderStyle Font-Size="15" Font-Bold="true" HorizontalAlign="Left" BackColor="#11c1a2" ForeColor="#000" Height="25" />  
+        <HeaderStyle Font-Size="15" Font-Bold="true" HorizontalAlign="Left" BackColor="#11c1a2" ForeColor="#000" Height="25" />
         <FooterStyle Font-Size="15" Font-Bold="true" HorizontalAlign="Right" BackColor="#6C6B66" ForeColor="#FFFFFF" Height="25" /> 
         <AlternatingRowStyle BackColor="LightGray" />  
         <Columns>
-            <asp:BoundField DataField="Description" HeaderText="Description" />  
+            <asp:BoundField DataField="Description" HeaderText="Description" />
             <asp:TemplateField HeaderText="Quantity">  
                 <ItemTemplate>  
                     <asp:TextBox runat="server" ID="txt_quantity" Columns="5" Text='<%# Eval("Quantity") %>'></asp:TextBox>&nbsp;&nbsp;
@@ -22,7 +22,7 @@
                 </ItemTemplate>  
             </asp:TemplateField>  
             <asp:BoundField DataField="UnitPrice" HeaderText="Price" ItemStyle-HorizontalAlign="Right" HeaderStyle-HorizontalAlign="Right" DataFormatString="{0:C}" />  
-            <asp:BoundField DataField="TotalPrice" HeaderText="Total" ItemStyle-HorizontalAlign="Right" HeaderStyle-HorizontalAlign="Right" DataFormatString="{0:C}" />  
+            <asp:BoundField DataField="TotalPrice" HeaderText="Total" ItemStyle-HorizontalAlign="Right" HeaderStyle-HorizontalAlign="Right" DataFormatString="{0:C}" />
         </Columns>  
     </asp:GridView>
     <br />
@@ -35,9 +35,10 @@
 
 <%-- Panel displaying a form to fill in contact details for order --%>
 <asp:Panel ID="pnl_checkout" runat="server" Style="margin-left:150px;">
-<span style="float:left;">Not Ready for Committment? Click here --></span><asp:Button ID="btn_backtocart" runat="server" Text="Return To Cart" OnClick="backtocart" />
+<span style="padding-top:2px;float:left;">Not Ready for Committment? Click here --></span><asp:Button ID="btn_backtocart" runat="server" Text="Return To Cart" OnClick="backtocart" />
     <br /><br />
     <h1>Ready to Checkout? Please Fill in the Form Below.</h1>
+    <p>All fields below require valid input.</p>
     <asp:Label ID="lbl_sendErr" runat="server" />
     <table width="550">
         <tr>
@@ -89,6 +90,14 @@
                             </td>
         </tr>
         <tr>
+            <%-- Phone field --%>
+            <td><asp:Label ID="lbl_phone" runat="server" Text="Phone:  " AssociatedControlID="txt_phone" /></td>
+            <td><asp:TextBox ID="txt_phone" runat="server" />
+            <%-- regular express check for email --%>
+            <asp:RegularExpressionValidator ID="rev_phone" runat="server" Text="Invalid phone" ControlToValidate="txt_phone" Display="Dynamic" ValidationExpression="^([0-9]( |-)?)?(\(?[0-9]{3}\)?|[0-9]{3})( |-)?([0-9]{3}( |-)?[0-9]{4}|[a-zA-Z0-9]{7})$" ErrorMessage="Please enter a valid phone number." ValidationGroup="subForm" />
+            <asp:RequiredFieldValidator ID="rfv_phone" runat="server" Text="*Required" ControlToValidate="txt_phone" Display="Dynamic" SetFocusOnError="true" ValidationGroup="subForm" /></td>
+        </tr>
+        <tr>
             <%-- Email field --%>
             <td><asp:Label ID="lbl_email" runat="server" Text="Email address:  " AssociatedControlID="txt_email" /></td>
             <td><asp:TextBox ID="txt_email" runat="server" />
@@ -108,9 +117,9 @@
             <td></td>
             <td>
             <%-- clears details from the form --%>
-            <asp:Button ID="btn_clear" runat="server" Text="Clear Form" OnClick="clearForm" />&nbsp;&nbsp;
+            <asp:Button ID="btn_clear" runat="server" Text="Clear Form" OnClick="clearForm" CausesValidation="false" />&nbsp;&nbsp;
             <%-- submits the checkout form --%>
-            <asp:Button ID="btn_submit" runat="server" Text="Submit" ValidationGroup="subForm" OnClientClick="return confirm('Confirm Purchase?');" OnClick="subOrder" />
+            <asp:Button ID="btn_submit" runat="server" Text="Submit" ValidationGroup="subForm" OnClientClick="if (!confirm('Confirm Purchase?')) return false;" OnClick="subOrder" />
             </td>
         </tr>
     </table>

@@ -34,7 +34,7 @@ public partial class navigation_viewcart : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.Footer) 
         {
             cartClass cart = cartClass.GetShoppingCart();
-            e.Row.Cells[3].Text = "Total: $" + cart.GetSubTotal().ToString(); 
+            e.Row.Cells[3].Text = "SubTotal: $" + cart.GetSubTotal().ToString();
         }
     }
 
@@ -108,9 +108,9 @@ public partial class navigation_viewcart : System.Web.UI.Page
         string SubTotal = "Total ~ $" + cart.GetSubTotal().ToString();
 
         //setting the content/data for the email
-        string emaildata = "Name: " + txt_name.Text + ", Address: " + txt_address.Text + ", " + txt_city.Text + ", " + txt_postal.Text + ", " + ddl_province.Text.ToString() + ", Order: " + SubTotal + " ~ " + Details + " ~ THANK-YOU";
+        string emaildata = "Name: " + txt_name.Text + ", Address: " + txt_address.Text + ", " + txt_city.Text + ", " + txt_postal.Text + ", " + ddl_province.Text.ToString() + ", Phone: " + txt_phone.Text + ", Order: " + SubTotal + " ~ " + Details + " ~ THANK-YOU";
         //specifying the object and contents of the message
-        MailMessage objMailOrder = new MailMessage("giftshop@ndmh.ca", "chris.voorberg@gmail.com", "New NDMH Giftshop Order", emaildata);
+        MailMessage objMailOrder = new MailMessage("giftshop@ndmh.ca", txt_email.Text, "New NDMH Giftshop Order", emaildata);
             
         //carrying out the mail procedure
         SmtpClient server = new SmtpClient();
@@ -132,6 +132,7 @@ public partial class navigation_viewcart : System.Web.UI.Page
         ddl_province.SelectedValue = "0";
         txt_email.Text = string.Empty;
         txt_emailrepeat.Text = string.Empty;
+
     }
 
     // control panel visibility for order/checkout details
