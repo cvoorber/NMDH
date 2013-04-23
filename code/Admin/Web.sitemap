@@ -2,7 +2,7 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="" title="Admin Home" description="" >
     <siteMapNode url="Admin/homepageCMS.aspx" title="Wait Time"  description=""/>
-    <siteMapNode url="Admin/adminchat.aspx" title="Chat"  description=""/>
+    <siteMapNode url="Admin/chatlist.aspx" title="Chat"  description=""/>
     <siteMapNode url="Admin/adminfaqs.aspx" title="FAQ"  description="" />
     <siteMapNode url="Admin/giftshopCMS.aspx" title="Giftshop" description="" />
     <siteMapNode url="Admin/jobappsedit.aspx" title="Job Applications"  description="" />
