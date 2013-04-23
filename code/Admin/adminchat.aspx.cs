@@ -5,52 +5,23 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using System.Web.Services;
 
-//at the time of this feature completion, admin roles have not been established yet
-
-public partial class _Default : System.Web.UI.Page
+public partial class adminchat : System.Web.UI.Page
 {
-
-    LinqClass<ndmh_chat> chatDBObj = new LinqClass<ndmh_chat>(); 
-    string adminName = "quin";  //hardcoded name for admin chatter
-
+    LinqClass<ndmh_chat> chatDBObj = new LinqClass<ndmh_chat>();
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
         if (!Page.IsPostBack)
         {
-            //checks to see if admin already in a chatroom via chatid in the session var.
+            ChatRoomClass chObj = new ChatRoomClass(Session["adminuser"].ToString(), Request.QueryString["user"].ToString());
+            ChatRoomClass.chatrooms.Add(chObj);
+            ChatRoomClass.users.Remove(Request.QueryString["user"].ToString());
 
-            if (Session["chatroom"] == null)
-            {
-                //count the chat queue
-                int count = ChatClass.chatrooms.Count;
-                
-                //if none, freely add a new one
-                if (count == 0)
-                {
-                    Session["chatroom"] = 1;
-
-                    //create the chat obj for the static chat list
-                    ChatClass.chatrooms.Add(new ChatClass(1, "", adminName));
-                }
-                else
-                {
-                    //if there are some, get last index and increment one
-                    //that will be the chatID
-                    Session["chatroom"] = count + 1;
-                    Session["userName"] = adminName;
-                    Session["admin"] = true;
-                    ChatClass.chatrooms.Add(new ChatClass(count + 1, "", adminName));
-                }
-            }
-
-            lbl_nicknameC.Text = "Chatroom: " + Session["chatroom"].ToString();
-            lbl.Text = "Admin: " + adminName;
-            _rebind();
+            lbl_chatto.Text = "Chatting with: " + chObj.UserName;
+            lbl_nickname.Text = chObj.AdminName;
         }
-   
     }
 
     //button to handle the send button being pushed
@@ -59,18 +30,19 @@ public partial class _Default : System.Web.UI.Page
         //only do so when textbox is not empty
         if (txt_msg.Text != "")
         {
-            
+            ChatRoomClass chObj = ChatRoomClass.chatrooms.Where(x=>x.AdminName==Session["adminuser"].ToString() &&
+                   x.UserName == Request.QueryString["user"].ToString()).Single();
             ndmh_chat newChatObj = new ndmh_chat()
             {
                 //replace linebreaks with br tags to ensure line breaks are preserved on display
-                message = txt_msg.Text.Replace("\n","<br />"),
-                chatroomID = Int32.Parse(Session["chatroom"].ToString()),
+                message = txt_msg.Text.Replace("\n", "<br />"),
+                chatroomID = chObj.ChatID,
                 timestamp = DateTime.Now,
-                fromuser = adminName
+                fromuser = chObj.AdminName
             };
 
             //insert the message object to the database
-            chatDBObj.Insert(newChatObj);
+            chatDBObj.Insert(newChatObj).ToString();
             _rebind();
         }
         txt_msg.Text = "";
@@ -84,32 +56,54 @@ public partial class _Default : System.Web.UI.Page
     private void _rebind()
     {
         //rebind common chat messages, ordered based on timestamp
-        rpt_chat.DataSource = chatDBObj.getResultByColumn(m=>m.chatroomID==Int32.Parse(Session["chatroom"].ToString()))
-            .OrderBy(m => m.timestamp);
-        rpt_chat.DataBind();
+        ChatRoomClass chObj = ChatRoomClass.chatrooms.Where(x => x.AdminName == Session["adminuser"].ToString() &&
+                   x.UserName == Request.QueryString["user"].ToString()).Single();
+        try
+        {
+            rpt_chat.DataSource = chatDBObj.getResultByColumn(m => m.chatroomID == chObj.ChatID).OrderBy(m => m.timestamp);
+            rpt_chat.DataBind();
+        }
+        catch (Exception e)
+        {
+        }
 
         //calling javascript function to make div scroll to latest message
         //source: http://forums.asp.net/t/1415969.aspx/1
         ScriptManager.RegisterStartupScript(this.Page, typeof(Page), "scrolltobottom", ";divScroll();", true);
     }
-    
-    //delete current chat entries based on chatID
-    protected void clearChatInDB(object sender, EventArgs e)
-    {
-        using (ndmhDCDataContext dc = new ndmhDCDataContext())
-        {
-            
-            int chID = Int32.Parse(Session["chatroom"].ToString());
 
-            //grabs all items with chatID
-            var currChatItems = dc.ndmh_chats.Where(x => x.chatroomID == chID).Select(x=>x);
-            if (currChatItems != null)
-            {
-                dc.ndmh_chats.DeleteAllOnSubmit(currChatItems);
-                dc.SubmitChanges();
-                _rebind();
-            }
-        }
+    [WebMethod(EnableSession=true)]
+    public static void cleanUp()
+    {
+        ndmhDCDataContext dc = new ndmhDCDataContext();
+
+        string user = HttpContext.Current.Request.QueryString["user"].ToString();
+        string adminuser = HttpContext.Current.Session["adminuser"].ToString();
+        ChatRoomClass chObj = ChatRoomClass.chatrooms.Where(x => x.AdminName == adminuser &&
+                   x.UserName == user).Single();
+        ChatRoomClass.chatrooms.Remove(chObj);
+        
+        var chToRemove = dc.ndmh_chats.Where(x => x.chatroomID == chObj.ChatID).Select(x => x);
+        dc.ndmh_chats.DeleteAllOnSubmit(chToRemove);
+        dc.SubmitChanges();
+
+        
+       
     }
 
+    protected void subKill(object sender, EventArgs e)
+    {
+        ndmhDCDataContext dc = new ndmhDCDataContext();
+
+        string user = Request.QueryString["user"].ToString();
+        string adminuser = Session["adminuser"].ToString();
+        
+        ChatRoomClass chObj = ChatRoomClass.chatrooms.Where(x => x.AdminName == adminuser &&
+                   x.UserName == user).Single();
+        ChatRoomClass.chatrooms.Remove(chObj);
+        
+        var chToRemove = dc.ndmh_chats.Where(x => x.chatroomID == chObj.ChatID).Select(x => x);
+        dc.ndmh_chats.DeleteAllOnSubmit(chToRemove);
+        dc.SubmitChanges();
+    }
 }
