@@ -23,6 +23,13 @@
       <sourceid>1</sourceid>
     </url>
     <url>
+      <loc>~/navigation/faq-search.aspx</loc>
+      <lastmod>2013-04-09</lastmod>
+      <title>FAQ</title>
+      <parent>about</parent>
+      <sourceid>0</sourceid>
+    </url>
+    <url>
       <loc>~/navigation/about.aspx</loc>
       <lastmod>2013-04-09</lastmod>
       <title>Our History</title>

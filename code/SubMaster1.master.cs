@@ -65,10 +65,17 @@ public partial class SubMaster1 : System.Web.UI.MasterPage
         //ensure that the menu item has a value
         if (e.Item.Value != null)
         {
+            if(e.Item.Value.ToString() == "FAQ")
+            {
+                Response.Redirect("~/navigation/faq-search.aspx");
+            }
+            else
+            {
             //create a new instance of the navClass and bind the content to that requested
             navClass menuObj = new navClass();
             rpt_content.DataSource = menuObj.getPageByName(e.Item.Value);
             rpt_content.DataBind();
+            }
         }
     }
 
