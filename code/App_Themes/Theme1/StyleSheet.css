@@ -299,6 +299,29 @@ h1, .h1
 
 /* Ryan end of Virt-Tour CSS */
 
+/* Ryan faq-search start */
+
+.faq-main
+{
+    margin: 0 auto;
+    width: 710px;
+}
+
+.faq-title 
+{
+    font-size: 18pt;
+font-weight: bold;
+
+}
+
+.faq-item
+{
+    margin: 15px;
+    background-color: #f7f5e9;
+    border: 1px solid #CCC;
+    padding: 10px;
+}
+/* end of faq-search Ryan */
 /* - - Added by Chris for NewsBlog March 26/13 - - */
 
 .insertComment {
