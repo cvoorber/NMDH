@@ -7,7 +7,8 @@
             <br />
         <asp:Label ID="lbl_message" runat="server" />
             <br />
-        <asp:Label ID="lbl_insert" runat="server" Text="Insert New Product:" Font-Bold="true" Font-Size="14" />
+        <asp:Label ID="lbl_insert" runat="server" Text="Insert New Product:" Font-Bold="true" Font-Size="14" /><br />
+        <asp:Label ID="lbl_instruct" runat="server" Text="All fields are required." Font-Italic="true" Font-Size="12" />
             <br />
             <br />
         <asp:Label ID="lbl_nameI" runat="server" Text="Name" AssociatedControlID="txt_nameI" />
@@ -15,7 +16,7 @@
         <asp:TextBox ID="txt_nameI" runat="server" />
         <asp:RequiredFieldValidator ID="rfv_nameI" runat="server" Text="*required" ControlToValidate="txt_nameI" ValidationGroup="insert" />
             <br />
-        <asp:Label ID="lbl_descI" runat="server" Text="Description" AssociatedControlID="txt_descI" />
+        <asp:Label ID="lbl_descI" runat="server" Text="Description (Limit 110 char.)" AssociatedControlID="txt_descI" />
             <br />
         <asp:TextBox ID="txt_descI" runat="server" />
         <asp:RequiredFieldValidator ID="rfv_descI" runat="server" Text="*required" ControlToValidate="txt_descI" ValidationGroup="insert" />
